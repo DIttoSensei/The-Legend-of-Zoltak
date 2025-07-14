@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://r8ukxdqtgo5d"
+path="res://.godot/imported/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3-34803adb4db607a9a2dae94fa4413b16.mp3str"
+
+[deps]
+
+source_file="res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3"
+dest_files=["res://.godot/imported/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3-34803adb4db607a9a2dae94fa4413b16.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

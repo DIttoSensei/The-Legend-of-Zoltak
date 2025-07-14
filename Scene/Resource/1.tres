@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Player_apperance" load_steps=3 format=3 uid="uid://cgmytpqiqbox3"]
+
+[ext_resource type="Script" path="res://Scene/Scripts/player_apperance.gd" id="1_ed5xo"]
+[ext_resource type="Texture2D" uid="uid://x37ja5ivmr6s" path="res://Asset/img/potraits/10.png" id="2_n8r2t"]
+
+[resource]
+script = ExtResource("1_ed5xo")
+texture = ExtResource("2_n8r2t")
