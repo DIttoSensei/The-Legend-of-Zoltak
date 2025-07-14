@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c66ms4beg6ncm"
+path="res://.godot/imported/Heartbeat - Royalty Free Fantasy Music [LKEBUbxKz88].mp3-e1e98b02035146099c4d69511de0587f.mp3str"
+
+[deps]
+
+source_file="res://Asset/ost/Heartbeat - Royalty Free Fantasy Music [LKEBUbxKz88].mp3"
+dest_files=["res://.godot/imported/Heartbeat - Royalty Free Fantasy Music [LKEBUbxKz88].mp3-e1e98b02035146099c4d69511de0587f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvgq2gguhdrqu"]
+
+[ext_resource type="Script" path="res://Scene/Scripts/global_game_system.gd" id="1_8glq6"]
+
+[node name="Global-gameSystem" type="Node2D"]
+script = ExtResource("1_8glq6")
+
+[node name="global Audio" type="AudioStreamPlayer" parent="."]
+max_polyphony = 3

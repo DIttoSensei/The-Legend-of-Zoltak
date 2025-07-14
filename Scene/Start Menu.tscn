@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://gr58ec76e6er"]
+
+[ext_resource type="Script" path="res://Scene/Scripts/start_menu.gd" id="1_sb7rr"]
+[ext_resource type="VideoStream" path="res://842a375097a39385b0439c27a65ab46c_out.ogv" id="2_2x32k"]
+[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="3_d8ka8"]
+
+[sub_resource type="FontVariation" id="FontVariation_anuwm"]
+base_font = ExtResource("3_d8ka8")
+
+[sub_resource type="Animation" id="Animation_vk243"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_jdjiv"]
+resource_name = "intro_fade_in"
+
+[sub_resource type="Animation" id="Animation_d57vh"]
+resource_name = "intro_fade_out"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0evvy"]
+_data = {
+"RESET": SubResource("Animation_vk243"),
+"intro_fade_in": SubResource("Animation_jdjiv"),
+"intro_fade_out": SubResource("Animation_d57vh")
+}
+
+[sub_resource type="Animation" id="Animation_rdctt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hqxh5"]
+resource_name = "text_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iibrf"]
+_data = {
+"RESET": SubResource("Animation_rdctt"),
+"text_animation": SubResource("Animation_hqxh5")
+}
+
+[node name="Start_menu" type="Node2D"]
+script = ExtResource("1_sb7rr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -179.0
+offset_right = 354.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+stream = ExtResource("2_2x32k")
+autoplay = true
+loop = true
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 214.0
+offset_top = 509.0
+offset_right = 884.0
+offset_bottom = 812.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.878626, 0.202439, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = SubResource("FontVariation_anuwm")
+theme_override_font_sizes/font_size = 105
+text = "THE LEGENDS
+ OF
+ ZOLTAK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.5
+offset_top = 1458.0
+offset_right = 936.5
+offset_bottom = 1761.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.878626, 0.202439, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = SubResource("FontVariation_anuwm")
+theme_override_font_sizes/font_size = 52
+text = "CLICK TO START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0evvy")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iibrf")
+}

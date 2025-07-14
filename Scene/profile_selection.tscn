@@ -1,0 +1,938 @@
+[gd_scene load_steps=23 format=3 uid="uid://igllcnwmd15n"]
+
+[ext_resource type="Script" path="res://Scene/Scripts/character_creation.gd" id="1_5fqxs"]
+[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/page.png" id="2_hnh5t"]
+[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="3_u6ovh"]
+[ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="4_uwxny"]
+[ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="5_yqprt"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png-removebg-preview.png" id="6_gj2wd"]
+[ext_resource type="Texture2D" uid="uid://djefh0tti1om6" path="res://Asset/img/8dd9e97cde3351d4250481112bbc1bb8-removebg-preview.png" id="7_s7s1m"]
+[ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="8_dim4k"]
+[ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="9_3sbq2"]
+[ext_resource type="Texture2D" uid="uid://j1w26ofdr10r" path="res://Asset/Rpg1/panelInset_beigeLight.png" id="10_gq7gl"]
+[ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="11_bsj44"]
+
+[sub_resource type="FontVariation" id="FontVariation_63ny5"]
+base_font = ExtResource("3_u6ovh")
+
+[sub_resource type="FontVariation" id="FontVariation_bpfmy"]
+base_font = ExtResource("3_u6ovh")
+
+[sub_resource type="FontVariation" id="FontVariation_ew1q8"]
+base_font = ExtResource("3_u6ovh")
+
+[sub_resource type="FontVariation" id="FontVariation_u1fol"]
+base_font = ExtResource("3_u6ovh")
+
+[sub_resource type="FontVariation" id="FontVariation_kqhns"]
+base_font = ExtResource("3_u6ovh")
+
+[sub_resource type="FontVariation" id="FontVariation_ipu4b"]
+base_font = ExtResource("3_u6ovh")
+
+[sub_resource type="Animation" id="Animation_xtxww"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/notice_board:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/notice_board:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/notice_board/exit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/notice_board/notice:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o7b7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/notice_board:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/notice_board:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/notice_board/exit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/notice_board/notice:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jy1di"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/notice_board:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/notice_board:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/notice_board/exit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hoeqj"]
+resource_name = "show_saving"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/notice_board:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/notice_board:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/notice_board/exit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/notice_board/notice:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7pcm5"]
+_data = {
+"RESET": SubResource("Animation_o7b7x"),
+"hide": SubResource("Animation_jy1di"),
+"show": SubResource("Animation_xtxww"),
+"show_saving": SubResource("Animation_hoeqj")
+}
+
+[node name="ProfileSelection" type="Node2D"]
+script = ExtResource("1_5fqxs")
+
+[node name="Page" type="Sprite2D" parent="."]
+position = Vector2(549, 927)
+scale = Vector2(2.01396, 2.4725)
+texture = ExtResource("2_hnh5t")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 287.0
+offset_right = 874.0
+offset_bottom = 344.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_63ny5")
+theme_override_font_sizes/font_size = 60
+text = "SELECT YOUR PROFILE"
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 256.0
+offset_right = -983.0
+offset_bottom = -1615.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_uwxny")
+texture_pressed = ExtResource("5_yqprt")
+
+[node name="AroPng-removebg-preview" type="Sprite2D" parent="Control/TextureButton"]
+modulate = Color(0.807843, 0.65098, 0.458824, 1)
+position = Vector2(22.5, 24)
+rotation = 3.14159
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("6_gj2wd")
+
+[node name="PanelContainer" type="Sprite2D" parent="Control"]
+position = Vector2(545, 583)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_s7s1m")
+
+[node name="Label" type="Label" parent="Control/PanelContainer"]
+offset_left = -80.8333
+offset_top = -25.0
+offset_right = 82.1667
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 50
+text = "EMPTY"
+
+[node name="data" type="Label" parent="Control/PanelContainer"]
+visible = false
+offset_left = -255.0
+offset_top = -65.0
+offset_right = 250.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "NAME
+AGE
+RACE
+CLASS"
+
+[node name="stats" type="Label" parent="Control/PanelContainer/data"]
+offset_left = 232.0
+offset_top = 1.0
+offset_right = 279.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "ATK
+DEF
+DEX
+CON"
+
+[node name="info" type="Label" parent="Control/PanelContainer/data/stats"]
+offset_left = 60.8333
+offset_right = 107.833
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "0
+34
+56
+200"
+vertical_alignment = 1
+
+[node name="stats2" type="Label" parent="Control/PanelContainer/data"]
+offset_left = 357.0
+offset_top = 2.0
+offset_right = 401.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "INT
+CHA
+WIS
+"
+
+[node name="info2" type="Label" parent="Control/PanelContainer/data/stats2"]
+offset_left = 59.1666
+offset_top = -19.3333
+offset_right = 106.167
+offset_bottom = 108.667
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "0
+34
+56"
+vertical_alignment = 1
+
+[node name="info_data" type="Label" parent="Control/PanelContainer/data"]
+offset_left = 89.5001
+offset_top = -1.49997
+offset_right = 208.5
+offset_bottom = 126.5
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "Jackol
+34
+Human
+Sumonner"
+vertical_alignment = 1
+
+[node name="create" type="TextureButton" parent="Control/PanelContainer"]
+offset_left = -105.0
+offset_top = 143.333
+offset_right = 85.0
+offset_bottom = 192.333
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer/create"]
+layout_mode = 0
+offset_left = 38.3334
+offset_top = 9.99998
+offset_right = 147.333
+offset_bottom = 39.0
+theme_override_fonts/font = SubResource("FontVariation_ew1q8")
+theme_override_font_sizes/font_size = 30
+text = "CREATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="load" type="TextureButton" parent="Control/PanelContainer"]
+visible = false
+offset_left = -280.833
+offset_top = 137.5
+offset_right = -90.8333
+offset_bottom = 186.5
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer/load"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 8.33337
+offset_right = 129.0
+offset_bottom = 41.3334
+theme_override_fonts/font = SubResource("FontVariation_u1fol")
+theme_override_font_sizes/font_size = 35
+text = "LOAD
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="delete" type="TextureButton" parent="Control/PanelContainer"]
+visible = false
+offset_left = 95.0001
+offset_top = 138.333
+offset_right = 285.0
+offset_bottom = 187.333
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer/delete"]
+offset_left = 34.1667
+offset_top = 8.33337
+offset_right = 161.167
+offset_bottom = 41.3334
+theme_override_fonts/font = SubResource("FontVariation_u1fol")
+theme_override_font_sizes/font_size = 35
+text = "DELETE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="Sprite2D" parent="Control"]
+position = Vector2(545, 1018)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_s7s1m")
+
+[node name="Label" type="Label" parent="Control/PanelContainer2"]
+offset_left = -80.8333
+offset_top = -25.0
+offset_right = 82.1667
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 50
+text = "EMPTY"
+
+[node name="create" type="TextureButton" parent="Control/PanelContainer2"]
+offset_left = -105.0
+offset_top = 143.333
+offset_right = 85.0
+offset_bottom = 192.333
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer2/create"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 9.99996
+offset_right = 149.0
+offset_bottom = 39.0
+theme_override_fonts/font = SubResource("FontVariation_kqhns")
+theme_override_font_sizes/font_size = 30
+text = "CREATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="load" type="TextureButton" parent="Control/PanelContainer2"]
+visible = false
+offset_left = -280.833
+offset_top = 137.5
+offset_right = -90.8333
+offset_bottom = 186.5
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer2/load"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 8.33337
+offset_right = 129.0
+offset_bottom = 41.3334
+theme_override_fonts/font = SubResource("FontVariation_u1fol")
+theme_override_font_sizes/font_size = 35
+text = "LOAD
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="delete" type="TextureButton" parent="Control/PanelContainer2"]
+visible = false
+offset_left = 95.0001
+offset_top = 138.333
+offset_right = 285.0
+offset_bottom = 187.333
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer2/delete"]
+offset_left = 34.1667
+offset_top = 8.33337
+offset_right = 161.167
+offset_bottom = 41.3334
+theme_override_fonts/font = SubResource("FontVariation_u1fol")
+theme_override_font_sizes/font_size = 35
+text = "DELETE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="data" type="Label" parent="Control/PanelContainer2"]
+visible = false
+offset_left = -255.0
+offset_top = -65.0
+offset_right = 250.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "NAME
+AGE
+RACE
+CLASS"
+
+[node name="stats" type="Label" parent="Control/PanelContainer2/data"]
+offset_left = 232.0
+offset_top = 1.0
+offset_right = 279.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "ATK
+DEF
+DEX
+CON"
+
+[node name="info" type="Label" parent="Control/PanelContainer2/data/stats"]
+offset_left = 60.8333
+offset_right = 107.833
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "0
+34
+56
+200"
+vertical_alignment = 1
+
+[node name="stats2" type="Label" parent="Control/PanelContainer2/data"]
+offset_left = 357.0
+offset_top = 2.0
+offset_right = 401.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "INT
+CHA
+WIS
+"
+
+[node name="info2" type="Label" parent="Control/PanelContainer2/data/stats2"]
+offset_left = 59.1666
+offset_top = -19.3333
+offset_right = 106.167
+offset_bottom = 108.667
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "0
+34
+56"
+vertical_alignment = 1
+
+[node name="info_data" type="Label" parent="Control/PanelContainer2/data"]
+offset_left = 89.5001
+offset_top = -1.49997
+offset_right = 208.5
+offset_bottom = 126.5
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "Jackol
+34
+Human
+Sumonner"
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="Sprite2D" parent="Control"]
+position = Vector2(549, 1440)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_s7s1m")
+
+[node name="Label" type="Label" parent="Control/PanelContainer3"]
+offset_left = -80.8333
+offset_top = -25.0
+offset_right = 82.1667
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 50
+text = "EMPTY"
+
+[node name="create" type="TextureButton" parent="Control/PanelContainer3"]
+offset_left = -105.0
+offset_top = 143.333
+offset_right = 85.0
+offset_bottom = 192.333
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer3/create"]
+offset_left = 40.0
+offset_top = 9.99996
+offset_right = 149.0
+offset_bottom = 39.0
+theme_override_fonts/font = SubResource("FontVariation_kqhns")
+theme_override_font_sizes/font_size = 30
+text = "CREATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="load" type="TextureButton" parent="Control/PanelContainer3"]
+visible = false
+offset_left = -280.833
+offset_top = 137.5
+offset_right = -90.8333
+offset_bottom = 186.5
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer3/load"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 8.33337
+offset_right = 129.0
+offset_bottom = 41.3334
+theme_override_fonts/font = SubResource("FontVariation_u1fol")
+theme_override_font_sizes/font_size = 35
+text = "LOAD
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="delete" type="TextureButton" parent="Control/PanelContainer3"]
+visible = false
+offset_left = 95.0001
+offset_top = 138.333
+offset_right = 285.0
+offset_bottom = 187.333
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="Label" type="Label" parent="Control/PanelContainer3/delete"]
+offset_left = 34.1667
+offset_top = 8.33337
+offset_right = 161.167
+offset_bottom = 41.3334
+theme_override_fonts/font = SubResource("FontVariation_u1fol")
+theme_override_font_sizes/font_size = 35
+text = "DELETE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="data" type="Label" parent="Control/PanelContainer3"]
+visible = false
+offset_left = -255.0
+offset_top = -65.0
+offset_right = 250.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "NAME
+AGE
+RACE
+CLASS"
+
+[node name="stats" type="Label" parent="Control/PanelContainer3/data"]
+offset_left = 232.0
+offset_top = 1.0
+offset_right = 279.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "ATK
+DEF
+DEX
+CON"
+
+[node name="info" type="Label" parent="Control/PanelContainer3/data/stats"]
+offset_left = 60.8333
+offset_right = 107.833
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "0
+34
+56
+200"
+vertical_alignment = 1
+
+[node name="stats2" type="Label" parent="Control/PanelContainer3/data"]
+offset_left = 357.0
+offset_top = 2.0
+offset_right = 401.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.250818, 0.250818, 0.250818, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "INT
+CHA
+WIS
+"
+
+[node name="info2" type="Label" parent="Control/PanelContainer3/data/stats2"]
+offset_left = 59.1666
+offset_top = -19.3333
+offset_right = 106.167
+offset_bottom = 108.667
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "0
+34
+56"
+vertical_alignment = 1
+
+[node name="info_data" type="Label" parent="Control/PanelContainer3/data"]
+offset_left = 89.5001
+offset_top = -1.49997
+offset_right = 208.5
+offset_bottom = 126.5
+theme_override_colors/font_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_constants/line_spacing = 9
+theme_override_fonts/font = SubResource("FontVariation_bpfmy")
+theme_override_font_sizes/font_size = 25
+text = "Jackol
+34
+Human
+Sumonner"
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = 5
+visible = false
+
+[node name="Control" type="Control" parent="Control/CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="notice_board" type="Sprite2D" parent="Control/CanvasLayer/Control"]
+visible = false
+z_index = 1
+position = Vector2(565, 859)
+scale = Vector2(10, 10)
+texture = ExtResource("10_gq7gl")
+
+[node name="exit" type="TextureButton" parent="Control/CanvasLayer/Control/notice_board"]
+visible = false
+top_level = true
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 741.0
+offset_top = 648.0
+offset_right = -294.0
+offset_bottom = -1222.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_uwxny")
+texture_pressed = ExtResource("5_yqprt")
+metadata/_edit_use_anchors_ = true
+
+[node name="IconCrossBeige" type="Sprite2D" parent="Control/CanvasLayer/Control/notice_board/exit"]
+z_index = 1
+position = Vector2(26.5, 22)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("11_bsj44")
+
+[node name="yes" type="TextureButton" parent="Control/CanvasLayer/Control/notice_board"]
+offset_left = -29.2
+offset_top = 25.0
+offset_right = 160.8
+offset_bottom = 74.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("8_dim4k")
+texture_pressed = ExtResource("9_3sbq2")
+
+[node name="notice" type="Label" parent="Control/CanvasLayer/Control/notice_board/yes"]
+offset_left = 56.0
+offset_top = 12.6667
+offset_right = 227.0
+offset_bottom = 59.6667
+scale = Vector2(0.45, 0.45)
+theme_override_fonts/font = SubResource("FontVariation_ipu4b")
+theme_override_font_sizes/font_size = 50
+text = "YES
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/CanvasLayer/Control/notice_board"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_7pcm5")
+}
+
+[node name="notice" type="Label" parent="Control/CanvasLayer/Control/notice_board"]
+visible = false
+offset_left = -37.4
+offset_top = -13.2
+offset_right = 133.6
+offset_bottom = 32.8
+scale = Vector2(0.45, 0.45)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ipu4b")
+theme_override_font_sizes/font_size = 16
+text = "Are you sure you want to delete your profile"
+autowrap_mode = 2
+
+[connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/Control/notice_board/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/Control/notice_board/yes" to="." method="_on_yes_pressed"]

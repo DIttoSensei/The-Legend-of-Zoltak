@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqp4q5ubibcfm"
+path="res://.godot/imported/Gregorian Chant.mp3-d3c494ea8c51a1fafae0748e7a5e3c81.mp3str"
+
+[deps]
+
+source_file="res://Asset/ost/Gregorian Chant.mp3"
+dest_files=["res://.godot/imported/Gregorian Chant.mp3-d3c494ea8c51a1fafae0748e7a5e3c81.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
