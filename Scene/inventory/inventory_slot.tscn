@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cylo7l2kcxlpl"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/inventory_slot_ui.gd" id="1_ugtog"]
+[ext_resource type="Texture2D" uid="uid://c26b3tx42brc5" path="res://Asset/img/icon_buffs/32x32/fb272.png" id="2_f50ir"]
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(48, 48)
+offset_right = 48.0
+offset_bottom = 48.0
+script = ExtResource("1_ugtog")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("2_f50ir")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

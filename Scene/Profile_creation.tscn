@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="2_15wyu"]
 [ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="3_5c0eg"]
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="4_exa12"]
-[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png-removebg-preview.png" id="5_e1uga"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png.png" id="5_e1uga"]
 [ext_resource type="Texture2D" uid="uid://cy72cwnt6x8di" path="res://Asset/Rpg1/panelInset_beige.png" id="6_l3t4s"]
 [ext_resource type="Texture2D" uid="uid://bh4gkhyxpl2el" path="res://Asset/img/Frames___Halfframes-removebg-preview.png" id="7_sqptn"]
 [ext_resource type="Texture2D" uid="uid://bwankljmyiub" path="res://Asset/img/potraits/346-removebg-preview.png" id="8_pyvya"]
@@ -295,82 +295,6 @@ texture = ExtResource("11_e3nqc")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w380g"]
 texture = ExtResource("11_e3nqc")
 
-[sub_resource type="Animation" id="Animation_xtxww"]
-resource_name = "show"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/notice_board:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(5, 5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/notice_board:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/notice_board/exit:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/notice_board/notice:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_o7b7x"]
 length = 0.001
 tracks/0/type = "value"
@@ -486,6 +410,82 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_xtxww"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/notice_board:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/notice_board:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/notice_board/exit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/notice_board/notice:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_hoeqj"]
 resource_name = "show_saving"
 length = 0.1
@@ -598,6 +598,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 257.0
 offset_top = 283.0
 offset_right = 866.0
@@ -644,7 +645,7 @@ offset_bottom = 1748.62
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_pyvya")
 script = ExtResource("9_huhdn")
-images = [SubResource("Resource_lycbf"), SubResource("Resource_drxby"), SubResource("Resource_lgw2n"), SubResource("Resource_gd6dj"), SubResource("Resource_3yte1"), SubResource("Resource_ls3p8"), SubResource("Resource_7qutb"), SubResource("Resource_vgp6r"), SubResource("Resource_stqma"), SubResource("Resource_dq7um"), SubResource("Resource_3447w"), SubResource("Resource_w4cfm"), SubResource("Resource_ve04v"), SubResource("Resource_nrupe"), SubResource("Resource_riblj"), SubResource("Resource_i3k0m"), SubResource("Resource_jin8d"), SubResource("Resource_7bsrk"), SubResource("Resource_l54pa"), SubResource("Resource_x1618"), SubResource("Resource_qbvwf"), SubResource("Resource_6a7n1"), SubResource("Resource_u5y5y"), SubResource("Resource_6u1sh"), SubResource("Resource_6jh5b"), SubResource("Resource_c6p28"), SubResource("Resource_lamhy"), SubResource("Resource_br4o2"), SubResource("Resource_asvnc"), SubResource("Resource_y4khb"), SubResource("Resource_p1vis"), SubResource("Resource_quy8n"), SubResource("Resource_th7jd"), SubResource("Resource_i15ju"), SubResource("Resource_54d7i"), SubResource("Resource_iep2h"), SubResource("Resource_hloa2"), SubResource("Resource_3606p"), SubResource("Resource_75rv2"), SubResource("Resource_2nkrs"), SubResource("Resource_qlmci"), SubResource("Resource_jwgci"), SubResource("Resource_af3eu"), SubResource("Resource_yjeox"), SubResource("Resource_45jrr"), SubResource("Resource_a5uru")]
+images = Array[ExtResource("10_ipojp")]([SubResource("Resource_lycbf"), SubResource("Resource_drxby"), SubResource("Resource_lgw2n"), SubResource("Resource_gd6dj"), SubResource("Resource_3yte1"), SubResource("Resource_ls3p8"), SubResource("Resource_7qutb"), SubResource("Resource_vgp6r"), SubResource("Resource_stqma"), SubResource("Resource_dq7um"), SubResource("Resource_3447w"), SubResource("Resource_w4cfm"), SubResource("Resource_ve04v"), SubResource("Resource_nrupe"), SubResource("Resource_riblj"), SubResource("Resource_i3k0m"), SubResource("Resource_jin8d"), SubResource("Resource_7bsrk"), SubResource("Resource_l54pa"), SubResource("Resource_x1618"), SubResource("Resource_qbvwf"), SubResource("Resource_6a7n1"), SubResource("Resource_u5y5y"), SubResource("Resource_6u1sh"), SubResource("Resource_6jh5b"), SubResource("Resource_c6p28"), SubResource("Resource_lamhy"), SubResource("Resource_br4o2"), SubResource("Resource_asvnc"), SubResource("Resource_y4khb"), SubResource("Resource_p1vis"), SubResource("Resource_quy8n"), SubResource("Resource_th7jd"), SubResource("Resource_i15ju"), SubResource("Resource_54d7i"), SubResource("Resource_iep2h"), SubResource("Resource_hloa2"), SubResource("Resource_3606p"), SubResource("Resource_75rv2"), SubResource("Resource_2nkrs"), SubResource("Resource_qlmci"), SubResource("Resource_jwgci"), SubResource("Resource_af3eu"), SubResource("Resource_yjeox"), SubResource("Resource_45jrr"), SubResource("Resource_a5uru")])
 
 [node name="left_click" type="TextureButton" parent="Control/ImagePanel"]
 top_level = true
@@ -734,6 +735,7 @@ text = "Age"
 vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="Control/Profile_data1/Age"]
+layout_mode = 0
 offset_left = 183.0
 offset_top = -6.0
 offset_right = 538.0
@@ -800,6 +802,7 @@ text = "Class"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Control/Profile_data1/Class"]
+layout_mode = 0
 offset_left = 179.0
 offset_top = -17.0
 offset_right = 528.0
@@ -813,18 +816,21 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a24jj")
 flat = true
 selected = 0
-item_count = 6
+item_count = 8
 popup/item_0/text = "Warrior"
 popup/item_1/text = "Defender"
 popup/item_1/id = 1
-popup/item_2/text = "Summoner"
-popup/item_2/id = 2
-popup/item_3/text = "Ranger"
-popup/item_3/id = 3
-popup/item_4/text = "Gunslinger"
-popup/item_4/id = 4
-popup/item_5/text = "Rouge"
-popup/item_5/id = 5
+popup/item_2/text = "Mages"
+popup/item_2/id = 6
+popup/item_3/text = "Summoner"
+popup/item_3/id = 2
+popup/item_4/text = "Ranger"
+popup/item_4/id = 3
+popup/item_5/text = "Gunslinger"
+popup/item_5/id = 4
+popup/item_6/text = "Rouge"
+popup/item_6/id = 5
+popup/item_7/id = 7
 
 [node name="FramesHalfframes-removebg-preview" type="Sprite2D" parent="Control/Profile_data1/Class"]
 modulate = Color(0.576471, 0.368627, 0, 0.466667)
@@ -841,6 +847,7 @@ text = "Gender"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Control/Profile_data1/Gender"]
+layout_mode = 0
 offset_left = 179.0
 offset_top = -17.0
 offset_right = 528.0

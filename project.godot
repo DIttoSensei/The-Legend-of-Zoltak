@@ -20,15 +20,18 @@ config/icon="res://icon.svg"
 GlobalGameSystem="*res://Scene/global/global-game_system.tscn"
 SceneTransition="*res://Scene/scene_transition.tscn"
 LevelManager="*res://00_glabal/level_manager.gd"
+SignalManager="*res://00_glabal/signal_manager.gd"
 
 [display]
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxack440nxgtk"
-path="res://.godot/imported/Aro_Png-removebg-preview.png-1af8bacf729ec14fb611a7d39d747efb.ctex"
+uid="uid://cpixnmft1gy84"
+path="res://.godot/imported/atk.png-ba3a8e4091024f787a888d7477f6f0e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/img/Aro_Png-removebg-preview.png"
-dest_files=["res://.godot/imported/Aro_Png-removebg-preview.png-1af8bacf729ec14fb611a7d39d747efb.ctex"]
+source_file="res://Asset/img/atk.png"
+dest_files=["res://.godot/imported/atk.png-ba3a8e4091024f787a888d7477f6f0e5.ctex"]
 
 [params]
 
