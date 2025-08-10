@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="2_4u4rl"]
 [ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="3_5tgwt"]
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="4_s18wv"]
-[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png-removebg-preview.png" id="5_1qncc"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png.png" id="5_1qncc"]
 [ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="7_m745k"]
 [ext_resource type="Texture2D" uid="uid://dquhi8d1yeruw" path="res://Asset/img/1000066657.png" id="8_e4iq5"]
 [ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="9_mdc1h"]

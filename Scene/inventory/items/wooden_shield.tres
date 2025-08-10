@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dbrryvjffvens"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_2vpob"]
+[ext_resource type="Texture2D" uid="uid://cfhci17tcrc7k" path="res://Asset/img/icon_buffs/16x16/defense_boost.png" id="1_qvleu"]
+[ext_resource type="Texture2D" uid="uid://petqkdfhgln2" path="res://Asset/img/icon_buffs/16x16/knockback_boost.png" id="2_lvujb"]
+[ext_resource type="Texture2D" uid="uid://0qshqeqahr0l" path="res://Asset/img/icon_buffs/32x32/tile061.png" id="4_wk3uf"]
+
+[resource]
+script = ExtResource("1_2vpob")
+name = "WoodShield"
+discription = "A normal shield made from wood, looks like it might fall apart."
+texture = ExtResource("4_wk3uf")
+buff_texture = ExtResource("1_qvleu")
+buff_texture2 = ExtResource("2_lvujb")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 21
+wearable_class = "Weapon"

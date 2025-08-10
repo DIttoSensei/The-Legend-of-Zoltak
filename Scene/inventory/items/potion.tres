@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://d0qfxftoopkjs"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_2tddn"]
+[ext_resource type="Texture2D" uid="uid://1ttd8whwn3in" path="res://Asset/img/buff_skill/Buffs/regeneration.png" id="1_dkjee"]
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="2_yjb7m"]
+[ext_resource type="Texture2D" uid="uid://c26b3tx42brc5" path="res://Asset/img/icon_buffs/32x32/fb272.png" id="4_gvbmb"]
+
+[resource]
+script = ExtResource("1_2tddn")
+name = "Potion"
+discription = "A magical item that heal your wounds to a specific amount."
+texture = ExtResource("4_gvbmb")
+buff_texture = ExtResource("1_dkjee")
+buff_texture2 = ExtResource("2_yjb7m")
+item_type = "Consumable"
+attribute = "Heal"
+attribute_value = 30
+item_class = ""
