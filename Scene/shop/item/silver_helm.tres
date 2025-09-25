@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bnj2icawwobhx"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_cewht"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_xls3x"]
+[ext_resource type="Texture2D" uid="uid://maww22a64s2a" path="res://Asset/img/buff_skill/Buffs/knockback_resistance.png" id="2_mnrxw"]
+[ext_resource type="Texture2D" uid="uid://o4o23ycsb6hh" path="res://Scene/shop/item/img/fb1905.png" id="4_feg1p"]
+
+[resource]
+script = ExtResource("1_xls3x")
+name = "Silver Helm"
+discription = "A simple helmet made with silver, simple design plus a common mental, can you ever go wrong?"
+texture = ExtResource("4_feg1p")
+buff_texture = ExtResource("1_cewht")
+buff_texture2 = ExtResource("2_mnrxw")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 35
+wearable_class = "Headagear"
+item_cost = 110

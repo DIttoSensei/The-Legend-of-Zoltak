@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://b2tgahjop7413"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_s8uaf"]
+[ext_resource type="Texture2D" uid="uid://7aheic30fcx8" path="res://Asset/img/buff_skill/Spells/fire_spell_2.png" id="1_uu0kp"]
+[ext_resource type="Texture2D" uid="uid://5m5k3axs8wbd" path="res://Scene/shop/item/warrior/img/fb1681.png" id="2_lvhmr"]
+[ext_resource type="Texture2D" uid="uid://djkmis43euw8c" path="res://Asset/img/buff_skill/Buffs/negative_status_resistance.png" id="2_yihiy"]
+
+[resource]
+script = ExtResource("1_s8uaf")
+name = "Emberfang"
+discription = "A crimson-orange blade, its cuts smolder as though the steel holds fire within."
+texture = ExtResource("2_lvhmr")
+buff_texture = ExtResource("1_uu0kp")
+buff_texture2 = ExtResource("2_yihiy")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1150
+wearable_class = "Weapon"
+item_cost = 1025

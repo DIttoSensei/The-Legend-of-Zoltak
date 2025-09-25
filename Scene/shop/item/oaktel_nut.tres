@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://4bo255laklqy"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_2lvvi"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_f4dn5"]
+[ext_resource type="Texture2D" uid="uid://dwpfi0j0iryho" path="res://Asset/img/buff_skill/Buffs/glow.png" id="2_7q4pa"]
+[ext_resource type="Texture2D" uid="uid://dbjmrnrkht12h" path="res://Asset/img/icon_buffs/32x32/fb460.png" id="4_mtjya"]
+
+[resource]
+script = ExtResource("1_f4dn5")
+name = "Oaktel Nut"
+discription = "Chew this and your skin becomes as hard as steel, only for a brief time of course."
+texture = ExtResource("4_mtjya")
+buff_texture = ExtResource("1_2lvvi")
+buff_texture2 = ExtResource("2_7q4pa")
+item_type = "Consumable"
+attribute = "Def"
+attribute_value = 10
+wearable_class = ""
+item_cost = 20

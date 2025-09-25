@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://gicel3u3sq32"]
+
+[ext_resource type="Texture2D" uid="uid://1ttd8whwn3in" path="res://Asset/img/buff_skill/Buffs/regeneration.png" id="1_usgof"]
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="2_u8gbq"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="3_ny8d1"]
+[ext_resource type="Texture2D" uid="uid://c26b3tx42brc5" path="res://Asset/img/icon_buffs/32x32/fb272.png" id="4_e0yfs"]
+
+[resource]
+script = ExtResource("3_ny8d1")
+name = "Mega Potion"
+discription = "A liquid item that greatly heals your wounds to a specific amount."
+texture = ExtResource("4_e0yfs")
+buff_texture = ExtResource("1_usgof")
+buff_texture2 = ExtResource("2_u8gbq")
+item_type = "Consumable"
+attribute = "Heal"
+attribute_value = 50
+wearable_class = ""
+item_cost = 100

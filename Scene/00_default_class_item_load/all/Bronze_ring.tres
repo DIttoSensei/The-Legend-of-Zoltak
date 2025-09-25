@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://br56b8qdbrga3"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_03j42"]
+[ext_resource type="Texture2D" uid="uid://bbk32ktmykpgs" path="res://Asset/img/buff_skill/Buffs/critical_boost.png" id="1_p2hxc"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="2_3hcao"]
+[ext_resource type="Texture2D" uid="uid://bnuv5qq3e5s" path="res://Scene/00_default_class_item_load/all/img/fb1844.png" id="2_l8351"]
+
+[resource]
+script = ExtResource("1_03j42")
+name = "Bronze Ring"
+discription = "An old bronze ring that increases your chances of landing effective hits. "
+texture = ExtResource("2_l8351")
+buff_texture = ExtResource("1_p2hxc")
+buff_texture2 = ExtResource("2_3hcao")
+item_type = "Wearable"
+attribute = "Crit"
+attribute_value = 5
+wearable_class = "Relics"
+item_cost = 0

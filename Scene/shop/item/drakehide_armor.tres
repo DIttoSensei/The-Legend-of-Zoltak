@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://c52kg341hg12n"]
+
+[ext_resource type="Texture2D" uid="uid://c4jngglok4pw6" path="res://Asset/img/buff_skill/Buffs/attack_speed_boost.png" id="1_51p2r"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_rw3uu"]
+[ext_resource type="Texture2D" uid="uid://m40qbpps47t0" path="res://Scene/shop/item/img/fb1826.png" id="2_o1o0w"]
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="2_smygt"]
+
+[resource]
+script = ExtResource("1_rw3uu")
+name = "Drakehide Cape"
+discription = "Made from the hide of a desert drake, extreamly rare and durable."
+texture = ExtResource("2_o1o0w")
+buff_texture = ExtResource("1_51p2r")
+buff_texture2 = ExtResource("2_smygt")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 99
+wearable_class = "Chestplate"
+item_cost = 290

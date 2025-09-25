@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bu6s4jb11amjm"]
+
+[ext_resource type="Texture2D" uid="uid://ctmdc0pj537e3" path="res://Scene/00_default_class_item_load/defender/actions/img/fb861.png" id="1_p0ywm"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_y3gsj"]
+
+[resource]
+script = ExtResource("1_y3gsj")
+action_name = "SHIELD SLAM"
+action_img = ExtResource("1_p0ywm")
+action_type = "Physical"
+action_attribute = 15
+critical_rate = "0%"
+cooldown = 0
+cost = 0
+action_info = "Raise your shield and smash it on your foes face, a perfect move to knock some teeth out."

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dapsl134sedgt"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ggeyc"]
+[ext_resource type="Texture2D" uid="uid://b3t0n8m4erhtu" path="res://Asset/img/buff_skill/Spells/counterspell.png" id="1_xddja"]
+[ext_resource type="Texture2D" uid="uid://bau4bxjvpl8ga" path="res://Scene/shop/item/warrior/img/fb1685.png" id="2_mlxll"]
+[ext_resource type="Texture2D" uid="uid://dt3v8yu1ujjgn" path="res://Asset/img/buff_skill/Spells/lightning_spell.png" id="2_uk7le"]
+
+[resource]
+script = ExtResource("1_ggeyc")
+name = "Storm Breaker"
+discription = "A colossal battle axe forged from the condoctors of the Raiden lighting wyvern. "
+texture = ExtResource("2_mlxll")
+buff_texture = ExtResource("1_xddja")
+buff_texture2 = ExtResource("2_uk7le")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1200
+wearable_class = "Weapon"
+item_cost = 1350

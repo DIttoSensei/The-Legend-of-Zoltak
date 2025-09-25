@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://b80k1jr55gon4"]
+
+[ext_resource type="Texture2D" uid="uid://7aheic30fcx8" path="res://Asset/img/buff_skill/Spells/fire_spell_2.png" id="1_1gj5y"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_npf6b"]
+[ext_resource type="Texture2D" uid="uid://db3r81wr1t0pw" path="res://Scene/shop/item/mage/img/staff1.png" id="2_oukkj"]
+[ext_resource type="Texture2D" uid="uid://ckcbkfi5f4w08" path="res://Asset/img/buff_skill/Spells/mana_replenish.png" id="2_vq1xn"]
+
+[resource]
+script = ExtResource("1_npf6b")
+name = "Ignivar"
+discription = "Feels warm tp touch, even in winter. many mages swears it steadies the hand when power surges."
+texture = ExtResource("2_oukkj")
+buff_texture = ExtResource("1_1gj5y")
+buff_texture2 = ExtResource("2_vq1xn")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1020
+wearable_class = "Weapon"
+item_cost = 1100

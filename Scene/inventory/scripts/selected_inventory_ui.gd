@@ -50,4 +50,4 @@ func set_slot_at_index(slot_data: Slot_data, index: int) -> void:
 
 
 ## Notice index
-## 0 = Headgear, 1 = Chestplate, 2 = Handgreeves, 3 = leggings, 4 = Weapon
+## 0 = Headgear, 1 = Chestplate, 2 = Relics, 3 = leggings, 4 = Weapon

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Shop_Data" load_steps=4 format=3 uid="uid://cgabhv2a8iop1"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_gyvfc"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="2_8ltip"]
+[ext_resource type="Script" path="res://Scene/shop/shop_data.gd" id="3_yiiyg"]
+
+[resource]
+script = ExtResource("3_yiiyg")
+items = Array[ExtResource("2_8ltip")]([])
+actions = Array[ExtResource("1_gyvfc")]([])
+actions_w = Array[ExtResource("1_gyvfc")]([])
+actions_d = Array[ExtResource("1_gyvfc")]([])
+actions_m = Array[ExtResource("1_gyvfc")]([])
+actions_s = Array[ExtResource("1_gyvfc")]([])
+actions_g = Array[ExtResource("1_gyvfc")]([])
+actions_r = Array[ExtResource("1_gyvfc")]([])
+actions_ro = Array[ExtResource("1_gyvfc")]([])

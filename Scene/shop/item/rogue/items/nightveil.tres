@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://b453gd004sk54"]
+
+[ext_resource type="Texture2D" uid="uid://c5172qcbytfbm" path="res://Asset/img/buff_skill/Spells/blinding_light_spell.png" id="1_dm2i5"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_kr7uq"]
+[ext_resource type="Texture2D" uid="uid://b4jrgnj5bddd8" path="res://Scene/shop/item/rogue/img/fb1682.png" id="2_rqluy"]
+[ext_resource type="Texture2D" uid="uid://3falioqa7ax1" path="res://Asset/img/buff_skill/Spells/divine_protection_spell.png" id="2_vgema"]
+
+[resource]
+script = ExtResource("1_kr7uq")
+name = "Nightveil"
+discription = "Steel so polished it glints like starlight. A blade the blinds the eye before the edge finds flesh."
+texture = ExtResource("2_rqluy")
+buff_texture = ExtResource("1_dm2i5")
+buff_texture2 = ExtResource("2_vgema")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 980
+wearable_class = "Weapon"
+item_cost = 1010

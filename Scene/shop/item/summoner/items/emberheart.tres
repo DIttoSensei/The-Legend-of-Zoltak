@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://3a33rvavmlah"]
+
+[ext_resource type="Texture2D" uid="uid://c5mbv22bb8q65" path="res://Asset/img/buff_skill/Debuffs/stunned.png" id="1_a4ark"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_oy4w6"]
+[ext_resource type="Texture2D" uid="uid://b3t0n8m4erhtu" path="res://Asset/img/buff_skill/Spells/counterspell.png" id="2_aqld2"]
+[ext_resource type="Texture2D" uid="uid://cqu1pnklmtrcj" path="res://Scene/shop/item/summoner/img/5.png" id="2_psgev"]
+
+[resource]
+script = ExtResource("1_oy4w6")
+name = "Emberheart"
+discription = "Found this gem on my way to lotus, it is said to resonate with its weilder's heart."
+texture = ExtResource("2_psgev")
+buff_texture = ExtResource("1_a4ark")
+buff_texture2 = ExtResource("2_aqld2")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 500
+wearable_class = "Weapon"
+item_cost = 720

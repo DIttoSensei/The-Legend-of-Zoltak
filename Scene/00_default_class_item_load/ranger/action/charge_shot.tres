@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://yfbm1tukfxtw"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_r2cjh"]
+[ext_resource type="Texture2D" uid="uid://c2p1i8khxdpfx" path="res://Scene/00_default_class_item_load/ranger/img/fb1148.png" id="1_rmncu"]
+
+[resource]
+script = ExtResource("1_r2cjh")
+action_name = "CHARGE SHOT"
+action_img = ExtResource("1_rmncu")
+action_type = "Physical"
+action_attribute = 90
+critical_rate = "30%"
+cooldown = 3
+cost = 0
+action_info = "Inbue your shot with arcane might capable of shattering boulders."

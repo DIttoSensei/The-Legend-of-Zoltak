@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://cida0pl14a0r"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_gf2ve"]
+[ext_resource type="Texture2D" uid="uid://bao0xgjehldph" path="res://Asset/img/icon_buffs/32x32/fb730.png" id="1_gjdio"]
+
+[resource]
+script = ExtResource("1_gf2ve")
+action_name = "RAGE BLOW"
+action_img = ExtResource("1_gjdio")
+action_type = "Physical"
+action_attribute = 78
+critical_rate = "20%"
+cooldown = 2
+cost = 0
+action_info = "A furious, high-damage strike fueled by anger."

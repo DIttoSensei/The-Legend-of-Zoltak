@@ -6,11 +6,13 @@ class_name Intro extends Node2D
 
 var counter = -5
 
+var input_locked := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#label.visible_characters = 0
 	timer.start()
+	#SceneTransition.fade_in()
 	pass # Replace with function body.
 
 
@@ -34,8 +36,11 @@ Across this shadowed realm, where ancient stones hum with forgotten magic and th
 	pass # Replace with function body.
 
 func _input(event: InputEvent) -> void:
+	if input_locked:
+		return
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
+			input_locked = true
 			counter = 600
 			
 			await get_tree().create_timer(2).timeout

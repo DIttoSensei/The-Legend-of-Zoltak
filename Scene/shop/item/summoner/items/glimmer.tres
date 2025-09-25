@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bftacfmbckqdk"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_n4g6u"]
+[ext_resource type="Texture2D" uid="uid://c5172qcbytfbm" path="res://Asset/img/buff_skill/Spells/blinding_light_spell.png" id="1_q3hq1"]
+[ext_resource type="Texture2D" uid="uid://b3t0n8m4erhtu" path="res://Asset/img/buff_skill/Spells/counterspell.png" id="2_pv8e4"]
+[ext_resource type="Texture2D" uid="uid://ck00ccgjk7qyw" path="res://Scene/shop/item/summoner/img/2.png" id="4_s8w0b"]
+
+[resource]
+script = ExtResource("1_n4g6u")
+name = "Glimmer"
+discription = "A staff  fused with prismatic glass, makes summoning much more easier."
+texture = ExtResource("4_s8w0b")
+buff_texture = ExtResource("1_q3hq1")
+buff_texture2 = ExtResource("2_pv8e4")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 400
+wearable_class = "Weapon"
+item_cost = 650

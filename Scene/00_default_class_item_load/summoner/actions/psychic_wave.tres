@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://diticgr3ashpq"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_f4o8f"]
+[ext_resource type="Texture2D" uid="uid://cki27l2qn03xb" path="res://Scene/00_default_class_item_load/summoner/img/fb850.png" id="1_famoe"]
+
+[resource]
+script = ExtResource("1_f4o8f")
+action_name = "PSYCHIC WAVE"
+action_img = ExtResource("1_famoe")
+action_type = "Psychic"
+action_attribute = 22
+critical_rate = "10%"
+cooldown = 1
+cost = 0
+action_info = "Send psychic waves that damage your enemies within range."

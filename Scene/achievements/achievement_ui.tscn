@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv38f7qkwiqwi"]
+
+[ext_resource type="Texture2D" uid="uid://b66p12pvglnle" path="res://Asset/img/other/8bit.png" id="1_f1kc3"]
+[ext_resource type="Script" path="res://Scene/achievements/achievement_ui.gd" id="1_j21qw"]
+[ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="2_myacw"]
+[ext_resource type="Texture2D" uid="uid://85y6dwsthl5t" path="res://Asset/img/other/fc15.png" id="2_nu3jd"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="3_44e0n"]
+[ext_resource type="Texture2D" uid="uid://cta7a76xm5gfh" path="res://Asset/img/other/golden_frame_in_pixel_art_style-removebg-preview.png" id="4_mt87f"]
+
+[node name="AchievementUi" type="Control"]
+modulate = Color(0.487009, 0.487009, 0.487009, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_j21qw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 858.0
+offset_bottom = 284.0
+texture = ExtResource("1_f1kc3")
+
+[node name="PanelInsetBrown" type="Sprite2D" parent="."]
+position = Vector2(155.25, 144.629)
+scale = Vector2(1.75806, 1.75806)
+texture = ExtResource("2_myacw")
+
+[node name="Fc15" type="Sprite2D" parent="."]
+position = Vector2(156, 144)
+scale = Vector2(1.34375, 1.34375)
+texture = ExtResource("2_nu3jd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 119.0
+offset_right = 805.0
+offset_bottom = 262.0
+theme = ExtResource("3_44e0n")
+theme_override_font_sizes/font_size = 45
+text = "Make a stupid choice"
+autowrap_mode = 2
+
+[node name="franme" type="Sprite2D" parent="."]
+position = Vector2(151.5, 138.5)
+scale = Vector2(0.906, 0.906)
+texture = ExtResource("4_mt87f")

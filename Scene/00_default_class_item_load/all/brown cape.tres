@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://xsuar6yxndu0"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_0ap86"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_wam3p"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="2_7rohx"]
+[ext_resource type="Texture2D" uid="uid://c14l8o4d1wyd6" path="res://Scene/00_default_class_item_load/all/img/fb1825.png" id="4_omr4o"]
+
+[resource]
+script = ExtResource("1_wam3p")
+name = "Brown Cape"
+discription = "A simple old cape, provides very little protections."
+texture = ExtResource("4_omr4o")
+buff_texture = ExtResource("1_0ap86")
+buff_texture2 = ExtResource("2_7rohx")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 10
+wearable_class = "Chestplate"
+item_cost = 0

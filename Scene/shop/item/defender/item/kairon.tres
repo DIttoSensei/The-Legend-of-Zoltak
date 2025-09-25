@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dvu2w1lvj8vq1"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_dcnii"]
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="1_q3ghh"]
+[ext_resource type="Texture2D" uid="uid://bri8nuthr4f4l" path="res://Scene/shop/item/defender/img/fb1815.png" id="2_621og"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="2_ktpxk"]
+
+[resource]
+script = ExtResource("1_dcnii")
+name = "Kairon"
+discription = "Named after the great defender Kairon, crafted to represnt his inpacts during the makovian war."
+texture = ExtResource("2_621og")
+buff_texture = ExtResource("1_q3ghh")
+buff_texture2 = ExtResource("2_ktpxk")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 670
+wearable_class = "Weapon"
+item_cost = 450

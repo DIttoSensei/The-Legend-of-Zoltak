@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bnch1eywe2mjh"]
+
+[ext_resource type="Texture2D" uid="uid://bu2rgcted0wje" path="res://Asset/img/icon_buffs/32x32/fb725.png" id="1_ege1x"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_jd7l3"]
+
+[resource]
+script = ExtResource("1_jd7l3")
+action_name = "POWER SLASH"
+action_img = ExtResource("1_ege1x")
+action_type = "Physical"
+action_attribute = 100
+critical_rate = "10%"
+cooldown = 3
+cost = 0
+action_info = "A strong and powerful straight-forward slash."

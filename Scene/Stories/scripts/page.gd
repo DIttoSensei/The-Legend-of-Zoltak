@@ -47,6 +47,12 @@ extends VBoxContainer
 # Jornal
 @onready var jornal_display: CanvasLayer = $"../jornal_display"
 
+# Achivements
+@onready var achivement: VBoxContainer = $"../achivement2/ScrollContainer/VBoxContainer"
+
+# Shop
+const SHOP = preload("res://Scene/shop/shop_ui.tscn")
+
 
 # State variables
 var current_chapter := "Chapter_1"
@@ -59,10 +65,11 @@ var current_roll : int
 var clicked_choice
 var current_choice
 var current_outcome
-var current_coin : int = 100
+var current_coin : int = 0
 var current_reward_text : String
-var current_hp : int = 100
+var current_hp : int = 0
 var counter_inventory : int = 0
+var counter_achivement : int = 0
 
 # signals
 signal shown
@@ -73,6 +80,7 @@ func _ready() -> void:
 	# connect to nessarry signals
 	SignalManager.show_item_info_board.connect(show_item_info_board)
 	SignalManager.show_selected_item_board.connect(show_selected_inventory_board)
+	SignalManager.shop_exit.connect(back_to_main_game)
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
@@ -297,193 +305,133 @@ func set_choice_data ():
 	# check for the stats and their value
 	if "atk" in stat_requirment:
 		var required_value = stat_requirment["atk"] 
-		var atk_support = int(Int.text) # Support stat for the main stat
-		var stat = int(atk.text) # Store the and covart the main stat to an int value
-		
+		var atk_support = int(Int.text)
+		var stat = int(atk.text)
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = (stat * current_roll) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((atk_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = clamp(new_stat * chance_modifer * (1 + 0.2 * die_chance_modifer), 0, 100) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(atk_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-				
-				# set reward text
 				current_reward_text = current_choice["outcome_1"]["reward"]["reward_text"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-				
-				# set loss text
 				current_reward_text = current_choice["outcome_2"]["loss"]["loss_text"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]
-			
-			# set loss text
 			current_reward_text = current_choice["outcome_2"]["loss"]["loss_text"]
-		
+	
 	elif "def" in stat_requirment:
 		var required_value = stat_requirment["def"] 
 		var def_support = int(con.text)
 		var stat = int(def.text)
-		
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = (stat * current_roll) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((def_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = clamp(new_stat * chance_modifer * (1 + 0.2 * die_chance_modifer), 0, 100) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(def_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]	
-		
+	
 	elif "con" in stat_requirment:
 		var required_value = stat_requirment["con"] 
 		var con_support = int(wis.text)
 		var stat = int(con.text)
-		
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = (stat * current_roll) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((con_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = chance_modifer * (1 + 0.2 * die_chance_modifer) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(con_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]	
-		
+	
 	elif "dex" in stat_requirment:
 		var required_value = stat_requirment["dex"] 
 		var dex_support = int(wis.text)
 		var stat = int(dex.text)
-		
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = (stat * current_roll) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((dex_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = clamp(new_stat * chance_modifer * (1 + 0.2 * die_chance_modifer), 0, 100) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(dex_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-				
-				# set reward text
 				current_reward_text = current_choice["outcome_1"]["reward"]["reward_text"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-				
-				# set loss text
 				current_reward_text = current_choice["outcome_2"]["loss"]["loss_text"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]
-			
-			# set loss text
 			current_reward_text = current_choice["outcome_2"]["loss"]["loss_text"]
-	
+
 	elif "int" in stat_requirment:
 		var required_value = stat_requirment["int"] 
 		var int_support = int(wis.text)
 		var stat = int(Int.text)
-		
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = (stat * current_roll) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((int_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = clamp(new_stat * chance_modifer * (1 + 0.2 * die_chance_modifer), 0, 100) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(int_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]
-	
+
 	elif "wis" in stat_requirment:
 		var required_value = stat_requirment["wis"] 
 		var wis_support = int(cha.text)
 		var stat = int(wis.text)
-		
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = float((stat * current_roll)) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((wis_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = clamp(new_stat * chance_modifer * (1 + 0.2 * die_chance_modifer), 0, 100) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(wis_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]
 
@@ -491,28 +439,20 @@ func set_choice_data ():
 		var required_value = stat_requirment["cha"] 
 		var cha_support = int(Int.text)
 		var stat = int(cha.text)
-		
+	
 		if stat >= required_value:
-
-			# perform stats modifer
-			var new_stat = (stat * current_roll) / 10.0 # new stat value (int)
-			#print ("New stat: ", new_stat)
-			var chance_modifer = clamp(float ((cha_support) / float( new_stat)), 0.1, 1.0)
-			#print ("Chance modifer: ", chance_modifer)
-			var die_chance_modifer = (current_roll - 2.5) / 5.0
-			#print ("Die Chance Modifer: " ,die_chance_modifer)
-			var final_chance = clamp(new_stat * chance_modifer * (1 + 0.2 * die_chance_modifer), 0, 100) # chnace of it being performed (float)
-			final_chance = clamp(final_chance, 0, 100)
-			#print ("Final chance: ", final_chance)
-			
+			var new_stat = (stat * current_roll) / 10.0
+			var stat_balance = clamp(float(cha_support) / float(stat), 0.1, 1.0)
+			var die_modifier = (current_roll - 5.0) / 10.0
+			var final_chance = clamp(new_stat * stat_balance * (1.0 + die_modifier), 10, 90)
+		
 			if randi_range(1, 100) <= final_chance:
 				clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 				current_outcome = current_choice["outcome_1"]
-			else :
+			else:
 				clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 				current_outcome = current_choice["outcome_2"]
-		
-		else :
+		else:
 			clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 			current_outcome = current_choice["outcome_2"]
 	
@@ -525,6 +465,7 @@ func set_choice_data ():
 	
 	## set next page, reset counter and start the typewriter animation
 	next_page = current_choice["outcome_1"]["next_page"]
+	## call the save player data func here ------------------->>>
 	counter = -5
 	typewriting_animation()
 #
@@ -540,10 +481,60 @@ func give_reward_or_loss():
 	# check which outcome you are currently in then add up coins if it the first
 	if current_outcome == current_choice["outcome_1"]:
 		current_coin += current_choice["outcome_1"]["reward"]["coin"]
+		GlobalGameSystem.player_coin = current_coin # store the player coin in a global var
 		coin.text = str(current_coin)
+		
+		# add journal page if one is present
+		if current_choice["outcome_1"]["reward"]["journal_page"] == "":
+			pass
+		else:
+			var new_page = current_choice["outcome_1"]["reward"]["journal_page"]
+			
+			# First let check if the page already exist
+			var already_added = false
+			for book in jornal_display.book.pages:
+				var page_data = book.journal_data
+				
+				
+				if page_data and page_data.resource_path == new_page:
+					already_added = true
+					break
+					
+			if not already_added:
+				jornal_display.add_page(new_page)
+			
+				# show a mini notification
+				var notification_text : String = "New Page entry added to journal"
+				$"../mini notification/mini notification label".text = notification_text
+				$"../mini notification/AnimationPlayer".play("show_notification")
+				await $"../mini notification/AnimationPlayer".animation_finished
+		
+		
+		# add achivements if one is present
+		if current_choice["outcome_1"]["reward"]["achivement"] == "":
+			pass
+		else:
+			var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
+			for i in range(achivement.data.slots.size()): # loop through the array
+				var gained_achivement = achivement.data.slots[i] # store em 
+				if gained_achivement: # if it not empty
+					if gained_achivement.id == reward: #if the id is the same as that in the json file
+						if gained_achivement.achieved == true: # check if it true
+							pass
+						else:
+							gained_achivement.achieved = true
+							var notification_text : String = "New Achivements unlocked"
+							$"../mini notification/mini notification label".text = notification_text
+							achivement.update_slot()
+							$"../mini notification/AnimationPlayer".play("show_notification")
+							await $"../mini notification/AnimationPlayer".animation_finished
+							
+			
+			
 	# remove if its the second
 	elif current_outcome == current_choice["outcome_2"]:
 		current_coin -= current_choice["outcome_2"]["loss"]["coin"]
+		GlobalGameSystem.player_coin = current_coin
 		current_hp -= current_choice["outcome_2"]["loss"]["hp"]
 		$"../Camera2D".shake(5.0, 5.0)
 		
@@ -560,6 +551,26 @@ func give_reward_or_loss():
 			hp.value = current_hp
 		else:
 			hp.value = current_hp
+			
+		# add achivements if one is present
+		if current_choice["outcome_1"]["reward"]["achivement"] == "":
+			pass
+		else:
+			var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
+			for i in range(achivement.data.slots.size()): # loop through the array
+				var gained_achivement = achivement.data.slots[i] # store em 
+				if gained_achivement: # if it not empty
+					if gained_achivement.id == reward: #if the id is the same as that in the json file
+						if gained_achivement.achieved == true: # check if it true
+							pass
+						else:
+							gained_achivement.achieved = true
+							var notification_text : String = "New Achivements unlocked"
+							$"../mini notification/mini notification label".text = notification_text
+							achivement.update_slot()
+							$"../mini notification/AnimationPlayer".play("show_notification")
+							await $"../mini notification/AnimationPlayer".animation_finished
+							
 
 
 
@@ -669,6 +680,8 @@ func _on_action_pressed() -> void:
 				
 			var notification_message : String = (slot.item_data.attribute + " " + "+" + str(slot.item_data.attribute_value))
 			current_hp += slot.item_data.attribute_value
+			if current_hp > 100:
+				current_hp = 100
 			hp.value = current_hp ## Dont forget to add the sound effect
 			notification.chnage_notification_message(notification_message)
 			remove_item_slot()
@@ -689,5 +702,51 @@ func remove_item_slot () -> void: ## Remove selected item from the inventory
 
 # Jornal section
 func _on_jornal_pressed() -> void:
+	jornal_display.set_page_data()
 	jornal_display.visible = true
 	pass # Replace with function body.
+
+
+
+# Action section
+func _on_actions_pressed() -> void:
+	$"../action display".visible = true
+	pass # Replace with function body.
+
+
+# Achivement section
+func _on_achivement_pressed() -> void:
+	counter_achivement += 1
+	
+	if counter_achivement == 1:
+		$"../achivement2/AnimationPlayer".play("show")
+	elif counter_achivement > 1:
+		$"../achivement2/AnimationPlayer".play("hide")
+		counter_achivement = 0
+	pass # Replace with function body.
+
+
+# Shop section
+func _on_shop_pressed() -> void:
+	var add_shop = SHOP.instantiate()
+	add_shop.current_coin = current_coin # after instantiating send your current coin value to the shop
+	$"../shop_layer".add_child(add_shop)
+	
+	add_shop.z_index = 2
+	add_shop.visible = true
+	# trying to turn the visibility of the main game
+	pass # Replace with function body.
+	
+
+func back_to_main_game () -> void:
+	var parent = $"../shop_layer"
+	var shop = parent.get_node_or_null("ShopUi")
+	shop.current_coin = current_coin
+	coin.text = str (current_coin)
+	if shop:
+		
+		shop.visible = false
+		shop.queue_free()
+	else:
+		pass
+	pass

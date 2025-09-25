@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bcsge4yc2yrut"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_cxjij"]
+[ext_resource type="Texture2D" uid="uid://1ttd8whwn3in" path="res://Asset/img/buff_skill/Buffs/regeneration.png" id="1_hmkey"]
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="2_aal0u"]
+[ext_resource type="Texture2D" uid="uid://bq7apje7vogf7" path="res://Asset/img/icon_buffs/32x32/fb265.png" id="4_rn6t8"]
+
+[resource]
+script = ExtResource("1_cxjij")
+name = "Mini Potion"
+discription = "A liquid item that slightly heals your wounds to a specific amount."
+texture = ExtResource("4_rn6t8")
+buff_texture = ExtResource("1_hmkey")
+buff_texture2 = ExtResource("2_aal0u")
+item_type = "Consumable"
+attribute = "Heal"
+attribute_value = 15
+wearable_class = ""
+item_cost = 50

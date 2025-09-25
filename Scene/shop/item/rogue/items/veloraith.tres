@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://8vqo1ywgvlof"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ivyfs"]
+[ext_resource type="Texture2D" uid="uid://b0wp2knw4bgx" path="res://Asset/img/buff_skill/Buffs/magic_amplification.png" id="1_tor1b"]
+[ext_resource type="Texture2D" uid="uid://bsn6s64ikxc5u" path="res://Scene/shop/item/rogue/img/icon_32_2_12.png" id="2_g05jk"]
+[ext_resource type="Texture2D" uid="uid://dbpj33ocxykdv" path="res://Asset/img/buff_skill/Spells/frenzy_spell_(critical_booster).png" id="2_sn04y"]
+
+[resource]
+script = ExtResource("1_ivyfs")
+name = "Veloraith"
+discription = "Steel left to brown and dull. You'd think it wortless until you feel how eager it still is to split a man."
+texture = ExtResource("2_g05jk")
+buff_texture = ExtResource("1_tor1b")
+buff_texture2 = ExtResource("2_sn04y")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1700
+wearable_class = "Weapon"
+item_cost = 1900

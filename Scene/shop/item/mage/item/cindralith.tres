@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dl7gjsgxail0c"]
+
+[ext_resource type="Texture2D" uid="uid://ckcbkfi5f4w08" path="res://Asset/img/buff_skill/Spells/mana_replenish.png" id="1_0uvxw"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ti86k"]
+[ext_resource type="Texture2D" uid="uid://dwp2v1di1wh18" path="res://Asset/img/buff_skill/Spells/water_spell.png" id="2_spw2k"]
+[ext_resource type="Texture2D" uid="uid://cs5avll68xwt4" path="res://Scene/shop/item/mage/img/staff6.png" id="4_hn1by"]
+
+[resource]
+script = ExtResource("1_ti86k")
+name = "Cindralith"
+discription = "Now here's a piece for a mage with taste, a balanced cane that drinks up aether like fine wine."
+texture = ExtResource("4_hn1by")
+buff_texture = ExtResource("1_0uvxw")
+buff_texture2 = ExtResource("2_spw2k")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1350
+wearable_class = "Weapon"
+item_cost = 1500

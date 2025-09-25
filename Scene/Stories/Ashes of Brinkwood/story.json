@@ -3,7 +3,7 @@
 		
 		
 		"page_1": {
-			"img": "res://Asset/img/cons.png",
+			"img": "res://Asset/img/other/cons.png",
 			"roll" : {"dex" : 20},
 			"music" : "",
 			"text": "If you find yourself repeating this for 5+ stories later, we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once).",
@@ -13,6 +13,8 @@
 							"next_page" : "page_2",
 							"reward" : {
 								"coin" : 300,
+								"journal_page" : "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing2.tres",
+								"achivement" : "1",
 								"reward_text" : "You recived [color=green]300 coins[/color].",
 								"items" : []
 								}},
@@ -21,6 +23,7 @@
 							"loss" : {
 								"hp" : 20,
 								"coin" : 40,
+								"achivement" : "1",
 								"loss_text" : "You lost [color=red]40 coins[/color] and [color=red]20 hp[/color]."
 							}},
 			},
@@ -31,7 +34,7 @@
 		
 		
 		"page_2": {
-			"img": "res://Asset/img/dex.png",
+			"img": "res://Asset/img/other/cha.png",
 			"roll" : {"dex" : 40},
 			"music" : "",
 			"text": "we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once).",
@@ -41,6 +44,8 @@
 							"next_page" : "page_2",
 							"reward" : {
 								"coin" : 300,
+								"journal_page" : "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+								"achivement" : "1",
 								"reward_text" : "You recived [color=green]300 coins[/color].",
 								"items" : []
 								}},
@@ -49,6 +54,7 @@
 							"loss" : {
 								"hp" : 20,
 								"coin" : 40,
+								"achivement" : "1",
 								"loss_text" : "You lost [color=red]40 coins[/color] and [color=red]20 hp[/color]."
 							}},
 			},

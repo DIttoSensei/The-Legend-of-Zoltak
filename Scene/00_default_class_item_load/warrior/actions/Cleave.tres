@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://6g7f1dp48t4r"]
+
+[ext_resource type="Texture2D" uid="uid://b1r6ac06iiyc8" path="res://Asset/img/icon_buffs/32x32/fb724.png" id="1_dabbv"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_to8wv"]
+
+[resource]
+script = ExtResource("1_to8wv")
+action_name = "CLEAVE"
+action_img = ExtResource("1_dabbv")
+action_type = "Physical"
+action_attribute = 20
+critical_rate = "4%"
+cooldown = 0
+cost = 0
+action_info = "A wide swing to hit multiple foes."
