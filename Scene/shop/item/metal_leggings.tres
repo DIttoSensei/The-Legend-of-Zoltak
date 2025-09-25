@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://w62xmfp85eve"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_qjs22"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="1_t08ca"]
+[ext_resource type="Texture2D" uid="uid://maww22a64s2a" path="res://Asset/img/buff_skill/Buffs/knockback_resistance.png" id="2_ddh4b"]
+[ext_resource type="Texture2D" uid="uid://d4lcgnvm7jhv7" path="res://Scene/shop/item/img/fb1855.png" id="4_cairs"]
+
+[resource]
+script = ExtResource("1_qjs22")
+name = "Metal Leggings"
+discription = "Wanna look knightly? try this one out, quity sturdy so you don't have to worry about tripping."
+texture = ExtResource("4_cairs")
+buff_texture = ExtResource("1_t08ca")
+buff_texture2 = ExtResource("2_ddh4b")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 88
+wearable_class = "leggings"
+item_cost = 190

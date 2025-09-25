@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://pmwa3uxyocne"]
+
+[ext_resource type="Texture2D" uid="uid://3falioqa7ax1" path="res://Asset/img/buff_skill/Spells/divine_protection_spell.png" id="1_52jk4"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_wn0vq"]
+[ext_resource type="Texture2D" uid="uid://enqxpxs4ikfj" path="res://Asset/img/buff_skill/Spells/ice_spell.png" id="2_qgfo0"]
+[ext_resource type="Texture2D" uid="uid://b8meka8nkhdqm" path="res://Scene/shop/item/mage/img/staff2.png" id="2_rwqqs"]
+
+[resource]
+script = ExtResource("1_wn0vq")
+name = "Veymaris"
+discription = "Feels cool even under the sun. mages prize it for the calm it lends in a duel of nerves."
+texture = ExtResource("2_rwqqs")
+buff_texture = ExtResource("1_52jk4")
+buff_texture2 = ExtResource("2_qgfo0")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1390
+wearable_class = "Weapon"
+item_cost = 1430

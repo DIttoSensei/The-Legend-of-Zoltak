@@ -10,6 +10,10 @@ var save_name : String
 
 # global var
 var button_data_inv
+var action_data_inv
+var player_coin
+var shop_item
+var player_class
 
 # var for the story
 var ashes_of_brinkwood : Dictionary = {}

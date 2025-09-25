@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://t1o5xysgj4c2"]
+
+[ext_resource type="Texture2D" uid="uid://pmkpxhnjp75b" path="res://Asset/img/icon_buffs/32x32/fb732.png" id="1_bowqm"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_d2t2o"]
+
+[resource]
+script = ExtResource("1_d2t2o")
+action_name = "SLASH"
+action_img = ExtResource("1_bowqm")
+action_type = "Physical"
+action_attribute = 15
+critical_rate = "1%"
+cooldown = 0
+cost = 0
+action_info = "A basic Attack performed with a physical weapon."

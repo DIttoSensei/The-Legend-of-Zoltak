@@ -25,9 +25,22 @@ SignalManager="*res://00_glabal/signal_manager.gd"
 [display]
 
 window/size/viewport_width=1080
-window/size/viewport_height=1920
+window/size/viewport_height=2160
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[file_customization]
+
+folder_colors={
+"res://Scene/00_default_class_item_load/": "gray",
+"res://Scene/Stories/": "green",
+"res://Scene/achievements/": "teal",
+"res://Scene/action/": "red",
+"res://Scene/battle/": "pink",
+"res://Scene/inventory/": "yellow",
+"res://Scene/journal/": "blue",
+"res://Scene/shop/": "purple"
+}
 
 [rendering]
 

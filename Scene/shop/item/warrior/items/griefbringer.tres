@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://1s2r75w76ok"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_24box"]
+[ext_resource type="Texture2D" uid="uid://bbk32ktmykpgs" path="res://Asset/img/buff_skill/Buffs/critical_boost.png" id="1_xft63"]
+[ext_resource type="Texture2D" uid="uid://dwqce85rpxqkt" path="res://Asset/img/buff_skill/Spells/fortify_spell.png" id="2_au50d"]
+[ext_resource type="Texture2D" uid="uid://bsvdjfsv4eg7e" path="res://Scene/shop/item/warrior/img/fb1802.png" id="2_xkrr8"]
+
+[resource]
+script = ExtResource("1_24box")
+name = "Griefbringer"
+discription = "Its blows carry a haunting echo, as though mourning every life it ends."
+texture = ExtResource("2_xkrr8")
+buff_texture = ExtResource("1_xft63")
+buff_texture2 = ExtResource("2_au50d")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1600
+wearable_class = "Weapon"
+item_cost = 1350

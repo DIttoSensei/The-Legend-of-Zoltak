@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bter0t4k0f60x"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_3s3hu"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="1_imy4d"]
+[ext_resource type="Texture2D" uid="uid://c4jngglok4pw6" path="res://Asset/img/buff_skill/Buffs/attack_speed_boost.png" id="2_rnf88"]
+[ext_resource type="Texture2D" uid="uid://jsfxh7ug34c" path="res://Scene/shop/item/ranger/img/Icon14_no_effect.png" id="4_gxuo1"]
+
+[resource]
+script = ExtResource("1_3s3hu")
+name = "Audacia"
+discription = "This bow is for the brave. Its frame is unadorned, relying on its flawless balance that never wavers."
+texture = ExtResource("4_gxuo1")
+buff_texture = ExtResource("1_imy4d")
+buff_texture2 = ExtResource("2_rnf88")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 500
+wearable_class = "Weapon"
+item_cost = 700

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://t8fl64i785sg"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_3ocod"]
+[ext_resource type="Texture2D" uid="uid://dy6k410sow1ud" path="res://Asset/img/buff_skill/Debuffs/hungry.png" id="1_c07j0"]
+[ext_resource type="Texture2D" uid="uid://b7r5i17s7vql6" path="res://Scene/shop/item/img/fb2067.png" id="2_bou56"]
+[ext_resource type="Texture2D" uid="uid://bv4551j2e58oa" path="res://Asset/img/buff_skill/Debuffs/on_fire_(burning).png" id="2_v38ka"]
+
+[resource]
+script = ExtResource("1_3ocod")
+name = "War Charm"
+discription = "Seems to be made of the same material as darksteel, the fact it origins are unknown should be advised."
+texture = ExtResource("2_bou56")
+buff_texture = ExtResource("1_c07j0")
+buff_texture2 = ExtResource("2_v38ka")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 20
+wearable_class = "Relics"
+item_cost = 960

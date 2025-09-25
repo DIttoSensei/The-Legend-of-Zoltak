@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://ck3dmbh0l6skk"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_1lcim"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="1_t2cs0"]
+[ext_resource type="Texture2D" uid="uid://ba3goafd41fxv" path="res://Scene/shop/item/rogue/img/icon_32_2_04.png" id="2_3aeak"]
+[ext_resource type="Texture2D" uid="uid://botypkkn2hnqs" path="res://Asset/img/buff_skill/Buffs/ghost_form_(physical_damage_immunity).png" id="2_tlus8"]
+
+[resource]
+script = ExtResource("1_1lcim")
+name = "Silent Dawn"
+discription = "Thin and sharp as glass, a thrust through armor feels like slicing water."
+texture = ExtResource("2_3aeak")
+buff_texture = ExtResource("1_t2cs0")
+buff_texture2 = ExtResource("2_tlus8")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1350
+wearable_class = "Weapon"
+item_cost = 1400

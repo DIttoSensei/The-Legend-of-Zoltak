@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bkgrw6h7t5mx2"]
+
+[ext_resource type="Texture2D" uid="uid://maww22a64s2a" path="res://Asset/img/buff_skill/Buffs/knockback_resistance.png" id="1_k8vop"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_q51dr"]
+[ext_resource type="Texture2D" uid="uid://dt3v8yu1ujjgn" path="res://Asset/img/buff_skill/Spells/lightning_spell.png" id="2_o0pbs"]
+[ext_resource type="Texture2D" uid="uid://kdmudva6qj5r" path="res://Scene/shop/item/rogue/img/Icon28_27.png" id="2_xg4tm"]
+
+[resource]
+script = ExtResource("1_q51dr")
+name = "Stormfangs"
+discription = "Linked by chain blessed in lightling - swing em right, you'll crack stone as easy as skull."
+texture = ExtResource("2_xg4tm")
+buff_texture = ExtResource("1_k8vop")
+buff_texture2 = ExtResource("2_o0pbs")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1200
+wearable_class = "Weapon"
+item_cost = 1450

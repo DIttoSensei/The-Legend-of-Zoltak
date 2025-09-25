@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dgquf7hncm7n4"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_jlce4"]
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_jrjrm"]
+[ext_resource type="Texture2D" uid="uid://cattd068m2b1r" path="res://Scene/shop/item/img/fb1865.png" id="2_f1l2n"]
+[ext_resource type="Texture2D" uid="uid://3falioqa7ax1" path="res://Asset/img/buff_skill/Spells/divine_protection_spell.png" id="2_hmbrm"]
+
+[resource]
+script = ExtResource("1_jlce4")
+name = "StormBreast"
+discription = "Reinforced breastplate with enhance defensive capabilities, nothing is getting past this gem."
+texture = ExtResource("2_f1l2n")
+buff_texture = ExtResource("1_jrjrm")
+buff_texture2 = ExtResource("2_hmbrm")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 360
+wearable_class = "Chestplate"
+item_cost = 600

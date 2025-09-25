@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://c7vy5xa8ejj78"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_07vdr"]
+[ext_resource type="Texture2D" uid="uid://bbk32ktmykpgs" path="res://Asset/img/buff_skill/Buffs/critical_boost.png" id="1_neael"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="2_6vblh"]
+[ext_resource type="Texture2D" uid="uid://0b5mcessdegu" path="res://Scene/shop/item/img/fb2062.png" id="2_bw5gs"]
+
+[resource]
+script = ExtResource("1_07vdr")
+name = "Sage Stone"
+discription = "This beauty isn't only valuable but can help you increase your full potential."
+texture = ExtResource("2_bw5gs")
+buff_texture = ExtResource("1_neael")
+buff_texture2 = ExtResource("2_6vblh")
+item_type = "Wearable"
+attribute = "Crit"
+attribute_value = 89
+wearable_class = "Relics"
+item_cost = 350

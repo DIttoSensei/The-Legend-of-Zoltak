@@ -2,3 +2,5 @@ extends Node
 
 signal show_item_info_board
 signal show_selected_item_board
+signal show_action_info
+signal shop_exit

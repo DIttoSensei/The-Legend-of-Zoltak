@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://fn545nuti2ev"]
+
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="1_6ibv5"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_7c0ms"]
+[ext_resource type="Texture2D" uid="uid://cub7vahu08goe" path="res://Scene/shop/item/defender/img/Icon27.png" id="2_pl26i"]
+[ext_resource type="Texture2D" uid="uid://cqrpdmd5p8t1r" path="res://Asset/img/buff_skill/Buffs/lucky_boost.png" id="2_xf4kh"]
+
+[resource]
+script = ExtResource("1_7c0ms")
+name = "Dawnward"
+discription = "Made by elve artisans, really sturdy and said to be enchanted by vitality spell tags."
+texture = ExtResource("2_pl26i")
+buff_texture = ExtResource("1_6ibv5")
+buff_texture2 = ExtResource("2_xf4kh")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1500
+wearable_class = "Weapon"
+item_cost = 1200

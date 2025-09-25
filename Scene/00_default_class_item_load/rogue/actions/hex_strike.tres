@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://35i17xnxi1t8"]
+
+[ext_resource type="Texture2D" uid="uid://d0nbgsr6fan22" path="res://Scene/00_default_class_item_load/rogue/img/fb866.png" id="1_767aw"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_ke6yy"]
+
+[resource]
+script = ExtResource("1_ke6yy")
+action_name = "HEX STRIKE"
+action_img = ExtResource("1_767aw")
+action_type = "Hex"
+action_attribute = 40
+critical_rate = "20%"
+cooldown = 2
+cost = 0
+action_info = "Performs double the damage anytime this is used."

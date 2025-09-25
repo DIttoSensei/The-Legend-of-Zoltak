@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://3rbbujjxl20n"]
+
+[ext_resource type="Texture2D" uid="uid://gevi1lfa1e2l" path="res://Scene/00_default_class_item_load/rogue/img/fb1049.png" id="1_g4vf7"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_yub5o"]
+
+[resource]
+script = ExtResource("1_yub5o")
+action_name = "POISEN VENIN"
+action_img = ExtResource("1_g4vf7")
+action_type = "Poison"
+action_attribute = 15
+critical_rate = "11%"
+cooldown = 1
+cost = 0
+action_info = "Release a poisonous toxin that harms your foes for a specific amount of turns."

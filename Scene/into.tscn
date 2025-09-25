@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bepbsplw6bskj"]
 
 [ext_resource type="Script" path="res://Scene/Scripts/intro.gd" id="1_6lru2"]
-[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/page.png" id="1_o2uer"]
+[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/other/page.png" id="1_o2uer"]
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="2_r2oud"]
 
 [sub_resource type="FontVariation" id="FontVariation_c3vtu"]
@@ -10,9 +10,9 @@ base_font = ExtResource("2_r2oud")
 [node name="intro" type="Node2D"]
 script = ExtResource("1_6lru2")
 
-[node name="Page" type="Sprite2D" parent="."]
-position = Vector2(549, 927)
-scale = Vector2(2.01396, 2.4725)
+[node name="Page2" type="Sprite2D" parent="."]
+position = Vector2(537, 1083.84)
+scale = Vector2(2.24782, 2.7596)
 texture = ExtResource("1_o2uer")
 
 [node name="Control" type="Control" parent="."]
@@ -25,14 +25,14 @@ grow_vertical = 2
 
 [node name="Label" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 341.0
-offset_right = 1023.0
-offset_bottom = 1584.0
+offset_left = 78.0
+offset_top = 358.0
+offset_right = 1016.0
+offset_bottom = 1831.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 40
 theme_override_fonts/normal_font = SubResource("FontVariation_c3vtu")
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 42
 bbcode_enabled = true
 text = "placeholder"
 autowrap_mode = 2

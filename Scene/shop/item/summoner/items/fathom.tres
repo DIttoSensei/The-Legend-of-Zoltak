@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://d2avxym3cqejd"]
+
+[ext_resource type="Texture2D" uid="uid://b0wp2knw4bgx" path="res://Asset/img/buff_skill/Buffs/magic_amplification.png" id="1_a72ks"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ne7h7"]
+[ext_resource type="Texture2D" uid="uid://bjsxpl4wtiewc" path="res://Scene/shop/item/summoner/img/1.png" id="2_d4lfy"]
+[ext_resource type="Texture2D" uid="uid://ckcbkfi5f4w08" path="res://Asset/img/buff_skill/Spells/mana_replenish.png" id="2_wlm3x"]
+
+[resource]
+script = ExtResource("1_ne7h7")
+name = "Fathom"
+discription = "A simple staff that feels impossibly heavy; it anchors magic, making spells more potent and stable."
+texture = ExtResource("2_d4lfy")
+buff_texture = ExtResource("1_a72ks")
+buff_texture2 = ExtResource("2_wlm3x")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 850
+wearable_class = "Weapon"
+item_cost = 1000

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dp6ih1c413l0m"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_cmu8y"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_vpejr"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="2_3qg7k"]
+[ext_resource type="Texture2D" uid="uid://yrpsn0pikkrt" path="res://Scene/shop/item/img/fb1821.png" id="2_v2vav"]
+
+[resource]
+script = ExtResource("1_vpejr")
+name = "Silver Plate"
+discription = "A silver coated plate, more durable than standard broze plates."
+texture = ExtResource("2_v2vav")
+buff_texture = ExtResource("1_cmu8y")
+buff_texture2 = ExtResource("2_3qg7k")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 45
+wearable_class = "Chestplate"
+item_cost = 130

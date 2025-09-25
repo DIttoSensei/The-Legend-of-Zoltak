@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="Player_Journal" load_steps=23 format=3 uid="uid://b77r6h0gis1m"]
+
+[ext_resource type="Script" path="res://Scene/journal/player_journal.gd" id="1_go7g4"]
+[ext_resource type="Script" path="res://Scene/journal/jornal.gd" id="2_wx2on"]
+
+[sub_resource type="Resource" id="Resource_snykg"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_b5ndk"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_rhwqb"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_5snke"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_c0evl"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_r7hf1"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_lvxib"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_s20j7"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_i1mr4"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_n4h0p"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_xjasg"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_wlv3m"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_hckhn"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_0ytrx"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_l0whg"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_hsdww"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_g1kfr"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_q3x6w"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_1hotd"]
+script = ExtResource("2_wx2on")
+
+[sub_resource type="Resource" id="Resource_5dqje"]
+script = ExtResource("2_wx2on")
+
+[resource]
+script = ExtResource("1_go7g4")
+pages = Array[ExtResource("2_wx2on")]([SubResource("Resource_snykg"), SubResource("Resource_b5ndk"), SubResource("Resource_rhwqb"), SubResource("Resource_5snke"), SubResource("Resource_c0evl"), SubResource("Resource_r7hf1"), SubResource("Resource_lvxib"), SubResource("Resource_s20j7"), SubResource("Resource_i1mr4"), SubResource("Resource_n4h0p"), SubResource("Resource_xjasg"), SubResource("Resource_wlv3m"), SubResource("Resource_hckhn"), SubResource("Resource_0ytrx"), SubResource("Resource_l0whg"), SubResource("Resource_hsdww"), SubResource("Resource_g1kfr"), SubResource("Resource_q3x6w"), SubResource("Resource_1hotd"), SubResource("Resource_5dqje")])

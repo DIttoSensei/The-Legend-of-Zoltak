@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bmyvlyshehg6t"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_gpj3a"]
+[ext_resource type="Texture2D" uid="uid://bgvvg4ytfebkw" path="res://Scene/00_default_class_item_load/mages/actions/img/fb801.png" id="1_h2ii1"]
+
+[resource]
+script = ExtResource("1_gpj3a")
+action_name = "METEOR STRIKE"
+action_img = ExtResource("1_h2ii1")
+action_type = "Fire"
+action_attribute = 79
+critical_rate = "20%"
+cooldown = 4
+cost = 0
+action_info = "You don't just want to burn your foes, you want to completly vaporize them, well here is the spell for the job."

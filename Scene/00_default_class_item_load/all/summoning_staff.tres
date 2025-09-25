@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bk3vnvdrhphsr"]
+
+[ext_resource type="Texture2D" uid="uid://met63tdupcu1" path="res://Asset/img/buff_skill/Spells/summoning_spell.png" id="1_45qra"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ev5pm"]
+[ext_resource type="Texture2D" uid="uid://maww22a64s2a" path="res://Asset/img/buff_skill/Buffs/knockback_resistance.png" id="2_w1b28"]
+[ext_resource type="Texture2D" uid="uid://co66tgnf72weo" path="res://Scene/00_default_class_item_load/all/img/fb1782.png" id="4_3vmln"]
+
+[resource]
+script = ExtResource("1_ev5pm")
+name = "Summoning Staff"
+discription = "A staff in which the user inbue with aether to summon creatures for aid."
+texture = ExtResource("4_3vmln")
+buff_texture = ExtResource("1_45qra")
+buff_texture2 = ExtResource("2_w1b28")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 20
+wearable_class = "Weapon"
+item_cost = 0

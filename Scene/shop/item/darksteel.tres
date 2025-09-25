@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://cpdktlr0c64wa"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_w6f5d"]
+[ext_resource type="Texture2D" uid="uid://b8f6vad078mia" path="res://Asset/img/buff_skill/Debuffs/cursed_(disarmed+silenced).png" id="1_xinry"]
+[ext_resource type="Texture2D" uid="uid://bgrvv5ec3gaed" path="res://Asset/img/buff_skill/Debuffs/defense_down.png" id="2_7b4xk"]
+[ext_resource type="Texture2D" uid="uid://c645cv2e3ukw7" path="res://Scene/shop/item/img/fb2053.png" id="2_xlgjs"]
+
+[resource]
+script = ExtResource("1_w6f5d")
+name = "Darksteel"
+discription = "Found this strange helm along the mountains, something's  off about  but i can't tell what."
+texture = ExtResource("2_xlgjs")
+buff_texture = ExtResource("1_xinry")
+buff_texture2 = ExtResource("2_7b4xk")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 980
+wearable_class = "Headagear"
+item_cost = 1250

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://be6sp54vft77j"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_h5sd5"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_mn0ca"]
+[ext_resource type="Texture2D" uid="uid://bio0n5f82f1ce" path="res://Scene/shop/item/img/fb1872.png" id="2_ddmls"]
+[ext_resource type="Texture2D" uid="uid://dwpfi0j0iryho" path="res://Asset/img/buff_skill/Buffs/glow.png" id="2_hih3s"]
+
+[resource]
+script = ExtResource("1_mn0ca")
+name = "Aegis Chest"
+discription = "Not your typical armor, this baby is not only durable but magically fortified to absorb damage."
+texture = ExtResource("2_ddmls")
+buff_texture = ExtResource("1_h5sd5")
+buff_texture2 = ExtResource("2_hih3s")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 510
+wearable_class = "Chestplate"
+item_cost = 960

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bppu4vpfwkuev"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_5rqb8"]
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_5t560"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="2_8d6bc"]
+[ext_resource type="Texture2D" uid="uid://3dhr6l1nyexk" path="res://Scene/shop/item/img/fb1856.png" id="2_k5itr"]
+
+[resource]
+script = ExtResource("1_5rqb8")
+name = "Silver Boots"
+discription = "I know what you are thinking but it totally not the same boot if you look closer."
+texture = ExtResource("2_k5itr")
+buff_texture = ExtResource("1_5t560")
+buff_texture2 = ExtResource("2_8d6bc")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 90
+wearable_class = "leggings"
+item_cost = 185

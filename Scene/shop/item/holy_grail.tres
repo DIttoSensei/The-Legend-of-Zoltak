@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://1klney2puoli"]
+
+[ext_resource type="Texture2D" uid="uid://c78oem1v2x0o4" path="res://Asset/img/buff_skill/Buffs/element_boost.png" id="1_3ewtn"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_j3emm"]
+[ext_resource type="Texture2D" uid="uid://chx8xlv207pl3" path="res://Asset/img/icon_buffs/16x16/fa957.png" id="2_ui4xl"]
+[ext_resource type="Texture2D" uid="uid://dqmm56r8hyilx" path="res://Asset/img/icon_buffs/32x32/fb144.png" id="4_kmlew"]
+
+[resource]
+script = ExtResource("1_j3emm")
+name = "Holy Grail"
+discription = "Don't ask how i got it but what i'll tell you is this alone can make you near invincible."
+texture = ExtResource("4_kmlew")
+buff_texture = ExtResource("1_3ewtn")
+buff_texture2 = ExtResource("2_ui4xl")
+item_type = "item"
+attribute = "Def"
+attribute_value = 500
+wearable_class = ""
+item_cost = 1800

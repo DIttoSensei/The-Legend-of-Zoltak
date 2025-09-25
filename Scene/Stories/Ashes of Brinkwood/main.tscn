@@ -1,40 +1,39 @@
-[gd_scene load_steps=83 format=3 uid="uid://c5w6dmvryahbj"]
+[gd_scene load_steps=108 format=3 uid="uid://c5w6dmvryahbj"]
 
-[ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/bg.png" id="1_uovk4"]
+[ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/other/bg.png" id="1_uovk4"]
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/scripts/main.gd" id="1_v0woh"]
-[ext_resource type="Texture2D" uid="uid://b66p12pvglnle" path="res://Asset/img/8bit.png" id="3_wmowf"]
-[ext_resource type="Texture2D" uid="uid://b8d0ypakse5wi" path="res://Asset/img/greenbar (2).png" id="4_em4mx"]
-[ext_resource type="Texture2D" uid="uid://666i2k6fttv1" path="res://Asset/img/file_00000000eb0c6243b3fbadb284e51c14-removebg-preview.png" id="4_ir7ln"]
-[ext_resource type="Texture2D" uid="uid://d3f0m4av30xa4" path="res://Asset/img/banner.png" id="5_xd736"]
+[ext_resource type="Texture2D" uid="uid://b66p12pvglnle" path="res://Asset/img/other/8bit.png" id="3_wmowf"]
+[ext_resource type="Texture2D" uid="uid://b8d0ypakse5wi" path="res://Asset/img/other/greenbar (2).png" id="4_em4mx"]
+[ext_resource type="Texture2D" uid="uid://666i2k6fttv1" path="res://Asset/img/other/file_00000000eb0c6243b3fbadb284e51c14-removebg-preview.png" id="4_ir7ln"]
+[ext_resource type="Texture2D" uid="uid://d3f0m4av30xa4" path="res://Asset/img/other/banner.png" id="5_xd736"]
 [ext_resource type="Texture2D" uid="uid://cy72cwnt6x8di" path="res://Asset/Rpg1/panelInset_beige.png" id="6_a8puq"]
 [ext_resource type="Texture2D" uid="uid://bk4ncx576qc7c" path="res://Asset/img/potraits/141-removebg-preview.png" id="7_n0gk6"]
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="9_w4v0i"]
-[ext_resource type="Texture2D" uid="uid://b65f32l3xvvyh" path="res://Asset/img/a817504e4eb9420ade3e9069f35bd704-removebg-preview.png" id="10_nb0j4"]
-[ext_resource type="Texture2D" uid="uid://berktd1hy1nl4" path="res://Asset/img/warrior-removebg-preview.png" id="11_xvbdx"]
-[ext_resource type="Texture2D" uid="uid://bx0o37p4rbgjj" path="res://Asset/img/panel-removebg-preview.png" id="12_d2o1o"]
-[ext_resource type="Texture2D" uid="uid://ch6dywmamfjgc" path="res://Asset/img/little_scroll.png" id="12_khq82"]
-[ext_resource type="Texture2D" uid="uid://db4wks5sx6k5a" path="res://Asset/img/Pixel_Münze-removebg-preview.png" id="13_1byey"]
-[ext_resource type="Texture2D" uid="uid://cpixnmft1gy84" path="res://Asset/img/atk.png" id="13_b4lly"]
-[ext_resource type="Texture2D" uid="uid://cwxmgxk86s8yy" path="res://Asset/img/def.png" id="14_6mhow"]
-[ext_resource type="Texture2D" uid="uid://b8rkbr7qnblv0" path="res://Asset/img/dex.png" id="15_6ylwp"]
-[ext_resource type="Texture2D" uid="uid://rfnsfc40p2w2" path="res://Asset/img/cons.png" id="16_qqf5d"]
-[ext_resource type="Texture2D" uid="uid://b6wjyj4cdu880" path="res://Asset/img/int.png" id="17_d1g7b"]
-[ext_resource type="Texture2D" uid="uid://dkspiwvemjiik" path="res://Asset/img/wis.png" id="18_vrufq"]
-[ext_resource type="Texture2D" uid="uid://bk3hi025yufgt" path="res://Asset/img/cha.png" id="19_jnir8"]
-[ext_resource type="Texture2D" uid="uid://dy1bp0t2liucw" path="res://Asset/img/TopPatternPanel_01_33x15.png" id="23_7jwgb"]
+[ext_resource type="Texture2D" uid="uid://b65f32l3xvvyh" path="res://Asset/img/other/a817504e4eb9420ade3e9069f35bd704-removebg-preview.png" id="10_nb0j4"]
+[ext_resource type="Texture2D" uid="uid://bx0o37p4rbgjj" path="res://Asset/img/other/panel-removebg-preview.png" id="12_d2o1o"]
+[ext_resource type="Texture2D" uid="uid://ch6dywmamfjgc" path="res://Asset/img/other/little_scroll.png" id="12_khq82"]
+[ext_resource type="Texture2D" uid="uid://db4wks5sx6k5a" path="res://Asset/img/other/Pixel_Münze-removebg-preview.png" id="13_1byey"]
+[ext_resource type="Texture2D" uid="uid://cpixnmft1gy84" path="res://Asset/img/other/atk.png" id="13_b4lly"]
+[ext_resource type="Texture2D" uid="uid://cwxmgxk86s8yy" path="res://Asset/img/other/def.png" id="14_6mhow"]
+[ext_resource type="Texture2D" uid="uid://b8rkbr7qnblv0" path="res://Asset/img/other/dex.png" id="15_6ylwp"]
+[ext_resource type="Texture2D" uid="uid://rfnsfc40p2w2" path="res://Asset/img/other/cons.png" id="16_qqf5d"]
+[ext_resource type="Texture2D" uid="uid://b6wjyj4cdu880" path="res://Asset/img/other/int.png" id="17_d1g7b"]
+[ext_resource type="Texture2D" uid="uid://dkspiwvemjiik" path="res://Asset/img/other/wis.png" id="18_vrufq"]
+[ext_resource type="Texture2D" uid="uid://bk3hi025yufgt" path="res://Asset/img/other/cha.png" id="19_jnir8"]
+[ext_resource type="Texture2D" uid="uid://dy1bp0t2liucw" path="res://Asset/img/other/TopPatternPanel_01_33x15.png" id="23_7jwgb"]
 [ext_resource type="Texture2D" uid="uid://c1nyemdmmbod7" path="res://Asset/Rpg1/buttonRound_brown.png" id="23_urmoy"]
-[ext_resource type="Texture2D" uid="uid://hq3l1lkmha5i" path="res://Asset/img/book-removebg-preview.png" id="24_bl2xj"]
-[ext_resource type="Texture2D" uid="uid://b2warbq8ytskm" path="res://Asset/img/inventory-removebg-preview.png" id="25_iokhl"]
-[ext_resource type="Texture2D" uid="uid://dlct2yqdimyvt" path="res://Asset/img/panel-removebg-preview-Picsart-AiImageEnhancer.png" id="26_kbdts"]
-[ext_resource type="Texture2D" uid="uid://mqbuyl25lq8r" path="res://Asset/img/action-removebg-preview.png" id="26_t6eyd"]
-[ext_resource type="Texture2D" uid="uid://dqihgue2x7p8o" path="res://Asset/img/achivement-removebg-preview.png" id="27_36b07"]
+[ext_resource type="Texture2D" uid="uid://hq3l1lkmha5i" path="res://Asset/img/other/book-removebg-preview.png" id="24_bl2xj"]
+[ext_resource type="Texture2D" uid="uid://b2warbq8ytskm" path="res://Asset/img/other/inventory-removebg-preview.png" id="25_iokhl"]
+[ext_resource type="Texture2D" uid="uid://dlct2yqdimyvt" path="res://Asset/img/other/panel-removebg-preview-Picsart-AiImageEnhancer.png" id="26_kbdts"]
+[ext_resource type="Texture2D" uid="uid://mqbuyl25lq8r" path="res://Asset/img/other/action-removebg-preview.png" id="26_t6eyd"]
+[ext_resource type="Texture2D" uid="uid://dqihgue2x7p8o" path="res://Asset/img/other/achivement-removebg-preview.png" id="27_36b07"]
 [ext_resource type="PackedScene" uid="uid://cylo7l2kcxlpl" path="res://Scene/inventory/inventory_slot.tscn" id="27_lebwe"]
-[ext_resource type="Texture2D" uid="uid://b7avbyro5l7li" path="res://Asset/img/shop_stand_in_pixel_art_style-removebg-preview.png" id="28_4p0wr"]
+[ext_resource type="Texture2D" uid="uid://b7avbyro5l7li" path="res://Asset/img/other/shop_stand_in_pixel_art_style-removebg-preview.png" id="28_4p0wr"]
 [ext_resource type="Script" path="res://Scene/Stories/scripts/page.gd" id="29_6bxql"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="29_26tb2"]
-[ext_resource type="Texture2D" uid="uid://bliubbb01uqxj" path="res://Asset/img/RectangleBox_96x96.png" id="31_3vncn"]
+[ext_resource type="Texture2D" uid="uid://bliubbb01uqxj" path="res://Asset/img/other/RectangleBox_96x96.png" id="31_3vncn"]
 [ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="32_eo6sl"]
-[ext_resource type="Texture2D" uid="uid://djxabns8rx41n" path="res://Asset/img/CornerKnot_14x14.png" id="32_pkdf1"]
+[ext_resource type="Texture2D" uid="uid://djxabns8rx41n" path="res://Asset/img/other/CornerKnot_14x14.png" id="32_pkdf1"]
 [ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="33_0oah6"]
 [ext_resource type="Script" path="res://Scene/Stories/scripts/camera.gd" id="34_c5ugl"]
 [ext_resource type="Script" path="res://Scene/inventory/scripts/inventory_ui.gd" id="37_b7bnd"]
@@ -43,18 +42,32 @@
 [ext_resource type="Script" path="res://Scene/inventory/scripts/inventory_data.gd" id="39_twarw"]
 [ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="40_ugehw"]
 [ext_resource type="Script" path="res://Scene/inventory/scripts/slot_data.gd" id="40_vetc1"]
-[ext_resource type="Texture2D" uid="uid://6iyosni310om" path="res://Asset/img/HeartIcons_32x32.png" id="41_1pms8"]
+[ext_resource type="Texture2D" uid="uid://6iyosni310om" path="res://Asset/img/other/HeartIcons_32x32.png" id="41_1pms8"]
 [ext_resource type="Texture2D" uid="uid://1ttd8whwn3in" path="res://Asset/img/buff_skill/Buffs/regeneration.png" id="42_8o2vh"]
 [ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="42_no1s0"]
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="43_c5it4"]
 [ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="43_x7kfc"]
 [ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="44_6srf8"]
-[ext_resource type="Texture2D" uid="uid://b3pvyptq772c5" path="res://Asset/img/PatternMiddleBottomBG_199x48.png" id="47_l1m5a"]
-[ext_resource type="Script" path="res://Scene/inventory/scripts/jornal_display.gd" id="51_036pn"]
+[ext_resource type="Texture2D" uid="uid://b3pvyptq772c5" path="res://Asset/img/other/PatternMiddleBottomBG_199x48.png" id="47_l1m5a"]
+[ext_resource type="Script" path="res://Scene/journal/jornal_display.gd" id="51_036pn"]
 [ext_resource type="Script" path="res://Scene/Scripts/notification_panel.gd" id="51_wl46b"]
-[ext_resource type="Texture2D" uid="uid://chgdoidwpr8cq" path="res://Asset/img/book_body-removebg-preview.png" id="51_yrkd7"]
-[ext_resource type="Script" path="res://Scene/journal/journal_page.gd" id="52_b5adf"]
+[ext_resource type="Texture2D" uid="uid://chgdoidwpr8cq" path="res://Asset/img/other/book_body-removebg-preview.png" id="51_yrkd7"]
 [ext_resource type="Texture2D" uid="uid://j1w26ofdr10r" path="res://Asset/Rpg1/panelInset_beigeLight.png" id="52_g304m"]
+[ext_resource type="Resource" uid="uid://b77r6h0gis1m" path="res://Scene/journal/player_journal.tres" id="52_ydoot"]
+[ext_resource type="Texture2D" uid="uid://bvr7bb1dfru48" path="res://Asset/img/other/UI_TravelBook_BookCover01a.png" id="56_p5tvd"]
+[ext_resource type="Texture2D" uid="uid://dsfbf0rmjvu6q" path="res://Asset/img/other/UI_TravelBook_BookPageLeft01a.png" id="57_e4h0u"]
+[ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="58_jht1n"]
+[ext_resource type="PackedScene" uid="uid://cpjurvrjir8xj" path="res://Scene/action/action_slot.tscn" id="59_rods2"]
+[ext_resource type="Script" path="res://Scene/action/action_container.gd" id="59_yrogb"]
+[ext_resource type="Resource" uid="uid://de1nrsf3lefo3" path="res://Scene/action/player_action.tres" id="60_0jsf2"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="61_ua548"]
+[ext_resource type="Texture2D" uid="uid://0rdtkdgdpn6q" path="res://Asset/img/other/back.png" id="63_rvjtd"]
+[ext_resource type="Script" path="res://Scene/achievements/achievements_container.gd" id="64_ox1yo"]
+[ext_resource type="PackedScene" uid="uid://bv38f7qkwiqwi" path="res://Scene/achievements/achievement_ui.tscn" id="64_qeot7"]
+[ext_resource type="Script" path="res://Scene/achievements/player_achievements.gd" id="65_vwklm"]
+[ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="66_nv5sa"]
+[ext_resource type="Resource" uid="uid://dlvpqxhqtvdvf" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/1.tres" id="67_yy3pl"]
+[ext_resource type="Resource" uid="uid://bgj6tgnfp8h7b" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/2.tres" id="68_itq0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk7f5"]
 atlas = ExtResource("3_wmowf")
@@ -580,26 +593,26 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../inventory_border:position")
+tracks/0/path = NodePath("../inventory_border:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(20, 1103), Vector2(20, 2000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../inventory_border:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../inventory_border:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 1367), Vector2(20, 2264)]
 }
 
 [sub_resource type="Animation" id="Animation_fvldx"]
@@ -615,7 +628,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(20, 2000), Vector2(20, 1103)]
+"values": [Vector2(20, 2264), Vector2(20, 1367)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -637,8 +650,171 @@ _data = {
 "inventory_open": SubResource("Animation_fvldx")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvspn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldj6n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qyub7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mo7gi"]
+
 [sub_resource type="FontVariation" id="FontVariation_rbt85"]
 base_font = ExtResource("9_w4v0i")
+
+[sub_resource type="Animation" id="Animation_64g0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(540, 1163)]
+}
+
+[sub_resource type="Animation" id="Animation_s8rxj"]
+resource_name = "hide"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(540, 1163), Vector2(540, 3019)]
+}
+
+[sub_resource type="Animation" id="Animation_t0his"]
+resource_name = "show"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(540, 3019), Vector2(540, 1163)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_buooa"]
+_data = {
+"RESET": SubResource("Animation_64g0b"),
+"hide": SubResource("Animation_s8rxj"),
+"show": SubResource("Animation_t0his")
+}
+
+[sub_resource type="Resource" id="Resource_15nkp"]
+script = ExtResource("65_vwklm")
+slots = Array[ExtResource("66_nv5sa")]([ExtResource("67_yy3pl"), ExtResource("68_itq0l"), null, null, null])
+
+[sub_resource type="Animation" id="Animation_giua7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sgl0m"]
+resource_name = "show_notification"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_by050"]
+_data = {
+"RESET": SubResource("Animation_giua7"),
+"show_notification": SubResource("Animation_sgl0m")
+}
 
 [node name="Main" type="Node2D"]
 position = Vector2(0, -12)
@@ -653,8 +829,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="bg" type="Sprite2D" parent="Control"]
-position = Vector2(-28, 4.76837e-07)
-scale = Vector2(1.02469, 1.13824)
+position = Vector2(-108, 4.76837e-07)
+scale = Vector2(1.15168, 1.2793)
 texture = ExtResource("1_uovk4")
 centered = false
 
@@ -742,8 +918,9 @@ texture = ExtResource("4_ir7ln")
 centered = false
 
 [node name="class" type="Sprite2D" parent="Control/HP"]
-position = Vector2(352, 109)
-texture = ExtResource("11_xvbdx")
+position = Vector2(348.5, 111.5)
+scale = Vector2(1.84375, 1.84375)
+texture = ExtResource("41_1pms8")
 
 [node name="stat" type="Control" parent="Control"]
 layout_mode = 1
@@ -909,14 +1086,14 @@ texture = ExtResource("47_l1m5a")
 
 [node name="border2" type="Sprite2D" parent="Control"]
 modulate = Color(1, 0.772549, 0.6, 0.145098)
-position = Vector2(538.688, 1814.99)
+position = Vector2(538.688, 2054.99)
 rotation = 3.14159
 scale = Vector2(15.8133, 15.8133)
 texture = ExtResource("23_7jwgb")
 
 [node name="8Bit" type="Sprite2D" parent="Control"]
 z_index = 2
-position = Vector2(534, 1785)
+position = Vector2(534, 2025)
 scale = Vector2(1, 0.535211)
 texture = ExtResource("3_wmowf")
 
@@ -924,9 +1101,9 @@ texture = ExtResource("3_wmowf")
 z_index = 2
 layout_mode = 0
 offset_left = 254.25
-offset_top = 1741.67
+offset_top = 1981.67
 offset_right = 289.25
-offset_bottom = 1779.67
+offset_bottom = 2019.67
 scale = Vector2(2.38571, 2.38571)
 texture_normal = ExtResource("23_urmoy")
 
@@ -940,9 +1117,9 @@ texture = ExtResource("24_bl2xj")
 z_index = 2
 layout_mode = 0
 offset_left = 366.25
-offset_top = 1741.67
+offset_top = 1981.67
 offset_right = 401.25
-offset_bottom = 1779.67
+offset_bottom = 2019.67
 scale = Vector2(2.38571, 2.38571)
 texture_normal = ExtResource("23_urmoy")
 
@@ -956,9 +1133,9 @@ texture = ExtResource("25_iokhl")
 z_index = 2
 layout_mode = 0
 offset_left = 478.25
-offset_top = 1741.67
+offset_top = 1981.67
 offset_right = 513.25
-offset_bottom = 1779.67
+offset_bottom = 2019.67
 scale = Vector2(2.38571, 2.38571)
 texture_normal = ExtResource("23_urmoy")
 
@@ -972,9 +1149,9 @@ texture = ExtResource("26_t6eyd")
 z_index = 2
 layout_mode = 0
 offset_left = 596.25
-offset_top = 1741.67
+offset_top = 1981.67
 offset_right = 631.25
-offset_bottom = 1779.67
+offset_bottom = 2019.67
 scale = Vector2(2.38571, 2.38571)
 texture_normal = ExtResource("23_urmoy")
 
@@ -988,9 +1165,9 @@ texture = ExtResource("27_36b07")
 z_index = 2
 layout_mode = 0
 offset_left = 717.25
-offset_top = 1741.67
+offset_top = 1981.67
 offset_right = 752.25
-offset_bottom = 1779.67
+offset_bottom = 2019.67
 scale = Vector2(2.38571, 2.38571)
 texture_normal = ExtResource("23_urmoy")
 
@@ -1113,7 +1290,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.498039)
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/overlay"]
-position = Vector2(529, 901)
+position = Vector2(529, 1029)
 scale = Vector2(4.53579, 4.53579)
 texture = ExtResource("31_3vncn")
 
@@ -1154,9 +1331,9 @@ texture = ExtResource("32_pkdf1")
 
 [node name="roll" type="TextureButton" parent="Control/overlay"]
 offset_left = 365.0
-offset_top = 1184.0
+offset_top = 1312.0
 offset_right = 555.0
-offset_bottom = 1233.0
+offset_bottom = 1361.0
 scale = Vector2(1.75171, 1.75171)
 texture_normal = ExtResource("32_eo6sl")
 texture_pressed = ExtResource("33_0oah6")
@@ -1255,7 +1432,7 @@ layout_mode = 2
 
 [node name="Info_board" type="Sprite2D" parent="Control/inventory_border/Control"]
 visible = false
-position = Vector2(196.124, -305.061)
+position = Vector2(196.124, -402.839)
 rotation = 1.5708
 scale = Vector2(2.77044, 2.92961)
 texture = ExtResource("12_d2o1o")
@@ -1298,17 +1475,18 @@ texture = ExtResource("43_x7kfc")
 [node name="exit" type="TextureButton" parent="Control/inventory_border/Control/Info_board"]
 top_level = true
 z_index = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.888426
 offset_left = 298.0
-offset_top = 536.0
+offset_top = 720.0
 offset_right = -737.0
-offset_bottom = -1334.0
+offset_bottom = -1150.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("42_no1s0")
 texture_pressed = ExtResource("43_c5it4")
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="IconCrossBeige" type="Sprite2D" parent="Control/inventory_border/Control/Info_board/exit"]
@@ -1318,18 +1496,18 @@ scale = Vector2(1.98333, 1.98333)
 texture = ExtResource("44_6srf8")
 
 [node name="name" type="Label" parent="Control/inventory_border/Control/Info_board"]
-offset_left = -105.276
-offset_top = 28.182
-offset_right = -39.2756
-offset_bottom = 43.182
+offset_left = -110.0
+offset_top = 31.0
+offset_right = -32.0
+offset_bottom = 64.0
 rotation = -1.5708
 scale = Vector2(0.8, 0.8)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_ekopb")
 theme_override_font_sizes/font_size = 0
-text = "baserker"
+text = "long sword"
 horizontal_alignment = 1
-vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="attribute" type="Label" parent="Control/inventory_border/Control/Info_board"]
 offset_left = -65.3769
@@ -1410,7 +1588,7 @@ libraries = {
 [node name="jornal_display" type="CanvasLayer" parent="Control"]
 visible = false
 script = ExtResource("51_036pn")
-pages = Array[ExtResource("52_b5adf")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+book = ExtResource("52_ydoot")
 
 [node name="ColorRect" type="ColorRect" parent="Control/jornal_display"]
 anchors_preset = 15
@@ -1422,48 +1600,25 @@ color = Color(0, 0, 0, 0.498039)
 
 [node name="Jornal" type="TextureRect" parent="Control/jornal_display"]
 offset_left = -1029.0
-offset_top = 225.0
+offset_top = 425.0
 offset_right = 1218.0
-offset_bottom = 1691.0
+offset_bottom = 1891.0
 texture = ExtResource("51_yrkd7")
-
-[node name="exit" type="TextureButton" parent="Control/jornal_display"]
-top_level = true
-z_index = 1
-anchors_preset = -1
-anchor_right = 1.025
-anchor_bottom = 1.01563
-offset_left = 970.0
-offset_top = 296.0
-offset_right = -65.0
-offset_bottom = -1574.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("42_no1s0")
-texture_pressed = ExtResource("43_c5it4")
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="IconCrossBeige" type="Sprite2D" parent="Control/jornal_display/exit"]
-z_index = 1
-position = Vector2(38.1666, 35.125)
-scale = Vector2(3.58333, 3.58333)
-texture = ExtResource("44_6srf8")
 
 [node name="TextureRect" type="TextureRect" parent="Control/jornal_display"]
 modulate = Color(1, 0.745098, 0.415686, 0.0705882)
 offset_left = 824.0
-offset_top = 747.0
+offset_top = 947.0
 offset_right = 1483.0
-offset_bottom = 906.0
+offset_bottom = 1106.0
 rotation = 3.14159
 texture = ExtResource("47_l1m5a")
 
 [node name="Heading" type="Label" parent="Control/jornal_display"]
 offset_left = 144.0
-offset_top = 500.0
+offset_top = 700.0
 offset_right = 863.0
-offset_bottom = 575.0
+offset_bottom = 775.0
 theme = ExtResource("29_26tb2")
 theme_override_font_sizes/font_size = 80
 text = "HEADING"
@@ -1472,9 +1627,10 @@ vertical_alignment = 1
 
 [node name="page" type="VBoxContainer" parent="Control/jornal_display"]
 offset_left = 144.0
-offset_top = 695.0
+offset_top = 895.0
 offset_right = 863.0
-offset_bottom = 1420.0
+offset_bottom = 1620.0
+theme_override_constants/separation = 20
 
 [node name="page_image" type="TextureRect" parent="Control/jornal_display/page"]
 layout_mode = 2
@@ -1491,6 +1647,57 @@ text = "Brütal Legend is an action-adventure that marries visceral action comba
 Brütal Legend is an action-adventure that marries visceral action combat with open-world freedom. Set in a universe somewhere between Lord of the Rings and Spinal Tap, it's a fresh take on the action/driving genre, which in this case is full of imitation cover bands, demons intent on enslaving humanity and Heavy metal tunes. Featuring the talents of "
 autowrap_mode = 2
 
+[node name="left screentouch" type="Button" parent="Control/jornal_display"]
+offset_left = 6.0
+offset_top = -3.0
+offset_right = 518.0
+offset_bottom = 2154.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvspn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ldj6n")
+flat = true
+
+[node name="right screentouch" type="Button" parent="Control/jornal_display"]
+offset_left = 560.0
+offset_right = 1078.0
+offset_bottom = 2157.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qyub7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mo7gi")
+flat = true
+
+[node name="exit" type="TextureButton" parent="Control/jornal_display"]
+top_level = true
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.02593
+anchor_bottom = 0.902315
+offset_left = 970.0
+offset_top = 496.0
+offset_right = -65.0
+offset_bottom = -1374.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("42_no1s0")
+texture_pressed = ExtResource("43_c5it4")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="IconCrossBeige" type="Sprite2D" parent="Control/jornal_display/exit"]
+z_index = 1
+position = Vector2(38.1666, 35.125)
+scale = Vector2(3.58333, 3.58333)
+texture = ExtResource("44_6srf8")
+
+[node name="empty" type="Label" parent="Control/jornal_display"]
+visible = false
+modulate = Color(1, 1, 1, 0.34902)
+offset_left = 342.0
+offset_top = 1071.0
+offset_right = 667.0
+offset_bottom = 1165.0
+theme = ExtResource("29_26tb2")
+theme_override_font_sizes/font_size = 100
+text = "EMPTY"
+
 [node name="notification" type="CanvasLayer" parent="Control"]
 visible = false
 script = ExtResource("51_wl46b")
@@ -1505,9 +1712,9 @@ color = Color(0, 0, 0, 0.498039)
 
 [node name="TextureRect" type="TextureRect" parent="Control/notification"]
 offset_left = 336.0
-offset_top = 611.0
+offset_top = 843.0
 offset_right = 729.0
-offset_bottom = 1008.0
+offset_bottom = 1240.0
 texture = ExtResource("52_g304m")
 
 [node name="Label" type="Label" parent="Control/notification/TextureRect"]
@@ -1526,17 +1733,18 @@ vertical_alignment = 1
 [node name="exit" type="TextureButton" parent="Control/notification"]
 top_level = true
 z_index = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.888426
 offset_left = 658.0
-offset_top = 632.0
+offset_top = 864.0
 offset_right = -377.0
-offset_bottom = -1238.0
+offset_bottom = -1006.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("42_no1s0")
 texture_pressed = ExtResource("43_c5it4")
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="IconCrossBeige" type="Sprite2D" parent="Control/notification/exit"]
@@ -1545,8 +1753,445 @@ position = Vector2(23.3667, 22.125)
 scale = Vector2(1.98333, 1.98333)
 texture = ExtResource("44_6srf8")
 
+[node name="action display" type="CanvasLayer" parent="Control"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Control/action display"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="book cover" type="TextureRect" parent="Control/action display"]
+offset_left = 4.0
+offset_top = 749.0
+offset_right = 1083.0
+offset_bottom = 1519.0
+texture = ExtResource("56_p5tvd")
+
+[node name="page" type="TextureRect" parent="Control/action display"]
+offset_left = 21.0
+offset_top = 761.0
+offset_right = 544.0
+offset_bottom = 1501.0
+texture = ExtResource("57_e4h0u")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/action display"]
+offset_left = 48.0
+offset_top = 787.0
+offset_right = 529.0
+offset_bottom = 1415.0
+script = ExtResource("58_jht1n")
+
+[node name="action container" type="VBoxContainer" parent="Control/action display/ScrollContainer"]
+custom_minimum_size = Vector2(192, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+mouse_filter = 2
+theme_override_constants/separation = 110
+script = ExtResource("59_yrogb")
+data = ExtResource("60_0jsf2")
+
+[node name="action_slot" parent="Control/action display/ScrollContainer/action container" instance=ExtResource("59_rods2")]
+layout_mode = 2
+button_mask = 5
+
+[node name="PADDING" type="Control" parent="Control/action display/ScrollContainer/action container"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="action-info" type="Control" parent="Control/action display"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 804.0
+offset_right = 1037.0
+offset_bottom = 1457.0
+
+[node name="name" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 34.0
+offset_right = 393.0
+offset_bottom = 72.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "SLASH OF DEATH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 284.0
+offset_right = 81.0
+offset_bottom = 313.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type_name" type="Label" parent="Control/action display/action-info/type"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -3.0
+offset_right = 475.0
+offset_bottom = 77.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Defence Breaker
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="damage" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 342.0
+offset_right = 165.0
+offset_bottom = 371.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "ATTRIBUTE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="Control/action display/action-info/damage"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = -1.0
+offset_right = 465.0
+offset_bottom = 28.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "200
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 393.0
+offset_right = 212.0
+offset_bottom = 422.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "CRITICAL RATE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info/critical rate"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 1.0
+offset_right = 468.0
+offset_bottom = 30.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "2%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cooldown" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 452.0
+offset_right = 152.0
+offset_bottom = 481.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "COOLDOWN
+"
+vertical_alignment = 1
+
+[node name="cooldown" type="Label" parent="Control/action display/action-info/cooldown"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 1.0
+offset_right = 455.0
+offset_bottom = 30.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="info" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 468.0
+offset_right = 467.0
+offset_bottom = 660.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "This asset can be modified to match any of your needs. This asset can be used in any commercial and physical project (print or tabletop)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 112.0
+offset_right = 308.0
+offset_bottom = 260.0
+texture = ExtResource("61_ua548")
+
+[node name="action-info" type="Control" parent="Control/action display/action-info"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 652.0
+offset_right = 1037.0
+offset_bottom = 1305.0
+
+[node name="name" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 34.0
+offset_right = 393.0
+offset_bottom = 72.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "SLASH OF DEATH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 284.0
+offset_right = 104.0
+offset_bottom = 313.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type_name" type="Label" parent="Control/action display/action-info/action-info/type"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = -3.0
+offset_right = 392.0
+offset_bottom = 26.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Physical
+"
+vertical_alignment = 1
+
+[node name="element" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 332.0
+offset_right = 165.0
+offset_bottom = 361.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "ELEMENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="element_name" type="Label" parent="Control/action display/action-info/action-info/element"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = -4.0
+offset_right = 413.0
+offset_bottom = 25.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "None"
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 375.0
+offset_right = 143.0
+offset_bottom = 404.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "DAMAGE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="Control/action display/action-info/action-info/damage"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = -1.0
+offset_right = 392.0
+offset_bottom = 28.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "200
+"
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 415.0
+offset_right = 235.0
+offset_bottom = 444.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "CRITICAL RATE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info/action-info/critical rate"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 1.0
+offset_right = 483.0
+offset_bottom = 30.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "2%"
+vertical_alignment = 1
+
+[node name="info" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 468.0
+offset_right = 467.0
+offset_bottom = 660.0
+theme = ExtResource("29_26tb2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "This asset can be modified to match any of your needs. This asset can be used in any commercial and physical project (print or tabletop). Still, it cannot be distributed or sold as an individual product without the creator's permission (me)."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 112.0
+offset_right = 308.0
+offset_bottom = 260.0
+texture = ExtResource("61_ua548")
+
+[node name="exit" type="TextureButton" parent="Control/action display"]
+top_level = true
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.025
+anchor_bottom = 0.901852
+offset_left = 970.0
+offset_top = 456.0
+offset_right = -65.0
+offset_bottom = -1414.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("42_no1s0")
+texture_pressed = ExtResource("43_c5it4")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="IconCrossBeige" type="Sprite2D" parent="Control/action display/exit"]
+z_index = 1
+position = Vector2(38.1666, 35.125)
+scale = Vector2(3.58333, 3.58333)
+texture = ExtResource("44_6srf8")
+
+[node name="achivement2" type="Sprite2D" parent="Control"]
+visible = false
+position = Vector2(540, 1163)
+texture = ExtResource("63_rvjtd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/achivement2"]
+libraries = {
+"": SubResource("AnimationLibrary_buooa")
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/achivement2"]
+custom_minimum_size = Vector2(863, 1208)
+offset_left = -429.0
+offset_top = -676.0
+offset_right = 434.0
+offset_bottom = 532.0
+script = ExtResource("58_jht1n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/achivement2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 300
+script = ExtResource("64_ox1yo")
+data = SubResource("Resource_15nkp")
+
+[node name="AchievementUi" parent="Control/achivement2/ScrollContainer/VBoxContainer" instance=ExtResource("64_qeot7")]
+layout_mode = 2
+
+[node name="mini notification" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 357.0
+offset_top = 1727.0
+offset_right = 863.0
+offset_bottom = 2023.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("26_kbdts")
+
+[node name="mini notification label" type="Label" parent="Control/mini notification"]
+layout_mode = 0
+offset_left = 26.5714
+offset_top = 80.0
+offset_right = 488.571
+offset_bottom = 215.0
+theme = ExtResource("29_26tb2")
+theme_override_font_sizes/font_size = 50
+text = "New Achivements unlocked"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/mini notification"]
+libraries = {
+"": SubResource("AnimationLibrary_by050")
+}
+
+[node name="shop_layer" type="CanvasLayer" parent="Control"]
+
 [connection signal="pressed" from="Control/jornal" to="Control/Page" method="_on_jornal_pressed"]
 [connection signal="pressed" from="Control/inventory" to="Control/Page" method="_on_inventory_pressed"]
+[connection signal="pressed" from="Control/actions" to="Control/Page" method="_on_actions_pressed"]
+[connection signal="pressed" from="Control/achivement" to="Control/Page" method="_on_achivement_pressed"]
+[connection signal="pressed" from="Control/shop" to="Control/Page" method="_on_shop_pressed"]
 [connection signal="pressed" from="Control/Page/choice" to="Control/Page" method="_on_choice_pressed"]
 [connection signal="pressed" from="Control/Page/choice2" to="Control/Page" method="_on_choice_2_pressed"]
 [connection signal="pressed" from="Control/Page/choice3" to="Control/Page" method="_on_choice_3_pressed"]
@@ -1556,5 +2201,8 @@ texture = ExtResource("44_6srf8")
 [connection signal="pressed" from="Control/overlay/roll" to="Control/Page" method="_on_roll_pressed"]
 [connection signal="pressed" from="Control/inventory_border/Control/Info_board/exit" to="Control/Page" method="_on_exit_pressed"]
 [connection signal="pressed" from="Control/inventory_border/Control/Info_board/action" to="Control/Page" method="_on_action_pressed"]
+[connection signal="pressed" from="Control/jornal_display/left screentouch" to="Control/jornal_display" method="_on_left_screentouch_pressed"]
+[connection signal="pressed" from="Control/jornal_display/right screentouch" to="Control/jornal_display" method="_on_right_screentouch_pressed"]
 [connection signal="pressed" from="Control/jornal_display/exit" to="Control/jornal_display" method="_on_exit_pressed"]
 [connection signal="pressed" from="Control/notification/exit" to="Control/notification" method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/action display/exit" to="Control/action display/ScrollContainer/action container" method="_on_exit_pressed"]

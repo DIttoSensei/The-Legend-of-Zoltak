@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://be5gol61pdosg"]
+
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="1_mixcv"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_nksos"]
+[ext_resource type="Texture2D" uid="uid://bvxqhvgvk8c0r" path="res://Scene/shop/item/rogue/img/icon_32_2_24.png" id="2_2nh8j"]
+[ext_resource type="Texture2D" uid="uid://ckcbkfi5f4w08" path="res://Asset/img/buff_skill/Spells/mana_replenish.png" id="2_spn7l"]
+
+[resource]
+script = ExtResource("1_nksos")
+name = "Pale Dancer"
+discription = "Made for speed, not strength. She doesn't crush bones - she waltzes through them."
+texture = ExtResource("2_2nh8j")
+buff_texture = ExtResource("1_mixcv")
+buff_texture2 = ExtResource("2_spn7l")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1355
+wearable_class = "Weapon"
+item_cost = 1600

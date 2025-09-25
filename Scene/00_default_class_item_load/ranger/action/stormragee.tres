@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://4mytw60jeeah"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_7ov4q"]
+[ext_resource type="Texture2D" uid="uid://df3jnhx8a2ae5" path="res://Scene/00_default_class_item_load/ranger/img/fb1209.png" id="1_jjs4o"]
+
+[resource]
+script = ExtResource("1_7ov4q")
+action_name = "SHOTRAGE"
+action_img = ExtResource("1_jjs4o")
+action_type = "Physical"
+action_attribute = 90
+critical_rate = "18%"
+cooldown = 4
+cost = 0
+action_info = "Assualt your foes with a barrage or highly charged arcane shots."

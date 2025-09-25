@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Player_Action" load_steps=3 format=3 uid="uid://de1nrsf3lefo3"]
+
+[ext_resource type="Script" path="res://Scene/action/Actions.gd" id="1_y2m2u"]
+[ext_resource type="Script" path="res://Scene/action/player_action.gd" id="2_sv3pc"]
+
+[resource]
+script = ExtResource("2_sv3pc")
+actions = Array[ExtResource("1_y2m2u")]([])
