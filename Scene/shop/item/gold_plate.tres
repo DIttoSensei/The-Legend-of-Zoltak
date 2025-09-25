@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dtimed6v7bb73"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_jldng"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_qb5iw"]
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="2_rjgxn"]
+[ext_resource type="Texture2D" uid="uid://bb6kdon042oi5" path="res://Scene/shop/item/img/fb1822.png" id="2_y6xse"]
+
+[resource]
+script = ExtResource("1_qb5iw")
+name = "Gold Plate"
+discription = "Made with pure gold, really expensive and quite durable."
+texture = ExtResource("2_y6xse")
+buff_texture = ExtResource("1_jldng")
+buff_texture2 = ExtResource("2_rjgxn")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 75
+wearable_class = "Chestplate"
+item_cost = 200

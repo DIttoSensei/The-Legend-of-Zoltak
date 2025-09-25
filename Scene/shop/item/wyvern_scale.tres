@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://b1w6b3kpkb0a4"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_8ouky"]
+[ext_resource type="Texture2D" uid="uid://bbk32ktmykpgs" path="res://Asset/img/buff_skill/Buffs/critical_boost.png" id="1_v2erd"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="2_ycp52"]
+[ext_resource type="Texture2D" uid="uid://bfaocbvoeyoah" path="res://Asset/img/icon_buffs/32x32/fb235.png" id="4_oin0n"]
+
+[resource]
+script = ExtResource("1_8ouky")
+name = "Wyvern Scale"
+discription = "A piece of  a wyvern's scale, holding on to this baby helps you to land one of those huge hits."
+texture = ExtResource("4_oin0n")
+buff_texture = ExtResource("1_v2erd")
+buff_texture2 = ExtResource("2_ycp52")
+item_type = "item"
+attribute = "Crit"
+attribute_value = 30
+wearable_class = ""
+item_cost = 300

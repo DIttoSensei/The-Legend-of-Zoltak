@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://c3nyedyjq07km"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_5ag3p"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ho483"]
+[ext_resource type="Texture2D" uid="uid://cmu1juc5h6n5h" path="res://Asset/img/buff_skill/Buffs/exp_boost.png" id="2_ivh5w"]
+[ext_resource type="Texture2D" uid="uid://k55uqm2maodv" path="res://Scene/shop/item/img/fb1839.png" id="2_wr356"]
+
+[resource]
+script = ExtResource("1_ho483")
+name = "Auric Helm"
+discription = "Quite sturdy and has a fine gold tint to it, try it on if your got the gold. yes i mean money."
+texture = ExtResource("2_wr356")
+buff_texture = ExtResource("1_5ag3p")
+buff_texture2 = ExtResource("2_ivh5w")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 170
+wearable_class = "Headagear"
+item_cost = 450

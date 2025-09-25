@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqnm8s7gltxy2"]
+
+[ext_resource type="Script" path="res://Scene/Stories/scripts/transition_to_main.gd" id="1_6w6lb"]
+
+[sub_resource type="Animation" id="Animation_tnio2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ks563"]
+resource_name = "loading"
+length = 3.0
+
+[sub_resource type="Animation" id="Animation_jq7j1"]
+resource_name = "text_fade"
+length = 10.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xl3cw"]
+_data = {
+"RESET": SubResource("Animation_tnio2"),
+"loading": SubResource("Animation_ks563"),
+"text_fade": SubResource("Animation_jq7j1")
+}
+
+[node name="Transition to main" type="CanvasLayer"]
+script = ExtResource("1_6w6lb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_xl3cw")
+}
+
+[connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

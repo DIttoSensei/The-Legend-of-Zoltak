@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://cqspdwgocq3ij"]
 
-[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/page.png" id="1_hihnq"]
+[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/other/page.png" id="1_hihnq"]
 [ext_resource type="Script" path="res://Scene/Stories/scripts/story_select.gd" id="1_y7eoc"]
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="2_4u4rl"]
 [ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="3_5tgwt"]
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="4_s18wv"]
-[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png.png" id="5_1qncc"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/other/Aro_Png.png" id="5_1qncc"]
 [ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="7_m745k"]
-[ext_resource type="Texture2D" uid="uid://dquhi8d1yeruw" path="res://Asset/img/1000066657.png" id="8_e4iq5"]
+[ext_resource type="Texture2D" uid="uid://dquhi8d1yeruw" path="res://Asset/img/other/1000066657.png" id="8_e4iq5"]
 [ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="9_mdc1h"]
 [ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="10_uy4t2"]
 
@@ -17,9 +17,9 @@ base_font = ExtResource("2_4u4rl")
 [node name="story select" type="Node2D"]
 script = ExtResource("1_y7eoc")
 
-[node name="Page" type="Sprite2D" parent="."]
-position = Vector2(549, 927)
-scale = Vector2(2.01396, 2.4725)
+[node name="Page2" type="Sprite2D" parent="."]
+position = Vector2(537, 1083.84)
+scale = Vector2(2.24782, 2.7596)
 texture = ExtResource("1_hihnq")
 
 [node name="Control" type="Control" parent="."]
@@ -33,9 +33,9 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 262.0
-offset_top = 373.0
+offset_top = 429.0
 offset_right = 851.0
-offset_bottom = 430.0
+offset_bottom = 486.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_63ny5")
 theme_override_font_sizes/font_size = 60
@@ -48,14 +48,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
-offset_top = 342.0
+offset_top = 398.0
 offset_right = -985.0
-offset_bottom = -1528.0
+offset_bottom = -1713.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.2, 2.2)
 texture_normal = ExtResource("3_5tgwt")
 texture_pressed = ExtResource("4_s18wv")
+stretch_mode = 0
 
 [node name="AroPng-removebg-preview" type="Sprite2D" parent="Control/TextureButton"]
 modulate = Color(0.807843, 0.65098, 0.458824, 1)
@@ -65,7 +66,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("5_1qncc")
 
 [node name="story_1" type="Sprite2D" parent="Control"]
-position = Vector2(533, 961)
+position = Vector2(533, 1083)
 scale = Vector2(8, 8)
 texture = ExtResource("7_m745k")
 

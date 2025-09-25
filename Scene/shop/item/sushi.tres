@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://7dvuruly3h6d"]
+
+[ext_resource type="Texture2D" uid="uid://chx8xlv207pl3" path="res://Asset/img/icon_buffs/16x16/fa957.png" id="1_6t3d6"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_vdevw"]
+[ext_resource type="Texture2D" uid="uid://cqrpdmd5p8t1r" path="res://Asset/img/buff_skill/Buffs/lucky_boost.png" id="2_565ha"]
+[ext_resource type="Texture2D" uid="uid://jbkag8hwrjkg" path="res://Asset/img/icon_buffs/32x32/fb413.png" id="4_0a7jw"]
+
+[resource]
+script = ExtResource("1_vdevw")
+name = "Sushi"
+discription = "A wonderful meal only found in lotus, one of the territories of the elven empire. "
+texture = ExtResource("4_0a7jw")
+buff_texture = ExtResource("1_6t3d6")
+buff_texture2 = ExtResource("2_565ha")
+item_type = "Consumable"
+attribute = "Heal"
+attribute_value = 75
+wearable_class = ""
+item_cost = 150

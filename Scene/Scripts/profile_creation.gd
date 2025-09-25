@@ -122,11 +122,15 @@ func save_game () -> void :
 			"Int" : int(Int.text),
 			"Cha" : int(cha.text),
 			"Wis" : int(wis.text),
-			"Dialogue" : "",
-			"currency" : 500,
+			"Dialogue_Page" : "",
+			"currency" : 100,
 		},
-		"Equipment" : [],
-		"Main_action" : []
+		"Main_Inventory" : [],
+		"Storage_Inventory" : [],
+		"Action" : [],
+		"Journal" : [],
+		"Achievements" : [],
+		
 	}
 	var json_string = JSON.stringify(player_data, "\t")
 	var save = FileAccess.open("user://" + GlobalGameSystem.save_name, FileAccess.WRITE)

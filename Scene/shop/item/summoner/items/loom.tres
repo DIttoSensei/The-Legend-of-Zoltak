@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://c8xoxxcj6kmt8"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_8vpkw"]
+[ext_resource type="Texture2D" uid="uid://botypkkn2hnqs" path="res://Asset/img/buff_skill/Buffs/ghost_form_(physical_damage_immunity).png" id="1_yqbew"]
+[ext_resource type="Texture2D" uid="uid://met63tdupcu1" path="res://Asset/img/buff_skill/Spells/summoning_spell.png" id="2_77qdu"]
+[ext_resource type="Texture2D" uid="uid://ylw8cjy2mq3m" path="res://Scene/shop/item/summoner/img/3.png" id="2_s60ry"]
+
+[resource]
+script = ExtResource("1_8vpkw")
+name = "Loom"
+discription = "Want something a little lightweight? then i have just the staff for you."
+texture = ExtResource("2_s60ry")
+buff_texture = ExtResource("1_yqbew")
+buff_texture2 = ExtResource("2_77qdu")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 800
+wearable_class = "Weapon"
+item_cost = 1000

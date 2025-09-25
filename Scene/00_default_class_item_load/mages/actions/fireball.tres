@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://dbg2viocxx07p"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_8vbls"]
+[ext_resource type="Texture2D" uid="uid://c3iervpjk1o3i" path="res://Scene/00_default_class_item_load/mages/actions/img/fb763.png" id="1_qf03b"]
+
+[resource]
+script = ExtResource("1_8vbls")
+action_name = "FIREBALL"
+action_img = ExtResource("1_qf03b")
+action_type = "Fire"
+action_attribute = 20
+critical_rate = "0%"
+cooldown = 0
+cost = 0
+action_info = "Yes the generic fireball spell, performed by mages, just don't burn yourself"

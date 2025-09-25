@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dr3bt0g5yisk5"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_oxemy"]
+[ext_resource type="Texture2D" uid="uid://c5172qcbytfbm" path="res://Asset/img/buff_skill/Spells/blinding_light_spell.png" id="1_p1jam"]
+[ext_resource type="Texture2D" uid="uid://3falioqa7ax1" path="res://Asset/img/buff_skill/Spells/divine_protection_spell.png" id="2_p4q6g"]
+[ext_resource type="Texture2D" uid="uid://duwur0qh3j3y2" path="res://Scene/shop/item/img/fb2171.png" id="4_7j2vw"]
+
+[resource]
+script = ExtResource("1_oxemy")
+name = "Magia"
+discription = "A relic definitely not from our age, incredibly power and how i got it you asked...best keep it a secret."
+texture = ExtResource("4_7j2vw")
+buff_texture = ExtResource("1_p1jam")
+buff_texture2 = ExtResource("2_p4q6g")
+item_type = "Wearable"
+attribute = "Heal"
+attribute_value = 20
+wearable_class = "Relics"
+item_cost = 1200

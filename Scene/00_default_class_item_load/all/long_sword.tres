@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://buohfmcqh1n18"]
+
+[ext_resource type="Texture2D" uid="uid://do4nwv338bhy0" path="res://Asset/img/icon_buffs/16x16/fa1123.png" id="1_pu44d"]
+[ext_resource type="Texture2D" uid="uid://b6hdvyu6wtq2k" path="res://Asset/img/icon_buffs/16x16/fa1124.png" id="2_dev8c"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="3_bvnl2"]
+[ext_resource type="Texture2D" uid="uid://xam7bu2pqlkp" path="res://Asset/img/icon_buffs/32x32/fb1732.png" id="4_6wbqg"]
+
+[resource]
+script = ExtResource("3_bvnl2")
+name = "Long Sword"
+discription = "A long double-handed sword. it is a balanced weapon."
+texture = ExtResource("4_6wbqg")
+buff_texture = ExtResource("1_pu44d")
+buff_texture2 = ExtResource("2_dev8c")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 20
+wearable_class = "Weapon"
+item_cost = 0

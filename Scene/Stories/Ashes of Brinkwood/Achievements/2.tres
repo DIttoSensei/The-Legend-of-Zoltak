@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Achievements" load_steps=2 format=3 uid="uid://bgj6tgnfp8h7b"]
+
+[ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="1_ctpkw"]
+
+[resource]
+script = ExtResource("1_ctpkw")
+id = "2"
+text = "Defeat your first enemy"
+achieved = false

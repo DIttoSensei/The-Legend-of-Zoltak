@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://0agyaeoaqo3n"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_j8y2v"]
+[ext_resource type="Texture2D" uid="uid://dyg371ctx4my2" path="res://Asset/img/buff_skill/Spells/healing_spell.png" id="1_skp7a"]
+[ext_resource type="Texture2D" uid="uid://cxrpyty7tpguh" path="res://Scene/shop/item/mage/img/staff3.png" id="2_cqy75"]
+[ext_resource type="Texture2D" uid="uid://b28r77b48tqqe" path="res://Asset/img/buff_skill/Spells/thorn_vine_spell.png" id="2_gq6qy"]
+
+[resource]
+script = ExtResource("1_j8y2v")
+name = "Arcanis"
+discription = "Said to be carved from the first tree scholars called sacred. Said to sharpens the user's will."
+texture = ExtResource("2_cqy75")
+buff_texture = ExtResource("1_skp7a")
+buff_texture2 = ExtResource("2_gq6qy")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 900
+wearable_class = "Weapon"
+item_cost = 1050

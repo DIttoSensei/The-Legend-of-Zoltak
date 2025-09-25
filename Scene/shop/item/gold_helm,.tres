@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bbeiguad8yj38"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ncx8x"]
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_qhph8"]
+[ext_resource type="Texture2D" uid="uid://maww22a64s2a" path="res://Asset/img/buff_skill/Buffs/knockback_resistance.png" id="2_vf2q2"]
+[ext_resource type="Texture2D" uid="uid://cphf85fn5s2ov" path="res://Scene/shop/item/img/fb1911.png" id="4_k4qli"]
+
+[resource]
+script = ExtResource("1_ncx8x")
+name = "Gold Helm"
+discription = "Shiny right? you bet, really expensive tho and really good for absorbing hits."
+texture = ExtResource("4_k4qli")
+buff_texture = ExtResource("1_qhph8")
+buff_texture2 = ExtResource("2_vf2q2")
+item_type = "Wearable"
+attribute = "Def"
+attribute_value = 66
+wearable_class = "Headagear"
+item_cost = 180

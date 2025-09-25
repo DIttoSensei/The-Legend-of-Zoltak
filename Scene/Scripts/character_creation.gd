@@ -95,7 +95,7 @@ func check_for_save_profile () -> void:
 		delete_2.visible = true
 		
 		# values from the save file
-		var player_data = JSON.parse_string(save_3.get_as_text())["Player"]
+		var player_data = JSON.parse_string(save_2.get_as_text())["Player"]
 		save_2.close()
 		
 		# create the value to the labels
@@ -209,3 +209,27 @@ func _on_yes_pressed() -> void:
 func _on_exit_pressed() -> void:
 	$Control/CanvasLayer/Control.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$Control/CanvasLayer/Control/notice_board/AnimationPlayer.play("hide")
+
+
+func _on_load_pressed() -> void:
+	GlobalGameSystem.save_name = "SAVE_1.txt"
+	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
+	LevelManager.load_level()
+	GlobalGameSystem.fade_out()
+	pass # Replace with function body.
+
+
+func _on_load2_pressed() -> void:
+	GlobalGameSystem.save_name = "SAVE_2.txt"
+	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
+	LevelManager.load_level()
+	GlobalGameSystem.fade_out()
+	pass # Replace with function body.
+
+
+func _on_load3_pressed() -> void:
+	GlobalGameSystem.save_name = "SAVE_3.txt"
+	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
+	LevelManager.load_level()
+	GlobalGameSystem.fade_out()
+	pass # Replace with function body.

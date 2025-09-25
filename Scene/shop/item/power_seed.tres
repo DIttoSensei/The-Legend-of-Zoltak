@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bixdl4s42wdqk"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_5dgw7"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="1_ng485"]
+[ext_resource type="Texture2D" uid="uid://c4jngglok4pw6" path="res://Asset/img/buff_skill/Buffs/attack_speed_boost.png" id="2_awl5t"]
+[ext_resource type="Texture2D" uid="uid://cmovibvidntfu" path="res://Asset/img/icon_buffs/32x32/fb458.png" id="4_uruv6"]
+
+[resource]
+script = ExtResource("1_5dgw7")
+name = "Power Seed"
+discription = "A strange seed i found in the desert dunes of karta, said to boost the user strength."
+texture = ExtResource("4_uruv6")
+buff_texture = ExtResource("1_ng485")
+buff_texture2 = ExtResource("2_awl5t")
+item_type = "Consumable"
+attribute = "Atk"
+attribute_value = 10
+wearable_class = ""
+item_cost = 20

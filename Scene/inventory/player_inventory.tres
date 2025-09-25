@@ -1,23 +1,8 @@
-[gd_resource type="Resource" script_class="Inventory_data" load_steps=9 format=3 uid="uid://bjwigbfik13vn"]
+[gd_resource type="Resource" script_class="Inventory_data" load_steps=3 format=3 uid="uid://bjwigbfik13vn"]
 
 [ext_resource type="Script" path="res://Scene/inventory/scripts/inventory_data.gd" id="1_ka0nc"]
 [ext_resource type="Script" path="res://Scene/inventory/scripts/slot_data.gd" id="2_x1rmi"]
-[ext_resource type="Resource" uid="uid://d0qfxftoopkjs" path="res://Scene/inventory/items/potion.tres" id="3_ufmto"]
-[ext_resource type="Resource" uid="uid://dwvglemq3llro" path="res://Scene/inventory/items/long_sword.tres" id="4_c6lmp"]
-[ext_resource type="Resource" uid="uid://dbrryvjffvens" path="res://Scene/inventory/items/wooden_shield.tres" id="5_ee42u"]
-
-[sub_resource type="Resource" id="Resource_mgwnv"]
-script = ExtResource("2_x1rmi")
-item_data = ExtResource("3_ufmto")
-
-[sub_resource type="Resource" id="Resource_v1tt6"]
-script = ExtResource("2_x1rmi")
-item_data = ExtResource("4_c6lmp")
-
-[sub_resource type="Resource" id="Resource_7dhmf"]
-script = ExtResource("2_x1rmi")
-item_data = ExtResource("5_ee42u")
 
 [resource]
 script = ExtResource("1_ka0nc")
-slots = Array[ExtResource("2_x1rmi")]([SubResource("Resource_mgwnv"), null, null, null, SubResource("Resource_v1tt6"), null, null, SubResource("Resource_7dhmf"), null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("2_x1rmi")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

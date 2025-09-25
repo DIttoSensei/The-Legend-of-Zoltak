@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://bgcak2g3e7b7m"]
+
+[ext_resource type="Texture2D" uid="uid://dt3v8yu1ujjgn" path="res://Asset/img/buff_skill/Spells/lightning_spell.png" id="1_0qj2j"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_4u7d2"]
+[ext_resource type="Texture2D" uid="uid://ckcbkfi5f4w08" path="res://Asset/img/buff_skill/Spells/mana_replenish.png" id="2_lu7po"]
+[ext_resource type="Texture2D" uid="uid://cwl45ybh8pvpf" path="res://Scene/shop/item/ranger/img/Icon40.png" id="2_wlav7"]
+
+[resource]
+script = ExtResource("1_4u7d2")
+name = "Fulmen"
+discription = "Carved from pure storm metal, this bowgun launches an arcing bolt of pure energy. "
+texture = ExtResource("2_wlav7")
+buff_texture = ExtResource("1_0qj2j")
+buff_texture2 = ExtResource("2_lu7po")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1900
+wearable_class = "Weapon"
+item_cost = 2010

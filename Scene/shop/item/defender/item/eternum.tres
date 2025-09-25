@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://cw0s11ajr8l1d"]
+
+[ext_resource type="Texture2D" uid="uid://cwaqw3njql3q8" path="res://Asset/img/buff_skill/Buffs/defense_boost.png" id="1_le6ao"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ptcj8"]
+[ext_resource type="Texture2D" uid="uid://c78oem1v2x0o4" path="res://Asset/img/buff_skill/Buffs/element_boost.png" id="2_q0dxs"]
+[ext_resource type="Texture2D" uid="uid://blmx4531ebg1r" path="res://Scene/shop/item/defender/img/fb1816.png" id="2_ua4js"]
+
+[resource]
+script = ExtResource("1_ptcj8")
+name = "Eternum"
+discription = "An almost unbreakable shield said to withstand most attacks."
+texture = ExtResource("2_ua4js")
+buff_texture = ExtResource("1_le6ao")
+buff_texture2 = ExtResource("2_q0dxs")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 500
+wearable_class = "Weapon"
+item_cost = 350

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://dofyoomen2gjf"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_11fje"]
+[ext_resource type="Texture2D" uid="uid://dt3v8yu1ujjgn" path="res://Asset/img/buff_skill/Spells/lightning_spell.png" id="1_dclse"]
+[ext_resource type="Texture2D" uid="uid://c5172qcbytfbm" path="res://Asset/img/buff_skill/Spells/blinding_light_spell.png" id="2_eql3u"]
+[ext_resource type="Texture2D" uid="uid://b4shd1crn6sf7" path="res://Scene/shop/item/mage/img/staff4.png" id="4_ewdtc"]
+
+[resource]
+script = ExtResource("1_11fje")
+name = "Nexorin"
+discription = "Ah, careful with this one. They say it remebers the hand that holds it. some call that loyalty some say hunger."
+texture = ExtResource("4_ewdtc")
+buff_texture = ExtResource("1_dclse")
+buff_texture2 = ExtResource("2_eql3u")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1420
+wearable_class = "Weapon"
+item_cost = 1620

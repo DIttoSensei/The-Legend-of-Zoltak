@@ -1,13 +1,13 @@
 [gd_scene load_steps=130 format=3 uid="uid://baxreelvqveec"]
 
 [ext_resource type="Script" path="res://Scene/Scripts/profile_creation.gd" id="1_7tbob"]
-[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/page.png" id="1_hg7ik"]
+[ext_resource type="Texture2D" uid="uid://b6e3xiyn2wk4f" path="res://Asset/img/other/page.png" id="1_hg7ik"]
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="2_15wyu"]
 [ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="3_5c0eg"]
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="4_exa12"]
-[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/Aro_Png.png" id="5_e1uga"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/other/Aro_Png.png" id="5_e1uga"]
 [ext_resource type="Texture2D" uid="uid://cy72cwnt6x8di" path="res://Asset/Rpg1/panelInset_beige.png" id="6_l3t4s"]
-[ext_resource type="Texture2D" uid="uid://bh4gkhyxpl2el" path="res://Asset/img/Frames___Halfframes-removebg-preview.png" id="7_sqptn"]
+[ext_resource type="Texture2D" uid="uid://bh4gkhyxpl2el" path="res://Asset/img/other/Frames___Halfframes-removebg-preview.png" id="7_sqptn"]
 [ext_resource type="Texture2D" uid="uid://bwankljmyiub" path="res://Asset/img/potraits/346-removebg-preview.png" id="8_pyvya"]
 [ext_resource type="Script" path="res://Scene/Scripts/pic.gd" id="9_huhdn"]
 [ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="9_s8eha"]
@@ -584,9 +584,9 @@ Age must be at least 2 characters long."
 Stats_error = "You have 300 points to distribute across all stats. choose wisely. While you can maximize any attribute, beware that extreme imbalances can come with hidden drawbacks"
 Save_display = "SAVING PLEASE WAIT..."
 
-[node name="Page" type="Sprite2D" parent="."]
-position = Vector2(549, 928)
-scale = Vector2(2.01396, 2.4725)
+[node name="Page2" type="Sprite2D" parent="."]
+position = Vector2(537, 1083.84)
+scale = Vector2(2.24782, 2.7596)
 texture = ExtResource("1_hg7ik")
 
 [node name="Control" type="Control" parent="."]
@@ -594,20 +594,24 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 257.0
-offset_top = 283.0
-offset_right = 866.0
-offset_bottom = 349.0
+offset_left = 263.0
+offset_top = 436.0
+offset_right = 872.0
+offset_bottom = 502.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_14fjv")
 theme_override_font_sizes/font_size = 70
 text = "PROFILE CREATION
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
 top_level = true
@@ -615,10 +619,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 93.0
-offset_top = 258.0
-offset_right = -942.0
-offset_bottom = -1612.0
+offset_left = 85.0
+offset_top = 410.0
+offset_right = -950.0
+offset_bottom = -1701.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.2, 2.2)
@@ -633,7 +637,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("5_e1uga")
 
 [node name="ImagePanel" type="Sprite2D" parent="Control"]
-position = Vector2(288.75, 658.479)
+position = Vector2(280.75, 810.479)
 scale = Vector2(4.54301, 4.54301)
 texture = ExtResource("6_l3t4s")
 
@@ -653,14 +657,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 198.0
-offset_top = 904.0
+offset_top = 1048.0
 offset_right = -837.0
-offset_bottom = -966.0
+offset_bottom = -1063.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8, 1.8)
 texture_normal = ExtResource("3_5c0eg")
 texture_pressed = ExtResource("4_exa12")
+stretch_mode = 0
 
 [node name="AroPng-removebg-preview" type="Sprite2D" parent="Control/ImagePanel/left_click"]
 modulate = Color(0.807843, 0.65098, 0.458824, 1)
@@ -675,14 +680,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 307.0
-offset_top = 904.0
+offset_top = 1048.0
 offset_right = -728.0
-offset_bottom = -966.0
+offset_bottom = -1063.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8, 1.8)
 texture_normal = ExtResource("3_5c0eg")
 texture_pressed = ExtResource("4_exa12")
+stretch_mode = 0
 
 [node name="AroPng-removebg-preview" type="Sprite2D" parent="Control/ImagePanel/right_click"]
 modulate = Color(0.807843, 0.65098, 0.458824, 1)
@@ -692,10 +698,10 @@ texture = ExtResource("5_e1uga")
 
 [node name="Profile_data1" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 557.0
-offset_top = 476.0
-offset_right = 1062.0
-offset_bottom = 851.0
+offset_left = 549.0
+offset_top = 628.0
+offset_right = 1054.0
+offset_bottom = 1003.0
 theme_override_constants/separation = 30
 
 [node name="Name" type="Label" parent="Control/Profile_data1"]
@@ -780,11 +786,11 @@ flat = true
 selected = 0
 item_count = 4
 popup/item_0/text = "Humans"
-popup/item_1/text = "Elves"
+popup/item_1/text = "Elf"
 popup/item_1/id = 1
 popup/item_2/text = "Solarians"
 popup/item_2/id = 2
-popup/item_3/text = "Half Elves"
+popup/item_3/text = "Half Elf"
 popup/item_3/id = 3
 
 [node name="FramesHalfframes-removebg-preview" type="Sprite2D" parent="Control/Profile_data1/Race"]
@@ -816,21 +822,18 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a24jj")
 flat = true
 selected = 0
-item_count = 8
+item_count = 6
 popup/item_0/text = "Warrior"
 popup/item_1/text = "Defender"
 popup/item_1/id = 1
-popup/item_2/text = "Mages"
+popup/item_2/text = "Mage"
 popup/item_2/id = 6
 popup/item_3/text = "Summoner"
 popup/item_3/id = 2
 popup/item_4/text = "Ranger"
 popup/item_4/id = 3
-popup/item_5/text = "Gunslinger"
-popup/item_5/id = 4
-popup/item_6/text = "Rouge"
-popup/item_6/id = 5
-popup/item_7/id = 7
+popup/item_5/text = "Rogue"
+popup/item_5/id = 5
 
 [node name="FramesHalfframes-removebg-preview" type="Sprite2D" parent="Control/Profile_data1/Class"]
 modulate = Color(0.576471, 0.368627, 0, 0.466667)
@@ -874,10 +877,10 @@ texture = ExtResource("7_sqptn")
 
 [node name="Stats" type="Label" parent="Control"]
 layout_mode = 2
-offset_left = 474.0
-offset_top = 1039.0
-offset_right = 621.0
-offset_bottom = 1086.0
+offset_left = 466.0
+offset_top = 1191.0
+offset_right = 613.0
+offset_bottom = 1238.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_c50oh")
 theme_override_font_sizes/font_size = 50
@@ -888,10 +891,10 @@ vertical_alignment = 1
 
 [node name="Profile_data2" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 1128.0
-offset_right = 1043.0
-offset_bottom = 1625.0
+offset_left = 158.0
+offset_top = 1280.0
+offset_right = 944.0
+offset_bottom = 1824.0
 theme_override_constants/separation = 24
 script = ExtResource("10_y13vf")
 
@@ -1152,7 +1155,7 @@ grow_vertical = 2
 [node name="notice_board" type="Sprite2D" parent="Control/CanvasLayer/Control"]
 visible = false
 z_index = 1
-position = Vector2(565, 859)
+position = Vector2(541, 1011)
 scale = Vector2(10, 10)
 texture = ExtResource("61_yee55")
 
@@ -1160,17 +1163,18 @@ texture = ExtResource("61_yee55")
 visible = false
 top_level = true
 z_index = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 741.0
-offset_top = 648.0
-offset_right = -294.0
-offset_bottom = -1222.0
+anchor_bottom = 0.888426
+offset_left = 715.0
+offset_top = 801.0
+offset_right = -320.0
+offset_bottom = -1069.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_5c0eg")
 texture_pressed = ExtResource("4_exa12")
+stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="IconCrossBeige" type="Sprite2D" parent="Control/CanvasLayer/Control/notice_board/exit"]
@@ -1202,10 +1206,10 @@ autowrap_mode = 2
 
 [node name="confirm" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 429.0
-offset_top = 1689.0
-offset_right = 619.0
-offset_bottom = 1738.0
+offset_left = 421.0
+offset_top = 1841.0
+offset_right = 611.0
+offset_bottom = 1890.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("63_srj5l")
 texture_pressed = ExtResource("64_tvl8e")
@@ -1213,10 +1217,10 @@ texture_pressed = ExtResource("64_tvl8e")
 [node name="Label2" type="Label" parent="Control"]
 z_index = 1
 layout_mode = 0
-offset_left = 500.0
-offset_top = 1710.0
-offset_right = 647.0
-offset_bottom = 1743.0
+offset_left = 492.0
+offset_top = 1862.0
+offset_right = 639.0
+offset_bottom = 1895.0
 theme_override_fonts/font = SubResource("FontVariation_tt1ad")
 theme_override_font_sizes/font_size = 35
 text = "CONFIRM"

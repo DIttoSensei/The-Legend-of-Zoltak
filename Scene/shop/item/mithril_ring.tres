@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://7ryvxsioqsen"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_nt0bc"]
+[ext_resource type="Texture2D" uid="uid://bbk32ktmykpgs" path="res://Asset/img/buff_skill/Buffs/critical_boost.png" id="1_pck4f"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="2_5ous4"]
+[ext_resource type="Texture2D" uid="uid://br0go3a3sobjt" path="res://Scene/shop/item/img/fb1847.png" id="2_k7yc2"]
+
+[resource]
+script = ExtResource("1_nt0bc")
+name = "Mithril Ring"
+discription = "Wearing this enhaces and grant you insight on your foes weakness."
+texture = ExtResource("2_k7yc2")
+buff_texture = ExtResource("1_pck4f")
+buff_texture2 = ExtResource("2_5ous4")
+item_type = "Wearable"
+attribute = "Crit"
+attribute_value = 22
+wearable_class = "Relics"
+item_cost = 110

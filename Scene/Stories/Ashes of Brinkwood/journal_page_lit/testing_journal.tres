@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="JournalPage" load_steps=3 format=3 uid="uid://6qaacvxw3jvb"]
 
 [ext_resource type="Script" path="res://Scene/journal/journal_page.gd" id="1_abn4e"]
-[ext_resource type="Texture2D" uid="uid://6iyosni310om" path="res://Asset/img/HeartIcons_32x32.png" id="2_qhq4c"]
+[ext_resource type="Texture2D" uid="uid://cwxmgxk86s8yy" path="res://Asset/img/other/def.png" id="2_k8kxs"]
 
 [resource]
 script = ExtResource("1_abn4e")
 heading = "CYCLOPS"
-texture_rect = ExtResource("2_qhq4c")
-info = "This is a test page to see how i can handle multiple journal page and how i can feel gigachad about it."
+texture_rect = ExtResource("2_k8kxs")
+info = "\"we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once)."

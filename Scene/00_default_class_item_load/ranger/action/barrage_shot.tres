@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bujme01ioigxv"]
+
+[ext_resource type="Texture2D" uid="uid://k7nxrrlbibp" path="res://Scene/00_default_class_item_load/ranger/img/fb1136.png" id="1_j3mxh"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_vfrqr"]
+
+[resource]
+script = ExtResource("1_vfrqr")
+action_name = "BARRAGE SHOT"
+action_img = ExtResource("1_j3mxh")
+action_type = "Physical"
+action_attribute = 35
+critical_rate = "2%"
+cooldown = 1
+cost = 0
+action_info = "Fire a barrage of shots into the air, hitting your enimies from all angles."

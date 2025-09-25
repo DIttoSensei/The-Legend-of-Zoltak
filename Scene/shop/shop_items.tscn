@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1c5oo5nt350y"]
+
+[ext_resource type="Texture2D" uid="uid://bx0o37p4rbgjj" path="res://Asset/img/other/panel-removebg-preview.png" id="1_71ukq"]
+[ext_resource type="Script" path="res://Scene/shop/scripts/shop_items.gd" id="1_yfuvj"]
+[ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="2_tau20"]
+[ext_resource type="Texture2D" uid="uid://6iyosni310om" path="res://Asset/img/other/HeartIcons_32x32.png" id="3_x3qas"]
+[ext_resource type="Texture2D" uid="uid://1ttd8whwn3in" path="res://Asset/img/buff_skill/Buffs/regeneration.png" id="4_iy5oa"]
+[ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="5_b7vne"]
+[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="6_4gcfk"]
+[ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="7_5dwkr"]
+[ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="8_5aift"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="10_iud11"]
+
+[sub_resource type="FontVariation" id="FontVariation_1ll32"]
+base_font = ExtResource("6_4gcfk")
+
+[node name="shop_items" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yfuvj")
+
+[node name="Info_board" type="Sprite2D" parent="."]
+position = Vector2(138, 261)
+rotation = 1.5708
+scale = Vector2(2.16734, 2.29185)
+texture = ExtResource("1_71ukq")
+
+[node name="back" type="TextureRect" parent="Info_board"]
+offset_left = -80.1333
+offset_top = -54.0722
+offset_right = 12.8667
+offset_bottom = 39.9278
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_tau20")
+
+[node name="item_icon" type="TextureRect" parent="Info_board"]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -76.2408
+offset_top = -2.25802
+offset_right = -28.2408
+offset_bottom = 45.742
+rotation = -1.5708
+texture = ExtResource("3_x3qas")
+
+[node name="buff texture" type="TextureRect" parent="Info_board"]
+custom_minimum_size = Vector2(24, 24)
+offset_left = -22.4591
+offset_top = 51.1313
+offset_right = 1.54086
+offset_bottom = 75.1313
+rotation = -1.5708
+texture = ExtResource("4_iy5oa")
+
+[node name="buff texture2" type="TextureRect" parent="Info_board"]
+custom_minimum_size = Vector2(24, 24)
+offset_left = -22.4591
+offset_top = 27.6166
+offset_right = 1.54086
+offset_bottom = 51.6166
+rotation = -1.5708
+texture = ExtResource("5_b7vne")
+
+[node name="name" type="Label" parent="Info_board"]
+offset_left = -105.0
+offset_top = 56.0
+offset_right = 40.0
+offset_bottom = 71.0
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_1ll32")
+theme_override_font_sizes/font_size = 0
+text = "baserker"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="attribute" type="Label" parent="Info_board"]
+offset_left = -65.3769
+offset_top = 41.3746
+offset_right = -31.3769
+offset_bottom = 74.3746
+rotation = -1.5708
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_1ll32")
+theme_override_font_sizes/font_size = 0
+text = "Heal +30"
+autowrap_mode = 2
+
+[node name="item_type" type="Label" parent="Info_board"]
+offset_left = -19.5607
+offset_top = -0.293274
+offset_right = 67.4393
+offset_bottom = 14.7067
+rotation = -1.5708
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.241156, 0.241156, 0.241156, 1)
+theme_override_fonts/font = SubResource("FontVariation_1ll32")
+theme_override_font_sizes/font_size = 0
+text = "Consumable"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="discription" type="Label" parent="Info_board"]
+offset_left = 8.0
+offset_top = 51.0
+offset_right = 166.0
+offset_bottom = 163.0
+rotation = -1.5708
+scale = Vector2(0.65, 0.65)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_1ll32")
+theme_override_font_sizes/font_size = 0
+text = "A magical item that heals your wounds to a specific amount."
+autowrap_mode = 2
+
+[node name="action" type="TextureButton" parent="Info_board"]
+offset_left = 81.9221
+offset_top = 46.924
+offset_right = 271.922
+offset_bottom = 95.924
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_5dwkr")
+texture_pressed = ExtResource("8_5aift")
+
+[node name="cost" type="Label" parent="Info_board/action"]
+layout_mode = 0
+offset_left = 7.87266
+offset_top = 11.0735
+offset_right = 185.873
+offset_bottom = 40.0735
+theme = ExtResource("10_iud11")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 27
+text = "200 Coins"
+horizontal_alignment = 1
+vertical_alignment = 1

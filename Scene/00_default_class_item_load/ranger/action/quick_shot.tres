@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://diosfoavcv3lr"]
+
+[ext_resource type="Texture2D" uid="uid://5fghcym40m42" path="res://Scene/00_default_class_item_load/ranger/img/fb1100.png" id="1_g2byg"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_lo8xs"]
+
+[resource]
+script = ExtResource("1_lo8xs")
+action_name = "QUICK SHOT"
+action_img = ExtResource("1_g2byg")
+action_type = "Physical"
+action_attribute = 10
+critical_rate = "0%"
+cooldown = 0
+cost = 0
+action_info = "Quickly fire off a single shot at the target."

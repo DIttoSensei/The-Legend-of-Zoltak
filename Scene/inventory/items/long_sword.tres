@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_vghat")
-name = "Longsword"
+name = "Long Sword"
 discription = "A long double-handed sword. it is a balanced weapon."
 texture = ExtResource("4_euj4c")
 buff_texture = ExtResource("1_o1iny")
@@ -16,3 +16,4 @@ item_type = "Wearable"
 attribute = "Atk"
 attribute_value = 56
 wearable_class = "Weapon"
+item_cost = 0

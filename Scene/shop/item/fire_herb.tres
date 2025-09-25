@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://cs5hew8cg1xtf"]
+
+[ext_resource type="Texture2D" uid="uid://dsbv3h3q5hpch" path="res://Asset/img/icon_buffs/16x16/tile005.png" id="1_n24ns"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_perjy"]
+[ext_resource type="Texture2D" uid="uid://dsvhv8kdcdbvt" path="res://Asset/img/icon_buffs/16x16/tile014.png" id="2_jrfqw"]
+[ext_resource type="Texture2D" uid="uid://1lf3ep3uha3r" path="res://Asset/img/icon_buffs/32x32/fb261.png" id="4_wxspi"]
+
+[resource]
+script = ExtResource("1_perjy")
+name = "Fire Herb"
+discription = "Grows in the dunes of karta, carefull, it might be too hot to handle, consume with caution!!"
+texture = ExtResource("4_wxspi")
+buff_texture = ExtResource("1_n24ns")
+buff_texture2 = ExtResource("2_jrfqw")
+item_type = "Consumable"
+attribute = "Fire"
+attribute_value = 25
+wearable_class = ""
+item_cost = 150

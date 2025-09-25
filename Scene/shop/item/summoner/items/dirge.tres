@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://c5yfkj0g4aod4"]
+
+[ext_resource type="Texture2D" uid="uid://dwpfi0j0iryho" path="res://Asset/img/buff_skill/Buffs/glow.png" id="1_ebfrj"]
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_ilfcx"]
+[ext_resource type="Texture2D" uid="uid://c40ygp6fduws2" path="res://Asset/img/buff_skill/Spells/teleportation_spell.png" id="2_6j5hg"]
+[ext_resource type="Texture2D" uid="uid://c762komnp8nng" path="res://Scene/shop/item/summoner/img/q.png" id="2_ttkpu"]
+
+[resource]
+script = ExtResource("1_ilfcx")
+name = "Dirge"
+discription = "A perfectly balanced staff just like it counterpart, makes summoning spells more potent."
+texture = ExtResource("2_ttkpu")
+buff_texture = ExtResource("1_ebfrj")
+buff_texture2 = ExtResource("2_6j5hg")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 500
+wearable_class = "Weapon"
+item_cost = 700

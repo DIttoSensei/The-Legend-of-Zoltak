@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Itemdata" load_steps=5 format=3 uid="uid://cq2o1sh1nfv7e"]
+
+[ext_resource type="Script" path="res://Scene/inventory/scripts/resource_item_data.gd" id="1_l16hv"]
+[ext_resource type="Texture2D" uid="uid://dbpj33ocxykdv" path="res://Asset/img/buff_skill/Spells/frenzy_spell_(critical_booster).png" id="1_tyx2h"]
+[ext_resource type="Texture2D" uid="uid://b8f6vad078mia" path="res://Asset/img/buff_skill/Debuffs/cursed_(disarmed+silenced).png" id="2_f6twe"]
+[ext_resource type="Texture2D" uid="uid://rvjfjoavjqh7" path="res://Scene/shop/item/ranger/img/Icon4.png" id="2_nicse"]
+
+[resource]
+script = ExtResource("1_l16hv")
+name = "Vexillum"
+discription = "Now this one, i pulled from a strange temple up north. The stone was cold but bow was hot...be careful."
+texture = ExtResource("2_nicse")
+buff_texture = ExtResource("1_tyx2h")
+buff_texture2 = ExtResource("2_f6twe")
+item_type = "Wearable"
+attribute = "Atk"
+attribute_value = 1050
+wearable_class = "Weapon"
+item_cost = 1200

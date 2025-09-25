@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://57xbqki24df1"]
+
+[ext_resource type="Texture2D" uid="uid://21jfttoct1xf" path="res://Scene/00_default_class_item_load/summoner/img/fb867.png" id="1_0f8om"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_hm4ju"]
+
+[resource]
+script = ExtResource("1_hm4ju")
+action_name = "MIND SPIKE"
+action_img = ExtResource("1_0f8om")
+action_type = "Defence Breaker"
+action_attribute = 45
+critical_rate = "2%"
+cooldown = 1
+cost = 0
+action_info = "Fire a sharp psychic  bolt at a single enemy, ignoring their defense."
