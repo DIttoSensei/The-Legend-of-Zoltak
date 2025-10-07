@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://cn7h3acxd1hug"]
+
+[ext_resource type="Texture2D" uid="uid://768ji832msij" path="res://Scene/shop/item/warrior/img/fb1022.png" id="1_mkyo1"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="2_765wc"]
+
+[resource]
+script = ExtResource("2_765wc")
+action_name = "TENEBRIS"
+action_img = ExtResource("1_mkyo1")
+action_type = "Ice"
+action_attribute = 180
+critical_rate = "40%"
+cooldown = 3
+cost = 230
+action_info = "Strike with a blade of glacial frost, sending shards that sinks deep in your foes flesh."

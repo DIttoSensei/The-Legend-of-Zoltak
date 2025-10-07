@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bsenebs0lnveb"]
+
+[ext_resource type="Texture2D" uid="uid://c17tvryc5rpeu" path="res://Scene/shop/item/mage/img/tile134.png" id="1_2mngj"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_7f0hu"]
+
+[resource]
+script = ExtResource("1_7f0hu")
+action_name = "VOLTARIUS"
+action_img = ExtResource("1_2mngj")
+action_type = "Lightling"
+action_attribute = 250
+critical_rate = "39%"
+cooldown = 1
+cost = 290
+action_info = "Strike with concentrated lightning, each bolt crashing with crackling power."

@@ -12,3 +12,8 @@ func fade_in () -> void:
 func fade_out () -> void:
 	animation_player.play("fade_out")
 	
+func battle_open () -> void:
+	animation_player.play("battle_open")
+	
+func battle_close () -> void:
+	animation_player.play("battle_close")

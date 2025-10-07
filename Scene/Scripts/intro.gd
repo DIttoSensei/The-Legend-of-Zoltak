@@ -38,11 +38,14 @@ Across this shadowed realm, where ancient stones hum with forgotten magic and th
 func _input(event: InputEvent) -> void:
 	if input_locked:
 		return
+	if ConfirmQuit.show == true:
+		return
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
 			input_locked = true
 			counter = 600
 			
+			ConfirmQuit.loading = true
 			await get_tree().create_timer(2).timeout
 			
 			LevelManager.load_new_level = "res://Scene/Stories/story_select.tscn"

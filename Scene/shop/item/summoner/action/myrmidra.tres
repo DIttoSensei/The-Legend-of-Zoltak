@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://cf1ppwl7mk5gb"]
+
+[ext_resource type="Texture2D" uid="uid://b2s0av6b4iuw7" path="res://Scene/shop/item/summoner/img/tile365.png" id="1_gtu01"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_unqoq"]
+
+[resource]
+script = ExtResource("1_unqoq")
+action_name = "MYRMIDRA"
+action_img = ExtResource("1_gtu01")
+action_type = "Psychic"
+action_attribute = 190
+critical_rate = "30%"
+cooldown = 1
+cost = 220
+action_info = "Summon a towering, half-formed entity of pure psyche, tethered to your will and fury."

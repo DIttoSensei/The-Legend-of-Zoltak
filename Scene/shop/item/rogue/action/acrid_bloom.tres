@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://d3un7h0fcsx2w"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_kmbtt"]
+[ext_resource type="Texture2D" uid="uid://cwsn40owvxdts" path="res://Scene/shop/item/rogue/img/fb1096.png" id="1_tgka5"]
+
+[resource]
+script = ExtResource("1_kmbtt")
+action_name = "ACRID BLOOM"
+action_img = ExtResource("1_tgka5")
+action_type = "Poison"
+action_attribute = 199
+critical_rate = "30%"
+cooldown = 3
+cost = 234
+action_info = "Hurl a vial that bursts into a choking cloud, forcing enemies to stagger and gasp for air."

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bc5w5swbs607g"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_eq2vl"]
+[ext_resource type="Texture2D" uid="uid://mfarh7ew1kng" path="res://Scene/shop/item/summoner/img/fb1120.png" id="1_lk5ql"]
+
+[resource]
+script = ExtResource("1_eq2vl")
+action_name = "MINDVEIL"
+action_img = ExtResource("1_lk5ql")
+action_type = "Defence"
+action_attribute = 130
+critical_rate = "0%"
+cooldown = 2
+cost = 195
+action_info = "Project a shimmering psychic barrier around you that increases your defences."

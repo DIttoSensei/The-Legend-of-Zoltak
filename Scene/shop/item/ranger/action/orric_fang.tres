@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://6aw5x253jwok"]
+
+[ext_resource type="Texture2D" uid="uid://dxlgqmbma4ren" path="res://Scene/shop/item/ranger/img/fb1134.png" id="1_l68i2"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_s8xge"]
+
+[resource]
+script = ExtResource("1_s8xge")
+action_name = "ORRIC FANG"
+action_img = ExtResource("1_l68i2")
+action_type = "Physical"
+action_attribute = 147
+critical_rate = "32%"
+cooldown = 0
+cost = 200
+action_info = "A projectile sharpened with violent arcane energy, embedding itself before bursting outwards with force."

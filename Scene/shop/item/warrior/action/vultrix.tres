@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://du6y5np5icqhn"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_84cvg"]
+[ext_resource type="Texture2D" uid="uid://dwi7tswumujcf" path="res://Scene/shop/item/warrior/img/fb722.png" id="1_ib1v1"]
+
+[resource]
+script = ExtResource("1_84cvg")
+action_name = "VULTRIX"
+action_img = ExtResource("1_ib1v1")
+action_type = "Physical"
+action_attribute = 200
+critical_rate = "11%"
+cooldown = 2
+cost = 297
+action_info = "Strike with the precision of a hawk decending, shattering the enemy's balance."

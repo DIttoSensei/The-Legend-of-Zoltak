@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://c5w6dmvryahbj"]
+[gd_scene load_steps=109 format=3 uid="uid://c5w6dmvryahbj"]
 
 [ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/other/bg.png" id="1_uovk4"]
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/scripts/main.gd" id="1_v0woh"]
@@ -61,6 +61,7 @@
 [ext_resource type="Script" path="res://Scene/action/action_container.gd" id="59_yrogb"]
 [ext_resource type="Resource" uid="uid://de1nrsf3lefo3" path="res://Scene/action/player_action.tres" id="60_0jsf2"]
 [ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="61_ua548"]
+[ext_resource type="Texture2D" uid="uid://cq6jnv2pkh8dt" path="res://Asset/img/other/1000017210.png" id="62_60vvj"]
 [ext_resource type="Texture2D" uid="uid://0rdtkdgdpn6q" path="res://Asset/img/other/back.png" id="63_rvjtd"]
 [ext_resource type="Script" path="res://Scene/achievements/achievements_container.gd" id="64_ox1yo"]
 [ext_resource type="PackedScene" uid="uid://bv38f7qkwiqwi" path="res://Scene/achievements/achievement_ui.tscn" id="64_qeot7"]
@@ -2126,6 +2127,14 @@ z_index = 1
 position = Vector2(38.1666, 35.125)
 scale = Vector2(3.58333, 3.58333)
 texture = ExtResource("44_6srf8")
+
+[node name="img" type="TextureRect" parent="Control/action display"]
+modulate = Color(0.111197, 0.111197, 0.111197, 0.329412)
+offset_left = 586.0
+offset_top = 888.0
+offset_right = 1028.0
+offset_bottom = 1330.0
+texture = ExtResource("62_60vvj")
 
 [node name="achivement2" type="Sprite2D" parent="Control"]
 visible = false

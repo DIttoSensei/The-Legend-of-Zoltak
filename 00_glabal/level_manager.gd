@@ -13,11 +13,13 @@ func _process(_delta: float) -> void:
 	pass
 
 func load_level () -> void :
+	ConfirmQuit.loading = true #make sure the confirm quit notification dose not interuot any thing
 	SceneTransition.fade_out()
 	await  get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file(load_new_level)
 	SceneTransition.fade_in()
-	
+	ConfirmQuit.loading = false
+	ConfirmQuit.show = false
 	pass
 
 func load_level_single_transition () -> void :
