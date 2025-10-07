@@ -34,5 +34,10 @@ func update_action_shop () -> void:
 	for s in shop_actions.actions:
 		var new_slot = ACTION_SLOT.instantiate()
 		add_child(new_slot)
+		
+		if new_slot.item == true:
+			new_slot.is_purchased()
+			pass
+		
 		move_child(padding, get_child_count() - 1)
 		new_slot.slot_data = s

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Enemies_res" load_steps=4 format=3 uid="uid://bt76v0cm4nb3a"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_2gedn"]
+[ext_resource type="Script" path="res://Scene/battle/scripts/enemies_res.gd" id="2_mqmv0"]
+[ext_resource type="Resource" uid="uid://dq7i0ymldk8q0" path="res://Scene/enemies/unknown/actions/eclipse_slash.tres" id="2_twl37"]
+
+[resource]
+script = ExtResource("2_mqmv0")
+name = "???"
+hp = 300
+atk = 150
+def = 75
+dex = 55
+actions = Array[ExtResource("1_2gedn")]([ExtResource("2_twl37")])

@@ -8,7 +8,7 @@
 			"music" : "",
 			"text": "If you find yourself repeating this for 5+ stories later, we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once).",
 			"choice_1": {
-				"choice" : "🔹 snow white",
+				"choice" : "🔹 fight",
 				"outcome_1" : {"text" : "This is the first outcome congratulation you passed",
 							"next_page" : "page_2",
 							"reward" : {

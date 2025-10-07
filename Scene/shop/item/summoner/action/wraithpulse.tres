@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://pol166iima1l"]
+
+[ext_resource type="Texture2D" uid="uid://baalqn1awjbpu" path="res://Scene/shop/item/summoner/img/fb1432.png" id="1_8hydk"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_yip5p"]
+
+[resource]
+script = ExtResource("1_yip5p")
+action_name = "WRAITHPULSE"
+action_img = ExtResource("1_8hydk")
+action_type = "Psychic"
+action_attribute = 110
+critical_rate = "10%"
+cooldown = 1
+cost = 150
+action_info = "Release a psychic shockwave that rattles the mind and nerves of your foes."

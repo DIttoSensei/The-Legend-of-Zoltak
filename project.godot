@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Zoltak"
 run/main_scene="res://Scene/Start Menu.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +22,7 @@ GlobalGameSystem="*res://Scene/global/global-game_system.tscn"
 SceneTransition="*res://Scene/scene_transition.tscn"
 LevelManager="*res://00_glabal/level_manager.gd"
 SignalManager="*res://00_glabal/signal_manager.gd"
+ConfirmQuit="*res://00_glabal/confirm_quit.gd"
 
 [display]
 
@@ -37,10 +39,16 @@ folder_colors={
 "res://Scene/achievements/": "teal",
 "res://Scene/action/": "red",
 "res://Scene/battle/": "pink",
+"res://Scene/enemies/": "teal",
 "res://Scene/inventory/": "yellow",
 "res://Scene/journal/": "blue",
 "res://Scene/shop/": "purple"
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
 
 [rendering]
 

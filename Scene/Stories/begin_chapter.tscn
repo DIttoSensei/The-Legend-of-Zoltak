@@ -92,6 +92,7 @@ _data = {
 }
 
 [node name="BeginChapter" type="CanvasLayer"]
+layer = 6
 script = ExtResource("1_igg4w")
 
 [node name="Control" type="Control" parent="."]

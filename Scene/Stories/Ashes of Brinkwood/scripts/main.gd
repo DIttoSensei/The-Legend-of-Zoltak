@@ -57,6 +57,7 @@ func load_player_save_file () -> void:
 	cha.text = str(player_data["Cha"])
 	
 	page.current_coin = player_data["currency"]
+	GlobalGameSystem.player_coin = player_data["currency"]
 	coin.text = str(page.current_coin)
 	
 	player_name.text = player_data["Name"]

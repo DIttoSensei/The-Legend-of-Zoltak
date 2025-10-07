@@ -131,6 +131,7 @@ texture_normal = ExtResource("8_tu56f")
 texture_pressed = ExtResource("9_exbwj")
 
 [node name="cost" type="Label" parent="Info_board/action"]
+layout_mode = 0
 offset_left = 7.87266
 offset_top = 11.0735
 offset_right = 185.873
@@ -141,3 +142,5 @@ theme_override_font_sizes/font_size = 27
 text = "200 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Info_board/action" to="." method="_on_action_pressed"]

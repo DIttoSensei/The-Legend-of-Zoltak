@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bvw60gslwn3rp"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_82at6"]
+[ext_resource type="Texture2D" uid="uid://dnu6omb26jn20" path="res://Scene/shop/item/rogue/img/fb1432.png" id="1_fi4el"]
+
+[resource]
+script = ExtResource("1_82at6")
+action_name = "NIGHTBANE"
+action_img = ExtResource("1_fi4el")
+action_type = "Shadow"
+action_attribute = 179
+critical_rate = "71%"
+cooldown = 3
+cost = 260
+action_info = "Trap your enemies awith their own shadow, holding them in place for the kill."

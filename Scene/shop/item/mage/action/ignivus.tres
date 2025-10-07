@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://fsure5cbk7qx"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_6d2a5"]
+[ext_resource type="Texture2D" uid="uid://crccrdth22j5o" path="res://Scene/shop/item/mage/img/fb1358.png" id="1_euxp8"]
+
+[resource]
+script = ExtResource("1_6d2a5")
+action_name = "IGNIVUS"
+action_img = ExtResource("1_euxp8")
+action_type = "Fire"
+action_attribute = 285
+critical_rate = "50%"
+cooldown = 4
+cost = 400
+action_info = "Channel fiery energy into a single explosion impact, vaporizing everything nearby"

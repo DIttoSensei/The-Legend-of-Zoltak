@@ -1,6 +1,206 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=62 format=3 uid="uid://c4t5kvfjhunpx"]
 
+[ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
+[ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
 [ext_resource type="Texture2D" uid="uid://brmswa1wokuoc" path="res://Scene/battle/img/Sword.png" id="1_ttno8"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="3_2yx7k"]
+[ext_resource type="Texture2D" uid="uid://bvr7bb1dfru48" path="res://Asset/img/other/UI_TravelBook_BookCover01a.png" id="3_on3gw"]
+[ext_resource type="Texture2D" uid="uid://dkob2a1fer0se" path="res://Scene/battle/img/BlackBigCircleBoxWithBorder_27x27.png" id="4_hfemv"]
+[ext_resource type="Texture2D" uid="uid://do1085ymeotak" path="res://Scene/battle/img/RRIOF117.png" id="6_000pf"]
+[ext_resource type="Texture2D" uid="uid://sdmghheg7vy2" path="res://Scene/battle/img/player/idle/idle-1.png" id="6_kehkn"]
+[ext_resource type="Texture2D" uid="uid://hccw46gk0d3h" path="res://Scene/battle/img/RRIOF170.png" id="7_njvj5"]
+[ext_resource type="Texture2D" uid="uid://d2h7e4xodx8x" path="res://Scene/battle/img/player/idle/idle-2.png" id="7_wwd1b"]
+[ext_resource type="Texture2D" uid="uid://d3bef3r73qpan" path="res://Scene/battle/img/player/hit/hit-idle-B1.png" id="8_2jkl1"]
+[ext_resource type="Texture2D" uid="uid://c5r7m20juri52" path="res://Scene/battle/img/RRIOF102.png" id="8_62hia"]
+[ext_resource type="Texture2D" uid="uid://dbbanmjewi1n4" path="res://Scene/battle/img/player/death/dead-1.png" id="8_ffqlq"]
+[ext_resource type="Texture2D" uid="uid://ch0p3o6pv4qw1" path="res://Scene/battle/img/player/idle/idle-3.png" id="8_p12xu"]
+[ext_resource type="Texture2D" uid="uid://dnouofidhqf04" path="res://Scene/battle/img/player/hit/hit-idle-B2.png" id="9_ciugx"]
+[ext_resource type="Texture2D" uid="uid://c6i2u2ogtxmqs" path="res://Scene/battle/img/player/death/dead-2.png" id="9_lt8hm"]
+[ext_resource type="Texture2D" uid="uid://dwvg3jw1jlqv7" path="res://Scene/battle/img/player/idle/idle-4.png" id="9_pleql"]
+[ext_resource type="Texture2D" uid="uid://bgkk1dgbkhbsn" path="res://Scene/battle/img/player/death/dead-3.png" id="10_3rkal"]
+[ext_resource type="Texture2D" uid="uid://bju4uqk0so52" path="res://Scene/battle/img/player/hit/hit-idle-B3.png" id="10_hwdsj"]
+[ext_resource type="Texture2D" uid="uid://4fa06i7id786" path="res://Scene/battle/img/player/idle/idle-5.png" id="10_v6wlb"]
+[ext_resource type="Texture2D" uid="uid://dx2tephhn3dif" path="res://Scene/battle/img/player/idle/idle-6.png" id="11_0xwpy"]
+[ext_resource type="Texture2D" uid="uid://kd2rcush75ub" path="res://Scene/battle/img/player/hit/hit-idle-B4.png" id="11_kgt87"]
+[ext_resource type="Texture2D" uid="uid://px6kwhru2ell" path="res://Scene/battle/img/player/death/dead-4.png" id="11_s7qj1"]
+[ext_resource type="Texture2D" uid="uid://6et3w43t1282" path="res://Scene/battle/img/player/death/dead-5.png" id="12_eetsk"]
+[ext_resource type="Texture2D" uid="uid://dgypqmgd8jcpe" path="res://Scene/battle/img/shadow.png" id="12_mk0ay"]
+[ext_resource type="Texture2D" uid="uid://cjp8erylifd25" path="res://Scene/battle/img/player/death/dead-6.png" id="13_e3im7"]
+[ext_resource type="Texture2D" uid="uid://vcwm7qr87chl" path="res://Scene/battle/img/ValueBar_128x16.png" id="13_flhh8"]
+[ext_resource type="Texture2D" uid="uid://cum8k2x5dnv4i" path="res://Scene/battle/img/ValueRed_120x8.png" id="14_oagbb"]
+[ext_resource type="Script" path="res://Scene/battle/scripts/player.gd" id="27_tgnco"]
+[ext_resource type="Texture2D" uid="uid://dy1bp0t2liucw" path="res://Asset/img/other/TopPatternPanel_01_33x15.png" id="29_jthgu"]
+[ext_resource type="Script" path="res://Scene/battle/scripts/enemy.gd" id="29_swj24"]
+[ext_resource type="Resource" uid="uid://bt76v0cm4nb3a" path="res://Scene/enemies/unknown/unknown.tres" id="30_fvq2s"]
+[ext_resource type="Texture2D" uid="uid://dsfbf0rmjvu6q" path="res://Asset/img/other/UI_TravelBook_BookPageLeft01a.png" id="32_x2q0k"]
+[ext_resource type="Texture2D" uid="uid://bliubbb01uqxj" path="res://Asset/img/other/RectangleBox_96x96.png" id="33_63pvn"]
+[ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="33_x34up"]
+[ext_resource type="Script" path="res://Scene/action/action_container.gd" id="34_66713"]
+[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="34_bi16b"]
+[ext_resource type="Resource" uid="uid://de1nrsf3lefo3" path="res://Scene/action/player_action.tres" id="35_b2vtp"]
+[ext_resource type="Texture2D" uid="uid://djxabns8rx41n" path="res://Asset/img/other/CornerKnot_14x14.png" id="35_wigx7"]
+[ext_resource type="PackedScene" uid="uid://cpjurvrjir8xj" path="res://Scene/action/action_slot.tscn" id="36_gdgg1"]
+[ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="36_yguym"]
+[ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="37_uunbn"]
+[ext_resource type="Texture2D" uid="uid://canhkp50tvj17" path="res://Asset/img/buff_skill/Buffs/attack_boost.png" id="37_vbsv1"]
+[ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="38_bstnl"]
+[ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="39_m48vh"]
+[ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="40_xeo1j"]
+[ext_resource type="Texture2D" uid="uid://cq6jnv2pkh8dt" path="res://Asset/img/other/1000017210.png" id="41_xvxjd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wv1i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ffqlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lt8hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3rkal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s7qj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eetsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e3im7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2jkl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ciugx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hwdsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kgt87")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 6.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kehkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wwd1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p12xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pleql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0xwpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v6wlb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dnco"]
+radius = 32.9627
+
+[sub_resource type="Animation" id="Animation_or5qt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dmg hit:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dmg hit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14.9489, -33.9854)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dmg hit:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1iyxf"]
+resource_name = "dmg"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dmg hit:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dmg hit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-14.9489, -33.9854), Vector2(-0.700731, -46.5985)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dmg hit:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7diw"]
+_data = {
+"RESET": SubResource("Animation_or5qt"),
+"dmg": SubResource("Animation_1iyxf")
+}
 
 [sub_resource type="Animation" id="Animation_wm37n"]
 length = 0.001
@@ -28,6 +228,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39.499, 11.681)]
+}
 
 [sub_resource type="Animation" id="Animation_0bsxo"]
 resource_name = "attack_1"
@@ -53,12 +265,23 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(39.4991, 11.681), Vector2(-51.635, 0), Vector2(39.4991, 11.681)]
 }
 
 [sub_resource type="Animation" id="Animation_jwogv"]
 resource_name = "idle"
-length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -67,10 +290,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.433333, 0.566667, 0.7, 0.866667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 7]
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqraf"]
@@ -80,7 +303,52 @@ _data = {
 "idle": SubResource("Animation_jwogv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymodm"]
+radius = 7.5589
+
+[sub_resource type="FontVariation" id="FontVariation_cqkfq"]
+base_font = ExtResource("34_bi16b")
+
+[sub_resource type="Animation" id="Animation_k8yix"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("counter:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["20"]
+}
+
+[sub_resource type="Animation" id="Animation_m4lal"]
+resource_name = "roll_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("counter:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["20", "7", "2", "8", "5", "15", "7", "19", "14", "4", "17", "9", "1", "8", "9", "1", "11", "5", "2", "16", "5", "13", "18", "8", "2", "3", "6", "17", "11", "1", "4"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kg1cp"]
+_data = {
+"RESET": SubResource("Animation_k8yix"),
+"roll_animation": SubResource("Animation_m4lal")
+}
+
 [node name="BattleScene" type="Node2D"]
+position = Vector2(5, 0)
+script = ExtResource("1_td1xy")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -90,14 +358,670 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="???" type="Sprite2D" parent="Control"]
-position = Vector2(289, 256)
+[node name="bg" type="PanelContainer" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_left = -8.0
+offset_top = 142.0
+offset_right = 1078.0
+offset_bottom = 1141.0
+
+[node name="bg" type="Sprite2D" parent="Control/bg"]
+modulate = Color(0.582376, 0.582376, 0.582376, 1)
+position = Vector2(500.625, 586.75)
+scale = Vector2(2.20986, 2.20986)
+texture = ExtResource("1_fawxu")
+
+[node name="top info" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -17.0
+offset_right = 1084.0
+offset_bottom = 161.0
+color = Color(0, 0, 0, 1)
+
+[node name="announcer" type="RichTextLabel" parent="Control/top info"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 86.0
+offset_right = 924.0
+offset_bottom = 126.0
+theme = ExtResource("3_2yx7k")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Timer" type="Timer" parent="Control/top info"]
+wait_time = 0.05
+
+[node name="buttom" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = 1136.0
+offset_right = 1084.0
+offset_bottom = 1230.0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="PanelContainer" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_left = -6.0
+offset_top = 1229.0
+offset_right = 1078.0
+offset_bottom = 2166.0
+
+[node name="PanelBrown" type="Sprite2D" parent="Control/Panel"]
+modulate = Color(0.155695, 0.148494, 0.14539, 1)
+position = Vector2(544.187, 1101.91)
+rotation = 1.5708
+scale = Vector2(10.0578, 7.96748)
+texture = ExtResource("3_on3gw")
+
+[node name="attack" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 1377.0
+offset_right = 775.0
+offset_bottom = 1824.0
+texture_normal = ExtResource("4_hfemv")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/attack"]
+modulate = Color(0.968627, 0.847059, 0.435294, 1)
+position = Vector2(231.5, 215.5)
+scale = Vector2(13.9375, 13.9375)
+texture = ExtResource("6_000pf")
+
+[node name="inventory" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 1681.0
+offset_right = 335.0
+offset_bottom = 1920.0
+texture_normal = ExtResource("4_hfemv")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/inventory"]
+modulate = Color(0.968627, 0.847059, 0.435294, 1)
+position = Vector2(120, 115)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("7_njvj5")
+
+[node name="run" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 1681.0
+offset_right = 1006.0
+offset_bottom = 1920.0
+texture_normal = ExtResource("4_hfemv")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/run"]
+modulate = Color(0.968018, 0.848628, 0.434474, 1)
+position = Vector2(123.5, 116.5)
+scale = Vector2(7.4375, 7.4375)
+texture = ExtResource("8_62hia")
+
+[node name="player_hp" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 677.0
+offset_right = 688.0
+offset_bottom = 755.0
+scale = Vector2(0.3, 0.3)
+max_value = 500.0
+value = 500.0
+nine_patch_stretch = true
+texture_over = ExtResource("13_flhh8")
+texture_progress = ExtResource("14_oagbb")
+
+[node name="enemy_hp" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 797.0
+offset_top = 677.0
+offset_right = 1424.0
+offset_bottom = 755.0
+scale = Vector2(0.3, 0.3)
+nine_patch_stretch = true
+texture_over = ExtResource("13_flhh8")
+texture_progress = ExtResource("14_oagbb")
+
+[node name="player" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(234, 909.5)
+scale = Vector2(4.28125, 4.28125)
+sprite_frames = SubResource("SpriteFrames_3wv1i")
+animation = &"hit"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("27_tgnco")
+
+[node name="shadow" type="TextureRect" parent="Control/player"]
+modulate = Color(0.12549, 0.113725, 0.027451, 0.321569)
+offset_left = -48.545
+offset_top = 21.4424
+offset_right = 2742.46
+offset_bottom = 1099.44
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("12_mk0ay")
+
+[node name="Area2D" type="Area2D" parent="Control/player"]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/player/Area2D"]
+position = Vector2(-17.2847, -1.86862)
+shape = SubResource("CircleShape2D_1dnco")
+
+[node name="dmg hit" type="Label" parent="Control/player"]
+visible = false
+offset_left = -14.9489
+offset_top = -33.9854
+offset_right = -1.94891
+offset_bottom = -22.9854
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 9
+text = "89"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dmg_info" type="AnimationPlayer" parent="Control/player"]
+libraries = {
+"": SubResource("AnimationLibrary_l7diw")
+}
+
+[node name="enemy" type="Sprite2D" parent="Control"]
+position = Vector2(610, 886)
+scale = Vector2(8.73438, 10.1875)
 texture = ExtResource("1_ttno8")
 flip_h = true
 hframes = 14
 vframes = 8
+script = ExtResource("29_swj24")
+enemy_data = ExtResource("30_fvq2s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/???"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/enemy"]
 libraries = {
 "": SubResource("AnimationLibrary_xqraf")
 }
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="Control/enemy"]
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/enemy/Area2D"]
+position = Vector2(39.499, 11.681)
+shape = SubResource("CircleShape2D_ymodm")
+
+[node name="action display" type="CanvasLayer" parent="Control"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Control/action display"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="book cover" type="TextureRect" parent="Control/action display"]
+offset_left = 4.0
+offset_top = 749.0
+offset_right = 1083.0
+offset_bottom = 1519.0
+texture = ExtResource("3_on3gw")
+
+[node name="page" type="TextureRect" parent="Control/action display"]
+offset_left = 21.0
+offset_top = 761.0
+offset_right = 544.0
+offset_bottom = 1501.0
+texture = ExtResource("32_x2q0k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/action display"]
+offset_left = 48.0
+offset_top = 787.0
+offset_right = 529.0
+offset_bottom = 1415.0
+script = ExtResource("33_x34up")
+
+[node name="action container" type="VBoxContainer" parent="Control/action display/ScrollContainer"]
+custom_minimum_size = Vector2(192, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+mouse_filter = 2
+theme_override_constants/separation = 110
+script = ExtResource("34_66713")
+data = ExtResource("35_b2vtp")
+
+[node name="action_slot" parent="Control/action display/ScrollContainer/action container" instance=ExtResource("36_gdgg1")]
+layout_mode = 2
+button_mask = 5
+
+[node name="PADDING" type="Control" parent="Control/action display/ScrollContainer/action container"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="action-info" type="Control" parent="Control/action display"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 804.0
+offset_right = 1037.0
+offset_bottom = 1457.0
+
+[node name="name" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 34.0
+offset_right = 393.0
+offset_bottom = 72.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "SLASH OF DEATH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 284.0
+offset_right = 81.0
+offset_bottom = 313.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type_name" type="Label" parent="Control/action display/action-info/type"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -3.0
+offset_right = 475.0
+offset_bottom = 77.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Defence Breaker
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="damage" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 342.0
+offset_right = 165.0
+offset_bottom = 371.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "ATTRIBUTE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="Control/action display/action-info/damage"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = -1.0
+offset_right = 465.0
+offset_bottom = 28.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "200
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 393.0
+offset_right = 212.0
+offset_bottom = 422.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "CRITICAL RATE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info/critical rate"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 1.0
+offset_right = 468.0
+offset_bottom = 30.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "2%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cooldown" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 452.0
+offset_right = 152.0
+offset_bottom = 481.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "COOLDOWN
+"
+vertical_alignment = 1
+
+[node name="cooldown" type="Label" parent="Control/action display/action-info/cooldown"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 1.0
+offset_right = 455.0
+offset_bottom = 30.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="info" type="Label" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 468.0
+offset_right = 467.0
+offset_bottom = 660.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "This asset can be modified to match any of your needs. This asset can be used in any commercial and physical project (print or tabletop)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/action display/action-info"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 112.0
+offset_right = 308.0
+offset_bottom = 260.0
+texture = ExtResource("37_vbsv1")
+
+[node name="action-info" type="Control" parent="Control/action display/action-info"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 652.0
+offset_right = 1037.0
+offset_bottom = 1305.0
+
+[node name="name" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 34.0
+offset_right = 393.0
+offset_bottom = 72.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "SLASH OF DEATH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 284.0
+offset_right = 104.0
+offset_bottom = 313.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "TYPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="type_name" type="Label" parent="Control/action display/action-info/action-info/type"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = -3.0
+offset_right = 392.0
+offset_bottom = 26.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Physical
+"
+vertical_alignment = 1
+
+[node name="element" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 332.0
+offset_right = 165.0
+offset_bottom = 361.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "ELEMENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="element_name" type="Label" parent="Control/action display/action-info/action-info/element"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = -4.0
+offset_right = 413.0
+offset_bottom = 25.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "None"
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 375.0
+offset_right = 143.0
+offset_bottom = 404.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "DAMAGE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="damage" type="Label" parent="Control/action display/action-info/action-info/damage"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = -1.0
+offset_right = 392.0
+offset_bottom = 28.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "200
+"
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 415.0
+offset_right = 235.0
+offset_bottom = 444.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "CRITICAL RATE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="critical rate" type="Label" parent="Control/action display/action-info/action-info/critical rate"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 1.0
+offset_right = 483.0
+offset_bottom = 30.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "2%"
+vertical_alignment = 1
+
+[node name="info" type="Label" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 468.0
+offset_right = 467.0
+offset_bottom = 660.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "This asset can be modified to match any of your needs. This asset can be used in any commercial and physical project (print or tabletop). Still, it cannot be distributed or sold as an individual product without the creator's permission (me)."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/action display/action-info/action-info"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 112.0
+offset_right = 308.0
+offset_bottom = 260.0
+texture = ExtResource("37_vbsv1")
+
+[node name="exit" type="TextureButton" parent="Control/action display"]
+top_level = true
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.025
+anchor_bottom = 0.901852
+offset_left = 970.0
+offset_top = 456.0
+offset_right = -65.0
+offset_bottom = -1414.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("38_bstnl")
+texture_pressed = ExtResource("39_m48vh")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="IconCrossBeige" type="Sprite2D" parent="Control/action display/exit"]
+z_index = 1
+position = Vector2(38.1666, 35.125)
+scale = Vector2(3.58333, 3.58333)
+texture = ExtResource("40_xeo1j")
+
+[node name="img" type="TextureRect" parent="Control/action display"]
+modulate = Color(0.111197, 0.111197, 0.111197, 0.329412)
+offset_left = 586.0
+offset_top = 888.0
+offset_right = 1028.0
+offset_bottom = 1330.0
+texture = ExtResource("41_xvxjd")
+
+[node name="bottom border" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.113725)
+position = Vector2(533.916, 2042.25)
+rotation = 3.14159
+scale = Vector2(16.3667, 16.3667)
+texture = ExtResource("29_jthgu")
+
+[node name="overlay" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="overlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Sprite2D" type="Sprite2D" parent="overlay"]
+position = Vector2(529, 1029)
+scale = Vector2(4.53579, 4.53579)
+texture = ExtResource("33_63pvn")
+
+[node name="counter" type="Label" parent="overlay/Sprite2D"]
+offset_left = -23.5902
+offset_top = -21.165
+offset_right = 28.4098
+offset_bottom = 34.835
+theme_override_fonts/font = SubResource("FontVariation_cqkfq")
+theme_override_font_sizes/font_size = 55
+text = "20"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="overlay/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_kg1cp")
+}
+
+[node name="CornerKnot14x14" type="Sprite2D" parent="overlay/Sprite2D"]
+position = Vector2(-43.8733, -43.8733)
+scale = Vector2(0.843578, 0.843578)
+texture = ExtResource("35_wigx7")
+
+[node name="CornerKnot14x15" type="Sprite2D" parent="overlay/Sprite2D"]
+position = Vector2(44.0938, -43.8733)
+scale = Vector2(0.843578, 0.843578)
+texture = ExtResource("35_wigx7")
+
+[node name="CornerKnot14x16" type="Sprite2D" parent="overlay/Sprite2D"]
+position = Vector2(-43.8733, 44.3142)
+scale = Vector2(0.843578, 0.843578)
+texture = ExtResource("35_wigx7")
+
+[node name="CornerKnot14x17" type="Sprite2D" parent="overlay/Sprite2D"]
+position = Vector2(44.0937, 44.3142)
+scale = Vector2(0.843578, 0.843578)
+texture = ExtResource("35_wigx7")
+
+[node name="roll" type="TextureButton" parent="overlay"]
+offset_left = 365.0
+offset_top = 1312.0
+offset_right = 555.0
+offset_bottom = 1361.0
+scale = Vector2(1.75171, 1.75171)
+texture_normal = ExtResource("36_yguym")
+texture_pressed = ExtResource("37_uunbn")
+
+[node name="text" type="Label" parent="overlay/roll"]
+layout_mode = 0
+offset_left = 61.8594
+offset_top = -0.613602
+offset_right = 127.859
+offset_bottom = 51.3864
+theme_override_fonts/font = SubResource("FontVariation_cqkfq")
+theme_override_font_sizes/font_size = 30
+text = "ROLL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Control/top info/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/attack" to="." method="_on_attack_pressed"]
+[connection signal="animation_finished" from="Control/player" to="Control/player" method="_on_animation_finished"]
+[connection signal="area_entered" from="Control/player/Area2D" to="Control/player" method="_on_area_2d_area_entered"]
+[connection signal="animation_finished" from="Control/enemy/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Control/action display/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="overlay/roll" to="." method="_on_roll_pressed"]

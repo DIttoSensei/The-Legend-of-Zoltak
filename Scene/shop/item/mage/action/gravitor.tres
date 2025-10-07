@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://mflj3x1w153a"]
+
+[ext_resource type="Texture2D" uid="uid://dm8bxc4pxnx7l" path="res://Scene/shop/item/mage/img/tile382.png" id="1_3xse8"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_20qxj"]
+
+[resource]
+script = ExtResource("1_20qxj")
+action_name = "GRAVITOR"
+action_img = ExtResource("1_3xse8")
+action_type = "Earth"
+action_attribute = 230
+critical_rate = "12%"
+cooldown = 3
+cost = 296
+action_info = "Stomp the ground, creating a localized earthquake burst that destabilizes the battlefield."

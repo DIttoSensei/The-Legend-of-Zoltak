@@ -50,9 +50,13 @@ extends VBoxContainer
 # Achivements
 @onready var achivement: VBoxContainer = $"../achivement2/ScrollContainer/VBoxContainer"
 
-# Shop
-const SHOP = preload("res://Scene/shop/shop_ui.tscn")
+# Action
+@onready var action_container: ActionContainer = $"../action display/ScrollContainer/action container"
 
+
+# constant
+const SHOP = preload("res://Scene/shop/shop_ui.tscn")
+const BATTLE = preload("res://Scene/battle/battle_scene.tscn")
 
 # State variables
 var current_chapter := "Chapter_1"
@@ -81,6 +85,8 @@ func _ready() -> void:
 	SignalManager.show_item_info_board.connect(show_item_info_board)
 	SignalManager.show_selected_item_board.connect(show_selected_inventory_board)
 	SignalManager.shop_exit.connect(back_to_main_game)
+	SignalManager.add_item_to_inventory.connect(add_shop_item_to_inv)
+	SignalManager.add_action_to_slot.connect(add_action_to_inv)
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
@@ -88,6 +94,7 @@ func _ready() -> void:
 
 # Unused for now, but required if real-time updates are needed
 func _process(_delta: float) -> void:
+	GlobalGameSystem.is_player_inv_full = is_inventory_full()
 	pass
 
 # Get the current page data from the global system
@@ -160,6 +167,7 @@ func load_page () -> void:
 		choice_4.visible = false
 
 
+			
 
 ## When the choices are pressed
 func _on_choice_pressed() -> void:
@@ -169,9 +177,16 @@ func _on_choice_pressed() -> void:
 	# set the choice player clicked
 	clicked_choice = choice
 	
+	
 	# roll die and store current choice info
-	$"../overlay".visible = true
 	current_choice = current_page["choice_1"]
+	
+	if current_choice["choice"] == "🔹 fight":
+		copy_player_actions()
+		show_battle_scene()
+	else:
+		$"../overlay".visible = true
+	
 	
 
 func _on_choice_2_pressed() -> void:
@@ -664,7 +679,7 @@ func _on_action_pressed() -> void:
 		
 	elif action_label.text == "USE":
 		var slot = GlobalGameSystem.button_data_inv
-		var message : String
+		var _message : String
 		
 		# Safe check
 		if slot == null:
@@ -741,7 +756,7 @@ func _on_shop_pressed() -> void:
 func back_to_main_game () -> void:
 	var parent = $"../shop_layer"
 	var shop = parent.get_node_or_null("ShopUi")
-	shop.current_coin = current_coin
+	current_coin = shop.current_coin
 	coin.text = str (current_coin)
 	if shop:
 		
@@ -749,4 +764,51 @@ func back_to_main_game () -> void:
 		shop.queue_free()
 	else:
 		pass
+	pass
+	
+	
+## Adding item from the shop to your inventory
+func add_shop_item_to_inv() -> void:
+	for i in range(storage_inventory.data.slots.size()):
+		if storage_inventory.data.slots[i] == null:
+			storage_inventory.data.slots[i] = GlobalGameSystem.item
+			storage_inventory.update_inventory()
+			return  # ✅ stop after placing the item
+	# if the loop finishes without finding space
+	print("No space in storage!")
+	
+func add_action_to_inv () -> void: 
+	var size = action_container.data.actions.size()
+	action_container.data.actions.resize(size + 1)
+	var new_action = GlobalGameSystem.item
+	action_container.data.actions[size] = new_action
+	action_container.update_slots()
+	pass
+
+func is_inventory_full() -> bool:
+	for slot in storage_inventory.data.slots:
+		if slot == null:
+			return false  # found an empty slot, so not full
+	return true  # no empty slots, so full
+
+
+# For copying player's action
+func copy_player_actions () -> void:
+	GlobalGameSystem.current_player_actions.clear()
+	for action in action_container.data.actions:
+		if action:
+			var copied_actions = action.duplicate()
+			GlobalGameSystem.current_player_actions.append(copied_actions)
+			
+			
+func show_battle_scene() -> void:
+	SceneTransition.battle_open()
+	await get_tree().create_timer(1).timeout
+	var add_battle_scene = BATTLE.instantiate()
+	$"..".add_child(add_battle_scene)
+	add_battle_scene.z_index = 3
+	add_battle_scene.visible = true
+	SceneTransition.battle_close()
+	
+	# remeber to switch muscic to battle
 	pass

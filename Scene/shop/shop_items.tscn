@@ -136,3 +136,5 @@ theme_override_font_sizes/font_size = 27
 text = "200 Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Info_board/action" to="." method="_on_action_pressed"]

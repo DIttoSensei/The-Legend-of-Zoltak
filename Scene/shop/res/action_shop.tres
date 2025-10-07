@@ -1,35 +1,8 @@
-[gd_resource type="Resource" script_class="Player_Action" load_steps=12 format=3 uid="uid://db6elm0ogbxb4"]
+[gd_resource type="Resource" script_class="Player_Action" load_steps=3 format=3 uid="uid://db6elm0ogbxb4"]
 
 [ext_resource type="Script" path="res://Scene/action/Actions.gd" id="1_km5xa"]
 [ext_resource type="Script" path="res://Scene/action/player_action.gd" id="2_j7kf4"]
 
-[sub_resource type="Resource" id="Resource_62ukv"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_6pq68"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_4e71n"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_2bwns"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_je8cd"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_srfrx"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_2prpf"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_vevvj"]
-script = ExtResource("1_km5xa")
-
-[sub_resource type="Resource" id="Resource_1eact"]
-script = ExtResource("1_km5xa")
-
 [resource]
 script = ExtResource("2_j7kf4")
-actions = Array[ExtResource("1_km5xa")]([SubResource("Resource_62ukv"), SubResource("Resource_6pq68"), SubResource("Resource_4e71n"), SubResource("Resource_2bwns"), SubResource("Resource_je8cd"), SubResource("Resource_srfrx"), SubResource("Resource_2prpf"), SubResource("Resource_vevvj"), SubResource("Resource_1eact")])
+actions = Array[ExtResource("1_km5xa")]([null])
