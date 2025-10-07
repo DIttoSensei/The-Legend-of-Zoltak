@@ -47,7 +47,10 @@ func _ready() -> void:
 		GlobalGameSystem.global_audio.stream = preload("res://Asset/ost/Medieval song-Dance of the nymphs.mp3")
 		GlobalGameSystem.delay(2)
 		GlobalGameSystem.play_bg_audio()
-
+		
+		## if the confirm quit notice is shown hide this one
+	#if ConfirmQuit.show == true:
+		#$Control/CanvasLayer/Control/notice_board/AnimationPlayer.play("hide")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

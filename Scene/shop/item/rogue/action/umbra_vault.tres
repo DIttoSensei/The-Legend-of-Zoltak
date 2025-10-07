@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://cax8vjkibow5x"]
+
+[ext_resource type="Texture2D" uid="uid://77k8cihnliw1" path="res://Scene/shop/item/rogue/img/fb1420.png" id="1_cppar"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_d6gmp"]
+
+[resource]
+script = ExtResource("1_d6gmp")
+action_name = "UMBRA VAULT"
+action_img = ExtResource("1_cppar")
+action_type = "Shadow"
+action_attribute = 190
+critical_rate = "55%"
+cooldown = 3
+cost = 240
+action_info = "Blink through shadows to strike from impossible angles, gone before the foe can respond."

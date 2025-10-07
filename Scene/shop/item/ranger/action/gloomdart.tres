@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://84ldpm38ykrh"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_5ie8q"]
+[ext_resource type="Texture2D" uid="uid://i1bolkenv7s" path="res://Scene/shop/item/ranger/img/fb1418.png" id="1_dgguk"]
+
+[resource]
+script = ExtResource("1_5ie8q")
+action_name = "GLOOMDART"
+action_img = ExtResource("1_dgguk")
+action_type = "Mystic"
+action_attribute = 189
+critical_rate = "25%"
+cooldown = 0
+cost = 245
+action_info = "A shadowed projectile that muffles sound and vision, striking with eerie silence."

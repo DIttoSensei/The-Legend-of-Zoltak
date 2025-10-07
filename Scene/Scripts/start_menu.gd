@@ -28,6 +28,8 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if input_locked:
 		return
+	if ConfirmQuit.show == true:
+		return
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
 			# hamdle touch input

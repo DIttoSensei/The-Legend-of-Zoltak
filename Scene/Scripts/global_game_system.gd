@@ -15,9 +15,17 @@ var player_coin
 var shop_item
 var player_class
 
+
+# for shop
+var item
+var action
+var is_player_inv_full : bool = false
+
 # var for the story
 var ashes_of_brinkwood : Dictionary = {}
 
+# for battle
+var current_player_actions : Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

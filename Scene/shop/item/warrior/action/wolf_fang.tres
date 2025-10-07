@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://bre406w2s7p8h"]
+
+[ext_resource type="Texture2D" uid="uid://dw64tqnihkiba" path="res://Scene/shop/item/warrior/img/fb875.png" id="1_pwosm"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_vrlpr"]
+
+[resource]
+script = ExtResource("1_vrlpr")
+action_name = "WOLF FANG"
+action_img = ExtResource("1_pwosm")
+action_type = "Mystic"
+action_attribute = 130
+critical_rate = "20%"
+cooldown = 3
+cost = 220
+action_info = "Twin cuts in quick succession, sharp and restless  as a predator's bite"

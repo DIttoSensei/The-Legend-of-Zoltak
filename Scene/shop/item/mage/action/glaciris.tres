@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://b0vwg4gabi8fu"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_2kn0i"]
+[ext_resource type="Texture2D" uid="uid://db52wfvsbtl4m" path="res://Scene/shop/item/mage/img/fb1015.png" id="1_ycg65"]
+
+[resource]
+script = ExtResource("1_2kn0i")
+action_name = "GLACIRIS"
+action_img = ExtResource("1_ycg65")
+action_type = "Ice"
+action_attribute = 180
+critical_rate = "25%"
+cooldown = 2
+cost = 210
+action_info = "Rain down razor sharp glacier shards at high speed piercing armor and flesh."

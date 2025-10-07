@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://cmhlm2pxex5if"]
+
+[ext_resource type="Texture2D" uid="uid://kp6glsvnnrop" path="res://Scene/shop/item/rogue/img/fb1050.png" id="1_dtr1r"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_qc880"]
+
+[resource]
+script = ExtResource("1_qc880")
+action_name = "NOXREND"
+action_img = ExtResource("1_dtr1r")
+action_type = "Poison"
+action_attribute = 120
+critical_rate = "40%"
+cooldown = 2
+cost = 180
+action_info = "A venomous lash that amplifies pain, trning shallow cuts into agony."

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://0nuw5o5gmb8e"]
+
+[ext_resource type="Texture2D" uid="uid://dlc4kb7qi3ls" path="res://Scene/shop/item/warrior/img/fb728.png" id="1_1ekfe"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_84i37"]
+
+[resource]
+script = ExtResource("1_84i37")
+action_name = "VINDEX"
+action_img = ExtResource("1_1ekfe")
+action_type = "Physical"
+action_attribute = 110
+critical_rate = "45%"
+cooldown = 1
+cost = 170
+action_info = "Parry and counter with flawless timinh, turning aggression into a weapon."

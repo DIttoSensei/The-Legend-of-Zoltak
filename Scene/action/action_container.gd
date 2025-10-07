@@ -12,7 +12,7 @@ const ACTION_SLOT = preload("res://Scene/action/action_slot.tscn")
 @onready var critical_rate: Label = $"../../action-info/critical rate/critical rate"
 @onready var info: Label = $"../../action-info/info"
 @onready var texture_rect: TextureRect = $"../../action-info/TextureRect"
-@onready var main: Main_game = $"../../../.."
+#@onready var main: Main_game = $"../../../.."
 @onready var cooldown: Label = $"../../action-info/cooldown/cooldown"
 
 
@@ -28,10 +28,10 @@ func _ready() -> void:
 
 func clear_action_slots () -> void:
 	var padding = $PADDING
-	if data.actions.size() == 0:
-		for chid in self.get_children():
-			if chid != padding:
-				chid.queue_free()
+	
+	for chid in self.get_children():
+		if chid != padding:
+			chid.queue_free()
 			
 func add_action_to_slot () -> void:
 	var added_data = load("res://Scene/00_default_class_item_load/warrior/actions/slash.tres")

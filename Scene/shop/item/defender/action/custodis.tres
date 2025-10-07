@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://77gw1vi4atv7"]
+
+[ext_resource type="Texture2D" uid="uid://b7213rgl8jsmi" path="res://Scene/shop/item/defender/img/fb1311.png" id="1_7btqy"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_jt7mi"]
+
+[resource]
+script = ExtResource("1_jt7mi")
+action_name = "CUSTODIS"
+action_img = ExtResource("1_7btqy")
+action_type = "Defence"
+action_attribute = 100
+critical_rate = "0%"
+cooldown = 2
+cost = 250
+action_info = "Raise your defensive aura, increasing your resilience and endurance."

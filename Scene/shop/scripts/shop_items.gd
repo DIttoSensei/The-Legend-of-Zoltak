@@ -36,5 +36,17 @@ func set_slot_data (value : Slot_data) -> void:
 
 
 func _on_action_pressed() -> void:
-	GlobalGameSystem.shop_item = slot_data
+	GlobalGameSystem.item = slot_data
+	
+	if GlobalGameSystem.is_player_inv_full == true:
+		SignalManager.player_inv_full.emit()
+		return
+	
+	if GlobalGameSystem.player_coin >= slot_data.item_data.item_cost:
+		GlobalGameSystem.player_coin -= slot_data.item_data.item_cost
+		SignalManager.notification_purchase.emit()
+	else:
+		SignalManager.notification_cant_purchase.emit()
+	
+	
 	pass # Replace with function body.

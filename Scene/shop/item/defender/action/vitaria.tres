@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://d4kj2p5tcujkh"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_7q6uj"]
+[ext_resource type="Texture2D" uid="uid://jq8n2kx2s187" path="res://Scene/shop/item/defender/img/fb1110.png" id="1_wfs0s"]
+
+[resource]
+script = ExtResource("1_7q6uj")
+action_name = "VITARIA"
+action_img = ExtResource("1_wfs0s")
+action_type = "Heal"
+action_attribute = 100
+critical_rate = "0%"
+cooldown = 2
+cost = 140
+action_info = "Channel Aegis Vitae through your shield mending wounds and fortifying your spirit."

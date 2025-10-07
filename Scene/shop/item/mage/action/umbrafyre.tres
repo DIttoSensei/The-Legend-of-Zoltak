@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://c3y5obcv7wk5v"]
+
+[ext_resource type="Texture2D" uid="uid://dys1vq7gy618d" path="res://Scene/shop/item/mage/img/tile039.png" id="1_cpo5m"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_ogvwy"]
+
+[resource]
+script = ExtResource("1_ogvwy")
+action_name = "UMBRAFYRE"
+action_img = ExtResource("1_cpo5m")
+action_type = "Mystic"
+action_attribute = 330
+critical_rate = "45%"
+cooldown = 4
+cost = 405
+action_info = "Tap into the mysterious umbra flames that consume with unrelenting hunger."

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://ritpewvgspey"]
+
+[ext_resource type="Texture2D" uid="uid://bfujchq4dh1ro" path="res://Scene/shop/item/rogue/img/fb864.png" id="1_2rqda"]
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_xumt3"]
+
+[resource]
+script = ExtResource("1_xumt3")
+action_name = "BLIGHTMARK "
+action_img = ExtResource("1_2rqda")
+action_type = "Def Breaker"
+action_attribute = 130
+critical_rate = "10%"
+cooldown = 2
+cost = 198
+action_info = "A sigil that festers on flesh, weakening defenses until the body is utterly vulnerable."
