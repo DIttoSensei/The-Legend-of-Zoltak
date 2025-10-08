@@ -26,6 +26,13 @@ var ashes_of_brinkwood : Dictionary = {}
 
 # for battle
 var current_player_actions : Array = []
+var player_atk
+var player_def
+var player_dex
+var player_con
+var player_int
+var player_wis
+var player_hp
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
