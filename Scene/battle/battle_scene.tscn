@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=82 format=3 uid="uid://c4t5kvfjhunpx"]
 
 [ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
@@ -21,13 +21,20 @@
 [ext_resource type="Texture2D" uid="uid://bju4uqk0so52" path="res://Scene/battle/img/player/hit/hit-idle-B3.png" id="10_hwdsj"]
 [ext_resource type="Texture2D" uid="uid://4fa06i7id786" path="res://Scene/battle/img/player/idle/idle-5.png" id="10_v6wlb"]
 [ext_resource type="Texture2D" uid="uid://dx2tephhn3dif" path="res://Scene/battle/img/player/idle/idle-6.png" id="11_0xwpy"]
+[ext_resource type="Texture2D" uid="uid://bjo56injqw255" path="res://Scene/battle/img/player/attack/attack-A1.png" id="11_k36r5"]
 [ext_resource type="Texture2D" uid="uid://kd2rcush75ub" path="res://Scene/battle/img/player/hit/hit-idle-B4.png" id="11_kgt87"]
 [ext_resource type="Texture2D" uid="uid://px6kwhru2ell" path="res://Scene/battle/img/player/death/dead-4.png" id="11_s7qj1"]
+[ext_resource type="Texture2D" uid="uid://bwy07ulih8e0e" path="res://Scene/battle/img/player/attack/attack-A2.png" id="12_5uty0"]
 [ext_resource type="Texture2D" uid="uid://6et3w43t1282" path="res://Scene/battle/img/player/death/dead-5.png" id="12_eetsk"]
 [ext_resource type="Texture2D" uid="uid://dgypqmgd8jcpe" path="res://Scene/battle/img/shadow.png" id="12_mk0ay"]
+[ext_resource type="Texture2D" uid="uid://dfchaa4hcs4d4" path="res://Scene/battle/img/player/attack/attack-A3.png" id="13_54o5f"]
 [ext_resource type="Texture2D" uid="uid://cjp8erylifd25" path="res://Scene/battle/img/player/death/dead-6.png" id="13_e3im7"]
 [ext_resource type="Texture2D" uid="uid://vcwm7qr87chl" path="res://Scene/battle/img/ValueBar_128x16.png" id="13_flhh8"]
+[ext_resource type="Texture2D" uid="uid://bpl0gnncvqe7q" path="res://Scene/battle/img/player/attack/attack-A4.png" id="14_npvrs"]
 [ext_resource type="Texture2D" uid="uid://cum8k2x5dnv4i" path="res://Scene/battle/img/ValueRed_120x8.png" id="14_oagbb"]
+[ext_resource type="Texture2D" uid="uid://gnsk2p4aqduo" path="res://Scene/battle/img/player/attack/attack-A5.png" id="15_jsro7"]
+[ext_resource type="Texture2D" uid="uid://bsjxsf8lw7gd4" path="res://Scene/battle/img/player/attack/attack-A6.png" id="16_574lj"]
+[ext_resource type="Texture2D" uid="uid://bwu8hwm5djmhs" path="res://Scene/battle/img/player/attack/attack-A7.png" id="17_14lq0"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/player.gd" id="27_tgnco"]
 [ext_resource type="Texture2D" uid="uid://dy1bp0t2liucw" path="res://Asset/img/other/TopPatternPanel_01_33x15.png" id="29_jthgu"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/enemy.gd" id="29_swj24"]
@@ -47,9 +54,124 @@
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="39_m48vh"]
 [ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="40_xeo1j"]
 [ext_resource type="Texture2D" uid="uid://cq6jnv2pkh8dt" path="res://Asset/img/other/1000017210.png" id="41_xvxjd"]
+[ext_resource type="Texture2D" uid="uid://d3f0m4av30xa4" path="res://Asset/img/other/banner.png" id="55_jlc2d"]
+
+[sub_resource type="Animation" id="Animation_mdnux"]
+resource_name = "display"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("atk_value:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("def_value:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dex_value:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wqjyr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("atk_value:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("def_value:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dex_value:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfnyc"]
+_data = {
+"RESET": SubResource("Animation_wqjyr"),
+"display": SubResource("Animation_mdnux")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3wv1i"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_k36r5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5uty0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_54o5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_npvrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jsro7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_574lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_14lq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k36r5")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("8_ffqlq")
@@ -117,19 +239,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dnco"]
 radius = 32.9627
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmo6w"]
+radius = 16.3023
+
 [sub_resource type="Animation" id="Animation_or5qt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("dmg hit:visible")
+tracks/0/path = NodePath("hurtbox:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -146,10 +271,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("dmg hit:theme_override_colors/font_color")
+tracks/2/path = NodePath("dmg hit:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dmg hit:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -157,36 +294,36 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_1iyxf"]
-resource_name = "dmg"
+resource_name = "dmg_p"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("dmg hit:visible")
+tracks/0/path = NodePath("dmg hit:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-14.9489, -33.9854), Vector2(9.53674e-07, -45.4307)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dmg hit:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("dmg hit:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-14.9489, -33.9854), Vector2(-0.700731, -46.5985)]
-}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("dmg hit:theme_override_colors/font_color")
+tracks/2/path = NodePath("dmg hit:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -199,7 +336,44 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l7diw"]
 _data = {
 "RESET": SubResource("Animation_or5qt"),
-"dmg": SubResource("Animation_1iyxf")
+"dmg_p": SubResource("Animation_1iyxf")
+}
+
+[sub_resource type="Animation" id="Animation_kcgse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hurtbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ipfnt"]
+resource_name = "hit"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hurtbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(112.117, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrd2a"]
+_data = {
+"RESET": SubResource("Animation_kcgse"),
+"hit": SubResource("Animation_ipfnt")
 }
 
 [sub_resource type="Animation" id="Animation_wm37n"]
@@ -231,7 +405,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/path = NodePath("hurtbox/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -270,7 +444,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/path = NodePath("hurtbox/CollisionShape2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -278,6 +452,22 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(39.4991, 11.681), Vector2(-51.635, 0), Vector2(39.4991, 11.681)]
+}
+
+[sub_resource type="Animation" id="Animation_no14y"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [84, 85, 84]
 }
 
 [sub_resource type="Animation" id="Animation_jwogv"]
@@ -300,11 +490,100 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_wm37n"),
 "attack_1": SubResource("Animation_0bsxo"),
+"hit": SubResource("Animation_no14y"),
 "idle": SubResource("Animation_jwogv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uttwu"]
+radius = 17.176
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ymodm"]
 radius = 7.5589
+
+[sub_resource type="Animation" id="Animation_xwin2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../enemy_dmg hit:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../enemy_dmg hit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(814, 773)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../enemy_dmg hit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5rp1u"]
+resource_name = "dmg"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../enemy_dmg hit:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../enemy_dmg hit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(814, 773), Vector2(755, 718)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../enemy_dmg hit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25w3m"]
+_data = {
+"RESET": SubResource("Animation_xwin2"),
+"dmg": SubResource("Animation_5rp1u")
+}
 
 [sub_resource type="FontVariation" id="FontVariation_cqkfq"]
 base_font = ExtResource("34_bi16b")
@@ -326,7 +605,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_m4lal"]
 resource_name = "roll_animation"
-length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -334,10 +612,10 @@ tracks/0/path = NodePath("counter:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["20", "7", "2", "8", "5", "15", "7", "19", "14", "4", "17", "9", "1", "8", "9", "1", "11", "5", "2", "16", "5", "13", "18", "8", "2", "3", "6", "17", "11", "1", "4"]
+"values": ["20", "7", "2", "8", "5", "15", "7", "19", "14", "4", "17"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kg1cp"]
@@ -396,13 +674,114 @@ visible_ratio = 0.0
 [node name="Timer" type="Timer" parent="Control/top info"]
 wait_time = 0.05
 
-[node name="buttom" type="ColorRect" parent="Control"]
+[node name="stats_view" type="ColorRect" parent="Control"]
 layout_mode = 0
 offset_left = -14.0
 offset_top = 1136.0
 offset_right = 1084.0
 offset_bottom = 1230.0
 color = Color(0, 0, 0, 1)
+
+[node name="atk" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 34.0
+offset_right = 185.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "ATK:"
+vertical_alignment = 1
+
+[node name="atk_value" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 34.0
+offset_right = 260.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "999"
+vertical_alignment = 1
+
+[node name="def" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 34.0
+offset_right = 422.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "DEF:"
+vertical_alignment = 1
+
+[node name="def_value" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 34.0
+offset_right = 497.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "999"
+vertical_alignment = 1
+
+[node name="dex" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 34.0
+offset_right = 670.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "DEX:"
+vertical_alignment = 1
+
+[node name="dex_value" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 34.0
+offset_right = 745.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "999"
+vertical_alignment = 1
+
+[node name="hp" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 845.0
+offset_top = 34.0
+offset_right = 918.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "HP:"
+vertical_alignment = 1
+
+[node name="hp_value" type="Label" parent="Control/stats_view"]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 34.0
+offset_right = 993.0
+offset_bottom = 67.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "999"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/stats_view"]
+libraries = {
+"": SubResource("AnimationLibrary_mfnyc")
+}
 
 [node name="Panel" type="PanelContainer" parent="Control"]
 clip_contents = true
@@ -492,9 +871,9 @@ texture_progress = ExtResource("14_oagbb")
 position = Vector2(234, 909.5)
 scale = Vector2(4.28125, 4.28125)
 sprite_frames = SubResource("SpriteFrames_3wv1i")
-animation = &"hit"
+animation = &"attack"
 autoplay = "idle"
-frame = 3
+frame = 7
 frame_progress = 1.0
 script = ExtResource("27_tgnco")
 
@@ -507,13 +886,21 @@ offset_bottom = 1099.44
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("12_mk0ay")
 
-[node name="Area2D" type="Area2D" parent="Control/player"]
+[node name="hitbox" type="Area2D" parent="Control/player"]
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/player/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/player/hitbox"]
 position = Vector2(-17.2847, -1.86862)
 shape = SubResource("CircleShape2D_1dnco")
+
+[node name="hurtbox" type="Area2D" parent="Control/player"]
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/player/hurtbox"]
+shape = SubResource("CircleShape2D_hmo6w")
+debug_color = Color(0.891768, 0.132629, 0.35398, 0.42)
 
 [node name="dmg hit" type="Label" parent="Control/player"]
 visible = false
@@ -533,6 +920,11 @@ libraries = {
 "": SubResource("AnimationLibrary_l7diw")
 }
 
+[node name="hit_box_hit" type="AnimationPlayer" parent="Control/player"]
+libraries = {
+"": SubResource("AnimationLibrary_xrd2a")
+}
+
 [node name="enemy" type="Sprite2D" parent="Control"]
 position = Vector2(610, 886)
 scale = Vector2(8.73438, 10.1875)
@@ -549,13 +941,41 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Area2D" type="Area2D" parent="Control/enemy"]
+[node name="hitbox" type="Area2D" parent="Control/enemy"]
+position = Vector2(32.0572, 2.35583)
+collision_layer = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/enemy/hitbox"]
+shape = SubResource("CircleShape2D_uttwu")
+
+[node name="hurtbox" type="Area2D" parent="Control/enemy"]
 collision_layer = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/enemy/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/enemy/hurtbox"]
 position = Vector2(39.499, 11.681)
 shape = SubResource("CircleShape2D_ymodm")
+debug_color = Color(0.913457, 0, 0.426775, 0.42)
+
+[node name="emeny_dmg" type="AnimationPlayer" parent="Control/enemy"]
+libraries = {
+"": SubResource("AnimationLibrary_25w3m")
+}
+
+[node name="enemy_dmg hit" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 814.0
+offset_top = 773.0
+offset_right = 856.0
+offset_bottom = 808.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 37
+text = "89"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="action display" type="CanvasLayer" parent="Control"]
 visible = false
@@ -939,6 +1359,41 @@ offset_right = 1028.0
 offset_bottom = 1330.0
 texture = ExtResource("41_xvxjd")
 
+[node name="use_action" type="TextureButton" parent="Control/action display"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 480.5
+offset_right = 152.0
+offset_bottom = 559.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("36_yguym")
+texture_pressed = ExtResource("37_uunbn")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/action display/use_action"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -26.0
+offset_right = 52.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 55
+text = "USE"
+
 [node name="bottom border" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.113725)
 position = Vector2(533.916, 2042.25)
@@ -1018,10 +1473,53 @@ text = "ROLL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="results" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="results"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.235294)
+
+[node name="TextureRect" type="TextureRect" parent="results"]
+modulate = Color(0.810535, 0.759714, 0.340545, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -368.0
+offset_right = 494.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("55_jlc2d")
+
+[node name="result_text" type="Label" parent="results"]
+offset_left = 372.0
+offset_top = 798.0
+offset_right = 668.0
+offset_bottom = 845.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/font_size = 50
+text = "VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Control/top info/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Control/attack" to="." method="_on_attack_pressed"]
 [connection signal="animation_finished" from="Control/player" to="Control/player" method="_on_animation_finished"]
-[connection signal="area_entered" from="Control/player/Area2D" to="Control/player" method="_on_area_2d_area_entered"]
-[connection signal="animation_finished" from="Control/enemy/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Control/player/hitbox" to="Control/player" method="_on_area_2d_area_entered"]
+[connection signal="animation_finished" from="Control/enemy/AnimationPlayer" to="Control/enemy" method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Control/enemy/hitbox" to="Control/enemy" method="_on_hitbox_area_entered"]
 [connection signal="pressed" from="Control/action display/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/action display/use_action" to="." method="_on_use_action_pressed"]
 [connection signal="pressed" from="overlay/roll" to="." method="_on_roll_pressed"]

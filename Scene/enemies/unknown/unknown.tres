@@ -8,7 +8,7 @@
 script = ExtResource("2_mqmv0")
 name = "???"
 hp = 300
-atk = 150
+atk = 76
 def = 75
-dex = 55
+dex = 20
 actions = Array[ExtResource("1_2gedn")]([ExtResource("2_twl37")])

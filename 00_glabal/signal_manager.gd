@@ -20,3 +20,5 @@ signal add_action_to_slot
 signal enemy_attack_data (enemy_name: String, move_name : String, damage : int, anim_name : String)
 signal player_attack_data
 signal player_damaged (damage : int)
+signal enemy_damaged (damage : int)
+signal player_attack (action_data)
