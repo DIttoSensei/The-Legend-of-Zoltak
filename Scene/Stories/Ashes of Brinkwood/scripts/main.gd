@@ -55,6 +55,7 @@ func load_player_save_file () -> void:
 	Int.text = str(player_data["Int"])
 	wis.text = str(player_data["Wis"])
 	cha.text = str(player_data["Cha"])
+	save_stat_for_battle()
 	
 	page.current_coin = player_data["currency"]
 	GlobalGameSystem.player_coin = player_data["currency"]
@@ -65,6 +66,7 @@ func load_player_save_file () -> void:
 	
 	page.current_hp = player_data["Hp"]
 	hp_bar_solid.value = page.current_hp
+	GlobalGameSystem.player_hp = page.current_hp
 	
 	# change player class texture
 	#if player_data["Class"] == "Warrior":
@@ -218,4 +220,13 @@ func load_player_save_file () -> void:
 
 
 func save_player_data () -> void:
+	pass
+	
+func save_stat_for_battle () -> void:
+	GlobalGameSystem.player_atk = int(atk.text)
+	GlobalGameSystem.player_def = int(def.text)
+	GlobalGameSystem.player_dex = int(dex.text)
+	GlobalGameSystem.player_int = int(Int.text)
+	GlobalGameSystem.player_con = int(con.text)
+	GlobalGameSystem.player_wis = int(wis.text)
 	pass

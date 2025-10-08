@@ -25,4 +25,5 @@ func _on_pressed() -> void:
 	GlobalGameSystem.action_data_inv = action_data
 	$"../../../img".visible = false
 	SignalManager.show_action_info.emit()
+	SignalManager.player_attack.emit(action_data)
 	pass # Replace with function body.

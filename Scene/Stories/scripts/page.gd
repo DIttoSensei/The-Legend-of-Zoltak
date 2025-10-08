@@ -551,6 +551,7 @@ func give_reward_or_loss():
 		current_coin -= current_choice["outcome_2"]["loss"]["coin"]
 		GlobalGameSystem.player_coin = current_coin
 		current_hp -= current_choice["outcome_2"]["loss"]["hp"]
+		GlobalGameSystem.player_hp = current_hp
 		$"../Camera2D".shake(5.0, 5.0)
 		
 		# check if the calculation is less the 0 if so set it back to 0
@@ -691,6 +692,7 @@ func _on_action_pressed() -> void:
 		if slot.item_data.attribute == "Heal":
 			if current_hp >= 100:
 				notification.show_notification()
+				GlobalGameSystem.player_hp = current_hp # just to update incase
 				return
 				
 			var notification_message : String = (slot.item_data.attribute + " " + "+" + str(slot.item_data.attribute_value))
