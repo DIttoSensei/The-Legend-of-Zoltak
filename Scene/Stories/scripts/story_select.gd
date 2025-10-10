@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"Control/story_1/play button".disabled = false
 	pass # Replace with function body.
 
 
@@ -22,6 +23,8 @@ func _on_texture_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	$"Control/story_1/play button".disabled = true
 	LevelManager.load_new_level = "res://Scene/Stories/begin_chapter.tscn"
 	LevelManager.load_level()
 	GlobalGameSystem.fade_out()
+	
