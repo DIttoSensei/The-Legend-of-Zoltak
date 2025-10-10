@@ -22,7 +22,7 @@ var player_dex_mod
 @onready var player_dmg_info: AnimationPlayer = $Control/player/dmg_info
 @onready var attack: TextureButton = $Control/attack
 @onready var inventory: TextureButton = $Control/inventory
-@onready var run: TextureButton = $Control/run
+@onready var battle_surge: TextureButton = $Control/battle_surge
 @onready var action_container: ActionContainer = $"Control/action display/ScrollContainer/action container"
 @onready var results: CanvasLayer = $results
 
@@ -37,8 +37,9 @@ var player_dex_mod
 @onready var info_board: Sprite2D = $Control/inventory_border/Control/Info_board
 @onready var buff_texture: TextureRect = $"Control/inventory_border/Control/Info_board/buff texture"
 @onready var buff_texture_2: TextureRect = $"Control/inventory_border/Control/Info_board/buff texture2"
+@onready var notification: CanvasLayer = $Control/notification
 
-@onready var inv_action: TextureButton = $Control/inventory_border/Control/action
+@onready var inv_action: TextureButton = $Control/inventory_border/Control/inv_action
 
 
 
@@ -46,13 +47,17 @@ var player_dex_mod
 signal show
 signal hide
 
+## Player effects
+@onready var heal: AnimatedSprite2D = $Control/player_effects/heal
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_player_actions()
 	load_player_inv()
 	
-	text = "YOU ENCOINTERED THE [color=red]RAGING KNIGHT[/color]"
+	text = "[center]YOU ENCOINTERED THE [color=red]RAGING KNIGHT[/color][/center]"
 	enable_button()
 	SceneTransition.fade_in()
 	announcer_text(text)
@@ -66,12 +71,12 @@ func _ready() -> void:
 func disable_button () -> void:
 	attack.disabled = true
 	inventory.disabled = true
-	run.disabled = true
+	battle_surge.disabled = true
 
 func enable_button () -> void:
 	attack.disabled = false
 	inventory.disabled = false
-	run.disabled = false
+	battle_surge.disabled = false
 	
 
 func _on_attack_pressed() -> void:
@@ -138,6 +143,7 @@ func start_battle () -> void:
 
 
 func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
+	await get_tree().create_timer(2).timeout
 	text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
 	announcer_text(text)
 	await get_tree().create_timer(2).timeout
@@ -165,6 +171,8 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 		
 	player_take_turn = false
 	await get_tree().create_timer(3).timeout
+	text = "[center]The air grew thick filled with a strange ominous aura[/center]" # announer for turn end
+	announcer_text(text)
 	battling = false
 	
 	if battling == false:
@@ -200,11 +208,14 @@ func player_attack() -> void:
 		await get_tree().create_timer(1.5).timeout
 		text = "[center]Opponent took damage, now it's their turn[/center]"
 		announcer_text(text)
+		await get_tree().create_timer(1.5).timeout
 		enemy.attack_player()
 	else:
 		if battling == false:
 			enable_button()
-			
+		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
+		announcer_text(text)
+	
 	enemy_take_turn = false
 	battling = false
 	
@@ -300,6 +311,87 @@ func _on_exit_info_pressed() -> void:
 	pass # Replace with function body
 
 
+
+
+
+func _on_inventory_pressed() -> void:
+	$Control/inventory_border/Control/AnimationPlayer.play("show")
+	show.emit()
+	pass # Replace with function body.
+
+
+func _on_exit_inv_pressed() -> void:
+	$Control/inventory_border/Control/AnimationPlayer.play("close")
+	info_board.visible = false
+	inv_action.visible = false
+	pass # Replace with function body.
+
+
+func _on_inv_action_pressed() -> void:
+	use_item()
+	$Control/inventory_border/Control/AnimationPlayer.play("close")
+	info_board.visible = false
+	inv_action.visible = false
+	pass # Replace with function body.
+
+
+
+# function to use item
+func use_item () -> void:
+	var item = GlobalGameSystem.button_data_inv.item_data
+	
+	# For healing
+	if item.attribute == "Heal":
+		if player.current_hp == player.player_hp.max_value:
+			show_notification() # Show alart that hp is full already
+		elif player.current_hp < player.player_hp.max_value:
+			text = "[center]You used " + item.name + "[/center]"
+			announcer_text(text)
+			heal.visible = true
+			heal.play("show") # play heal animation
+			player.modulate_player(100,100,100,1) # flash player white
+			await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+			player.modulate_player(1,1,1,1) # return player to normal
+			
+			player.set_hp(item.attribute_value) # set player hp
+			remove_item_slot() # remove the slot
+			pass # increase hp and update the value
+		
+
+
+
+
+func remove_item_slot () -> void: ## Remove selected item from the inventory
+	## Remove from storage but keep the slot
+	var slot = GlobalGameSystem.button_data_inv
+	var index = player_inv.data.slots.find(slot)
+	if index != -1:
+		player_inv.data.slots[index] = null
+		
+	player_inv.update_inventory()
+	info_board.visible = false
+	pass
+
+func show_notification () -> void:
+	notification.visible = true
+	$Control/notification/Control/TextureRect/Label.text = "HP is already at maximum"
+	$Control/notification/Control/AnimationPlayer.play("show")
+
+func _on_exit_n_pressed() -> void:
+	notification.visible = false
+	pass # Replace with function body.
+
+
+
+# function for battle gauge
+func battle_gauge () -> void:
+	pass
+
+
+
+
+
+
 # Game over function
 func game_over () -> void:
 	player.stop()
@@ -331,16 +423,3 @@ func player_victory () -> void:
 	await get_tree().create_timer(1.5).timeout
 	SignalManager.battle_won.emit()
 	pass
-
-
-func _on_inventory_pressed() -> void:
-	$Control/inventory_border/Control/AnimationPlayer.play("show")
-	show.emit()
-	pass # Replace with function body.
-
-
-func _on_exit_inv_pressed() -> void:
-	$Control/inventory_border/Control/AnimationPlayer.play("close")
-	info_board.visible = false
-	inv_action.visible = false
-	pass # Replace with function body.

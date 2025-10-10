@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_mqmv0")
 name = "???"
-hp = 900
+hp = 650
 atk = 50
 def = 35
 dex = 20
