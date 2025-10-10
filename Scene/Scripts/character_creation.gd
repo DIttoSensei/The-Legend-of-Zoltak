@@ -32,6 +32,10 @@ extends Node2D
 @onready var info_3: Label = $Control/PanelContainer3/data/stats/info
 @onready var info_2_3: Label = $Control/PanelContainer3/data/stats2/info2
 
+## Buttons load
+@onready var load1: TextureButton = $Control/PanelContainer/load
+@onready var load2: TextureButton = $Control/PanelContainer2/load
+@onready var load3: TextureButton = $Control/PanelContainer3/load
 
 
 
@@ -40,6 +44,10 @@ var current_save : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#SceneTransition.fade_in()
+	load1.disabled = false
+	load2.disabled = false
+	load3.disabled = false
+	
 	check_for_save_profile()
 	if GlobalGameSystem.global_audio.stream == preload("res://Asset/ost/Medieval song-Dance of the nymphs.mp3"):
 		pass
@@ -215,6 +223,7 @@ func _on_exit_pressed() -> void:
 
 
 func _on_load_pressed() -> void:
+	load1.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.txt"
 	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
 	LevelManager.load_level()
@@ -223,6 +232,7 @@ func _on_load_pressed() -> void:
 
 
 func _on_load2_pressed() -> void:
+	load2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.txt"
 	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
 	LevelManager.load_level()
@@ -231,6 +241,7 @@ func _on_load2_pressed() -> void:
 
 
 func _on_load3_pressed() -> void:
+	load3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.txt"
 	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
 	LevelManager.load_level()

@@ -48,7 +48,25 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-
+func modulate_player (r_value : int, g_value : int, b_value : int, a_value : int) -> void:
+	self_modulate.r = r_value
+	self_modulate.g = g_value
+	self_modulate.b = b_value
+	self_modulate.a = a_value
+	
+## for healing and such
+func set_hp (value : int) -> void:
+	current_hp += value
+	if current_hp > player_hp.max_value:
+		current_hp = player_hp.max_value
+		player_hp.value = current_hp
+		hp_value.text = str (current_hp)
+	else:
+		player_hp.value = current_hp
+		hp_value.text = str (current_hp)
+	
+	
+	
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	self.play("hit")
 	$"dmg hit".text = str(player_damage)

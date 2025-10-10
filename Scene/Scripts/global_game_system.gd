@@ -9,7 +9,7 @@ var audio : Resource
 var save_name : String
 
 # global var
-var button_data_inv
+var button_data_inv : Slot_data
 var action_data_inv
 var player_coin
 var shop_item
