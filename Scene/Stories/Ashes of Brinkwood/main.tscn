@@ -539,11 +539,11 @@ _data = {
 "roll_animation": SubResource("Animation_m4lal")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t8dao"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_67a62"]
 atlas = ExtResource("5_xd736")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_347ts"]
-texture = SubResource("AtlasTexture_t8dao")
+texture = SubResource("AtlasTexture_67a62")
 texture_margin_left = 130.0
 texture_margin_right = 130.0
 expand_margin_left = 210.0
@@ -1508,6 +1508,7 @@ theme_override_fonts/font = SubResource("FontVariation_ekopb")
 theme_override_font_sizes/font_size = 0
 text = "long sword"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="attribute" type="Label" parent="Control/inventory_border/Control/Info_board"]

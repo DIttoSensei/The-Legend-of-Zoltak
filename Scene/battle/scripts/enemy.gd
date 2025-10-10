@@ -91,6 +91,10 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	if _anim_name == "death":
+		$AnimationPlayer.stop()
+		return
+		
 	$AnimationPlayer.play("idle")
 	$AnimationPlayer.seek(0.0, true)
 	pass # Replace with function body.
