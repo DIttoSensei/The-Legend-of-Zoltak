@@ -22,3 +22,4 @@ signal player_attack_data
 signal player_damaged (damage : int)
 signal enemy_damaged (damage : int)
 signal player_attack (action_data)
+signal battle_won 

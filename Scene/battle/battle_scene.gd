@@ -26,12 +26,31 @@ var player_dex_mod
 @onready var action_container: ActionContainer = $"Control/action display/ScrollContainer/action container"
 @onready var results: CanvasLayer = $results
 
+@onready var player_inv: Inventory_Ui = $Control/inventory_border/Control/GridContainer
+
+# info board
+@onready var item_icon: TextureRect = $Control/inventory_border/Control/Info_board/item_icon
+@onready var item_name: Label = $Control/inventory_border/Control/Info_board/name
+@onready var item_attribute: Label = $Control/inventory_border/Control/Info_board/attribute
+@onready var item_type: Label = $Control/inventory_border/Control/Info_board/item_type
+@onready var item_discription: Label = $Control/inventory_border/Control/Info_board/discription
+@onready var info_board: Sprite2D = $Control/inventory_border/Control/Info_board
+@onready var buff_texture: TextureRect = $"Control/inventory_border/Control/Info_board/buff texture"
+@onready var buff_texture_2: TextureRect = $"Control/inventory_border/Control/Info_board/buff texture2"
+
+@onready var inv_action: TextureButton = $Control/inventory_border/Control/action
+
+
+
+# signal
+signal show
+signal hide
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_player_actions()
-
+	load_player_inv()
 	
 	text = "YOU ENCOINTERED THE [color=red]RAGING KNIGHT[/color]"
 	enable_button()
@@ -41,6 +60,7 @@ func _ready() -> void:
 	SignalManager.player_attack_data.connect(player_attack)
 	SignalManager.enemy_attack_data.connect(enemy_attack)
 	SignalManager.player_attack.connect(show_and_store_attack)
+	SignalManager.show_item_info_board.connect(show_item_info)
 	
 
 func disable_button () -> void:
@@ -123,13 +143,13 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	await get_tree().create_timer(2).timeout
 	enemy_animation.play(anim_name)
 	
-	damage = max(0, damage - player_def_mod) # player def deducts damage
+	damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
 	SignalManager.player_damaged.emit(damage)
 	
 	
 	await get_tree().create_timer(1.5).timeout
 	# Check if player has no hp left
-	if player.current_hp == 0:
+	if player.current_hp <= 0:
 		game_over()
 		## Switch scene to game over menu
 		return
@@ -140,6 +160,7 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 		text = "[center]You took damage, now it's your turn[/center]"
 		announcer_text(text)
 		player_attack()
+		battling = false
 		return
 		
 	player_take_turn = false
@@ -152,24 +173,41 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 
 func player_attack() -> void:
 	var action = current_action.action_data
+	var damage = player_atk_mod
+	
 	await get_tree().create_timer(2).timeout
 	text = "[center]You used " +"[color=green]" + action.action_name + "[/color][/center]"
 	announcer_text(text)
 	await get_tree().create_timer(2).timeout
 	player.play("attack")
 	$Control/player/hit_box_hit.play("hit")
-	SignalManager.enemy_damaged.emit(player_atk_mod)
+	
+	## This is where the move type gets checked to perform it properties
+	## Eg if it a stun or poisen type move it does it work rather than just dmg
+	
+	damage = max(0, damage - enemy.def) # deduct damage from enemy def
+	SignalManager.enemy_damaged.emit(damage)
+	
+	await get_tree().create_timer(2).timeout
+	
+	# Check if enemy has no hp left
+	if enemy.current_hp <= 0:
+		player_victory()
+		## Switch scene to game over menu
+		return
 	
 	if enemy_take_turn == false: # check if enemy hasn't attacked
 		await get_tree().create_timer(1.5).timeout
 		text = "[center]Opponent took damage, now it's their turn[/center]"
 		announcer_text(text)
 		enemy.attack_player()
-		
+	else:
+		if battling == false:
+			enable_button()
+			
 	enemy_take_turn = false
 	battling = false
-	if battling == false:
-		enable_button()
+	
 		
 
 func announcer_text (text) -> void:
@@ -192,7 +230,9 @@ func _on_timer_timeout() -> void:
 func _on_exit_pressed() -> void:
 	$"Control/action display".visible = false
 	pass # Replace with function body.
-	
+
+
+
 func load_player_actions () -> void:
 	var actions_container = action_container.data.actions
 	actions_container.clear()
@@ -214,7 +254,52 @@ func _on_use_action_pressed() -> void:
 	$overlay.visible = true
 	pass # Replace with function body.
 	
+
+
+# for inventory
+func load_player_inv () -> void:
+	var inv_container = player_inv.data.slots
+	var storage = GlobalGameSystem.storage_inv
 	
+	## Safety, ensure the inv has 16 elements
+	if inv_container.size() < 16:
+		inv_container.resize(16)
+	elif inv_container.size() > 16:
+		inv_container = inv_container.slice(0, 16)
+	
+	## fill inventory with consumable items from global
+	for i in range(16):
+		if i < storage.size():
+			inv_container[i] = storage[i]
+		else:
+			inv_container[i] = null
+			
+	## Update UI
+	player_inv.update_inventory()
+
+
+func show_item_info () -> void:
+	if GlobalGameSystem.button_data_inv == null or GlobalGameSystem.button_data_inv.item_data == null:
+		info_board.visible = false
+		return
+	
+	item_icon.texture = GlobalGameSystem.button_data_inv.item_data.texture
+	buff_texture.texture = GlobalGameSystem.button_data_inv.item_data.buff_texture
+	buff_texture_2.texture = GlobalGameSystem.button_data_inv.item_data.buff_texture2
+	item_name.text = GlobalGameSystem.button_data_inv.item_data.name
+	item_type.text = GlobalGameSystem.button_data_inv.item_data.item_type
+	item_discription.text = GlobalGameSystem.button_data_inv.item_data.discription
+	item_attribute.text = (GlobalGameSystem.button_data_inv.item_data.attribute + " " + "+" + str(GlobalGameSystem.button_data_inv.item_data.attribute_value))
+	
+	
+	info_board.visible = true
+	inv_action.visible = true
+
+func _on_exit_info_pressed() -> void:
+	info_board.visible = false
+	pass # Replace with function body
+
+
 # Game over function
 func game_over () -> void:
 	player.stop()
@@ -230,3 +315,32 @@ func game_over () -> void:
 	LevelManager.load_new_level = "res://Scene/game_over.tscn"
 	LevelManager.load_level()
 	pass
+
+# victory function
+func player_victory () -> void:
+	GlobalGameSystem.results = "victory"
+	player.current_hp = GlobalGameSystem.player_hp
+	enemy_animation.play("death")
+	enemy.visible = false
+	$results/result_text.text = "VICTORY"
+	results.visible = true
+	
+	await  get_tree().create_timer(2).timeout
+	results.visible = false
+	SceneTransition.battle_open()
+	await get_tree().create_timer(1.5).timeout
+	SignalManager.battle_won.emit()
+	pass
+
+
+func _on_inventory_pressed() -> void:
+	$Control/inventory_border/Control/AnimationPlayer.play("show")
+	show.emit()
+	pass # Replace with function body.
+
+
+func _on_exit_inv_pressed() -> void:
+	$Control/inventory_border/Control/AnimationPlayer.play("close")
+	info_board.visible = false
+	inv_action.visible = false
+	pass # Replace with function body.

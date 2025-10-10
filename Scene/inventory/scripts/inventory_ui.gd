@@ -3,14 +3,22 @@ class_name Inventory_Ui extends Control
 const INVENTORY_SLOT = preload("res://Scene/inventory/inventory_slot.tscn")
 
 @export var data : Inventory_data
-@onready var page: VBoxContainer = $"../../../Page"
+#@onready var page: VBoxContainer = 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	page.shown.connect(update_inventory)
-	page.hides.connect(clear_inventory)
-	clear_inventory()
+	var page = get_node_or_null("../../../Page")
+	var battle_scene = get_node_or_null("../../../..")
+	
+	if page:
+		page.shown.connect(update_inventory)
+		page.hides.connect(clear_inventory)
+		clear_inventory()
+	elif battle_scene:
+		battle_scene.show.connect(update_inventory)
+		battle_scene.hide.connect(clear_inventory)
+		clear_inventory()
 	pass # Replace with function body.
 
 
