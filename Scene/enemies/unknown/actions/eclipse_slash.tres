@@ -6,8 +6,8 @@
 script = ExtResource("1_gptkk")
 action_name = "ECLIPSE SLASH"
 action_type = "Physical"
-action_attribute = 50
-critical_rate = "10%"
+action_attribute = 49
+critical_rate = "5%"
 cooldown = 0
 current_cooldown = 0
 cost = 0

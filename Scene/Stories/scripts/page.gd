@@ -87,6 +87,7 @@ func _ready() -> void:
 	SignalManager.shop_exit.connect(back_to_main_game)
 	SignalManager.add_item_to_inventory.connect(add_shop_item_to_inv)
 	SignalManager.add_action_to_slot.connect(add_action_to_inv)
+	SignalManager.battle_won.connect(set_choice_data_for_battle)
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
@@ -183,6 +184,7 @@ func _on_choice_pressed() -> void:
 	
 	if current_choice["choice"] == "🔹 fight":
 		copy_player_actions()
+		copy_and_move_inventory()
 		show_battle_scene()
 	else:
 		$"../overlay".visible = true
@@ -315,7 +317,7 @@ func _on_roll_pressed() -> void:
 func set_choice_data ():
 	# get current page
 	current_page = get_current_page()
-	var stat_requirment = current_page["roll"]
+	var stat_requirment = current_choice["roll"]
 	
 	# check for the stats and their value
 	if "atk" in stat_requirment:
@@ -490,7 +492,7 @@ func set_choice_data ():
 	continue_butn.visible = true
 	
 	
-	
+
 	
 func give_reward_or_loss():
 	# check which outcome you are currently in then add up coins if it the first
@@ -548,6 +550,7 @@ func give_reward_or_loss():
 			
 	# remove if its the second
 	elif current_outcome == current_choice["outcome_2"]:
+	
 		current_coin -= current_choice["outcome_2"]["loss"]["coin"]
 		GlobalGameSystem.player_coin = current_coin
 		current_hp -= current_choice["outcome_2"]["loss"]["hp"]
@@ -588,6 +591,37 @@ func give_reward_or_loss():
 							await $"../mini notification/AnimationPlayer".animation_finished
 							
 
+# for when you win the battel
+func set_choice_data_for_battle () -> void:
+	current_page = get_current_page()
+	back_to_game()
+	
+	if GlobalGameSystem.results == "victory":
+		clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
+		current_outcome = current_choice["outcome_1"]
+		current_reward_text = current_choice["outcome_1"]["reward"]["reward_text"]
+	else:
+		clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
+		current_outcome = current_choice["outcome_2"]
+		current_reward_text = current_choice["outcome_2"]["loss"]["loss_text"]
+	
+	# set outcome
+	var outcome_text = clicked_choice.get_meta("outcome")
+	current_text = outcome_text
+	
+	## set reward text
+	#var _outcome_reward
+	
+	## set next page, reset counter and start the typewriter animation
+	next_page = current_choice["outcome_1"]["next_page"]
+	## call the save player data func here ------------------->>>
+	counter = -5
+	typewriting_animation()
+#
+	## Hide all options and show the continue button instead
+	hide_options()
+	texture_rect.visible = false
+	continue_butn.visible = true
 
 
 ## UI BUTTONS (I know there are better ways to do this)
@@ -768,6 +802,19 @@ func back_to_main_game () -> void:
 		pass
 	pass
 	
+# after finishing your battle
+func back_to_game () -> void:
+	var parent = $".."
+	var battle = parent.get_node_or_null("BattleScene")
+	current_hp = GlobalGameSystem.player_hp
+	hp.value = current_hp
+	
+	if battle:
+		battle.visible = false
+		SceneTransition.battle_close()
+		battle.queue_free()
+	else:
+		pass
 	
 ## Adding item from the shop to your inventory
 func add_shop_item_to_inv() -> void:
@@ -778,6 +825,7 @@ func add_shop_item_to_inv() -> void:
 			return  # ✅ stop after placing the item
 	# if the loop finishes without finding space
 	print("No space in storage!")
+	
 	
 func add_action_to_inv () -> void: 
 	var size = action_container.data.actions.size()
@@ -794,7 +842,7 @@ func is_inventory_full() -> bool:
 	return true  # no empty slots, so full
 
 
-# For copying player's action
+## For copying player's action for battle
 func copy_player_actions () -> void:
 	GlobalGameSystem.current_player_actions.clear()
 	for action in action_container.data.actions:
@@ -803,6 +851,27 @@ func copy_player_actions () -> void:
 			GlobalGameSystem.current_player_actions.append(copied_actions)
 			
 			
+## for copying player's selected inventory
+func copy_and_move_inventory () -> void:
+	# clear arrey
+	GlobalGameSystem.selected_inv.clear()
+	GlobalGameSystem.storage_inv.clear()
+	
+	#First copy selected_inv
+	for selected in selected_inventory.data.slots:
+		if selected:
+			var copied_items = selected.duplicate()
+			GlobalGameSystem.selected_inv.append(copied_items)
+			
+	# For moving consumables if there are any present in main
+	for i in range(storage_inventory.data.slots.size() - 1, -1, -1):
+		var slot = storage_inventory.data.slots[i]
+		if slot == null or slot.item_data == null:
+			continue
+		if slot.item_data.item_type == "Consumable":
+			GlobalGameSystem.storage_inv.append(slot)
+			storage_inventory.data.slots.remove_at(i)
+
 func show_battle_scene() -> void:
 	SceneTransition.battle_open()
 	await get_tree().create_timer(1).timeout
