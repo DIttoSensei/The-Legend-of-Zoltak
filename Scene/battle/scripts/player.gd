@@ -4,10 +4,12 @@ class_name Player extends AnimatedSprite2D
 @onready var def_value: Label = $"../stats_view/def_value"
 @onready var dex_value: Label = $"../stats_view/dex_value"
 @onready var hp_value: Label = $"../stats_view/hp_value"
+@onready var battle_scene: Node2D = $"../.."
 
 
 var player_damage
 var current_hp : int
+var selected_inv : Array = []
 
 # Stats
 var atk : int
@@ -25,7 +27,17 @@ var final_int
 var final_wis
 var final_con
 
+# equipment mod
+var headgear_def 
+var chestplate_def
+var rel_atr 
+var rel_type 
+var leggings_def
+var weapon_atk 
+var armor_def
+
 @onready var player_hp: TextureProgressBar = $"../player_hp"
+@onready var camera: Camera2D = $"../Camera2D"
 
 
 
@@ -33,6 +45,7 @@ var final_con
 func _ready() -> void:
 	current_hp = GlobalGameSystem.player_hp
 	#player_hp.value = current_hp
+	load_selected_inv()
 	set_battle_stat()
 	
 	current_hp += final_con
@@ -68,6 +81,12 @@ func set_hp (value : int) -> void:
 	
 	
 func _on_area_2d_area_entered(_area: Area2D) -> void:
+	if battle_scene.enemy_critical_hit == true:
+		GlobalGameSystem.hit_stop(0.05, 0.15) #perform hitstop
+		battle_scene.enemy_critical_hit = false
+		$criti_hit.play("show")
+		
+	camera.shake() # shake screen
 	self.play("hit")
 	$"dmg hit".text = str(player_damage)
 	$dmg_info.play("dmg_p")
@@ -90,27 +109,43 @@ func take_damage (damage) -> void:
 	player_damage = damage
 	
 	
+func load_selected_inv () -> void:
+	var selected = GlobalGameSystem.selected_inv
+	selected_inv = selected.duplicate(true)
+	
+	headgear_def = selected_inv[0].item_data.attribute_value
+	chestplate_def = selected_inv[1].item_data.attribute_value
+	rel_type = selected_inv[2].item_data.attribute
+	rel_atr = selected_inv[2].item_data.attribute_value
+	leggings_def = selected_inv[3].item_data.attribute_value
+	weapon_atk = selected_inv[4].item_data.attribute_value
+	
+	armor_def = headgear_def + chestplate_def + leggings_def
+	
+	
+		
 func set_battle_stat () -> void:
-	atk = GlobalGameSystem.player_atk
-	def = GlobalGameSystem.player_def
+	atk = GlobalGameSystem.player_atk 
+	def = GlobalGameSystem.player_def 
 	dex = GlobalGameSystem.player_dex
 	wis = GlobalGameSystem.player_wis
 	Int = GlobalGameSystem.player_int
 	con = GlobalGameSystem.player_con
 
 	
-	
 	final_atk = atk + (min(Int , atk) - atk) * 0.7
 	final_def = def + (min(con , def) - def) * 0.7
 	final_dex = dex + (min(wis , dex) - dex) * 0.7
 	final_con = con + (min(wis , con) - con) * 0.7
 	
+	
+	
 	set_stat_view()
 	pass
 
 func set_stat_view () -> void:
-	atk_value.text =  str (final_atk)
-	def_value.text = str (final_def)
+	atk_value.text =  str (final_atk + weapon_atk)
+	def_value.text = str (final_def + armor_def)
 	dex_value.text = str (final_dex)
 	
 	
@@ -120,3 +155,32 @@ func set_roll_stat_view (roll_atk, roll_def, roll_dex) -> void:
 	dex_value.text = str (roll_dex)
 	$"../stats_view/AnimationPlayer".play("display")
 	
+
+func show_full_stat (hp_l : Label, atk_l : Label, def_l : Label, dex_l : Label, con_l : Label) -> void:
+	hp_l.text = str(GlobalGameSystem.player_hp)
+	atk_l.text = str(atk)
+	def_l.text = str(def)
+	dex_l.text = str(dex)
+	con_l.text = str(con)
+	pass
+
+func show_full_mod_stat (hp_m : Label, atk_m : Label, def_m : Label, dex_m : Label, con_m : Label, wep_dmg : Label, arm_def : Label, relic_type : Label, crit : Label ) -> void:
+	var atk_mod = final_atk - atk
+	var def_mod = final_def - def
+	var dex_mod = final_dex - dex
+	var con_mod  = final_con - con
+	
+	hp_m.text = "(+" + str(final_con) + ")"
+	# cal
+	atk_m.text = "(" + str(atk_mod) + ")"
+	def_m.text = "(" + str(def_mod) + ")"
+	dex_m.text = "(" + str(dex_mod) + ")"
+	con_m.text = "(" + str(con_mod) + ")"
+	wep_dmg.text = str(weapon_atk)
+	arm_def.text = str (armor_def)
+	relic_type.text = rel_type + " +"
+	
+	if rel_type == "Crit":
+		crit.text = str(rel_atr)
+	else:
+		crit.text = "0"

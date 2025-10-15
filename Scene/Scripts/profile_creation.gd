@@ -123,7 +123,7 @@ func save_game () -> void :
 			"Cha" : int(cha.text),
 			"Wis" : int(wis.text),
 			"Dialogue_Page" : "",
-			"currency" : 900,
+			"currency" : 8000,
 		},
 		"Main_Inventory" : [],
 		"Storage_Inventory" : [],
