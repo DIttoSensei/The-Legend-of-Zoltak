@@ -164,8 +164,8 @@ texture = ExtResource("3_4g2l4")
 top_level = true
 z_index = 1
 anchors_preset = -1
-anchor_right = 1.025
-anchor_bottom = 1.01563
+anchor_right = 1.02778
+anchor_bottom = 0.900463
 offset_left = 970.0
 offset_top = 54.0
 offset_right = -65.0
@@ -371,6 +371,10 @@ texture = ExtResource("7_nkdiv")
 libraries = {
 "": SubResource("AnimationLibrary_321vq")
 }
+
+[node name="sound_effect" type="AudioStreamPlayer" parent="."]
+
+[node name="sound_effect2" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="item_button" to="." method="_on_item_button_pressed"]

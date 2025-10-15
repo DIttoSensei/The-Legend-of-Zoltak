@@ -1,5 +1,6 @@
-extends Node2D
+class_name Battle_Scene extends Node2D
 
+var turn_counter : int = 0
 var player_roll
 var enemy_roll
 var text
@@ -12,6 +13,9 @@ var player_take_turn : bool = false
 var player_atk_mod 
 var player_def_mod
 var player_dex_mod
+var player_critical_hit : bool = false
+var enemy_critical_hit : bool = false
+
 
 @onready var player: Player = $Control/player
 @onready var enemy: Enemy = $Control/enemy
@@ -40,6 +44,31 @@ var player_dex_mod
 @onready var notification: CanvasLayer = $Control/notification
 
 @onready var inv_action: TextureButton = $Control/inventory_border/Control/inv_action
+@onready var full_stat_anim: AnimationPlayer = $Control/full_stats_info/full_stat_anim
+
+## var for full stats
+var stat_conter : int = 0
+@onready var full_stats: TextureButton = $Control/full_stats_info/full_stats
+
+@onready var hp: Label = $Control/full_stats_info/Panel/stat/hp
+@onready var atk: Label = $Control/full_stats_info/Panel/stat/atk
+@onready var def: Label = $Control/full_stats_info/Panel/stat/def
+@onready var dex: Label = $Control/full_stats_info/Panel/stat/dex
+@onready var con: Label = $Control/full_stats_info/Panel/stat2/con
+
+@onready var hp__: Label = $Control/full_stats_info/Panel/stat/hp__
+@onready var atk__: Label = $Control/full_stats_info/Panel/stat/atk__
+@onready var def__: Label = $Control/full_stats_info/Panel/stat/def__
+@onready var dex__: Label = $Control/full_stats_info/Panel/stat/dex__
+@onready var con__: Label = $Control/full_stats_info/Panel/stat2/con__
+
+@onready var wep_dmg: Label = $Control/full_stats_info/Panel/stat2/wep_dmg
+@onready var arm_def: Label = $Control/full_stats_info/Panel/stat2/arm_def
+@onready var itm_tp: Label = $Control/full_stats_info/Panel/stat2/itm_tp
+@onready var crit: Label = $Control/full_stats_info/Panel/stat2/crit
+
+## Battle gauge
+@onready var battle_gauge: Sprite2D = $Control/battle_gauge
 
 
 
@@ -57,6 +86,7 @@ func _ready() -> void:
 	load_player_actions()
 	load_player_inv()
 	
+	
 	text = "[center]YOU ENCOINTERED THE [color=red]RAGING KNIGHT[/color][/center]"
 	enable_button()
 	SceneTransition.fade_in()
@@ -67,19 +97,25 @@ func _ready() -> void:
 	SignalManager.player_attack.connect(show_and_store_attack)
 	SignalManager.show_item_info_board.connect(show_item_info)
 	
+	## for full stats display
+	player.show_full_stat(hp, atk, def, dex, con)
+	player.show_full_mod_stat(hp__, atk__, def__, dex__, con__, wep_dmg, arm_def, itm_tp, crit)
+	
 
 func disable_button () -> void:
 	attack.disabled = true
 	inventory.disabled = true
 	battle_surge.disabled = true
+	full_stats.disabled = true
 
 func enable_button () -> void:
 	attack.disabled = false
 	inventory.disabled = false
 	battle_surge.disabled = false
-	
+	full_stats.disabled = false
 
 func _on_attack_pressed() -> void:
+	
 	if battling == true:
 		disable_button()
 	else:
@@ -107,6 +143,10 @@ func _on_roll_pressed() -> void:
 	$overlay/roll.visible = true
 	$overlay/Sprite2D/counter.text = str(20)
 	
+	# if the full start panel is showing hide it
+	if $Control/full_stats_info/Panel.visible == true:
+		full_stat_anim.play("hide")
+	
 
 	start_battle()
 	
@@ -116,11 +156,13 @@ func player_roll_modifer (roll : int) -> void:
 	
 	var critical_rate = int(current_action.action_data.critical_rate.trim_suffix("%"))
 	var chance = randi_range(0,100)
-	if chance < critical_rate:
+	if chance < critical_rate: ## For critical hits
+		player_critical_hit = true
 		player_atk_mod *= 2
-	player_atk_mod += current_action.action_data.action_attribute
+		
+	player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
 	
-	player_def_mod = int(player.final_def * (0.5 + (roll/20.0)))
+	player_def_mod = int(player.final_def * (0.5 + (roll/20.0))) + player.armor_def
 	player_dex_mod = int(player.final_dex * (0.5 + (roll/20.0)))
 	pass
 	
@@ -143,6 +185,10 @@ func start_battle () -> void:
 
 
 func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
+	battling = true
+	if battling == true:
+		disable_button()
+		
 	await get_tree().create_timer(2).timeout
 	text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
 	announcer_text(text)
@@ -166,20 +212,33 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 		text = "[center]You took damage, now it's your turn[/center]"
 		announcer_text(text)
 		player_attack()
-		battling = false
+		
 		return
 		
 	player_take_turn = false
-	await get_tree().create_timer(3).timeout
 	text = "[center]The air grew thick filled with a strange ominous aura[/center]" # announer for turn end
 	announcer_text(text)
+	await get_tree().create_timer(3).timeout
 	battling = false
 	
 	if battling == false:
 		enable_button()
+		
+	
+	## increase counter
+	turn_counter += 1
+	if battle_gauge.frame == 0:
+		pass
+	else:
+		battle_gauge.frame -= 1
+		_battle_gauge()
 
 
 func player_attack() -> void:
+	battling = true
+	if battling == true:
+		disable_button()
+		
 	var action = current_action.action_data
 	var damage = player_atk_mod
 	
@@ -211,15 +270,23 @@ func player_attack() -> void:
 		await get_tree().create_timer(1.5).timeout
 		enemy.attack_player()
 	else:
-		if battling == false:
-			enable_button()
 		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
 		announcer_text(text)
+		battling = false
+		if battling == false:
+			enable_button()
+		
+		## increase counter
+		turn_counter += 1
+		if battle_gauge.frame == 0:
+			pass
+		else:
+			battle_gauge.frame -= 1
+			_battle_gauge()
+		
 	
 	enemy_take_turn = false
-	battling = false
-	
-		
+
 
 func announcer_text (text) -> void:
 	announcer.visible_characters = 0
@@ -289,6 +356,7 @@ func load_player_inv () -> void:
 	player_inv.update_inventory()
 
 
+
 func show_item_info () -> void:
 	if GlobalGameSystem.button_data_inv == null or GlobalGameSystem.button_data_inv.item_data == null:
 		info_board.visible = false
@@ -304,7 +372,11 @@ func show_item_info () -> void:
 	
 	
 	info_board.visible = true
-	inv_action.visible = true
+	
+	if GlobalGameSystem.button_data_inv.item_data.item_type != "Consumable" or GlobalGameSystem.button_data_inv == null:
+		inv_action.visible = false
+	else:
+		inv_action.visible = true
 
 func _on_exit_info_pressed() -> void:
 	info_board.visible = false
@@ -347,6 +419,7 @@ func use_item () -> void:
 		elif player.current_hp < player.player_hp.max_value:
 			text = "[center]You used " + item.name + "[/center]"
 			announcer_text(text)
+			heal.modulate = "4df936" # change color to green
 			heal.visible = true
 			heal.play("show") # play heal animation
 			player.modulate_player(100,100,100,1) # flash player white
@@ -372,6 +445,8 @@ func remove_item_slot () -> void: ## Remove selected item from the inventory
 	info_board.visible = false
 	pass
 
+
+
 func show_notification () -> void:
 	notification.visible = true
 	$Control/notification/Control/TextureRect/Label.text = "HP is already at maximum"
@@ -384,7 +459,10 @@ func _on_exit_n_pressed() -> void:
 
 
 # function for battle gauge
-func battle_gauge () -> void:
+func _battle_gauge () -> void:
+	if battle_gauge.frame == 0:
+		$Control/battle_gauge/AnimationPlayer.play("ready")
+		
 	pass
 
 
@@ -411,8 +489,10 @@ func game_over () -> void:
 # victory function
 func player_victory () -> void:
 	GlobalGameSystem.results = "victory"
-	player.current_hp = GlobalGameSystem.player_hp
+	GlobalGameSystem.player_hp = player.current_hp
+
 	enemy_animation.play("death")
+	await get_tree().create_timer(0.84).timeout
 	enemy.visible = false
 	$results/result_text.text = "VICTORY"
 	results.visible = true
@@ -423,3 +503,15 @@ func player_victory () -> void:
 	await get_tree().create_timer(1.5).timeout
 	SignalManager.battle_won.emit()
 	pass
+
+
+
+## To show additional stats information through button
+func _on_full_stats_pressed() -> void:
+	stat_conter += 1
+	if stat_conter == 1:
+		full_stat_anim.play("show")
+	elif stat_conter > 1:
+		full_stat_anim.play("hide")
+		stat_conter = 0
+	pass # Replace with function body.

@@ -74,6 +74,7 @@ var current_reward_text : String
 var current_hp : int = 0
 var counter_inventory : int = 0
 var counter_achivement : int = 0
+var current_music : String = ""
 
 # signals
 signal shown
@@ -166,10 +167,29 @@ func load_page () -> void:
 		choice_4.text = current_page["choice_4"]
 	else:
 		choice_4.visible = false
+	
+	play_page_music()
 
 
-			
-
+func play_page_music () -> void:
+	current_page = get_current_page()
+	
+	var music  = current_page["music"]
+	if music == "":
+		if current_music == "":
+			return
+		else:
+			GlobalGameSystem.global_audio.stream = load(current_music)
+			await get_tree().create_timer(2).timeout
+			GlobalGameSystem.play_bg_audio()
+			return
+	
+	GlobalGameSystem.global_audio.stream = load(music)
+	await get_tree().create_timer(2).timeout
+	GlobalGameSystem.play_bg_audio()
+	current_music = music
+	
+	
 ## When the choices are pressed
 func _on_choice_pressed() -> void:
 	# get current page
@@ -594,6 +614,7 @@ func give_reward_or_loss():
 # for when you win the battel
 func set_choice_data_for_battle () -> void:
 	current_page = get_current_page()
+	$"../Camera2D".make_current()
 	back_to_game()
 	
 	if GlobalGameSystem.results == "victory":
@@ -627,6 +648,7 @@ func set_choice_data_for_battle () -> void:
 ## UI BUTTONS (I know there are better ways to do this)
 func _on_inventory_pressed() -> void:
 	# track time the button was pressed
+	info_board.visible = false
 	counter_inventory += 1
 	
 	if counter_inventory == 1 :
@@ -779,6 +801,7 @@ func _on_achivement_pressed() -> void:
 
 # Shop section
 func _on_shop_pressed() -> void:
+	
 	var add_shop = SHOP.instantiate()
 	add_shop.current_coin = current_coin # after instantiating send your current coin value to the shop
 	$"../shop_layer".add_child(add_shop)
@@ -798,6 +821,7 @@ func back_to_main_game () -> void:
 		
 		shop.visible = false
 		shop.queue_free()
+		play_page_music()
 	else:
 		pass
 	pass
@@ -807,12 +831,16 @@ func back_to_game () -> void:
 	var parent = $".."
 	var battle = parent.get_node_or_null("BattleScene")
 	current_hp = GlobalGameSystem.player_hp
+	
+	if current_hp > 100:
+		current_hp = 100
 	hp.value = current_hp
 	
 	if battle:
 		battle.visible = false
 		SceneTransition.battle_close()
 		battle.queue_free()
+		$"../action display/action-info".visible = false
 	else:
 		pass
 	
@@ -868,9 +896,9 @@ func copy_and_move_inventory () -> void:
 		var slot = storage_inventory.data.slots[i]
 		if slot == null or slot.item_data == null:
 			continue
-		if slot.item_data.item_type == "Consumable":
-			GlobalGameSystem.storage_inv.append(slot)
-			storage_inventory.data.slots.remove_at(i)
+		
+		GlobalGameSystem.storage_inv.append(slot)
+		storage_inventory.data.slots[i] = null
 
 func show_battle_scene() -> void:
 	SceneTransition.battle_open()

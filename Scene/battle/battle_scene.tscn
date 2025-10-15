@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=143 format=3 uid="uid://c4t5kvfjhunpx"]
 
 [ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
@@ -71,11 +71,15 @@
 [ext_resource type="Script" path="res://Scene/inventory/scripts/inventory_ui.gd" id="52_7xfl5"]
 [ext_resource type="Texture2D" uid="uid://8hxg6m6yodx2" path="res://Scene/battle/img/effects/heal/Priest_skill3_frame13.png" id="53_7tyh3"]
 [ext_resource type="Resource" uid="uid://bjwigbfik13vn" path="res://Scene/inventory/player_inventory.tres" id="53_wybc0"]
+[ext_resource type="Texture2D" uid="uid://unq3buuyjrju" path="res://Scene/battle/img/effects/2/0.png" id="54_hfu4s"]
 [ext_resource type="PackedScene" uid="uid://cylo7l2kcxlpl" path="res://Scene/inventory/inventory_slot.tscn" id="54_hrudq"]
 [ext_resource type="Texture2D" uid="uid://bx0o37p4rbgjj" path="res://Asset/img/other/panel-removebg-preview.png" id="55_el3na"]
 [ext_resource type="Texture2D" uid="uid://d3f0m4av30xa4" path="res://Asset/img/other/banner.png" id="55_jlc2d"]
+[ext_resource type="Texture2D" uid="uid://c8788xluon6fy" path="res://Scene/battle/img/effects/2/1.png" id="55_ysrep"]
 [ext_resource type="Texture2D" uid="uid://bdxoxg6p1dove" path="res://Asset/Rpg1/panelInset_brown.png" id="56_7pqr2"]
+[ext_resource type="Texture2D" uid="uid://cys2m4gu3in7x" path="res://Scene/battle/img/effects/2/2.png" id="56_64lg1"]
 [ext_resource type="Texture2D" uid="uid://6iyosni310om" path="res://Asset/img/other/HeartIcons_32x32.png" id="57_481kb"]
+[ext_resource type="Texture2D" uid="uid://ca4wn0hmy5pog" path="res://Scene/battle/img/effects/2/3.png" id="57_jebg5"]
 [ext_resource type="Texture2D" uid="uid://1ttd8whwn3in" path="res://Asset/img/buff_skill/Buffs/regeneration.png" id="58_2xmfj"]
 [ext_resource type="Texture2D" uid="uid://bwqq2cf6eo5xy" path="res://Asset/img/buff_skill/Buffs/swiftness.png" id="59_lfa2c"]
 [ext_resource type="Texture2D" uid="uid://b3pvyptq772c5" path="res://Asset/img/other/PatternMiddleBottomBG_199x48.png" id="61_1n4f5"]
@@ -85,6 +89,8 @@
 [ext_resource type="Texture2D" uid="uid://dkde605e0lipv" path="res://Scene/battle/img/effects/1/warrior_skill1_frame4.png" id="66_jhal2"]
 [ext_resource type="Texture2D" uid="uid://vmuhyftd3f0" path="res://Scene/battle/img/effects/1/warrior_skill1_frame5.png" id="67_eblqr"]
 [ext_resource type="Texture2D" uid="uid://j1w26ofdr10r" path="res://Asset/Rpg1/panelInset_beigeLight.png" id="81_18pft"]
+[ext_resource type="Script" path="res://Scene/battle/camera_shake.gd" id="86_rf2ux"]
+[ext_resource type="Texture2D" uid="uid://l6r2c3jt2coe" path="res://Scene/battle/img/RRIOF144.png" id="87_l1e6c"]
 
 [sub_resource type="Animation" id="Animation_wqjyr"]
 length = 0.001
@@ -322,6 +328,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("crit_hit:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7.47445, -26.0438)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("crit_hit:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("crit_hit:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1iyxf"]
 resource_name = "dmg_p"
@@ -406,6 +448,51 @@ _data = {
 "hit": SubResource("Animation_ipfnt")
 }
 
+[sub_resource type="Animation" id="Animation_4grmn"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crit_hit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7.47445, -26.0438), Vector2(1.40146, -34.9197)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("crit_hit:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crit_hit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvegv"]
+_data = {
+"show": SubResource("Animation_4grmn")
+}
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kb4af"]
 animations = [{
 "frames": [{
@@ -476,6 +563,56 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_7abjt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("54_hfu4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_ysrep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_64lg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_jebg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_7tyh3")
+}],
+"loop": false,
+"name": &"show",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_lkmov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.5, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ce8vr"]
 resource_name = "ready"
 length = 0.5
@@ -492,20 +629,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.25)]
 }
-
-[sub_resource type="Animation" id="Animation_lkmov"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(100, 1, 1, 1), Color(1.5, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8sox7"]
@@ -717,6 +851,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../enemy_crit hit:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../enemy_crit hit:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(672, 821)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../enemy_crit hit:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_5rp1u"]
 resource_name = "dmg"
@@ -762,6 +932,289 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_xwin2"),
 "dmg": SubResource("Animation_5rp1u")
+}
+
+[sub_resource type="Animation" id="Animation_djunl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../enemy_crit hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../enemy_crit hit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(672, 821)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../enemy_crit hit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cjcqf"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../enemy_crit hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../enemy_crit hit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(672, 821), Vector2(626, 759)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../enemy_crit hit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjjby"]
+_data = {
+"RESET": SubResource("Animation_djunl"),
+"show": SubResource("Animation_cjcqf")
+}
+
+[sub_resource type="Animation" id="Animation_p7ar1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 789)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(557, 308)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/stat:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/stat2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rlk1s"]
+resource_name = "hide"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1005, 789), Vector2(0, 789)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36, 308), Vector2(557, 308)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/stat:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/stat2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yoom3"]
+resource_name = "show"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 789), Vector2(1005, 789)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(557, 308), Vector2(36, 308)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/stat:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/stat2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1kp4"]
+_data = {
+"RESET": SubResource("Animation_p7ar1"),
+"hide": SubResource("Animation_rlk1s"),
+"show": SubResource("Animation_yoom3")
 }
 
 [sub_resource type="FontVariation" id="FontVariation_2sy1y"]
@@ -1050,18 +1503,22 @@ script = ExtResource("1_td1xy")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+
+[node name="outerlay" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -920.0
+offset_top = -341.0
+offset_right = 1976.0
+offset_bottom = 2502.0
+color = Color(0, 0, 0, 1)
 
 [node name="bg" type="PanelContainer" parent="Control"]
 clip_contents = true
 layout_mode = 0
-offset_left = -8.0
+offset_left = -19.0
 offset_top = 142.0
-offset_right = 1078.0
+offset_right = 1092.0
 offset_bottom = 1141.0
 
 [node name="bg" type="Sprite2D" parent="Control/bg"]
@@ -1093,7 +1550,7 @@ scroll_active = false
 autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="Control/top info"]
-wait_time = 0.05
+wait_time = 0.04
 
 [node name="stats_view" type="ColorRect" parent="Control"]
 layout_mode = 0
@@ -1314,10 +1771,10 @@ vertical_alignment = 1
 [node name="Panel" type="PanelContainer" parent="Control"]
 clip_contents = true
 layout_mode = 0
-offset_left = -6.0
+offset_left = -38.0
 offset_top = 1229.0
-offset_right = 1078.0
-offset_bottom = 2166.0
+offset_right = 1090.0
+offset_bottom = 2182.0
 
 [node name="PanelBrown" type="Sprite2D" parent="Control/Panel"]
 modulate = Color(0.155695, 0.148494, 0.14539, 1)
@@ -1459,6 +1916,20 @@ text = "89"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="crit_hit" type="Label" parent="Control/player"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+offset_left = -7.47445
+offset_top = -26.0438
+offset_right = 34.5256
+offset_bottom = -15.0438
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 7
+text = "CRITICAL HIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="dmg_info" type="AnimationPlayer" parent="Control/player"]
 libraries = {
 "": SubResource("AnimationLibrary_l7diw")
@@ -1467,6 +1938,11 @@ libraries = {
 [node name="hit_box_hit" type="AnimationPlayer" parent="Control/player"]
 libraries = {
 "": SubResource("AnimationLibrary_xrd2a")
+}
+
+[node name="criti_hit" type="AnimationPlayer" parent="Control/player"]
+libraries = {
+"": SubResource("AnimationLibrary_qvegv")
 }
 
 [node name="player_effects" type="Control" parent="Control"]
@@ -1489,6 +1965,15 @@ position = Vector2(160, 904)
 scale = Vector2(3.09375, 3.09375)
 sprite_frames = SubResource("SpriteFrames_hmq2k")
 animation = &"show"
+
+[node name="impact" type="AnimatedSprite2D" parent="Control/player_effects"]
+visible = false
+position = Vector2(258.5, 847.5)
+scale = Vector2(5.5625, 5.5625)
+sprite_frames = SubResource("SpriteFrames_7abjt")
+animation = &"show"
+frame = 4
+frame_progress = 1.0
 
 [node name="battle_gauge" type="Sprite2D" parent="Control"]
 self_modulate = Color(1.5, 1, 1, 1)
@@ -1541,6 +2026,11 @@ libraries = {
 "": SubResource("AnimationLibrary_25w3m")
 }
 
+[node name="criti" type="AnimationPlayer" parent="Control/enemy"]
+libraries = {
+"": SubResource("AnimationLibrary_sjjby")
+}
+
 [node name="enemy_dmg hit" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
@@ -1552,6 +2042,21 @@ theme = ExtResource("3_2yx7k")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 37
 text = "89"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy_crit hit" type="Label" parent="Control"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 672.0
+offset_top = 821.0
+offset_right = 851.0
+offset_bottom = 856.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "CRITICAL HIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1972,6 +2477,347 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 55
 text = "USE"
 
+[node name="full_stats_info" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="full_stats" type="TextureButton" parent="Control/full_stats_info"]
+layout_mode = 0
+offset_left = 911.0
+offset_top = 1398.0
+offset_right = 1042.0
+offset_bottom = 1529.0
+texture_normal = ExtResource("4_hfemv")
+stretch_mode = 0
+
+[node name="Sprite2D" type="TextureRect" parent="Control/full_stats_info/full_stats"]
+modulate = Color(0.968627, 0.847059, 0.435294, 1)
+layout_mode = 0
+offset_left = 98.0
+offset_top = 102.0
+offset_right = 123.0
+offset_bottom = 127.0
+rotation = 3.14159
+scale = Vector2(2.95701, 2.95701)
+texture = ExtResource("87_l1e6c")
+
+[node name="Panel" type="Panel" parent="Control/full_stats_info"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 557.0
+offset_top = 308.0
+offset_right = 557.0
+offset_bottom = 1097.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/full_stats_info/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="stat" type="Label" parent="Control/full_stats_info/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -306.0
+offset_right = 162.0
+offset_bottom = 306.0
+grow_vertical = 2
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "HP
+
+ATK
+
+DEF
+
+DEX
+
+
+
+PSN
+
+BLD
+
+-ATK
+
+BRKR"
+
+[node name="hp" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 196.0
+offset_bottom = 33.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="atk" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 70.0
+offset_right = 196.0
+offset_bottom = 103.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="def" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 140.0
+offset_right = 196.0
+offset_bottom = 173.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="dex" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 214.0
+offset_right = 196.0
+offset_bottom = 247.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="hp__" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 208.0
+offset_right = 274.0
+offset_bottom = 33.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "(-60)
+"
+vertical_alignment = 1
+
+[node name="atk__" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 70.0
+offset_right = 274.0
+offset_bottom = 103.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "(-60)
+"
+vertical_alignment = 1
+
+[node name="def__" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 140.0
+offset_right = 274.0
+offset_bottom = 173.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "(-60)
+"
+vertical_alignment = 1
+
+[node name="dex__" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 214.0
+offset_right = 274.0
+offset_bottom = 247.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "(-60)
+"
+vertical_alignment = 1
+
+[node name="psn" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 357.0
+offset_right = 196.0
+offset_bottom = 390.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "0"
+vertical_alignment = 1
+
+[node name="bld" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 430.0
+offset_right = 196.0
+offset_bottom = 463.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "0"
+vertical_alignment = 1
+
+[node name="-atk" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 501.0
+offset_right = 196.0
+offset_bottom = 534.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "0"
+vertical_alignment = 1
+
+[node name="brkr" type="Label" parent="Control/full_stats_info/Panel/stat"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 573.0
+offset_right = 196.0
+offset_bottom = 606.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "0"
+vertical_alignment = 1
+
+[node name="stat2" type="Label" parent="Control/full_stats_info/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 584.0
+offset_top = -306.0
+offset_right = 754.0
+offset_bottom = 306.0
+grow_vertical = 2
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "WEP DMG
+
+ARM DEF
+
+ITM TYP
+
+CRIT
+
+CON
+"
+
+[node name="wep_dmg" type="Label" parent="Control/full_stats_info/Panel/stat2"]
+layout_mode = 0
+offset_left = 208.0
+offset_right = 268.0
+offset_bottom = 33.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="arm_def" type="Label" parent="Control/full_stats_info/Panel/stat2"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 72.0
+offset_right = 268.0
+offset_bottom = 105.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="itm_tp" type="Label" parent="Control/full_stats_info/Panel/stat2"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 145.0
+offset_right = 268.0
+offset_bottom = 178.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "HEAL +
+"
+vertical_alignment = 1
+
+[node name="crit" type="Label" parent="Control/full_stats_info/Panel/stat2"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 217.0
+offset_right = 268.0
+offset_bottom = 250.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="con" type="Label" parent="Control/full_stats_info/Panel/stat2"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 286.0
+offset_right = 268.0
+offset_bottom = 319.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0.647059, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "999
+"
+vertical_alignment = 1
+
+[node name="con__" type="Label" parent="Control/full_stats_info/Panel/stat2"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 285.0
+offset_right = 345.0
+offset_bottom = 318.0
+theme = ExtResource("3_2yx7k")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "(-60)
+"
+vertical_alignment = 1
+
+[node name="full_stat_anim" type="AnimationPlayer" parent="Control/full_stats_info"]
+libraries = {
+"": SubResource("AnimationLibrary_f1kp4")
+}
+
 [node name="inventory_color_rect" type="ColorRect" parent="Control"]
 visible = false
 layout_mode = 0
@@ -2284,6 +3130,11 @@ libraries = {
 "": SubResource("AnimationLibrary_321vq")
 }
 
+[node name="Camera2D" type="Camera2D" parent="Control"]
+anchor_mode = 0
+position_smoothing_enabled = true
+script = ExtResource("86_rf2ux")
+
 [node name="bottom border" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.113725)
 position = Vector2(533.916, 2042.25)
@@ -2413,6 +3264,7 @@ vertical_alignment = 1
 [connection signal="area_entered" from="Control/enemy/hitbox" to="Control/enemy" method="_on_hitbox_area_entered"]
 [connection signal="pressed" from="Control/action display/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Control/action display/use_action" to="." method="_on_use_action_pressed"]
+[connection signal="pressed" from="Control/full_stats_info/full_stats" to="." method="_on_full_stats_pressed"]
 [connection signal="pressed" from="Control/inventory_border/Control/Info_board/exit_info" to="." method="_on_exit_info_pressed"]
 [connection signal="pressed" from="Control/inventory_border/Control/inv_action" to="." method="_on_inv_action_pressed"]
 [connection signal="pressed" from="Control/inventory_border/Control/exit_inv" to="." method="_on_exit_inv_pressed"]

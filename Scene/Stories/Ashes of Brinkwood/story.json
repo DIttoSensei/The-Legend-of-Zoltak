@@ -5,7 +5,7 @@
 		"page_1": {
 			"img": "res://Asset/img/other/cons.png",
 			"roll" : {"dex" : 20},
-			"music" : "",
+			"music" : "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
 			"text": "If you find yourself repeating this for 5+ stories later, we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once).",
 			"choice_1": {
 				

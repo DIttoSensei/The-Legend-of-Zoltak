@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tx6061arjglb"
+path="res://.godot/imported/Royalty Free White Woodlands - Alexander Nakarada.mp3-95ae7c74a16a8595a33ce9c9acebe398.mp3str"
+
+[deps]
+
+source_file="res://Asset/ost/Royalty Free White Woodlands - Alexander Nakarada.mp3"
+dest_files=["res://.godot/imported/Royalty Free White Woodlands - Alexander Nakarada.mp3-95ae7c74a16a8595a33ce9c9acebe398.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

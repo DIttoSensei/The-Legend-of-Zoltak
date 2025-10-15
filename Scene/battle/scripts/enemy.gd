@@ -10,6 +10,8 @@ var current_hp
 
 @onready var enemy_hp: TextureProgressBar = $"../enemy_hp"
 @onready var player: Player = $"../player"
+@onready var camera: Camera2D = $"../Camera2D"
+@onready var battle_scene: Node2D = $"../.."
 
 
 # Called when the node enters the scene tree for the first time.
@@ -51,6 +53,7 @@ func attack_player () -> void:
 			
 			
 			if roll < crit_rate: # if you lucky higher critical rate
+				battle_scene.enemy_critical_hit = true
 				damage *= 2
 				
 			# for the animation for the action
@@ -79,6 +82,13 @@ func take_damage (damage : int) -> void:
 	pass
 
 func _on_hitbox_area_entered(_area: Area2D) -> void:
+	if battle_scene.player_critical_hit == true:
+		GlobalGameSystem.hit_stop(0.05, 0.15) #perform hitstop
+		battle_scene.player_critical_hit = false
+		$criti.play("show")
+		
+	#GlobalGameSystem.hit_stop(0.05, 0.2) #perform hitstop
+	camera.shake() # shake screen
 	$AnimationPlayer.play("hit")
 	$"../enemy_dmg hit".text = str (enemy_damage)
 	$emeny_dmg.play("dmg")

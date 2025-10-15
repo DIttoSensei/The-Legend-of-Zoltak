@@ -27,7 +27,7 @@ func _ready() -> void:
 	SceneTransition.fade_in()
 	load_player_save_file()
 	
-
+	
 
 
 func _process(_delta: float) -> void:
@@ -95,6 +95,8 @@ func load_player_save_file () -> void:
 			if action_container.data.actions.size() == 0:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
 				action_container.update_slots()
+			else:
+				action_container.update_slots()
 			
 		# for defenders
 		elif player_data["Class"] == "Defender":
@@ -105,6 +107,8 @@ func load_player_save_file () -> void:
 			data5 = load ("res://Scene/00_default_class_item_load/defender/actions/skull_cracker.tres")
 			if action_container.data.actions.size() == 0:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
+				action_container.update_slots()
+			else:
 				action_container.update_slots()
 	
 		# for mages
@@ -117,6 +121,8 @@ func load_player_save_file () -> void:
 			if action_container.data.actions.size() == 0:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
 				action_container.update_slots()
+			else:
+				action_container.update_slots()
 			
 		# for summoners
 		elif player_data ["Class"] == "Summoner":
@@ -127,6 +133,8 @@ func load_player_save_file () -> void:
 			data5 = load ("res://Scene/00_default_class_item_load/summoner/actions/soul_hound.tres")
 			if action_container.data.actions.size() == 0:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
+				action_container.update_slots()
+			else:
 				action_container.update_slots()
 			
 		# for rangers
@@ -139,6 +147,8 @@ func load_player_save_file () -> void:
 			if action_container.data.actions.size() == 0:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
 				action_container.update_slots()
+			else:
+				action_container.update_slots()
 			
 		# for rouges
 		elif  player_data["Class"] == "Rogue":
@@ -149,6 +159,8 @@ func load_player_save_file () -> void:
 			data4 = load ("res://Scene/00_default_class_item_load/rogue/actions/quick_slash.tres")
 			if action_container.data.actions.size() == 0:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
+				action_container.update_slots()
+			else:
 				action_container.update_slots()
 				
 	# Load journals if you have

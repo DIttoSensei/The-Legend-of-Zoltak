@@ -3,6 +3,9 @@ extends Node2D
 
 @onready var coin: Label = $scroll/Label
 @onready var shop_container: Shop_Inventory = $items_shop/HBoxContainer
+@onready var sound_effect: AudioStreamPlayer = $sound_effect
+@onready var sound_effect_2: AudioStreamPlayer = $sound_effect2
+
 
 # exports
 @export var data : Shop_Data
@@ -27,6 +30,9 @@ func _ready() -> void:
 	
 	load_action()
 	load_shop()
+	
+	GlobalGameSystem.global_audio.stream = preload("res://Asset/ost/White Woodlands - Alexander Nakarada.mp3")
+	GlobalGameSystem.play_bg_audio()
 	
 	#load_item_shop()
 	#GlobalGameSystem.player_coin 
