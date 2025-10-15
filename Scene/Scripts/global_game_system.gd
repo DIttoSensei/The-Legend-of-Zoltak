@@ -81,3 +81,10 @@ func load_story_data():
 			print("Failed to parse JSON data.")
 	else:
 		print("Could not open the journey data file.")
+		
+
+func hit_stop (duration : float = 0.1, slowdown : float = 0.0) -> void:
+	var original_scale = Engine.time_scale
+	Engine.time_scale = slowdown
+	await get_tree().create_timer(duration, true).timeout
+	Engine.time_scale = original_scale
