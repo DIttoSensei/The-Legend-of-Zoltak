@@ -179,6 +179,8 @@ func play_page_music () -> void:
 		if current_music == "":
 			return
 		else:
+			if GlobalGameSystem.global_audio.playing == true:
+				return
 			GlobalGameSystem.global_audio.stream = load(current_music)
 			await get_tree().create_timer(2).timeout
 			GlobalGameSystem.play_bg_audio()
@@ -727,9 +729,11 @@ func _on_action_pressed() -> void:
 		var target_grid = selected_inventory
 		var slot = GlobalGameSystem.button_data_inv
 		
+		var previous_index = storage_inventory.data.slots.find(slot)
+		
 		# Set the specific wearable type to a specific slot
 		if slot.item_data.wearable_class == "Weapon":
-			target_grid.set_slot_at_index(slot, 4)
+			target_grid.set_slot_at_index(slot, 4, previous_index)
 		
 			remove_item_slot()
 		## Other specific wearable conditions goes here

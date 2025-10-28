@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctmdc0pj537e3"
-path="res://.godot/imported/fb861.png-9e48eef5e12b7880cd9dd308d6b5aec6.ctex"
+uid="uid://c62n3f858b8pv"
+path="res://.godot/imported/water.png-f83c4e021a8d6184f76744c6ace8f446.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/00_default_class_item_load/defender/actions/img/fb861.png"
-dest_files=["res://.godot/imported/fb861.png-9e48eef5e12b7880cd9dd308d6b5aec6.ctex"]
+source_file="res://Scene/battle/img/status_icon/water.png"
+dest_files=["res://.godot/imported/water.png-f83c4e021a8d6184f76744c6ace8f446.ctex"]
 
 [params]
 
