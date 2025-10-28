@@ -5,11 +5,13 @@
 
 [resource]
 script = ExtResource("1_3qvk5")
-action_name = "LIGHTING BOLT"
+action_name = "LIGHTNING BOLT"
 action_img = ExtResource("1_3hb82")
-action_type = "Lightling"
+action_type = "Lightning"
 action_attribute = 30
 critical_rate = "11%"
 cooldown = 1
+current_cooldown = 0
 cost = 0
 action_info = "Good news, you can strike your foes with an intense charged bolt wiping em of the spot."
+purchased = false

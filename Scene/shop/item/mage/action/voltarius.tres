@@ -7,9 +7,11 @@
 script = ExtResource("1_7f0hu")
 action_name = "VOLTARIUS"
 action_img = ExtResource("1_2mngj")
-action_type = "Lightling"
+action_type = "Lightning"
 action_attribute = 250
 critical_rate = "39%"
 cooldown = 1
+current_cooldown = 0
 cost = 290
 action_info = "Strike with concentrated lightning, each bolt crashing with crackling power."
+purchased = false

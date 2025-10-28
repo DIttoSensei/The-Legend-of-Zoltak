@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdwf0hhgjm4vd"
-path="res://.godot/imported/fb595.png-1bea49bb59c4286de23e47226fd50646.ctex"
+uid="uid://cxcpllmgif3gm"
+path="res://.godot/imported/wind.png-342e3645b63f2f8628ff8598be3420e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/00_default_class_item_load/defender/actions/img/fb595.png"
-dest_files=["res://.godot/imported/fb595.png-1bea49bb59c4286de23e47226fd50646.ctex"]
+source_file="res://Scene/battle/img/status_icon/wind.png"
+dest_files=["res://.godot/imported/wind.png-342e3645b63f2f8628ff8598be3420e1.ctex"]
 
 [params]
 

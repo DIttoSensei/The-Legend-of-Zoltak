@@ -190,13 +190,30 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 		disable_button()
 		
 	await get_tree().create_timer(2).timeout
+	
+	## Some status checks will be added here
+	if enemy.paralized == true:
+		enemy.deal_status_dmg(0, 'lightning')
+		text = "[center]" + "[color=red]" + enemy_name + "[/color]"+ " is paralazied and can't move[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		if player_take_turn == false:
+			await get_tree().create_timer(1.5).timeout
+			text = "[center]You took the advantage and prepared to attack[/center]"
+			announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			player_attack()
+		else:
+			enemy_process() # to contunie with enemy battle logic
+		return
+	
+	
 	text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
 	announcer_text(text)
 	await get_tree().create_timer(2).timeout
-	enemy_animation.play(anim_name)
 	
-	damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
-	SignalManager.player_damaged.emit(damage)
+	## Perform action type
+	enemy.perform_action(damage, player_def_mod)
 	
 	
 	await get_tree().create_timer(1.5).timeout
@@ -212,19 +229,14 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 		text = "[center]You took damage, now it's your turn[/center]"
 		announcer_text(text)
 		player_attack()
-		
 		return
-		
-	player_take_turn = false
-	text = "[center]The air grew thick filled with a strange ominous aura[/center]" # announer for turn end
-	announcer_text(text)
-	await get_tree().create_timer(3).timeout
-	battling = false
 	
-	if battling == false:
-		enable_button()
-		
+	enemy_process()
 	
+		
+
+### for modularity
+func enemy_process () -> void:
 	## increase counter
 	turn_counter += 1
 	if battle_gauge.frame == 0:
@@ -232,6 +244,17 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	else:
 		battle_gauge.frame -= 1
 		_battle_gauge()
+	
+	player_take_turn = false
+	text = "[center]The air grew thick filled with a strange ominous aura[/center]" # announer for turn end
+	announcer_text(text)
+	
+	enemy.status_effect() # check for status effect
+	await get_tree().create_timer(3).timeout
+	battling = false
+	
+	if battling == false:
+		enable_button()
 
 
 func player_attack() -> void:
@@ -239,25 +262,21 @@ func player_attack() -> void:
 	if battling == true:
 		disable_button()
 		
-	var action = current_action.action_data
+	var action : Action = current_action.action_data
 	var damage = player_atk_mod
 	
 	await get_tree().create_timer(2).timeout
 	text = "[center]You used " +"[color=green]" + action.action_name + "[/color][/center]"
 	announcer_text(text)
 	await get_tree().create_timer(2).timeout
-	player.play("attack")
-	$Control/player/hit_box_hit.play("hit")
 	
 	## This is where the move type gets checked to perform it properties
 	## Eg if it a stun or poisen type move it does it work rather than just dmg
-	
-	damage = max(0, damage - enemy.def) # deduct damage from enemy def
-	SignalManager.enemy_damaged.emit(damage)
-	
+	player.perform_action (damage, action)
 	await get_tree().create_timer(2).timeout
 	
-	# Check if enemy has no hp left
+	
+	## Check if enemy has no hp left
 	if enemy.current_hp <= 0:
 		player_victory()
 		## Switch scene to game over menu
@@ -270,12 +289,6 @@ func player_attack() -> void:
 		await get_tree().create_timer(1.5).timeout
 		enemy.attack_player()
 	else:
-		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
-		announcer_text(text)
-		battling = false
-		if battling == false:
-			enable_button()
-		
 		## increase counter
 		turn_counter += 1
 		if battle_gauge.frame == 0:
@@ -284,8 +297,17 @@ func player_attack() -> void:
 			battle_gauge.frame -= 1
 			_battle_gauge()
 		
+		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
+		announcer_text(text)
+		
+		enemy.status_effect() # check for status effect
+		battling = false
+		if battling == false:
+			enable_button()
 	
 	enemy_take_turn = false
+
+
 
 
 func announcer_text (text) -> void:
@@ -299,9 +321,6 @@ func _on_timer_timeout() -> void:
 	if announcer.text.length() == announcer.visible_characters:
 		timer.stop()
 		
-
-
-
 
 
 # for action
