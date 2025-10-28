@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Action" load_steps=3 format=3 uid="uid://b3uqcvo176rsm"]
 
-[ext_resource type="Texture2D" uid="uid://b53v8mr2mbxku" path="res://Scene/00_default_class_item_load/defender/actions/img/fb1126.png" id="1_4286y"]
+[ext_resource type="Texture2D" uid="uid://b53v8mr2mbxku" path="res://Scene/00_default_class_item_load/defender/img/fb1126.png" id="1_4286y"]
 [ext_resource type="Script" path="res://Scene/action/action.gd" id="1_epiyi"]
 
 [resource]

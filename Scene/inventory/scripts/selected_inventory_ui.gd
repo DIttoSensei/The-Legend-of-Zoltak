@@ -28,23 +28,19 @@ func update_inventory () -> void:
 		add_child(new_slot)
 		new_slot.slot_data = s
 
-func set_slot_at_index(slot_data: Slot_data, index: int) -> void:
+func set_slot_at_index(slot_data: Slot_data, index: int, previous_index : int) -> void:
 	# var flag for see if your storage inventory has space or not
-	var storage_access := false
-	if data.slots[index] != null:
-		for i in range(storage_inventory.data.slots.size()):
-			if storage_inventory.data.slots[i] == null:
-				storage_inventory.data.slots[i] = data.slots[index]
-				data.slots[index] = slot_data
-				# since there is space make the flag true
-				storage_access = true
-				break
-		# if there is no storage, reture from the function asap
-		if not storage_access:
-			return
-	else:
+	var existing_item = data.slots[index]
+	print(previous_index)
+	if previous_index == 1:
+		print("first")
+		storage_inventory.data.slots[1] = existing_item
 		data.slots[index] = slot_data
-	# Refresh the UI
+		update_inventory()
+		return
+	storage_inventory.data.slots[previous_index] = existing_item
+	data.slots[index] = slot_data
+	print("second")
 	update_inventory()
 
 

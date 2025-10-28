@@ -5,11 +5,14 @@ class_name Player extends AnimatedSprite2D
 @onready var dex_value: Label = $"../stats_view/dex_value"
 @onready var hp_value: Label = $"../stats_view/hp_value"
 @onready var battle_scene: Node2D = $"../.."
+@onready var enemy: Enemy = $"../enemy"
+
 
 
 var player_damage
 var current_hp : int
 var selected_inv : Array = []
+var status_chance = 100
 
 # Stats
 var atk : int
@@ -184,3 +187,83 @@ func show_full_mod_stat (hp_m : Label, atk_m : Label, def_m : Label, dex_m : Lab
 		crit.text = str(rel_atr)
 	else:
 		crit.text = "0"
+		
+		
+		
+func perform_action (damage, action : Action) -> void:
+	
+	## Physical modifer
+	if action.action_type == "Physical":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		damage = max(0, damage - enemy.def) # deduct damage from enemy def
+		SignalManager.enemy_damaged.emit(damage)
+		
+	elif action.action_type == "Fire":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		damage = max(0, damage - enemy.def) # deduct damage from enemy def
+		SignalManager.enemy_damaged.emit(damage)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy.fire_status.active = true
+		
+	elif action.action_type == "Water":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		damage = max(0, damage - enemy.def) # deduct damage from enemy def
+		SignalManager.enemy_damaged.emit(damage)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy.water_status.active = true
+		
+		pass
+	
+	elif action.action_type == "Lightning":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		damage = max(0, damage - enemy.def) # deduct damage from enemy def
+		SignalManager.enemy_damaged.emit(damage)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy.lightning_status.active = true
+		pass
+		
+	elif action.action_type == "Ice":
+		pass
+		
+	elif action.action_type == "Wind":
+		pass
+	
+	elif action.action_type == "Earth":
+		pass
+		
+	elif action.action_type == "Mystic":
+		pass
+		
+	elif action.action_type == "Heal":
+		pass
+		
+	elif action.action_type == "Defence":
+		pass
+	
+	elif action.action_type == "Atk Down":
+		pass
+		
+	elif action.action_type == "Def Breaker":
+		pass
+		
+	elif action.action_type == "Psychic":
+		pass
+		
+	elif action.action_type == "Hex":
+		pass
+		
+	elif action.action_type == "Shadow":
+		pass
+		
+	elif action.action_type == "Bleed":
+		pass
+		
+	elif action.action_type == "Poison":
+		pass

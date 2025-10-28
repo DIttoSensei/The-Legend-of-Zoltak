@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=144 format=3 uid="uid://c4t5kvfjhunpx"]
 
 [ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
@@ -91,6 +91,7 @@
 [ext_resource type="Texture2D" uid="uid://j1w26ofdr10r" path="res://Asset/Rpg1/panelInset_beigeLight.png" id="81_18pft"]
 [ext_resource type="Script" path="res://Scene/battle/camera_shake.gd" id="86_rf2ux"]
 [ext_resource type="Texture2D" uid="uid://l6r2c3jt2coe" path="res://Scene/battle/img/RRIOF144.png" id="87_l1e6c"]
+[ext_resource type="PackedScene" uid="uid://c8ym5qkfh5k17" path="res://Scene/battle/enemy_status_effect.tscn" id="88_x01e0"]
 
 [sub_resource type="Animation" id="Animation_wqjyr"]
 length = 0.001
@@ -2005,6 +2006,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="hitbox" type="Area2D" parent="Control/enemy"]
+visible = false
 position = Vector2(32.0572, 2.35583)
 collision_layer = 2
 monitorable = false
@@ -2013,6 +2015,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_uttwu")
 
 [node name="hurtbox" type="Area2D" parent="Control/enemy"]
+visible = false
 collision_layer = 2
 monitoring = false
 
@@ -2030,6 +2033,14 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_sjjby")
 }
+
+[node name="enemy_status_effect" parent="Control" instance=ExtResource("88_x01e0")]
+layout_mode = 1
+offset_left = 724.0
+offset_top = 612.0
+offset_right = 724.0
+offset_bottom = 612.0
+scale = Vector2(1.23251, 1.23251)
 
 [node name="enemy_dmg hit" type="Label" parent="Control"]
 visible = false
