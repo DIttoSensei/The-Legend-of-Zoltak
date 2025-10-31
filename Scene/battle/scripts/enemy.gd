@@ -5,6 +5,8 @@ var atk : int
 var def : int
 var dex : int
 var current_dex : int
+var current_atk : int
+var current_def : int
 var enemy_damage
 var current_hp
 var current_move : Action
@@ -28,9 +30,11 @@ var lightning_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn'
 'texture' : 'res://Scene/battle/img/status_icon/lightning.png', 'percentage' : 5.0}
 var ice_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 2, 
 'texture' : 'res://Scene/battle/img/status_icon/ice.png', 'percentage' : 5.0}
-
+var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
 
 var paralized : bool = false
+var frozen : bool = false
 
 @onready var enemy_status_effect: Control = $"../enemy_status_effect"
 
@@ -59,6 +63,8 @@ func set_enemy_data () -> void:
 	dex = enemy_data.dex
 	
 	current_dex = dex # store original dex value
+	current_atk = atk # store original atk power
+	current_def = def # store original def status
 	
 func attack_player () -> void:
 	# while true pick a random action 
@@ -138,6 +144,9 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if _anim_name == "death":
+		$AnimationPlayer.stop()
+		return
+	if frozen == true:
 		$AnimationPlayer.stop()
 		return
 		
@@ -232,7 +241,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 				
 		await get_tree().create_timer(2.5).timeout
-			
+	
 	## WATER
 	if water_status.active:
 		text = "[center]" + enemy_name  + "[color=blue] mobility[/color] has reduced[/center]"
@@ -270,6 +279,7 @@ func status_effect () -> void:
 			lightning_status.icon_on = false
 			lightning_status.turn = 0
 			paralized = false
+			battle_scene.status_active = false # allows status from main game check to be false
 			clear_status_icon("lightning.png")
 		
 		else:
@@ -284,6 +294,58 @@ func status_effect () -> void:
 				paralized = true
 				check_if_you_dead()
 				
+		await get_tree().create_timer(2.5).timeout
+	
+	## ICE
+	if ice_status.active:
+		text = "[center]" + enemy_name + " has been[color=lightblue] frozen[/color] and can't move[/center]"
+		ice_status.turn += 1
+		if ice_status.turn >= ice_status.duration:
+			$AnimationPlayer.play("idle")
+			modulate = 'white'
+			ice_status.active = false
+			ice_status.icon_on = false
+			ice_status.turn = 0
+			frozen = false
+			battle_scene.status_active = false # allows status from main game check to be false
+			clear_status_icon("ice.png")
+		
+		else:
+			if ice_status.icon_on == true:
+				# make enemy skip its turn
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(ice_status.texture)
+				ice_status.icon_on = true
+				battle_scene.announcer_text(text)
+				deal_status_dmg(0, "ice")
+				frozen = true
+				check_if_you_dead()
+				
+	## WIND
+	if wind_status.active:
+		text = "[center]" + enemy_name + " is fighting against strong, pushing[color=lightgreen] wind[/color][/center]"
+		wind_status.turn += 1
+		if wind_status.turn >= wind_status.duration:
+			wind_status.active = false
+			wind_status.icon_on = false
+			wind_status.turn = 0
+			clear_status_icon("wind.png")
+			dex = current_dex
+		
+		else:
+			if wind_status.icon_on == true:
+				# make enemy speed be reduced
+				var dmg = (wind_status.percentage / 25.0) * dex
+				deal_status_dmg(dmg, 'wind')
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(wind_status.texture)
+				wind_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (wind_status.percentage / 25.0) * dex
+				deal_status_dmg(dmg, "wind")
+				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 
 
@@ -359,7 +421,6 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$"../enemy_dmg hit".text = str (dmg)
 		$emeny_dmg.play("dmg")
 		dex -= dmg
-		
 	
 	elif effect == "lightning":
 		dmg = int(dmg)
@@ -367,6 +428,23 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$AnimationPlayer.play("hit")
 		await get_tree().create_timer(0.4).timeout
 		modulate = "white"
+	
+	elif effect == "ice":
+		dmg = int(dmg)
+		modulate = 'lightblue'
+		$AnimationPlayer.play("hit")
+		await get_tree().create_timer(0.5).timeout
+		$AnimationPlayer.stop()
+		
+	elif effect == 'wind':
+		dmg = int(dmg)
+		modulate = 'lightgreen'
+		$AnimationPlayer.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"../enemy_dmg hit".text = str (dmg)
+		$emeny_dmg.play("dmg")
+		dex -= dmg
 
 
 func check_if_you_dead () -> void:

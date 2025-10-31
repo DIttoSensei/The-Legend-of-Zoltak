@@ -199,6 +199,7 @@ func perform_action (damage, action : Action) -> void:
 		damage = max(0, damage - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(damage)
 		
+		
 	elif action.action_type == "Fire":
 		self.play("attack")
 		$hit_box_hit.play("hit")
@@ -207,6 +208,7 @@ func perform_action (damage, action : Action) -> void:
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.fire_status.active = true
+			
 		
 	elif action.action_type == "Water":
 		self.play("attack")
@@ -217,22 +219,35 @@ func perform_action (damage, action : Action) -> void:
 		if roll <= status_chance:
 			enemy.water_status.active = true
 		
-		pass
 	
 	elif action.action_type == "Lightning":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		damage = max(0, damage - enemy.def)
+		SignalManager.enemy_damaged.emit(damage)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy.lightning_status.active = true
+	
+		
+	elif action.action_type == "Ice":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		damage = max(0, damage - enemy.def)
+		SignalManager.enemy_damaged.emit(damage)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy.ice_status.active = true
+		
+		
+	elif action.action_type == "Wind":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		damage = max(0, damage - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(damage)
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
-			enemy.lightning_status.active = true
-		pass
-		
-	elif action.action_type == "Ice":
-		pass
-		
-	elif action.action_type == "Wind":
+			enemy.wind_status.active = true
 		pass
 	
 	elif action.action_type == "Earth":
