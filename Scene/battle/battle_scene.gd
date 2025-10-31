@@ -79,6 +79,9 @@ signal hide
 ## Player effects
 @onready var heal: AnimatedSprite2D = $Control/player_effects/heal
 
+## for status
+var status_active := false
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -192,19 +195,9 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	await get_tree().create_timer(2).timeout
 	
 	## Some status checks will be added here
-	if enemy.paralized == true:
-		enemy.deal_status_dmg(0, 'lightning')
-		text = "[center]" + "[color=red]" + enemy_name + "[/color]"+ " is paralazied and can't move[/center]"
-		announcer_text(text)
-		await get_tree().create_timer(3).timeout
-		if player_take_turn == false:
-			await get_tree().create_timer(1.5).timeout
-			text = "[center]You took the advantage and prepared to attack[/center]"
-			announcer_text(text)
-			await get_tree().create_timer(1.5).timeout
-			player_attack()
-		else:
-			enemy_process() # to contunie with enemy battle logic
+	await enemy_status_check(enemy_name)
+	if status_active == true:
+		print("yes")
 		return
 	
 	
@@ -255,6 +248,45 @@ func enemy_process () -> void:
 	
 	if battling == false:
 		enable_button()
+		
+func enemy_status_check (enemy_name) -> void:
+	## Some status checks will be added here
+	if enemy.paralized == true:
+		enemy.deal_status_dmg(0, 'lightning')
+		text = "[center]" + "[color=red]" + enemy_name + "[/color]"+ " is paralazied and can't move[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		if player_take_turn == false:
+			await get_tree().create_timer(1.5).timeout
+			text = "[center]You took the advantage and prepared to attack[/center]"
+			announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			player_attack()
+		else:
+			enemy_process() # to contunie with enemy battle logic
+		status_active = true
+	
+	if enemy.frozen == true:
+		enemy.deal_status_dmg(0, 'ice')
+		text = "[center]" + "[color=red]" + enemy_name + "[/color]"+ " is frozen and can't move[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		if player_take_turn == false:
+			await get_tree().create_timer(1.5).timeout
+			text = "[center]You took the advantage and prepared to attack[/center]"
+			announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			player_attack()
+		else:
+			enemy_process()
+		status_active = true
+		
+	
+	
+
+
+
+
 
 
 func player_attack() -> void:
