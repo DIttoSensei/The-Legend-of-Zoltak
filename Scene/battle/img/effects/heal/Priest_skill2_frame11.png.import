@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://075muvfsd44y"
-path="res://.godot/imported/Priest_skill2_frame7.png-2fea5fdd2b65f05d6ff071a00dce7e26.ctex"
+uid="uid://cb3ifwk2kfvo1"
+path="res://.godot/imported/Priest_skill2_frame11.png-2c0e855359b7f168ec5ede8633673b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/battle/img/effects/3/Priest_skill2_frame7.png"
-dest_files=["res://.godot/imported/Priest_skill2_frame7.png-2fea5fdd2b65f05d6ff071a00dce7e26.ctex"]
+source_file="res://Scene/battle/img/effects/heal/Priest_skill2_frame11.png"
+dest_files=["res://.godot/imported/Priest_skill2_frame11.png-2c0e855359b7f168ec5ede8633673b17.ctex"]
 
 [params]
 
