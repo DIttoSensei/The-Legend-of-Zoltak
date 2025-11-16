@@ -97,10 +97,12 @@ func set_hp (value : int) -> void:
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if battle_scene.enemy_critical_hit == true:
 		GlobalGameSystem.hit_stop(0.05, 0.15) #perform hitstop
+		Input.vibrate_handheld(50, 1.0)
 		battle_scene.enemy_critical_hit = false
 		$criti_hit.play("show")
 		
 	camera.shake() # shake screen
+	Input.vibrate_handheld(140, 1.0)
 	self.play("hit")
 	$"dmg hit".text = str(player_damage)
 	$dmg_info.play("dmg_p")
@@ -328,7 +330,13 @@ func perform_action (value, action : Action) -> void:
 		pass
 		
 	elif action.action_type == "Psychic":
-		pass
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		value = max(0, value - enemy.def) # deduct damage from enemy def
+		SignalManager.enemy_damaged.emit(value)
+		var roll = randi_range(1,100)
+		if roll <= status_chance:
+			enemy.psychic_status.active = true
 		
 	elif action.action_type == "Hex":
 		pass

@@ -45,10 +45,13 @@ var attack_down_status : Dictionary = {"active" : false, 'icon_on' : false, 'tur
 'texture' : 'res://Scene/battle/img/status_icon/attack_down.png', 'percentage' : 5.0}
 var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/def_breaker.png', 'percentage' : 5.0}
+var psychic_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/psychic.png', 'percentage' : 5.0}
 
 
 var paralized : bool = false
 var frozen : bool = false
+var confused: bool = false
 
 @onready var enemy_status_effect: Control = $"../enemy_status_effect"
 
@@ -137,13 +140,13 @@ func take_damage (damage : int) -> void:
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	if battle_scene.player_critical_hit == true:
 		GlobalGameSystem.hit_stop(0.05, 0.15) #perform hitstop
-		Input.vibrate_handheld(50) # VIBRATE DEVICE 
+		Input.vibrate_handheld(50, 1.0) # VIBRATE DEVICE 
 		battle_scene.player_critical_hit = false
 		$criti.play("show")
 		
 	#GlobalGameSystem.hit_stop(0.05, 0.2) #perform hitstop
 	camera.shake() # shake screen
-	Input.vibrate_handheld(140) # VIBRATE DEVICE 
+	Input.vibrate_handheld(140, 1.0) # VIBRATE DEVICE 
 	$AnimationPlayer.play("hit")
 	$"../enemy_dmg hit".text = str (enemy_damage)
 	$emeny_dmg.play("dmg")
@@ -474,7 +477,45 @@ func status_effect () -> void:
 				deal_status_dmg(dmg, "def_breaker")
 				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
-
+	
+	## PSYCHIC
+	if psychic_status.active:
+		text = "[center]" + enemy_name + ' has been drenched in' + "[color=purple] Psychic[/color] aura[/center]"
+		psychic_status.turn += 1
+		if psychic_status.turn >= psychic_status.duration:
+			psychic_status.active = false
+			psychic_status.icon_on = false
+			psychic_status.turn = 0
+			confused = false
+			battle_scene.status_active = false # allows status from main game check to be false
+			clear_status_icon("psychic.png")
+			enemy_effects.visible = false
+			enemy_effects.stop()
+			status_animation = false
+		
+		else:
+			if psychic_status.icon_on == true:
+				# make enemy skip its turn
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(psychic_status.texture)
+				modulate_enemy_effects(100,1,100)
+				modulate = "purple"
+				$AnimationPlayer.play("hit")
+				await get_tree().create_timer(0.4).timeout
+				modulate = "white"
+				enemy_effects.play("show")
+				enemy_effects.visible = true
+				current_status_animation = 'show'
+				status_animation = true
+				psychic_status.icon_on = true
+				battle_scene.announcer_text(text)
+				#deal_status_dmg(0, "lightning")
+				confused = true
+				check_if_you_dead()
+				
+		await get_tree().create_timer(2.5).timeout
+		pass
 
 
 
@@ -612,7 +653,20 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$emeny_dmg.play("dmg")
 		def -= dmg
 		print(def)
-
+	
+	elif effect == 'confused': # for psychic effect
+		# make enemy attack self
+		dmg = int(dmg)
+		modulate = 'purple'
+		$AnimationPlayer.play("hit")
+		camera.shake() # shake screen
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"../enemy_dmg hit".text = str (dmg)
+		$emeny_dmg.play("dmg")
+		current_hp -= dmg
+		enemy_hp.value = current_hp
+		
 
 func check_if_you_dead () -> void:
 	if current_hp <= 0:

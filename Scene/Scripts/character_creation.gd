@@ -47,6 +47,9 @@ func _ready() -> void:
 	load1.disabled = false
 	load2.disabled = false
 	load3.disabled = false
+	create.disabled = false
+	create_2.disabled = false
+	create_3.disabled = false
 	
 	check_for_save_profile()
 	if GlobalGameSystem.global_audio.stream == preload("res://Asset/ost/Medieval song-Dance of the nymphs.mp3"):
@@ -181,16 +184,19 @@ func _on_texture_button_pressed() -> void:
 
 ## Create Button to create save files for each profile
 func _on_create_pressed() -> void:
+	create.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.txt"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
 func _on_create_2_pressed() -> void:
+	create_2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.txt"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
 func _on_create_3_pressed() -> void:
+	create_3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.txt"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
