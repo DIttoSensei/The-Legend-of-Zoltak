@@ -195,9 +195,8 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	await get_tree().create_timer(1).timeout
 	
 	## Some status checks will be added here
-	await enemy_status_check(enemy_name)
+	await enemy_status_check(enemy_name, damage, move_name)
 	if status_active == true:
-		print ('status active')
 		if player_take_turn == true:
 			enemy_process()
 		return
@@ -254,7 +253,7 @@ func enemy_process () -> void:
 	if battling == false:
 		enable_button()
 		
-func enemy_status_check (enemy_name) -> void:
+func enemy_status_check (enemy_name, damage, move_name) -> void:
 	## Some status checks will be added here
 	if enemy.paralized == true:
 		enemy.deal_status_dmg(0, 'lightning')
@@ -287,7 +286,51 @@ func enemy_status_check (enemy_name) -> void:
 		#else:
 			#enemy_process()
 		status_active = true
-		
+	
+	if enemy.confused == true:
+		text = "[center][color=red]" + enemy_name + "[/color] is confused and unpredictable[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		var hit_chance = randi_range(1,2)
+		if hit_chance == 1: # (1) Attack player, (2) Attack self
+			text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
+			announcer_text(text)
+			await enemy.perform_action(damage, player_def_mod)
+			await get_tree().create_timer(0.5).timeout
+			# Check if player has no hp left
+			if player.current_hp <= 0:
+				game_over()
+				## Switch scene to game over menu
+				return
+			elif player_take_turn == false:
+				enemy_take_turn = true
+				await get_tree().create_timer(1.5).timeout
+				text = "[center]You prepared to attack[/center]"
+				announcer_text(text)
+				await get_tree().create_timer(1.5).timeout
+				player_attack()
+			await get_tree().create_timer(2.5).timeout
+			
+		if hit_chance == 2:
+			var dmg : int = damage / 2
+			enemy.deal_status_dmg(dmg,"confused")
+			text = "[center][color=red]" + enemy_name + "[/color] attacked itself[/center]"
+			announcer_text(text)
+			## Check if enemy has no hp left
+			if enemy.current_hp <= 0:
+				player_victory()
+				## Switch scene to game over menu
+				return
+			elif player_take_turn == false:
+				enemy_take_turn = true
+				await get_tree().create_timer(1.5).timeout
+				text = "[center]You prepared to attack[/center]"
+				announcer_text(text)
+				await get_tree().create_timer(1.5).timeout
+				player_attack()
+			await get_tree().create_timer(2.5).timeout
+			
+		status_active = true
 	
 	
 

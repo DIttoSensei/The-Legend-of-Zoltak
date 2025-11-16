@@ -2368,8 +2368,8 @@ rotation = -1.5708
 scale = Vector2(0.59681, 0.6961)
 sprite_frames = SubResource("SpriteFrames_i41is")
 animation = &"show"
-frame = 55
-frame_progress = 0.934521
+frame = 13
+frame_progress = 0.501394
 
 [node name="enemy_status_effect" parent="Control" instance=ExtResource("88_x01e0")]
 layout_mode = 1
