@@ -4,16 +4,18 @@ class_name Player extends AnimatedSprite2D
 @onready var def_value: Label = $"../stats_view/def_value"
 @onready var dex_value: Label = $"../stats_view/dex_value"
 @onready var hp_value: Label = $"../stats_view/hp_value"
-@onready var battle_scene: Node2D = $"../.."
+@onready var battle_scene: Battle_Scene = $"../.."
 @onready var enemy: Enemy = $"../enemy"
 @onready var player_status_effect: Control = $"../player_status_effect"
 
 
-## Status effect
+## Status effect 1
 var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
 var player_defence_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/defence.png', 'percentage' : 5.0, 'value' : 0}
+var player_hex_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/hex.png', 'percentage' : 5.0, 'value' : 0}
 
 var player_damage
 var current_hp : int
@@ -40,6 +42,8 @@ var final_con
 # current stats
 var original_def
 var current_armor_def
+var value_multipliyer : int = 0
+var hex_modifier : int = 0
 
 # equipment mod
 var headgear_def 
@@ -277,6 +281,7 @@ func perform_action (value, action : Action) -> void:
 		
 	elif action.action_type == "Mystic":
 		self.play("attack")
+		player_effect_modulate($"../player_effects/mystic", 100.0,100.0,66.4)
 		$"../player_effects/mystic".play("mystic") # Play mystic animation
 		$hit_box_hit.play("hit")
 		#damage = max(0, damage - enemy.def) ## Perfrom true damage ignoring enemy defence
@@ -339,7 +344,23 @@ func perform_action (value, action : Action) -> void:
 			enemy.psychic_status.active = true
 		
 	elif action.action_type == "Hex":
-		pass
+		self.play ("attack")
+		$hit_box_hit.play("hit")
+		value = max(0, value - enemy.def)
+		SignalManager.enemy_damaged.emit(value)
+		if player_hex_status.active == true:
+			##text = "[center][color=green]HEX[/color] status already in effect[/center]"
+			##battle_scene.announcer_text(text)
+			return
+		player_hex_status.value = value
+		print ("nono")
+		await get_tree().create_timer(2).timeout
+		text = "[center][color=green]HEX[/color] activated, doubles hex based attacks"
+		battle_scene.announcer_text(text)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player_hex_status.active = true
+		
 		
 	elif action.action_type == "Shadow":
 		pass
@@ -409,6 +430,38 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				var dmg = (player_defence_status.percentage / 75.0) * player_defence_status.value
 				deal_status_dmg(dmg, "defence")
+				#check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+		
+	## PLAYER HEX
+	if player_hex_status.active:
+		var hex_action = battle_scene.current_action.action_data
+		text = "[center][color=green]HEX[/color] based attack dmg grows 2x[/center]"
+		player_hex_status.turn += 1
+		if player_hex_status.turn >= player_hex_status.duration:
+			player_hex_status.active = false
+			player_hex_status.icon_on = false
+			hex_modifier = 0
+			player_hex_status.turn = 0
+			clear_status_icon("hex.png")
+			
+		
+		else:
+			if player_hex_status.icon_on == true:
+				# increase player hex dmg
+				var value = value_multipliyer * 2
+				value_multipliyer = value
+				battle_scene.announcer_text(text)
+				deal_status_dmg(value, 'hex')
+				#check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(player_hex_status.texture)
+				player_hex_status.icon_on = true
+				battle_scene.announcer_text(text)
+				value_multipliyer += hex_action.action_attribute
+				var value = value_multipliyer * 2
+				value_multipliyer = value
+				deal_status_dmg(value, "hex")
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 
@@ -485,9 +538,21 @@ func deal_status_dmg (value, effect : String) -> void :
 		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
 		modulate_player(1,1,1,1) # return player to normal
 		armor_def += value
-		#if current_hp > player_hp.max_value:
-			#current_hp = player_hp.max_value
-			#player_hp.value = current_hp
-			#return
 		$"../full_stats_info/Panel/stat2/arm_def".text = str(armor_def)
 		def_value.text = str (final_def + armor_def)
+	
+	elif effect == 'hex':
+		value = int(value)
+		player_effect_modulate($"../player_effects/mystic", 0.018, 0.368, 0.014)
+		$"../player_effects/mystic".play("hex")
+		modulate_player(100,100,100,1) # flash player white
+		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+		modulate_player(1,1,1,1) # return player to normal
+		hex_modifier = value
+
+
+func player_effect_modulate (effect_node : AnimatedSprite2D, r : float, g : float, b : float):
+	effect_node.self_modulate.r = r
+	effect_node.self_modulate.g = g
+	effect_node.self_modulate.b = b
+	
