@@ -162,8 +162,14 @@ func player_roll_modifer (roll : int) -> void:
 	if chance < critical_rate: ## For critical hits
 		player_critical_hit = true
 		player_atk_mod *= 2
-		
-	player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
+	
+	# for hex check mod
+	if current_action.action_data.action_type == 'Hex':
+		if player.hex_modifier > 0:
+			print ('hex modifer: ', player.hex_modifier)
+			player_atk_mod += player.hex_modifier + player.weapon_atk
+	else:
+		player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
 	
 	player_def_mod = int(player.final_def * (0.5 + (roll/20.0))) + player.armor_def
 	player_dex_mod = int(player.final_dex * (0.5 + (roll/20.0)))

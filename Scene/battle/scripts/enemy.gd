@@ -660,6 +660,7 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		modulate = 'purple'
 		$AnimationPlayer.play("hit")
 		camera.shake() # shake screen
+		Input.vibrate_handheld(140, 1.0)
 		await get_tree().create_timer(0.4).timeout
 		modulate = "white"
 		$"../enemy_dmg hit".text = str (dmg)

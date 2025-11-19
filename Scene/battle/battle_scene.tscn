@@ -662,6 +662,65 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("73_3woti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_q0gj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_nsck3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_f7veu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_fe7j6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_nxnvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_4xt8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_ug5nt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_36wvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_bd3ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_xrc7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_u7586")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_dole7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_5pn7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_u82i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_d2m05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_3woti")
+}],
+"loop": false,
+"name": &"hex",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_3woti")
+}, {
+"duration": 1.0,
 "texture": ExtResource("58_q0gj8")
 }, {
 "duration": 1.0,
@@ -2298,8 +2357,8 @@ self_modulate = Color(100, 100, 66.429, 1)
 position = Vector2(165.297, 1180.2)
 scale = Vector2(6.94596, 6.94596)
 sprite_frames = SubResource("SpriteFrames_7abjt")
-animation = &"mystic"
-frame = 15
+animation = &"hex"
+frame = 16
 frame_progress = 1.0
 
 [node name="battle_gauge" type="Sprite2D" parent="Control"]
