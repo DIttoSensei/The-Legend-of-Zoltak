@@ -49,6 +49,8 @@ var psychic_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' :
 'texture' : 'res://Scene/battle/img/status_icon/psychic.png', 'percentage' : 5.0}
 var shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0}
+var bleed_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 3, 
+'texture' : 'res://Scene/battle/img/status_icon/bleed.png', 'percentage' : 5.0}
 
 
 var paralized : bool = false

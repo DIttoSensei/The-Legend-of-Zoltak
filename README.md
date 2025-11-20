@@ -14,3 +14,5 @@
 ## Description
 
 Every decision matters. Every path unveils a new part of the world. Will you rise as a hero, succumb to darkness, or carve a path entirely your own? In **The Legends of Zoltak**, your choices define the story.
+
+Created by DIttosensei
