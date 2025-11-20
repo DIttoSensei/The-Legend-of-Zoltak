@@ -606,6 +606,41 @@ animations = [{
 "loop": false,
 "name": &"defence",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_7tyh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ccrc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_dqib1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_cjahr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_enul7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_glh70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_7ace0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_wqlof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_iothx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_7tyh3")
+}],
+"loop": false,
+"name": &"shadow",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmq2k"]
@@ -2339,9 +2374,7 @@ self_modulate = Color(0, 0, 100, 1)
 position = Vector2(170, 1180)
 scale = Vector2(2.78125, 2.78125)
 sprite_frames = SubResource("SpriteFrames_kb4af")
-animation = &"defence"
-frame = 9
-frame_progress = 1.0
+animation = &"shadow"
 
 [node name="heal" type="AnimatedSprite2D" parent="Control/player_effects"]
 modulate = Color(0.301633, 0.97655, 0.211245, 1)
