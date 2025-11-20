@@ -47,6 +47,8 @@ var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'tur
 'texture' : 'res://Scene/battle/img/status_icon/def_breaker.png', 'percentage' : 5.0}
 var psychic_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/psychic.png', 'percentage' : 5.0}
+var shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0}
 
 
 var paralized : bool = false
@@ -517,6 +519,36 @@ func status_effect () -> void:
 		await get_tree().create_timer(2.5).timeout
 		pass
 
+	## SHADOW
+	if shadow_status.active:
+		text = "[center]" + enemy_name + ' has been trapped in it own ' + "[color=929292]shadow[/color][/center]"
+		shadow_status.turn += 1
+		if shadow_status.turn >= shadow_status.duration:
+			shadow_status.active = false
+			shadow_status.icon_on = false
+			shadow_status.turn = 0
+			clear_status_icon("shadow.png")
+	
+		else:
+			# deal damage, show status icon plus alart
+			if shadow_status.icon_on == true:
+				var dmg = (shadow_status.percentage / 100.0) * enemy_hp.max_value
+				player.player_shadow_status.value = int (dmg)
+				print(player.player_shadow_status.value)
+				deal_status_dmg(dmg, "shadow")
+				check_if_you_dead()
+				
+			else:
+				check_if_status_icon_is_available(shadow_status.texture) # set texture icon
+				shadow_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (shadow_status.percentage / 100) * enemy_hp.max_value
+				player.player_shadow_status.value = int (dmg)
+				print(player.player_shadow_status.value)
+				deal_status_dmg(dmg, "shadow")
+				check_if_you_dead()
+				
+		await get_tree().create_timer(2.5).timeout
 
 
 ## All status effect func
@@ -668,6 +700,17 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		current_hp -= dmg
 		enemy_hp.value = current_hp
 		
+	elif effect == 'shadow':
+		dmg = int(dmg)
+		print ('enemy dmg: ', dmg)
+		modulate = "black"
+		$AnimationPlayer.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"../enemy_dmg hit".text = str (dmg)
+		$emeny_dmg.play("dmg")
+		current_hp -= dmg
+		enemy_hp.value = current_hp
 
 func check_if_you_dead () -> void:
 	if current_hp <= 0:

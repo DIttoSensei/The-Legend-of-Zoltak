@@ -16,6 +16,8 @@ var player_defence_status : Dictionary = {"active" : false, 'icon_on' : false, '
 'texture' : 'res://Scene/battle/img/status_icon/defence.png', 'percentage' : 5.0, 'value' : 0}
 var player_hex_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/hex.png', 'percentage' : 5.0, 'value' : 0}
+var player_shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0, 'value' : 0}
 
 var player_damage
 var current_hp : int
@@ -219,52 +221,57 @@ func perform_action (value, action : Action) -> void:
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		
-		
 	elif action.action_type == "Fire":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.fire_status.active == 'true':
+			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.fire_status.active = true
-			
-		
+	
 	elif action.action_type == "Water":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.water_status.active == 'true':
+			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.water_status.active = true
 		
-	
 	elif action.action_type == "Lightning":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.lightning_status.active == 'true':
+			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.lightning_status.active = true
-	
-		
+
 	elif action.action_type == "Ice":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.ice_status.active == 'true':
+			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.ice_status.active = true
-		
 		
 	elif action.action_type == "Wind":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.wind_status.active == 'true':
+			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.wind_status.active = true
@@ -275,6 +282,8 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.earth_status.active == 'true':
+			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			enemy.earth_status.active = true
@@ -313,22 +322,24 @@ func perform_action (value, action : Action) -> void:
 		if roll <= status_chance:
 			player_defence_status.active = true
 	
-	
 	elif action.action_type == "Atk Down":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.attack_down_status.active == 'true':
+			return
 		var roll = randi_range(1,100)
 		if roll <= status_chance:
 			enemy.attack_down_status.active = true
-		
 		
 	elif action.action_type == "Def Breaker":
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.def_breaker_status.active == 'true':
+			return
 		var roll = randi_range(1,100)
 		if roll <= status_chance:
 			enemy.def_breaker_status.active = true
@@ -339,6 +350,8 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
+		if enemy.psychic_status.active == 'true':
+			return
 		var roll = randi_range(1,100)
 		if roll <= status_chance:
 			enemy.psychic_status.active = true
@@ -361,8 +374,26 @@ func perform_action (value, action : Action) -> void:
 		if roll <= status_chance:
 			player_hex_status.active = true
 		
-		
 	elif action.action_type == "Shadow":
+		self.play("attack")
+		$hit_box_hit.play("hit")
+		value = max(0, value - enemy.def)
+		SignalManager.enemy_damaged.emit(value)
+		if player_shadow_status.active == true:
+			text = "[center][color=929292]SHADOW[/color] status already in effect[/center]"
+			battle_scene.announcer_text(text)
+			return
+		player_shadow_status.value = value
+		await get_tree().create_timer(2).timeout
+		text = "[center][color=929292]SHADOW[/color] drain activated"
+		battle_scene.announcer_text(text)
+		await get_tree().create_timer(1.5).timeout
+		text = "[center]HP increases from drained opponent[/center]"
+		battle_scene.announcer_text(text)
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player_shadow_status.active = true
+			enemy.shadow_status.active = true
 		pass
 		
 	elif action.action_type == "Bleed":
@@ -464,7 +495,34 @@ func status_effect () -> void:
 				deal_status_dmg(value, "hex")
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
-
+		
+	## PLAYER SHADOW
+	if player_shadow_status.active:
+		text = "[center][color=929292]SHADOW[/color] drain increases your HP[/center]"
+		player_shadow_status.turn += 1
+		if player_shadow_status.turn >= player_shadow_status.duration:
+			player_shadow_status.active = false
+			player_shadow_status.icon_on = false
+			clear_status_icon("shadow.png")
+			
+		
+		else:
+			if player_shadow_status.icon_on == true:
+				# increase player hp
+				var value = player_shadow_status.value
+				print ("shadow value: ", value)
+				battle_scene.announcer_text(text)
+				deal_status_dmg(value, 'shadow')
+				#check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(player_shadow_status.texture)
+				player_shadow_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var value = player_shadow_status.value
+				print ("shadow value: ", value)
+				deal_status_dmg(value, "shadow")
+				#check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
 
 
 func check_if_status_icon_is_available (texture_res) -> void:
@@ -525,6 +583,7 @@ func deal_status_dmg (value, effect : String) -> void :
 		if current_hp > player_hp.max_value:
 			current_hp = player_hp.max_value
 			player_hp.value = current_hp
+			$"../stats_view/hp_value".text = str (current_hp)
 			return
 		
 		player_hp.value = current_hp
@@ -533,6 +592,7 @@ func deal_status_dmg (value, effect : String) -> void :
 	elif effect == 'defence':
 		set_battle_stat() ## original stat points
 		value = int(value)
+		player_effect_modulate($"../player_effects/2", 0, 0 , 100.0)
 		$"../player_effects/2".play("defence") # play player effect defence
 		modulate_player(100,100,100,1) # flash player white
 		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
@@ -549,6 +609,25 @@ func deal_status_dmg (value, effect : String) -> void :
 		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
 		modulate_player(1,1,1,1) # return player to normal
 		hex_modifier = value
+		
+	elif effect == "shadow":
+		value = int(value)
+		player_effect_modulate($"../player_effects/2", 0, 0, 0)
+		$"../player_effects/2".play("shadow")
+		modulate_player(100,100,100,1) # flash player white
+		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+		modulate_player(1,1,1,1) # return player to normal
+		current_hp += value
+		if current_hp > player_hp.max_value:
+			current_hp = player_hp.max_value
+			player_hp.value = current_hp
+			player_shadow_status.value = 0
+			$"../stats_view/hp_value".text = str (current_hp)
+			return
+			
+		player_hp.value = current_hp
+		player_shadow_status.value = 0
+		$"../stats_view/hp_value".text = str (current_hp)
 
 
 func player_effect_modulate (effect_node : AnimatedSprite2D, r : float, g : float, b : float):
