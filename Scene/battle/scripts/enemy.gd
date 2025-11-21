@@ -551,6 +551,33 @@ func status_effect () -> void:
 				check_if_you_dead()
 				
 		await get_tree().create_timer(2.5).timeout
+		
+	## BLEED
+	if bleed_status.active:
+		text = "[center]" + enemy_name + ' will begin to lose ' + "[color=red]blood[/color][/center]"
+		bleed_status.turn += 1
+		if bleed_status.turn >= bleed_status.duration:
+			bleed_status.active = false
+			bleed_status.icon_on = false
+			bleed_status.turn = 0
+			clear_status_icon("bleed.png")
+	
+		else:
+			# deal damage, show status icon plus alart
+			if bleed_status.icon_on == true:
+				var dmg = (bleed_status.percentage / 60.0) * enemy_hp.max_value
+				deal_status_dmg(dmg, "bleed")
+				check_if_you_dead()
+				
+			else:
+				check_if_status_icon_is_available(bleed_status.texture) # set texture icon
+				bleed_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (bleed_status.percentage / 60.0) * enemy_hp.max_value
+				deal_status_dmg(dmg, "bleed")
+				check_if_you_dead()
+				
+		await get_tree().create_timer(2.5).timeout
 
 
 ## All status effect func
@@ -713,7 +740,20 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$emeny_dmg.play("dmg")
 		current_hp -= dmg
 		enemy_hp.value = current_hp
-
+	
+	elif effect == 'bleed':
+		dmg = int(dmg)
+		modulate = "red"
+		$enemy_effects2.play("show")
+		$AnimationPlayer.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"../enemy_dmg hit".text = str (dmg)
+		$emeny_dmg.play("dmg")
+		current_hp -= dmg
+		enemy_hp.value = current_hp
+		
+		
 func check_if_you_dead () -> void:
 	if current_hp <= 0:
 		battle_scene.player_victory()

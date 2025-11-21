@@ -401,7 +401,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.bleed_status.active == 'true':
+		if enemy.bleed_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
