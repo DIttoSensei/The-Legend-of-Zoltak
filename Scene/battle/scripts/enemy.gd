@@ -22,7 +22,9 @@ var current_status_animation : String
 @onready var player: Player = $"../player"
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var battle_scene: Node2D = $"../.."
-@onready var enemy_effects: AnimatedSprite2D = $enemy_effects
+@onready var enemy_effects: AnimatedSprite2D = $enemy_effect
+@onready var enemy_effects_2: AnimatedSprite2D = $enemy_effects2
+@onready var enemy_effect_3: AnimatedSprite2D = $enemy_effect3
 
 
 
@@ -51,6 +53,8 @@ var shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 
 'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0}
 var bleed_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 3, 
 'texture' : 'res://Scene/battle/img/status_icon/bleed.png', 'percentage' : 5.0}
+var poisen_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 6, 
+'texture' : 'res://Scene/battle/img/status_icon/poison.png', 'percentage' : 5.0}
 
 
 var paralized : bool = false
@@ -264,7 +268,7 @@ func status_effect () -> void:
 			if fire_status.icon_on == true:
 				var dmg = (fire_status.percentage / 100.0) * enemy_hp.max_value
 				deal_status_dmg(dmg, "fire")
-				check_if_you_dead()
+				
 				
 			else:
 				check_if_status_icon_is_available(fire_status.texture) # set texture icon
@@ -272,7 +276,7 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				var dmg = (fire_status.percentage / 100) * enemy_hp.max_value
 				deal_status_dmg(dmg, "fire")
-				check_if_you_dead()
+				
 				
 		await get_tree().create_timer(2.5).timeout
 	
@@ -516,7 +520,7 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				#deal_status_dmg(0, "lightning")
 				confused = true
-				check_if_you_dead()
+				
 				
 		await get_tree().create_timer(2.5).timeout
 		pass
@@ -538,7 +542,7 @@ func status_effect () -> void:
 				player.player_shadow_status.value = int (dmg)
 				print(player.player_shadow_status.value)
 				deal_status_dmg(dmg, "shadow")
-				check_if_you_dead()
+				
 				
 			else:
 				check_if_status_icon_is_available(shadow_status.texture) # set texture icon
@@ -548,7 +552,7 @@ func status_effect () -> void:
 				player.player_shadow_status.value = int (dmg)
 				print(player.player_shadow_status.value)
 				deal_status_dmg(dmg, "shadow")
-				check_if_you_dead()
+				
 				
 		await get_tree().create_timer(2.5).timeout
 		
@@ -567,7 +571,7 @@ func status_effect () -> void:
 			if bleed_status.icon_on == true:
 				var dmg = (bleed_status.percentage / 60.0) * enemy_hp.max_value
 				deal_status_dmg(dmg, "bleed")
-				check_if_you_dead()
+				
 				
 			else:
 				check_if_status_icon_is_available(bleed_status.texture) # set texture icon
@@ -575,7 +579,34 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				var dmg = (bleed_status.percentage / 60.0) * enemy_hp.max_value
 				deal_status_dmg(dmg, "bleed")
-				check_if_you_dead()
+				
+				
+		await get_tree().create_timer(2.5).timeout
+	
+	## POISEN
+	if poisen_status.active:
+		text = "[center]" + enemy_name + ' has been ' + "[color=purple]poisened[/color][/center]"
+		poisen_status.turn += 1
+		if poisen_status.turn >= poisen_status.duration:
+			poisen_status.active = false
+			poisen_status.icon_on = false
+			poisen_status.turn = 0
+			clear_status_icon("poisen.png")
+	
+		else:
+			# deal damage, show status icon plus alart
+			if poisen_status.icon_on == true:
+				var dmg = (poisen_status.percentage / 50.0) * enemy_hp.max_value
+				deal_status_dmg(dmg, "poisen")
+				
+				
+			else:
+				check_if_status_icon_is_available(poisen_status.texture) # set texture icon
+				poisen_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (poisen_status.percentage / 50.0) * enemy_hp.max_value
+				deal_status_dmg(dmg, "poisen")
+				
 				
 		await get_tree().create_timer(2.5).timeout
 
@@ -639,6 +670,7 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$emeny_dmg.play("dmg")
 		current_hp -= dmg
 		enemy_hp.value = current_hp
+		check_if_you_dead()
 		
 	elif effect == "water":
 		dmg = int(dmg)
@@ -731,7 +763,6 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		
 	elif effect == 'shadow':
 		dmg = int(dmg)
-		print ('enemy dmg: ', dmg)
 		modulate = "black"
 		$AnimationPlayer.play("hit")
 		await get_tree().create_timer(0.4).timeout
@@ -740,11 +771,12 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$emeny_dmg.play("dmg")
 		current_hp -= dmg
 		enemy_hp.value = current_hp
+		check_if_you_dead()
 	
 	elif effect == 'bleed':
 		dmg = int(dmg)
 		modulate = "red"
-		$enemy_effects2.play("show")
+		enemy_effects_2.play("show")
 		$AnimationPlayer.play("hit")
 		await get_tree().create_timer(0.4).timeout
 		modulate = "white"
@@ -752,8 +784,21 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$emeny_dmg.play("dmg")
 		current_hp -= dmg
 		enemy_hp.value = current_hp
+		check_if_you_dead()
 		
-		
+	elif effect == 'poisen':
+		dmg = int(dmg)
+		modulate = "purple"
+		enemy_effect_3.play("show")
+		$AnimationPlayer.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"../enemy_dmg hit".text = str (dmg)
+		$emeny_dmg.play("dmg")
+		current_hp -= dmg
+		enemy_hp.value = current_hp
+		check_if_you_dead()
+	
 func check_if_you_dead () -> void:
 	if current_hp <= 0:
 		battle_scene.player_victory()
