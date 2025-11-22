@@ -253,6 +253,8 @@ func enemy_process () -> void:
 	await get_tree().create_timer(2).timeout
 	enemy.status_effect() # check for status effect
 	player.status_effect() # check for player status
+	
+	print('enemy hp: ', enemy.enemy_hp.value)
 	battling = false
 	
 	
@@ -393,6 +395,8 @@ func player_attack() -> void:
 		
 		enemy.status_effect() # check for status effect
 		player.status_effect() # check for player effect
+		
+		print('enemy hp: ', enemy.enemy_hp.value)
 		battling = false
 		if battling == false:
 			enable_button()
