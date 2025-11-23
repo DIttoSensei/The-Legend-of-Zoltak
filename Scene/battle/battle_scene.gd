@@ -81,6 +81,7 @@ signal hide
 
 ## for status
 var status_active := false
+var player_status_active := false
 
 
 
@@ -175,7 +176,7 @@ func player_roll_modifer (roll : int) -> void:
 	player_dex_mod = int(player.final_dex * (0.5 + (roll/20.0)))
 	pass
 	
-	player.set_roll_stat_view(player_atk_mod,player_def_mod,player_def_mod)
+	player.set_roll_stat_view(player_atk_mod,player_def_mod,player_dex_mod)
 	
 	
 	
@@ -251,8 +252,8 @@ func enemy_process () -> void:
 	await announcer_text(text)
 	
 	await get_tree().create_timer(2).timeout
-	enemy.status_effect() # check for status effect
-	player.status_effect() # check for player status
+	await enemy.status_effect() # check for status effect
+	await player.status_effect() # check for player status
 	
 	print('enemy hp: ', enemy.enemy_hp.value)
 	battling = false
@@ -261,6 +262,28 @@ func enemy_process () -> void:
 	if battling == false:
 		enable_button()
 		
+func player_process () -> void:
+	## increase counter
+		turn_counter += 1
+		if battle_gauge.frame == 0:
+			pass
+		else:
+			battle_gauge.frame -= 1
+			_battle_gauge()
+		
+		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
+		announcer_text(text)
+		
+		await enemy.status_effect() # check for status effect
+		await player.status_effect() # check for player effect
+		
+		print('enemy hp: ', enemy.enemy_hp.value)
+		battling = false
+		if battling == false:
+			enable_button()
+	
+		enemy_take_turn = false
+	
 func enemy_status_check (enemy_name, damage, move_name) -> void:
 	## Some status checks will be added here
 	if enemy.paralized == true:
@@ -340,7 +363,84 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 			
 		status_active = true
 	
+func player_status_check (damage):
+	## Some status checks will be added here
+	if player.paralized == true:
+		player.deal_status_dmg(0, 'lightning')
+		text = "[center] You have been [color=yellow]paralazied[/color] and can't move[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		if enemy_take_turn == false:
+			player_take_turn = true
+			await get_tree().create_timer(1.5).timeout
+			text = "[center]Opponent took the advantage and prepared to attack[/center]"
+			announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			enemy.attack_player()
+		#else:
+			#enemy_process() # to contunie with enemy battle logic
+		player_status_active = true
 	
+	if player.frozen == true:
+		player.deal_status_dmg(0, 'ice')
+		text = "[center]You are [color=lightblue]frozen[/color] and can't move[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		if enemy_take_turn == false:
+			player_take_turn = true
+			await get_tree().create_timer(1.5).timeout
+			text = "[center]Opponent took the advantage and prepared to attack[/center]"
+			announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			enemy.attack_player()
+		#else:
+			#enemy_process()
+		player_status_active = true
+	#
+	#if enemy.confused == true:
+		#text = "[center][color=red]" + enemy_name + "[/color] is confused and unpredictable[/center]"
+		#announcer_text(text)
+		#await get_tree().create_timer(3).timeout
+		#var hit_chance = randi_range(1,2)
+		#if hit_chance == 1: # (1) Attack player, (2) Attack self
+			#text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
+			#announcer_text(text)
+			#await enemy.perform_action(damage, player_def_mod)
+			#await get_tree().create_timer(0.5).timeout
+			## Check if player has no hp left
+			#if player.current_hp <= 0:
+				#game_over()
+				### Switch scene to game over menu
+				#return
+			#elif player_take_turn == false:
+				#enemy_take_turn = true
+				#await get_tree().create_timer(1.5).timeout
+				#text = "[center]You prepared to attack[/center]"
+				#announcer_text(text)
+				#await get_tree().create_timer(1.5).timeout
+				#player_attack()
+			#await get_tree().create_timer(2.5).timeout
+			#
+		#if hit_chance == 2:
+			#var dmg : int = damage / 2
+			#enemy.deal_status_dmg(dmg,"confused")
+			#text = "[center][color=red]" + enemy_name + "[/color] attacked itself[/center]"
+			#announcer_text(text)
+			### Check if enemy has no hp left
+			#if enemy.current_hp <= 0:
+				#player_victory()
+				### Switch scene to game over menu
+				#return
+			#elif player_take_turn == false:
+				#enemy_take_turn = true
+				#await get_tree().create_timer(1.5).timeout
+				#text = "[center]You prepared to attack[/center]"
+				#announcer_text(text)
+				#await get_tree().create_timer(1.5).timeout
+				#player_attack()
+			#await get_tree().create_timer(2.5).timeout
+			#
+		#status_active = true
 
 
 
@@ -356,6 +456,15 @@ func player_attack() -> void:
 	var damage = player_atk_mod
 	
 	await get_tree().create_timer(2).timeout
+	
+	## Some status checks will be added here
+	await player_status_check(damage)
+	if player_status_active == true:
+		if enemy_take_turn == true:
+			player_process()
+		return
+	
+	
 	text = "[center]You used " +"[color=green]" + action.action_name + "[/color][/center]"
 	announcer_text(text)
 	await get_tree().create_timer(2).timeout
@@ -382,26 +491,7 @@ func player_attack() -> void:
 		return
 	else:
 		
-		## increase counter
-		turn_counter += 1
-		if battle_gauge.frame == 0:
-			pass
-		else:
-			battle_gauge.frame -= 1
-			_battle_gauge()
-		
-		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
-		announcer_text(text)
-		
-		enemy.status_effect() # check for status effect
-		player.status_effect() # check for player effect
-		
-		print('enemy hp: ', enemy.enemy_hp.value)
-		battling = false
-		if battling == false:
-			enable_button()
-	
-		enemy_take_turn = false
+		player_process()
 
 
 

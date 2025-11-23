@@ -14,6 +14,7 @@ var current_animation
 var enemy_name
 var status_animation := false
 var current_status_animation : String
+var status_chance : int = 100
 
 
 @export var enemy_data : Enemies_res
@@ -35,7 +36,7 @@ var water_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0
 'texture' : 'res://Scene/battle/img/status_icon/water.png', 'percentage' : 5.0}
 var lightning_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 5, 
 'texture' : 'res://Scene/battle/img/status_icon/lightning.png', 'percentage' : 5.0}
-var ice_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 2, 
+var ice_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 3, 
 'texture' : 'res://Scene/battle/img/status_icon/ice.png', 'percentage' : 5.0}
 var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
@@ -140,6 +141,12 @@ func attack_player () -> void:
 			var enemy_name = enemy_data.name
 			SignalManager.enemy_attack_data.emit(enemy_name, move_name, damage, anim_name)
 			break
+		
+		else:
+			move.current_cooldown -= 1
+			if move.current_cooldown < 0:
+				move.current_cooldown = 0
+			break
 
 func take_damage (damage : int) -> void:
 	enemy_damage = damage
@@ -202,21 +209,87 @@ func perform_action (damage, player_def_mod) -> void:
 		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
 		SignalManager.player_damaged.emit(damage)
 		
-		
 	elif current_move.action_type == "Fire":
-		pass
+		
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.fire_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.fire_status.active = true
 	
 	elif current_move.action_type == "Water":
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.water_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.water_status.active = true
 		pass
 	
-	elif current_move.action_type == "Lightling":
-		pass
+	elif current_move.action_type == "Lightning":
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.lightning_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.lightning_status.active = true
 		
 	elif current_move.action_type == "Ice":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.ice_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.ice_status.active = true
 		
 	elif current_move.action_type == "Wind":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.wind_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.wind_status.active = true
 	
 	elif current_move.action_type == "Earth":
 		pass

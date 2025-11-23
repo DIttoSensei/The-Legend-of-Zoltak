@@ -8,8 +8,26 @@ class_name Player extends AnimatedSprite2D
 @onready var enemy: Enemy = $"../enemy"
 @onready var player_status_effect: Control = $"../player_status_effect"
 
+# mod stats
+#@onready var full_stats: TextureButton = $Control/full_stats_info/full_stats
 
-## Status effect 1
+
+@onready var hp__: Label = $"../full_stats_info/Panel/stat/hp__"
+@onready var atk__: Label = $"../full_stats_info/Panel/stat/atk__"
+@onready var def__: Label = $"../full_stats_info/Panel/stat/def__"
+@onready var dex__: Label = $"../full_stats_info/Panel/stat/dex__"
+
+
+# fix path
+#@onready var con__: Label = $Control/full_stats_info/Panel/stat2/con__
+#
+#@onready var wep_dmg: Label = $Control/full_stats_info/Panel/stat2/wep_dmg
+#@onready var arm_def: Label = $Control/full_stats_info/Panel/stat2/arm_def
+#@onready var itm_tp: Label = $Control/full_stats_info/Panel/stat2/itm_tp
+#@onready var crit: Label = $Control/full_stats_info/Panel/stat2/crit
+
+
+## Status effect 1 (player to enemy)
 var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
 var player_defence_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -19,11 +37,43 @@ var player_hex_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn
 var player_shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0, 'value' : 0}
 
+## Ststus effect 2 ( enemy to player)
+var fire_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 5, 
+'texture' : 'res://Scene/battle/img/status_icon/fire_2.png', 'percentage' : 5.0}
+var water_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/water.png', 'percentage' : 5.0}
+var lightning_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 5, 
+'texture' : 'res://Scene/battle/img/status_icon/lightning.png', 'percentage' : 5.0}
+var ice_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 3, 
+'texture' : 'res://Scene/battle/img/status_icon/ice.png', 'percentage' : 5.0}
+var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
+var earth_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/earth.png', 'percentage' : 5.0}
+var enemy_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
+var attack_down_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/attack_down.png', 'percentage' : 5.0}
+var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/def_breaker.png', 'percentage' : 5.0}
+var psychic_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/psychic.png', 'percentage' : 5.0}
+var shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0}
+var bleed_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 3, 
+'texture' : 'res://Scene/battle/img/status_icon/bleed.png', 'percentage' : 5.0}
+var poisen_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 6, 
+'texture' : 'res://Scene/battle/img/status_icon/poison.png', 'percentage' : 5.0}
+
 var player_damage
 var current_hp : int
 var selected_inv : Array = []
 var status_chance = 100
 var text : String
+
+var paralized : bool = false
+var frozen : bool = false
+var confused: bool = false
 
 # Stats
 var atk : int
@@ -46,6 +96,9 @@ var original_def
 var current_armor_def
 var value_multipliyer : int = 0
 var hex_modifier : int = 0
+var current_dex : int
+var current_atk : int
+var current_def : int
 
 # equipment mod
 var headgear_def 
@@ -153,14 +206,21 @@ func set_battle_stat () -> void:
 	wis = GlobalGameSystem.player_wis
 	Int = GlobalGameSystem.player_int
 	con = GlobalGameSystem.player_con
-
+	
+	if wind_status.active or water_status.active: # if wind or water status is active dont reset final dex
+		final_atk = atk + (min(Int , atk) - atk) * 0.7
+		final_def = def + (min(con , def) - def) * 0.7
+		final_con = con + (min(wis , con) - con) * 0.7
+	
+		set_stat_view()
+		return
 	
 	final_atk = atk + (min(Int , atk) - atk) * 0.7
 	final_def = def + (min(con , def) - def) * 0.7
 	final_dex = dex + (min(wis , dex) - dex) * 0.7
 	final_con = con + (min(wis , con) - con) * 0.7
 	
-	
+	current_dex = final_dex
 	
 	set_stat_view()
 	
@@ -226,7 +286,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.fire_status.active == 'true':
+		if enemy.fire_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
@@ -237,7 +297,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.water_status.active == 'true':
+		if enemy.water_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
@@ -248,7 +308,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.lightning_status.active == 'true':
+		if enemy.lightning_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
@@ -259,7 +319,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.ice_status.active == 'true':
+		if enemy.ice_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
@@ -270,7 +330,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.wind_status.active == 'true':
+		if enemy.wind_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
@@ -282,7 +342,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.earth_status.active == 'true':
+		if enemy.earth_status.active == true:
 			return
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
@@ -327,7 +387,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.attack_down_status.active == 'true':
+		if enemy.attack_down_status.active == true:
 			return
 		var roll = randi_range(1,100)
 		if roll <= status_chance:
@@ -338,7 +398,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.def_breaker_status.active == 'true':
+		if enemy.def_breaker_status.active == true:
 			return
 		var roll = randi_range(1,100)
 		if roll <= status_chance:
@@ -350,7 +410,7 @@ func perform_action (value, action : Action) -> void:
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
-		if enemy.psychic_status.active == 'true':
+		if enemy.psychic_status.active == true:
 			return
 		var roll = randi_range(1,100)
 		if roll <= status_chance:
@@ -420,7 +480,145 @@ func perform_action (value, action : Action) -> void:
 
 
 func status_effect () -> void:
-	await get_tree().create_timer(2.5).timeout
+	#await get_tree().create_timer(2.5).timeout
+	
+	## FIRE
+	if fire_status.active:
+		text = "[center]" + ' you have been ' + "[color=red]burned[/color][/center]"
+		fire_status.turn += 1
+		if fire_status.turn >= fire_status.duration:
+			fire_status.active = false
+			fire_status.icon_on = false
+			fire_status.turn = 0
+			clear_status_icon("fire_2.png")
+	
+		else:
+			# deal damage, show status icon plus alart
+			if fire_status.icon_on == true:
+				var dmg = (fire_status.percentage / 30.0) * player_hp.max_value
+				deal_status_dmg(dmg, "fire")
+				
+				
+			else:
+				check_if_status_icon_is_available(fire_status.texture) # set texture icon
+				fire_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (fire_status.percentage / 100.0) * player_hp.max_value
+				deal_status_dmg(dmg, "fire")
+				
+				
+		await get_tree().create_timer(2.5).timeout
+	
+	## WATER
+	if water_status.active:
+		text = "[center]"  + "[color=blue] Your mobility[/color] has reduced[/center]"
+		water_status.turn += 1
+		if water_status.turn >= water_status.duration:
+			water_status.active = false
+			water_status.icon_on = false
+			water_status.turn = 0
+			clear_status_icon("water.png")
+			final_dex = current_dex
+			dex__.text = "(" + str(final_dex - dex) + ")"
+			dex_value.text = str (final_dex)
+			
+		else:
+			# Reduce speed and show status icon plus alart
+			if water_status.icon_on == true:
+				var dmg = (water_status.percentage / 15.0) * final_dex
+				deal_status_dmg(dmg, "water")
+				check_if_you_dead()
+				
+			else:
+				check_if_status_icon_is_available(water_status.texture)
+				water_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (water_status.percentage / 15.0) * final_dex
+				deal_status_dmg(dmg, "water")
+				check_if_you_dead()
+	
+		await get_tree().create_timer(2.5).timeout
+	
+	## LIGHTING
+	if lightning_status.active:
+		text = "[center]"  + ' You have been ' + "[color=yellow]stunned[/color][/center]"
+		lightning_status.turn += 1
+		if lightning_status.turn >= lightning_status.duration:
+			lightning_status.active = false
+			lightning_status.icon_on = false
+			lightning_status.turn = 0
+			paralized = false
+			battle_scene.player_status_active = false # allows status from main game check to be false
+			clear_status_icon("lightning.png")
+		
+		else:
+			if lightning_status.icon_on == true:
+				# make enemy skip its turn
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(lightning_status.texture)
+				lightning_status.icon_on = true
+				battle_scene.announcer_text(text)
+				deal_status_dmg(0, "lightning")
+				paralized = true
+				check_if_you_dead()
+				
+		await get_tree().create_timer(2.5).timeout
+	
+	## ICE
+	if ice_status.active:
+		text = "[center]You have been[color=lightblue] frozen[/color] and can't move[/center]"
+		ice_status.turn += 1
+		if ice_status.turn >= ice_status.duration:
+			self.play("idle")
+			modulate = 'white'
+			ice_status.active = false
+			ice_status.icon_on = false
+			ice_status.turn = 0
+			frozen = false
+			battle_scene.player_status_active = false # allows status from main game check to be false
+			clear_status_icon("ice.png")
+		
+		else:
+			if ice_status.icon_on == true:
+				# make enemy skip its turn
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(ice_status.texture)
+				ice_status.icon_on = true
+				battle_scene.announcer_text(text)
+				deal_status_dmg(0, "ice")
+				frozen = true
+				check_if_you_dead()
+	
+	## WIND
+	if wind_status.active:
+		text = "[center]You are fighting against strong, pushing[color=lightgreen] wind[/color][/center]"
+		wind_status.turn += 1
+		if wind_status.turn >= wind_status.duration:
+			wind_status.active = false
+			wind_status.icon_on = false
+			wind_status.turn = 0
+			clear_status_icon("wind.png")
+			final_dex = current_dex
+			dex__.text = "(" + str(final_dex - dex) + ")"
+			dex_value.text = str (final_dex)
+		
+		else:
+			if wind_status.icon_on == true:
+				# make enemy speed be reduced
+				var dmg = (wind_status.percentage / 25.0) * final_dex
+				deal_status_dmg(dmg, 'wind')
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(wind_status.texture)
+				wind_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (wind_status.percentage / 25.0) * final_dex
+				deal_status_dmg(dmg, "wind")
+				check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+	
 	## PLAYER HEAL
 	if player_heal_status.active:
 		text = "[center][color=green]HP[/color] has slightly increased[/center]"
@@ -587,8 +785,59 @@ func clear_status_icon (filename : String) -> void:
 		status_5.texture = null
 
 
-func deal_status_dmg (value, effect : String) -> void :	
-	if effect == 'heal':
+func deal_status_dmg (value, effect : String) -> void :
+	if effect == "fire":
+		value = int(value)
+		modulate = "red"
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		current_hp -= value
+		player_hp.value = current_hp
+		check_if_you_dead()
+	
+	elif  effect == "water":
+		value = int(value)
+		modulate = 'blue'
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		final_dex -= value
+		dex_value.text = str (final_dex)
+		dex__.text = "(" + str(final_dex - dex) + ")"
+		#show_full_mod_stat(hp__, atk__, def__, dex__, con__, wep_dmg, arm_def, itm_tp, crit)
+
+	elif effect == "lightning":
+		value = int(value)
+		modulate = 'yellow'
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+
+	elif effect == "ice":
+		value = int(value)
+		modulate = 'lightblue'
+		self.play("hit")
+		await get_tree().create_timer(0.5).timeout
+		self.stop()
+
+	elif effect == 'wind':
+		value = int(value)
+		modulate = 'lightgreen'
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		final_dex -= value
+		dex_value.text = str (final_dex)
+		dex__.text = "(" + str(final_dex - dex) + ")"
+
+	elif  effect == 'heal':
 		value = int(value)
 		$"../player_effects/heal".play("show") # play player effect heal
 		modulate_player(100,100,100,1) # flash player white
@@ -649,4 +898,11 @@ func player_effect_modulate (effect_node : AnimatedSprite2D, r : float, g : floa
 	effect_node.self_modulate.r = r
 	effect_node.self_modulate.g = g
 	effect_node.self_modulate.b = b
+	
+func check_if_you_dead () -> void:
+	if current_hp <= 0:
+		battle_scene.game_over()
+		## Switch scene to game over menu
+		return
+	pass
 	
