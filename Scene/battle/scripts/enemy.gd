@@ -292,7 +292,20 @@ func perform_action (damage, player_def_mod) -> void:
 			player.wind_status.active = true
 	
 	elif current_move.action_type == "Earth":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.earth_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.earth_status.active = true
 		
 	elif current_move.action_type == "Mystic":
 		pass
