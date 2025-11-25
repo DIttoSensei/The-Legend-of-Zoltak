@@ -211,7 +211,13 @@ func set_battle_stat () -> void:
 		final_atk = atk + (min(Int , atk) - atk) * 0.7
 		final_def = def + (min(con , def) - def) * 0.7
 		final_con = con + (min(wis , con) - con) * 0.7
-	
+		set_stat_view()
+		return
+		
+	if earth_status.active: # if wind dont reset def
+		final_atk = atk + (min(Int , atk) - atk) * 0.7
+		final_dex = dex + (min(wis , dex) - dex) * 0.7
+		final_con = con + (min(wis , con) - con) * 0.7
 		set_stat_view()
 		return
 	
@@ -221,6 +227,7 @@ func set_battle_stat () -> void:
 	final_con = con + (min(wis , con) - con) * 0.7
 	
 	current_dex = final_dex
+	current_def = final_def
 	
 	set_stat_view()
 	
@@ -619,6 +626,34 @@ func status_effect () -> void:
 				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 	
+	## EARTH
+	if earth_status.active:
+		text = "[center]Your defences have been pierced with [color=brown]rock [/color]shards[/center]"
+		earth_status.turn += 1
+		if earth_status.turn >= earth_status.duration:
+			earth_status.active = false
+			earth_status.icon_on = false
+			earth_status.turn = 0
+			clear_status_icon("earth.png")
+			final_def = current_def
+			def_value.text = str (final_def)
+			def__.text = "(" + str(final_def - def) + ")"
+		
+		else:
+			if earth_status.icon_on == true:
+				# make enemy def be reduced
+				var dmg = (earth_status.percentage / 25.0) * final_def
+				deal_status_dmg(dmg, 'earth')
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(earth_status.texture)
+				earth_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (earth_status.percentage / 25.0) * final_def
+				deal_status_dmg(dmg, "earth")
+				check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+	
 	## PLAYER HEAL
 	if player_heal_status.active:
 		text = "[center][color=green]HP[/color] has slightly increased[/center]"
@@ -836,6 +871,18 @@ func deal_status_dmg (value, effect : String) -> void :
 		final_dex -= value
 		dex_value.text = str (final_dex)
 		dex__.text = "(" + str(final_dex - dex) + ")"
+
+	elif effect == 'earth':
+		value = int (value)
+		modulate = 'brown'
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		final_def -= value
+		def_value.text = str (final_def)
+		def__.text = "(" + str(final_def - def) + ")"
 
 	elif  effect == 'heal':
 		value = int(value)
