@@ -27,7 +27,15 @@ var status_chance : int = 100
 @onready var enemy_effects_2: AnimatedSprite2D = $enemy_effects2
 @onready var enemy_effect_3: AnimatedSprite2D = $enemy_effect3
 
-
+## Status effect 1 (enemy to self or player)
+var enemy_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 40.0, 'value' : 0}
+var enemy_defence_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/defence.png', 'percentage' : 5.0, 'value' : 0}
+var enemy_hex_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/hex.png', 'percentage' : 5.0, 'value' : 0}
+var enemy_shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0, 'value' : 0}
 
 # Status effecs
 var fire_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 5, 
@@ -42,8 +50,8 @@ var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0,
 'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
 var earth_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/earth.png', 'percentage' : 5.0}
-var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
-'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
+#var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+#'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
 var attack_down_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/attack_down.png', 'percentage' : 5.0}
 var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -308,10 +316,32 @@ func perform_action (damage, player_def_mod) -> void:
 			player.earth_status.active = true
 		
 	elif current_move.action_type == "Mystic":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$"4".play('mystic')
+		await get_tree().create_timer(1.8).timeout
+		
+		$AnimationPlayer.play(current_animation)
+		#damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
 		
 	elif current_move.action_type == "Heal":
-		pass
+		if enemy_heal_status.active == true:
+			text = "[center]Opponent [color=green]Heal[/color] status fails[/center]"
+			battle_scene.announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			return
+		enemy_heal_status.value = damage
+		$"5".play("heal")
+		text = "[center]Opponent [color=green]HP[/color] ticks up for 3 turns"
+		battle_scene.announcer_text(text)
+		await get_tree().create_timer(1.5).timeout
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy_heal_status.active = true
 		
 	elif current_move.action_type == "Defence":
 		pass
@@ -497,7 +527,34 @@ func status_effect () -> void:
 				deal_status_dmg(dmg, "earth")
 				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
+	
+	## ENEMY HEAL
+	if enemy_heal_status.active:
+		text = "[center]Opponent [color=green]HP[/color] has slightly increased[/center]"
+		enemy_heal_status.turn += 1
+		if enemy_heal_status.turn >= enemy_heal_status.duration:
+			enemy_heal_status.active = false
+			enemy_heal_status.icon_on = false
+			enemy_heal_status.turn = 0
+			clear_status_icon("heal.png")
+			
 		
+		else:
+			if enemy_heal_status.icon_on == true:
+				# increase enemy hp
+				var value = (enemy_heal_status.percentage / 35.0) * enemy_heal_status.value
+				await battle_scene.announcer_text(text)
+				deal_status_dmg(value, 'heal')
+				#check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(enemy_heal_status.texture)
+				enemy_heal_status.icon_on = true
+				await battle_scene.announcer_text(text)
+				var dmg = (enemy_heal_status.percentage / 35.0) * enemy_heal_status.value
+				deal_status_dmg(dmg, "heal")
+				#check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+	
 	## ATTACK DOWN
 	if attack_down_status.active:
 		text = "[center]" + enemy_name + "[color=red] ATTACK [/color]prowess is waning![/center]"
@@ -804,15 +861,17 @@ func deal_status_dmg (dmg, effect : String) -> void :
 	
 	elif effect == 'heal':
 		dmg = int(dmg)
-		$"../player_effects/heal".play("show") # play player effect heal
-		print (player.current_hp)
-		player.current_hp += dmg
-		if player.current_hp > player.player_hp.max_value:
-			player.current_hp = player.player_hp.max_value
-			player.player_hp.value = player.current_hp
+		$"5".play("heal") # play enemy effect heal
+		modulate_enemy(100,100,100,1) # flash enemy white
+		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+		modulate_enemy(1,1,1,1) # return enemy to normal
+		current_hp += dmg
+		if current_hp > enemy_hp.max_value:
+			current_hp = enemy_hp.max_value
+			enemy_hp.value = current_hp
 			return
 		
-		player.player_hp.value = player.current_hp
+		enemy_hp.value = current_hp
 		
 	elif effect == 'attack_down':
 		dmg = int (dmg)
@@ -897,3 +956,9 @@ func modulate_enemy_effects (r : int, g : int, b : int):
 	enemy_effects.self_modulate.r = r
 	enemy_effects.self_modulate.g = g
 	enemy_effects.self_modulate.b = b
+
+func modulate_enemy (r_value : int, g_value : int, b_value : int, a_value : int) -> void:
+	self_modulate.r = r_value
+	self_modulate.g = g_value
+	self_modulate.b = b_value
+	self_modulate.a = a_value
