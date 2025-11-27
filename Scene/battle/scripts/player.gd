@@ -50,8 +50,8 @@ var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0,
 'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
 var earth_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/earth.png', 'percentage' : 5.0}
-var enemy_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
-'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
+#var enemy_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
+#'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
 var attack_down_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/attack_down.png', 'percentage' : 5.0}
 var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -367,11 +367,13 @@ func perform_action (value, action : Action) -> void:
 		if player_heal_status.active == true:
 			text = "[center][color=green]Heal[/color] status already in effect[/center]"
 			battle_scene.announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
 			return
 		player_heal_status.value = value
 		$"../player_effects/heal".play("show")
 		text = "[center]Your [color=green]HP[/color] ticks up for 3 turns"
 		battle_scene.announcer_text(text)
+		await get_tree().create_timer(1.5).timeout
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			player_heal_status.active = true
@@ -669,13 +671,13 @@ func status_effect () -> void:
 			if player_heal_status.icon_on == true:
 				# increase player hp
 				var value = (player_heal_status.percentage / 50.0) * player_heal_status.value
-				battle_scene.announcer_text(text)
+				await battle_scene.announcer_text(text)
 				deal_status_dmg(value, 'heal')
 				#check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(player_heal_status.texture)
 				player_heal_status.icon_on = true
-				battle_scene.announcer_text(text)
+				await battle_scene.announcer_text(text)
 				var dmg = (player_heal_status.percentage / 50.0) * player_heal_status.value
 				deal_status_dmg(dmg, "heal")
 				#check_if_you_dead()

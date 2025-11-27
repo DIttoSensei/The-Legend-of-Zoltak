@@ -227,7 +227,7 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	
 	if player_take_turn == false:
 		await get_tree().create_timer(1.5).timeout
-		text = "[center]You took damage, now it's your turn[/center]"
+		text = "[center]Now it's your turn[/center]"
 		announcer_text(text)
 		player_attack()
 		return
