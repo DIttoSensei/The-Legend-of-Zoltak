@@ -8,24 +8,10 @@ class_name Player extends AnimatedSprite2D
 @onready var enemy: Enemy = $"../enemy"
 @onready var player_status_effect: Control = $"../player_status_effect"
 
-# mod stats
-#@onready var full_stats: TextureButton = $Control/full_stats_info/full_stats
-
-
 @onready var hp__: Label = $"../full_stats_info/Panel/stat/hp__"
 @onready var atk__: Label = $"../full_stats_info/Panel/stat/atk__"
 @onready var def__: Label = $"../full_stats_info/Panel/stat/def__"
 @onready var dex__: Label = $"../full_stats_info/Panel/stat/dex__"
-
-
-# fix path
-#@onready var con__: Label = $Control/full_stats_info/Panel/stat2/con__
-#
-#@onready var wep_dmg: Label = $Control/full_stats_info/Panel/stat2/wep_dmg
-#@onready var arm_def: Label = $Control/full_stats_info/Panel/stat2/arm_def
-#@onready var itm_tp: Label = $Control/full_stats_info/Panel/stat2/itm_tp
-#@onready var crit: Label = $Control/full_stats_info/Panel/stat2/crit
-
 
 ## Status effect 1 (player to enemy)
 var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -50,8 +36,8 @@ var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0,
 'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
 var earth_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/earth.png', 'percentage' : 5.0}
-#var enemy_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
-#'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
+
+
 var attack_down_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/attack_down.png', 'percentage' : 5.0}
 var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -113,7 +99,7 @@ var armor_def
 @onready var camera: Camera2D = $"../Camera2D"
 
 
-
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_hp = GlobalGameSystem.player_hp
@@ -232,8 +218,7 @@ func set_battle_stat () -> void:
 	set_stat_view()
 	
 	
-	
-	pass
+
 
 func set_stat_view () -> void:
 	atk_value.text =  str (final_atk + weapon_atk)
@@ -953,5 +938,3 @@ func check_if_you_dead () -> void:
 		battle_scene.game_over()
 		## Switch scene to game over menu
 		return
-	pass
-	
