@@ -23,9 +23,14 @@ var status_chance : int = 100
 @onready var player: Player = $"../player"
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var battle_scene: Node2D = $"../.."
+
 @onready var enemy_effects: AnimatedSprite2D = $enemy_effect
 @onready var enemy_effects_2: AnimatedSprite2D = $enemy_effects2
 @onready var enemy_effect_3: AnimatedSprite2D = $enemy_effect3
+@onready var _4: AnimatedSprite2D = $"4"
+@onready var _5: AnimatedSprite2D = $"5"
+@onready var _6: AnimatedSprite2D = $"6"
+
 
 ## Status effect 1 (enemy to self or player)
 var enemy_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -50,8 +55,8 @@ var wind_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0,
 'texture' : 'res://Scene/battle/img/status_icon/wind.png', 'percentage' : 5.0}
 var earth_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/earth.png', 'percentage' : 5.0}
-#var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
-#'texture' : 'res://Scene/battle/img/status_icon/heal.png', 'percentage' : 5.0, 'value' : 0}
+
+
 var attack_down_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/attack_down.png', 'percentage' : 5.0}
 var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -99,6 +104,7 @@ func set_enemy_data () -> void:
 	current_dex = dex # store original dex value
 	current_atk = atk # store original atk power
 	current_def = def # store original def status
+	print ("current def: ", current_def)
 	
 func attack_player () -> void:
 	# while true pick a random action 
@@ -344,7 +350,19 @@ func perform_action (damage, player_def_mod) -> void:
 			enemy_heal_status.active = true
 		
 	elif current_move.action_type == "Defence":
-		pass
+		if enemy_defence_status.active == true:
+			text = "[center]Opponent [color=blue]ARMOR DEFENCE[/color] status failed[/center]"
+			battle_scene.announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			return
+		enemy_defence_status.value = damage
+		_6.play("defence")
+		text = "[center]Opponent [color=blue]ARMOR DEFENCE[/color] ticks up for 3 turns"
+		battle_scene.announcer_text(text)
+		await get_tree().create_timer(1.5).timeout
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy_defence_status.active = true
 	
 	elif current_move.action_type == "Atk Down":
 		pass
@@ -555,6 +573,35 @@ func status_effect () -> void:
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 	
+	## ENEMY DEFENCE
+	if enemy_defence_status.active:
+		text = "[center]Opponent [color=blue]ARMOR DEFENCE[/color] has slightly increased[/center]"
+		enemy_defence_status.turn += 1
+		if enemy_defence_status.turn >= enemy_defence_status.duration:
+			enemy_defence_status.active = false
+			enemy_defence_status.icon_on = false
+			enemy_defence_status.turn = 0
+			def = current_def
+			print ("def reset: ", def)
+			clear_status_icon("defence.png")
+			
+		
+		else:
+			if enemy_defence_status.icon_on == true:
+				# increase player defence
+				var value = (enemy_defence_status.percentage /55.0) * enemy_defence_status.value
+				battle_scene.announcer_text(text)
+				deal_status_dmg(value, 'defence')
+				#check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(enemy_defence_status.texture)
+				enemy_defence_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (enemy_defence_status.percentage / 55.0) * enemy_defence_status.value
+				deal_status_dmg(dmg, "defence")
+				#check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+	
 	## ATTACK DOWN
 	if attack_down_status.active:
 		text = "[center]" + enemy_name + "[color=red] ATTACK [/color]prowess is waning![/center]"
@@ -579,7 +626,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(attack_down_status.texture)
-				modulate_enemy_effects(100,0,0)
+				modulate_enemy_effects(enemy_effects, 100,0,0)
 				enemy_effects.play("show")
 				enemy_effects.visible = true
 				current_status_animation = 'show'
@@ -617,7 +664,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(def_breaker_status.texture)
-				modulate_enemy_effects(0,0,100)
+				modulate_enemy_effects(enemy_effects, 0,0,100)
 				enemy_effects.play("show")
 				enemy_effects.visible = true
 				current_status_animation = 'show'
@@ -650,7 +697,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(psychic_status.texture)
-				modulate_enemy_effects(100,1,100)
+				modulate_enemy_effects(enemy_effects, 100,1,100)
 				modulate = "purple"
 				$AnimationPlayer.play("hit")
 				await get_tree().create_timer(0.4).timeout
@@ -861,7 +908,7 @@ func deal_status_dmg (dmg, effect : String) -> void :
 	
 	elif effect == 'heal':
 		dmg = int(dmg)
-		$"5".play("heal") # play enemy effect heal
+		_5.play("heal") # play enemy effect heal
 		modulate_enemy(100,100,100,1) # flash enemy white
 		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
 		modulate_enemy(1,1,1,1) # return enemy to normal
@@ -872,6 +919,16 @@ func deal_status_dmg (dmg, effect : String) -> void :
 			return
 		
 		enemy_hp.value = current_hp
+		
+	elif effect == 'defence':
+		dmg = int(dmg)
+		modulate_enemy_effects(_6, 0,0,100)
+		_6.play("defence") # play enemy effect defence
+		modulate_enemy(100,100,100,1) # flash player white
+		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+		modulate_enemy(1,1,1,1) # return player to normal
+		def += dmg
+		print ("def: ", def)
 		
 	elif effect == 'attack_down':
 		dmg = int (dmg)
@@ -952,10 +1009,10 @@ func check_if_you_dead () -> void:
 	pass
 
 
-func modulate_enemy_effects (r : int, g : int, b : int):
-	enemy_effects.self_modulate.r = r
-	enemy_effects.self_modulate.g = g
-	enemy_effects.self_modulate.b = b
+func modulate_enemy_effects (effect_node : AnimatedSprite2D , r : int, g : int, b : int):
+	effect_node.self_modulate.r = r
+	effect_node.self_modulate.g = g
+	effect_node.self_modulate.b = b
 
 func modulate_enemy (r_value : int, g_value : int, b_value : int, a_value : int) -> void:
 	self_modulate.r = r_value

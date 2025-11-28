@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_gptkk")
 action_name = "ECLIPSE SLASH"
-action_type = "Heal"
+action_type = "Defence"
 action_attribute = 49
 critical_rate = "5%"
 cooldown = 0
