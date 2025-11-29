@@ -104,7 +104,6 @@ func set_enemy_data () -> void:
 	current_dex = dex # store original dex value
 	current_atk = atk # store original atk power
 	current_def = def # store original def status
-	print ("current def: ", current_def)
 	
 func attack_player () -> void:
 	# while true pick a random action 
@@ -356,6 +355,7 @@ func perform_action (damage, player_def_mod) -> void:
 			await get_tree().create_timer(1.5).timeout
 			return
 		enemy_defence_status.value = damage
+		modulate_enemy_effects(_6, 0,0,100)
 		_6.play("defence")
 		text = "[center]Opponent [color=blue]ARMOR DEFENCE[/color] ticks up for 3 turns"
 		battle_scene.announcer_text(text)
@@ -365,7 +365,20 @@ func perform_action (damage, player_def_mod) -> void:
 			enemy_defence_status.active = true
 	
 	elif current_move.action_type == "Atk Down":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.attack_down_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.attack_down_status.active = true
 		
 	elif current_move.action_type == "Def Breaker":
 		pass
@@ -582,7 +595,6 @@ func status_effect () -> void:
 			enemy_defence_status.icon_on = false
 			enemy_defence_status.turn = 0
 			def = current_def
-			print ("def reset: ", def)
 			clear_status_icon("defence.png")
 			
 		
@@ -633,7 +645,7 @@ func status_effect () -> void:
 				status_animation = true
 				attack_down_status.icon_on = true
 				battle_scene.announcer_text(text)
-				var dmg = (attack_down_status.percentage / 25.0) * def
+				var dmg = (attack_down_status.percentage / 25.0) * atk
 				deal_status_dmg(dmg, "attack_down")
 				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
@@ -652,14 +664,12 @@ func status_effect () -> void:
 			enemy_effects.visible = false
 			enemy_effects.stop()
 			status_animation = false
-			print (def)
 			
 		
 		else:
 			if def_breaker_status.icon_on == true:
 				# reduce enemy defence 
 				var dmg = (def_breaker_status.percentage / 25.0) * atk
-				print ('dmg: ', dmg)
 				deal_status_dmg(dmg, 'def_breaker')
 				check_if_you_dead()
 			else:
@@ -730,7 +740,6 @@ func status_effect () -> void:
 			if shadow_status.icon_on == true:
 				var dmg = (shadow_status.percentage / 100.0) * enemy_hp.max_value
 				player.player_shadow_status.value = int (dmg)
-				print(player.player_shadow_status.value)
 				deal_status_dmg(dmg, "shadow")
 				
 				
@@ -740,7 +749,6 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				var dmg = (shadow_status.percentage / 100) * enemy_hp.max_value
 				player.player_shadow_status.value = int (dmg)
-				print(player.player_shadow_status.value)
 				deal_status_dmg(dmg, "shadow")
 				
 				
@@ -928,7 +936,7 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
 		modulate_enemy(1,1,1,1) # return player to normal
 		def += dmg
-		print ("def: ", def)
+		
 		
 	elif effect == 'attack_down':
 		dmg = int (dmg)

@@ -12,6 +12,11 @@ class_name Player extends AnimatedSprite2D
 @onready var atk__: Label = $"../full_stats_info/Panel/stat/atk__"
 @onready var def__: Label = $"../full_stats_info/Panel/stat/def__"
 @onready var dex__: Label = $"../full_stats_info/Panel/stat/dex__"
+@onready var atk_negative_value: Label = $"../stats_view2/atk-_value" # bottom panel
+@onready var _atk: Label = $"../full_stats_info/Panel/stat/-atk" # full status view 
+
+@onready var _3: AnimatedSprite2D = $"../player_effects/3"
+
 
 ## Status effect 1 (player to enemy)
 var player_heal_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
@@ -56,6 +61,7 @@ var current_hp : int
 var selected_inv : Array = []
 var status_chance = 100
 var text : String
+var added_value := 0
 
 var paralized : bool = false
 var frozen : bool = false
@@ -206,6 +212,13 @@ func set_battle_stat () -> void:
 		final_con = con + (min(wis , con) - con) * 0.7
 		set_stat_view()
 		return
+		
+	if attack_down_status.active: # if atk down is active
+		final_def = def + (min(con , def) - def) * 0.7
+		final_con = con + (min(wis , con) - con) * 0.7
+		final_dex = dex + (min(wis , dex) - dex) * 0.7
+		set_stat_view()
+		return
 	
 	final_atk = atk + (min(Int , atk) - atk) * 0.7
 	final_def = def + (min(con , def) - def) * 0.7
@@ -214,7 +227,7 @@ func set_battle_stat () -> void:
 	
 	current_dex = final_dex
 	current_def = final_def
-	
+	current_atk = final_atk
 	set_stat_view()
 	
 	
@@ -233,6 +246,7 @@ func set_roll_stat_view (roll_atk, roll_def, roll_dex) -> void:
 	$"../stats_view/AnimationPlayer".play("display")
 	
 
+# for full ststus screen first is for the main value second is for the red modifying value
 func show_full_stat (hp_l : Label, atk_l : Label, def_l : Label, dex_l : Label, con_l : Label) -> void:
 	hp_l.text = str(GlobalGameSystem.player_hp)
 	atk_l.text = str(atk)
@@ -420,7 +434,6 @@ func perform_action (value, action : Action) -> void:
 			##battle_scene.announcer_text(text)
 			return
 		player_hex_status.value = value
-		print ("nono")
 		await get_tree().create_timer(2).timeout
 		text = "[center][color=green]HEX[/color] activated, doubles hex based attacks"
 		battle_scene.announcer_text(text)
@@ -623,7 +636,7 @@ func status_effect () -> void:
 			earth_status.turn = 0
 			clear_status_icon("earth.png")
 			final_def = current_def
-			def_value.text = str (final_def)
+			def_value.text = str (final_def + armor_def)
 			def__.text = "(" + str(final_def - def) + ")"
 		
 		else:
@@ -638,6 +651,42 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				var dmg = (earth_status.percentage / 25.0) * final_def
 				deal_status_dmg(dmg, "earth")
+				check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+	
+	## ATTACK DOWN
+	if attack_down_status.active:
+		text = "[center]Player[color=red] ATTACK [/color]prowess is waning![/center]"
+		attack_down_status.turn += 1
+		if attack_down_status.turn >= attack_down_status.duration:
+			attack_down_status.active = false
+			attack_down_status.icon_on = false
+			attack_down_status.turn = 0
+			clear_status_icon("attack_down.png")
+			modulate = "white"
+			final_atk = current_atk
+			atk_value.text =  str (final_atk + weapon_atk) #bottom panel update to normal
+			atk__.text = "(" + str(final_atk - atk) + ")" # full status board shows to normal
+			atk_negative_value.text = str(0)
+			_atk.text = str(0)
+			_3.visible = false
+			_3.stop()
+			
+		else:
+			if attack_down_status.icon_on == true:
+				# reduce enemy attacks
+				var dmg = (attack_down_status.percentage / 25.0) * final_atk
+				deal_status_dmg(dmg, 'attack_down')
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(attack_down_status.texture)
+				player_effect_modulate(_3, 100.0, 0, 0)
+				_3.play("show")
+				_3.visible = true
+				attack_down_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (attack_down_status.percentage / 25.0) * final_atk
+				deal_status_dmg(dmg, "attack_down")
 				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 	
@@ -745,7 +794,6 @@ func status_effect () -> void:
 			if player_shadow_status.icon_on == true:
 				# increase player hp
 				var value = player_shadow_status.value
-				print ("shadow value: ", value)
 				battle_scene.announcer_text(text)
 				deal_status_dmg(value, 'shadow')
 				#check_if_you_dead()
@@ -754,7 +802,6 @@ func status_effect () -> void:
 				player_shadow_status.icon_on = true
 				battle_scene.announcer_text(text)
 				var value = player_shadow_status.value
-				print ("shadow value: ", value)
 				deal_status_dmg(value, "shadow")
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
@@ -868,7 +915,7 @@ func deal_status_dmg (value, effect : String) -> void :
 		$"dmg hit".text = str (value)
 		$dmg_info.play("dmg_p")
 		final_def -= value
-		def_value.text = str (final_def)
+		def_value.text = str (final_def + armor_def)
 		def__.text = "(" + str(final_def - def) + ")"
 
 	elif  effect == 'heal':
@@ -898,6 +945,24 @@ func deal_status_dmg (value, effect : String) -> void :
 		armor_def += value
 		$"../full_stats_info/Panel/stat2/arm_def".text = str(armor_def)
 		def_value.text = str (final_def + armor_def)
+	
+	elif effect =='attack_down':
+		added_value += value
+		value = int (value)
+		modulate = 'ff7f6e'
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		final_atk -= value
+		atk_value.text =  str (final_atk + weapon_atk) #bottom panel update reductions
+		atk__.text = "(" + str(final_atk - atk) + ")" # full status board shows reduction
+		if atk_negative_value.text and _atk.text == '0':
+			atk_negative_value.text = str(value)
+			_atk.text = str(value)
+		else:
+			atk_negative_value.text = str(added_value)
+			_atk.text = str(added_value)
 	
 	elif effect == 'hex':
 		value = int(value)

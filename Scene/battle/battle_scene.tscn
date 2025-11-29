@@ -1,4 +1,4 @@
-[gd_scene load_steps=246 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=247 format=3 uid="uid://c4t5kvfjhunpx"]
 
 [ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
@@ -661,6 +661,194 @@ animations = [{
 "loop": false,
 "name": &"shadow",
 "speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2au3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("78_hu2ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_x2r7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_fuluk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_yxvjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_3hbwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_6a38g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_0vckr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_a0d6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_xav77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_6w3m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_nya25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_m52n0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_n6y1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_wrhkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_x6tcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_yfxki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_mwvlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_u1863")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_wr0m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_f4bi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_70vwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_6s8rn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_7hcnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_76c43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_551fi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_nfte7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_s0nuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_rga5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_4e5j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_qv6qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_q7gv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_eqdlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_k4ww0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_vehyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_v6eel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_a0p4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_2d8a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_3qbnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_j33p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_6f002")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_w2whi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_exppk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_0kf2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_olxgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_fx2hf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_0g27h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_f0mi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_4vg8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_m3n6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_0dgxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_fc0sb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_kxnni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_yxeea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_oh7c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_nwsv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_7a4v7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_jjlrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_t5y8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_8wutm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_brycv")
+}],
+"loop": true,
+"name": &"show",
+"speed": 15.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmq2k"]
@@ -2629,6 +2817,16 @@ sprite_frames = SubResource("SpriteFrames_kb4af")
 animation = &"defence"
 frame = 9
 frame_progress = 1.0
+
+[node name="3" type="AnimatedSprite2D" parent="Control/player_effects"]
+visible = false
+position = Vector2(159.521, 1167.52)
+rotation = -1.5708
+scale = Vector2(6.41832, 6.41832)
+sprite_frames = SubResource("SpriteFrames_2au3l")
+animation = &"show"
+frame = 9
+frame_progress = 0.93475
 
 [node name="heal" type="AnimatedSprite2D" parent="Control/player_effects"]
 modulate = Color(0.301633, 0.97655, 0.211245, 1)
