@@ -381,7 +381,20 @@ func perform_action (damage, player_def_mod) -> void:
 			player.attack_down_status.active = true
 		
 	elif current_move.action_type == "Def Breaker":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.def_breaker_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.def_breaker_status.active = true
 		
 	elif current_move.action_type == "Psychic":
 		pass
@@ -669,7 +682,7 @@ func status_effect () -> void:
 		else:
 			if def_breaker_status.icon_on == true:
 				# reduce enemy defence 
-				var dmg = (def_breaker_status.percentage / 25.0) * atk
+				var dmg = (def_breaker_status.percentage / 25.0) * def
 				deal_status_dmg(dmg, 'def_breaker')
 				check_if_you_dead()
 			else:
@@ -937,7 +950,6 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		modulate_enemy(1,1,1,1) # return player to normal
 		def += dmg
 		
-		
 	elif effect == 'attack_down':
 		dmg = int (dmg)
 		modulate = 'ff7f6e'
@@ -955,7 +967,6 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$"../enemy_dmg hit".text = str (dmg)
 		$emeny_dmg.play("dmg")
 		def -= dmg
-		print(def)
 	
 	elif effect == 'confused': # for psychic effect
 		# make enemy attack self
