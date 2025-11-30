@@ -14,6 +14,10 @@ class_name Player extends AnimatedSprite2D
 @onready var dex__: Label = $"../full_stats_info/Panel/stat/dex__"
 @onready var atk_negative_value: Label = $"../stats_view2/atk-_value" # bottom panel
 @onready var _atk: Label = $"../full_stats_info/Panel/stat/-atk" # full status view 
+@onready var brkr_full: Label = $"../full_stats_info/Panel/stat/brkr" # full status view
+@onready var brkr_value: Label = $"../stats_view2/brkr_value" # bottom panel
+
+
 
 @onready var _3: AnimatedSprite2D = $"../player_effects/3"
 
@@ -61,7 +65,8 @@ var current_hp : int
 var selected_inv : Array = []
 var status_chance = 100
 var text : String
-var added_value := 0
+var added_value_for_atk_down := 0
+var added_value_for_def_brk := 0
 
 var paralized : bool = false
 var frozen : bool = false
@@ -206,7 +211,7 @@ func set_battle_stat () -> void:
 		set_stat_view()
 		return
 		
-	if earth_status.active: # if wind dont reset def
+	if earth_status.active or def_breaker_status.active: # if wind dont reset def
 		final_atk = atk + (min(Int , atk) - atk) * 0.7
 		final_dex = dex + (min(wis , dex) - dex) * 0.7
 		final_con = con + (min(wis , con) - con) * 0.7
@@ -668,6 +673,7 @@ func status_effect () -> void:
 			atk_value.text =  str (final_atk + weapon_atk) #bottom panel update to normal
 			atk__.text = "(" + str(final_atk - atk) + ")" # full status board shows to normal
 			atk_negative_value.text = str(0)
+			added_value_for_atk_down = 0
 			_atk.text = str(0)
 			_3.visible = false
 			_3.stop()
@@ -687,6 +693,44 @@ func status_effect () -> void:
 				battle_scene.announcer_text(text)
 				var dmg = (attack_down_status.percentage / 25.0) * final_atk
 				deal_status_dmg(dmg, "attack_down")
+				check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+	
+	## DEFENCE BREAKER
+	if def_breaker_status.active:
+		text = "[center]Your [color=blue] DEFENCE [/color]has been breached![/center]"
+		def_breaker_status.turn += 1
+		if def_breaker_status.turn >= def_breaker_status.duration:
+			def_breaker_status.active = false
+			def_breaker_status.icon_on = false
+			def_breaker_status.turn = 0
+			clear_status_icon("def_breaker.png")
+			modulate = "white"
+			final_def = current_def
+			def_value.text = str (final_def + armor_def) #bottom panel update to normal
+			def__.text = "(" + str(final_def - def) + ")" # full status board shows to normal
+			added_value_for_def_brk = 0
+			brkr_full.text = str(0)
+			brkr_value.text = str(0)
+			_3.visible = false
+			_3.stop()
+			
+		
+		else:
+			if def_breaker_status.icon_on == true:
+				# reduce enemy defence 
+				var dmg = (def_breaker_status.percentage / 25.0) * final_def
+				deal_status_dmg(dmg, 'def_breaker')
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(def_breaker_status.texture)
+				player_effect_modulate(_3,0,0,100.0)
+				_3.play("show")
+				_3.visible = true
+				def_breaker_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (def_breaker_status.percentage / 25.0) * final_def
+				deal_status_dmg(dmg, "def_breaker")
 				check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 	
@@ -947,7 +991,7 @@ func deal_status_dmg (value, effect : String) -> void :
 		def_value.text = str (final_def + armor_def)
 	
 	elif effect =='attack_down':
-		added_value += value
+		added_value_for_atk_down += value
 		value = int (value)
 		modulate = 'ff7f6e'
 		self.play("hit")
@@ -961,8 +1005,26 @@ func deal_status_dmg (value, effect : String) -> void :
 			atk_negative_value.text = str(value)
 			_atk.text = str(value)
 		else:
-			atk_negative_value.text = str(added_value)
-			_atk.text = str(added_value)
+			atk_negative_value.text = str(added_value_for_atk_down)
+			_atk.text = str(added_value_for_atk_down)
+	
+	elif effect == 'def_breaker':
+		added_value_for_def_brk += value
+		value = int (value)
+		modulate = 'blue'
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		final_def -= value
+		def_value.text = str (final_def + armor_def)
+		def__.text = "(" + str(final_def - def) + ")"
+		if brkr_full.text and brkr_value.text == '0':
+			brkr_full.text = str(value)
+			brkr_value.text = str(value)
+		else:
+			brkr_full.text = str(added_value_for_def_brk)
+			brkr_value.text = str(added_value_for_def_brk)
 	
 	elif effect == 'hex':
 		value = int(value)
