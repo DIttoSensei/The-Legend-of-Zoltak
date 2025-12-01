@@ -235,8 +235,8 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	
 	enemy_process()
 	
-		
 
+################################################################
 ### for modularity
 func enemy_process () -> void:
 	## increase counter
@@ -363,7 +363,7 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 			
 		status_active = true
 	
-func player_status_check (damage):
+func player_status_check (damage, action):
 	## Some status checks will be added here
 	if player.paralized == true:
 		player.deal_status_dmg(0, 'lightning')
@@ -397,55 +397,52 @@ func player_status_check (damage):
 			#enemy_process()
 		player_status_active = true
 	#
-	#if enemy.confused == true:
-		#text = "[center][color=red]" + enemy_name + "[/color] is confused and unpredictable[/center]"
-		#announcer_text(text)
-		#await get_tree().create_timer(3).timeout
-		#var hit_chance = randi_range(1,2)
-		#if hit_chance == 1: # (1) Attack player, (2) Attack self
-			#text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
-			#announcer_text(text)
-			#await enemy.perform_action(damage, player_def_mod)
-			#await get_tree().create_timer(0.5).timeout
+	if player.confused == true:
+		text = "[center]You have gotten confused and actions unpredictable[/center]"
+		announcer_text(text)
+		await get_tree().create_timer(3).timeout
+		var hit_chance = randi_range(1,2)
+		if hit_chance == 1: # (1) Attack enemy, (2) Attack self
+			text = "[center]You USED[color=green] " + action.action_name + "[/color][/center]"
+			announcer_text(text)
+			await player.perform_action (damage, action)
+			await get_tree().create_timer(0.5).timeout
+			# Check if enemy has no hp left
+			if enemy.current_hp <= 0:
+				player_victory()
+				## Switch scene to main game 
+				return
+			elif enemy_take_turn == false:
+				player_take_turn = true
+				await get_tree().create_timer(1.5).timeout
+				text = "[center]Enemy prepares to attack[/center]"
+				announcer_text(text)
+				await get_tree().create_timer(1.5).timeout
+				enemy.attack_player()
+			await get_tree().create_timer(2.5).timeout
+			
+		if hit_chance == 2: #Attack self
+			var dmg : int = damage / 2
+			player.deal_status_dmg(dmg,"confused")
+			text = "[center]You attacked yourself[/center]"
+			announcer_text(text)
 			## Check if player has no hp left
-			#if player.current_hp <= 0:
-				#game_over()
-				### Switch scene to game over menu
-				#return
-			#elif player_take_turn == false:
-				#enemy_take_turn = true
-				#await get_tree().create_timer(1.5).timeout
-				#text = "[center]You prepared to attack[/center]"
-				#announcer_text(text)
-				#await get_tree().create_timer(1.5).timeout
-				#player_attack()
-			#await get_tree().create_timer(2.5).timeout
+			if player.current_hp <= 0:
+				game_over()
+				## Switch scene to game over menu
+				return
+			elif enemy_take_turn == false:
+				player_take_turn = true
+				await get_tree().create_timer(1.5).timeout
+				text = "[center]Opponent prepared to attack[/center]"
+				announcer_text(text)
+				await get_tree().create_timer(1.5).timeout
+				enemy.attack_player()
+			await get_tree().create_timer(2.5).timeout
 			#
-		#if hit_chance == 2:
-			#var dmg : int = damage / 2
-			#enemy.deal_status_dmg(dmg,"confused")
-			#text = "[center][color=red]" + enemy_name + "[/color] attacked itself[/center]"
-			#announcer_text(text)
-			### Check if enemy has no hp left
-			#if enemy.current_hp <= 0:
-				#player_victory()
-				### Switch scene to game over menu
-				#return
-			#elif player_take_turn == false:
-				#enemy_take_turn = true
-				#await get_tree().create_timer(1.5).timeout
-				#text = "[center]You prepared to attack[/center]"
-				#announcer_text(text)
-				#await get_tree().create_timer(1.5).timeout
-				#player_attack()
-			#await get_tree().create_timer(2.5).timeout
-			#
-		#status_active = true
+		player_status_active = true
 
-
-
-
-
+################################################################
 
 func player_attack() -> void:
 	battling = true
@@ -458,7 +455,7 @@ func player_attack() -> void:
 	await get_tree().create_timer(2).timeout
 	
 	## Some status checks will be added here
-	await player_status_check(damage)
+	await player_status_check(damage, action)
 	if player_status_active == true:
 		if enemy_take_turn == true:
 			player_process()
@@ -492,8 +489,6 @@ func player_attack() -> void:
 	else:
 		
 		player_process()
-
-
 
 
 func announcer_text (text) -> void:

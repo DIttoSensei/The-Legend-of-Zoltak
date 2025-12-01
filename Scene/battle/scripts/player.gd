@@ -792,6 +792,37 @@ func status_effect () -> void:
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 		
+	## PSYCHIC
+	if psychic_status.active:
+		text = "[center]You have been drenched in[color=purple] Psychic[/color] aura[/center]"
+		psychic_status.turn += 1
+		if psychic_status.turn >= psychic_status.duration:
+			psychic_status.active = false
+			psychic_status.icon_on = false
+			psychic_status.turn = 0
+			confused = false
+			battle_scene.player_status_active = false # allows status from main game check to be false
+			clear_status_icon("psychic.png")
+			_3.visible = false
+			_3.stop()
+		
+		else:
+			if psychic_status.icon_on == true:
+				# make enemy skip its turn
+				check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(psychic_status.texture)
+				player_effect_modulate(_3, 100,1,100)
+				modulate = "purple"
+				self.play("hit")
+				await get_tree().create_timer(0.4).timeout
+				modulate = "white"
+				_3.play("show")
+				_3.visible = true
+				psychic_status.icon_on = true
+				battle_scene.announcer_text(text)
+				confused = true
+		
 	## PLAYER HEX
 	if player_hex_status.active:
 		var hex_action = battle_scene.current_action.action_data
@@ -1025,6 +1056,22 @@ func deal_status_dmg (value, effect : String) -> void :
 		else:
 			brkr_full.text = str(added_value_for_def_brk)
 			brkr_value.text = str(added_value_for_def_brk)
+	
+	elif effect == 'confused': # for psychic effect
+		# make enemy attack self
+		value = int(value)
+		modulate = 'purple'
+		self.play("hit")
+		camera.shake() # shake screen
+		Input.vibrate_handheld(140, 1.0)
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		current_hp -= value
+		player_hp.value = current_hp
+		$"../stats_view/hp_value".text = str (current_hp)
+		
 	
 	elif effect == 'hex':
 		value = int(value)
