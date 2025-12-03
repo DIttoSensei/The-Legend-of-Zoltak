@@ -440,11 +440,11 @@ func perform_action (value, action : Action) -> void:
 			return
 		player_hex_status.value = value
 		await get_tree().create_timer(2).timeout
-		text = "[center][color=green]HEX[/color] activated, doubles hex based attacks"
-		battle_scene.announcer_text(text)
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			player_hex_status.active = true
+			text = "[center][color=green]HEX[/color] activated, doubles hex based attacks"
+			battle_scene.announcer_text(text)
 		
 	elif action.action_type == "Shadow":
 		self.play("attack")

@@ -7,6 +7,8 @@ var dex : int
 var current_dex : int
 var current_atk : int
 var current_def : int
+var enemy_hex_modifier : int = 0
+var value_multipliyer : int = 0
 var enemy_damage
 var current_hp
 var current_move : Action
@@ -117,9 +119,12 @@ func attack_player () -> void:
 		if move.current_cooldown == 0:
 			var move_name : String = move.action_name # move name
 			var move_damage : int = move.action_attribute
-	
-			var damage = move_damage + (move_damage * atk / 100) # new damage with state modifer
-		
+			var damage
+			if enemy_hex_modifier == 0:
+				damage = move_damage + (move_damage * atk / 100) # new damage with state modifer
+			else:
+				damage = enemy_hex_modifier + (enemy_hex_modifier * atk / 100) # new damage with state modifer
+				
 			var crit_rate = int(move.critical_rate.trim_suffix("%"))
 	
 			var roll = randi_range(0,100)
@@ -413,7 +418,23 @@ func perform_action (damage, player_def_mod) -> void:
 			player.psychic_status.active = true
 		
 	elif current_move.action_type == "Hex":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if enemy_hex_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			enemy_hex_status.active = true
+			#text = "[center]Opponent activated [color=green]HEX[/color] status"
+			#battle_scene.announcer_text(text)
 		
 	elif current_move.action_type == "Shadow":
 		pass
@@ -751,6 +772,38 @@ func status_effect () -> void:
 		await get_tree().create_timer(2.5).timeout
 		pass
 
+	## ENEMY HEX
+	if enemy_hex_status.active:
+		var hex_action = current_move
+		text = "[center]Opponent [color=green]HEX[/color] based attack dmg grows 2x[/center]"
+		enemy_hex_status.turn += 1
+		if enemy_hex_status.turn >= enemy_hex_status.duration:
+			enemy_hex_status.active = false
+			enemy_hex_status.icon_on = false
+			enemy_hex_modifier = 0
+			enemy_hex_status.turn = 0
+			clear_status_icon("hex.png")
+			
+		
+		else:
+			if enemy_hex_status.icon_on == true:
+				# increase enemy hex dmg
+				var value = value_multipliyer * 2
+				value_multipliyer = value
+				battle_scene.announcer_text(text)
+				deal_status_dmg(value, 'hex')
+				#check_if_you_dead()
+			else:
+				check_if_status_icon_is_available(enemy_hex_status.texture)
+				enemy_hex_status.icon_on = true
+				battle_scene.announcer_text(text)
+				value_multipliyer += hex_action.action_attribute
+				var value = value_multipliyer * 2
+				value_multipliyer = value
+				deal_status_dmg(value, "hex")
+				#check_if_you_dead()
+		await get_tree().create_timer(2.5).timeout
+
 	## SHADOW
 	if shadow_status.active:
 		text = "[center]" + enemy_name + ' has been trapped in it own ' + "[color=929292]shadow[/color][/center]"
@@ -994,6 +1047,15 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		$emeny_dmg.play("dmg")
 		current_hp -= dmg
 		enemy_hp.value = current_hp
+		
+	elif effect == 'hex':
+		dmg = int(dmg)
+		modulate_enemy_effects(_4, 0.018, 0.368, 0.014)
+		_4.play("mystic")
+		modulate_enemy(100,100,100,1) # flash player white
+		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+		modulate_enemy(1,1,1,1) # return player to normal
+		enemy_hex_modifier = dmg
 		
 	elif effect == 'shadow':
 		dmg = int(dmg)

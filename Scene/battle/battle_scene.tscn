@@ -2843,8 +2843,6 @@ position = Vector2(165.297, 1180.2)
 scale = Vector2(6.94596, 6.94596)
 sprite_frames = SubResource("SpriteFrames_7abjt")
 animation = &"mystic"
-frame = 16
-frame_progress = 1.0
 
 [node name="battle_gauge" type="Sprite2D" parent="Control"]
 self_modulate = Color(1.5, 1, 1, 1)
