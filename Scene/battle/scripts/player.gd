@@ -65,12 +65,14 @@ var current_hp : int
 var selected_inv : Array = []
 var status_chance = 100
 var text : String
+var text_2 : String
 var added_value_for_atk_down := 0
 var added_value_for_def_brk := 0
 
 var paralized : bool = false
 var frozen : bool = false
 var confused: bool = false
+var player_shadow : bool = false
 
 # Stats
 var atk : int
@@ -449,23 +451,25 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Shadow":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		player_shadow_status.value = int(value)
 		value = max(0, value - enemy.def)
 		SignalManager.enemy_damaged.emit(value)
 		if player_shadow_status.active == true:
 			text = "[center][color=929292]SHADOW[/color] status already in effect[/center]"
 			battle_scene.announcer_text(text)
 			return
-		player_shadow_status.value = value
-		await get_tree().create_timer(2).timeout
-		text = "[center][color=929292]SHADOW[/color] drain activated"
-		battle_scene.announcer_text(text)
-		await get_tree().create_timer(1.5).timeout
-		text = "[center]HP increases from drained opponent[/center]"
-		battle_scene.announcer_text(text)
+		
 		var roll = randi_range(1, 100)
 		if roll <= status_chance:
 			player_shadow_status.active = true
 			enemy.shadow_status.active = true
+			await get_tree().create_timer(2).timeout
+			text = "[center][color=929292]SHADOW[/color] drain activated"
+			battle_scene.announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			text = "[center]HP increases from drained opponent[/center]"
+			battle_scene.announcer_text(text)
+			player_shadow = true
 		pass
 		
 	elif action.action_type == "Bleed":
@@ -858,26 +862,41 @@ func status_effect () -> void:
 	## PLAYER SHADOW
 	if player_shadow_status.active:
 		text = "[center][color=929292]SHADOW[/color] drain increases your HP[/center]"
+		text_2 = "[center]Opponent [color=929292]SHADOW[/color] drain reduces your HP[/center]"
 		player_shadow_status.turn += 1
 		if player_shadow_status.turn >= player_shadow_status.duration:
 			player_shadow_status.active = false
 			player_shadow_status.icon_on = false
+			player_shadow_status.value = 0
+			player_shadow = false
 			clear_status_icon("shadow.png")
 			
 		
 		else:
 			if player_shadow_status.icon_on == true:
 				# increase player hp
-				var value = player_shadow_status.value
-				battle_scene.announcer_text(text)
-				deal_status_dmg(value, 'shadow')
+				if player_shadow == true:
+					var value = player_shadow_status.value
+					battle_scene.announcer_text(text)
+					deal_status_dmg(value, 'shadow_p')
+				elif enemy.enemy_shadow == true:
+					var dmg = (player_shadow_status.percentage / 20) * player_hp.max_value
+					enemy.shadow_status.value = int (dmg)
+					deal_status_dmg(dmg, "shadow")
 				#check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(player_shadow_status.texture)
 				player_shadow_status.icon_on = true
-				battle_scene.announcer_text(text)
-				var value = player_shadow_status.value
-				deal_status_dmg(value, "shadow")
+				
+				if player_shadow == true:
+					battle_scene.announcer_text(text)
+					var value = player_shadow_status.value
+					deal_status_dmg(value, "shadow_p")
+				elif enemy.enemy_shadow == true:
+					battle_scene.announcer_text(text_2)
+					var dmg = (player_shadow_status.percentage / 20) * player_hp.max_value
+					enemy.shadow_status.value = int (dmg)
+					deal_status_dmg(dmg, "shadow")
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
 
@@ -1072,7 +1091,6 @@ func deal_status_dmg (value, effect : String) -> void :
 		player_hp.value = current_hp
 		$"../stats_view/hp_value".text = str (current_hp)
 		
-	
 	elif effect == 'hex':
 		value = int(value)
 		player_effect_modulate($"../player_effects/mystic", 0.018, 0.368, 0.014)
@@ -1082,7 +1100,20 @@ func deal_status_dmg (value, effect : String) -> void :
 		modulate_player(1,1,1,1) # return player to normal
 		hex_modifier = value
 		
-	elif effect == "shadow":
+	elif effect == 'shadow':
+		value = int(value)
+		modulate = "black"
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		current_hp -= value
+		player_hp.value = current_hp
+		$"../stats_view/hp_value".text = str (current_hp)
+		check_if_you_dead()
+		
+	elif effect == "shadow_p":
 		value = int(value)
 		player_effect_modulate($"../player_effects/2", 0, 0, 0)
 		$"../player_effects/2".play("shadow")
