@@ -252,8 +252,13 @@ func enemy_process () -> void:
 	await announcer_text(text)
 	
 	await get_tree().create_timer(2).timeout
-	await enemy.status_effect() # check for status effect
-	await player.status_effect() # check for player status
+	
+	if enemy.enemy_shadow == true:
+		await player.status_effect()
+		await enemy.status_effect() # check for status effect
+	else:
+		await enemy.status_effect() # check for status effect
+		await player.status_effect() # check for player status
 	
 	print('enemy hp: ', enemy.enemy_hp.value)
 	battling = false
@@ -274,8 +279,12 @@ func player_process () -> void:
 		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
 		announcer_text(text)
 		
-		await enemy.status_effect() # check for status effect
-		await player.status_effect() # check for player effect
+		if enemy.enemy_shadow == true:
+			await player.status_effect()
+			await enemy.status_effect() # check for status effect
+		else:
+			await enemy.status_effect() # check for status effect
+			await player.status_effect() # check for player effect
 		
 		print('enemy hp: ', enemy.enemy_hp.value)
 		battling = false
@@ -469,7 +478,7 @@ func player_attack() -> void:
 	## This is where the move type gets checked to perform it properties
 	## Eg if it a stun or poisen type move it does it work rather than just dmg
 	await player.perform_action (damage, action)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1.7).timeout
 	
 	
 	## Check if enemy has no hp left

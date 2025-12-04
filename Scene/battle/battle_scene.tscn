@@ -2814,9 +2814,7 @@ self_modulate = Color(0, 0, 100, 1)
 position = Vector2(170, 1180)
 scale = Vector2(2.78125, 2.78125)
 sprite_frames = SubResource("SpriteFrames_kb4af")
-animation = &"defence"
-frame = 9
-frame_progress = 1.0
+animation = &"shadow"
 
 [node name="3" type="AnimatedSprite2D" parent="Control/player_effects"]
 visible = false

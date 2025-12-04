@@ -1,6 +1,7 @@
 class_name Enemy extends Sprite2D
 
 var text : String
+var text_2 : String
 var atk : int
 var def : int
 var dex : int
@@ -66,7 +67,7 @@ var def_breaker_status : Dictionary = {"active" : false, 'icon_on' : false, 'tur
 var psychic_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
 'texture' : 'res://Scene/battle/img/status_icon/psychic.png', 'percentage' : 5.0}
 var shadow_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 4, 
-'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0}
+'texture' : 'res://Scene/battle/img/status_icon/shadow.png', 'percentage' : 5.0, 'value' : 0}
 var bleed_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 3, 
 'texture' : 'res://Scene/battle/img/status_icon/bleed.png', 'percentage' : 5.0}
 var poisen_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 0, 'duration' : 6, 
@@ -76,6 +77,7 @@ var poisen_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 
 var paralized : bool = false
 var frozen : bool = false
 var confused: bool = false
+var enemy_shadow : bool = false
 
 @onready var enemy_status_effect: Control = $"../enemy_status_effect"
 
@@ -437,7 +439,30 @@ func perform_action (damage, player_def_mod) -> void:
 			#battle_scene.announcer_text(text)
 		
 	elif current_move.action_type == "Shadow":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		
+		shadow_status.value = damage / 2
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if shadow_status.active == true:
+			return
+			
+		
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			shadow_status.active = true
+			player.player_shadow_status.active = true
+			await get_tree().create_timer(2).timeout
+			text = "[center]Opponent activated [color=929292]SHADOW[/color] drain"
+			battle_scene.announcer_text(text)
+			await get_tree().create_timer(1.5).timeout
+			enemy_shadow = true
 		
 	elif current_move.action_type == "Bleed":
 		pass
@@ -807,29 +832,40 @@ func status_effect () -> void:
 	## SHADOW
 	if shadow_status.active:
 		text = "[center]" + enemy_name + ' has been trapped in it own ' + "[color=929292]shadow[/color][/center]"
+		#text_2 = "[center][color=929292]SHADOW[/color] drain increases your HP[/center]"
 		shadow_status.turn += 1
 		if shadow_status.turn >= shadow_status.duration:
 			shadow_status.active = false
 			shadow_status.icon_on = false
 			shadow_status.turn = 0
+			enemy_shadow = false
+			shadow_status.value = 0
 			clear_status_icon("shadow.png")
 	
 		else:
 			# deal damage, show status icon plus alart
 			if shadow_status.icon_on == true:
-				var dmg = (shadow_status.percentage / 100.0) * enemy_hp.max_value
-				player.player_shadow_status.value = int (dmg)
-				deal_status_dmg(dmg, "shadow")
+				if player.player_shadow == true:
+					var dmg = (shadow_status.percentage / 100.0) * enemy_hp.max_value
+					player.player_shadow_status.value = int (dmg)
+					deal_status_dmg(dmg, "shadow")
+				elif  enemy_shadow == true:
+					var value = shadow_status.value
+					deal_status_dmg(value, "shadow_e")
 				
 				
 			else:
 				check_if_status_icon_is_available(shadow_status.texture) # set texture icon
 				shadow_status.icon_on = true
-				battle_scene.announcer_text(text)
-				var dmg = (shadow_status.percentage / 100) * enemy_hp.max_value
-				player.player_shadow_status.value = int (dmg)
-				deal_status_dmg(dmg, "shadow")
-				
+				if player.player_shadow == true:
+					battle_scene.announcer_text(text)
+					var dmg = (shadow_status.percentage / 100) * enemy_hp.max_value
+					player.player_shadow_status.value = int (dmg)
+					deal_status_dmg(dmg, "shadow")
+					
+				elif enemy_shadow == true:
+					var value = shadow_status.value
+					deal_status_dmg(value, "shadow_e")
 				
 		await get_tree().create_timer(2.5).timeout
 		
@@ -1068,6 +1104,23 @@ func deal_status_dmg (dmg, effect : String) -> void :
 		current_hp -= dmg
 		enemy_hp.value = current_hp
 		check_if_you_dead()
+	
+	elif effect == 'shadow_e':
+		dmg = int(dmg)
+		modulate_enemy_effects(_6, 0, 0, 0)
+		_6.play("defence")
+		modulate_enemy(100,100,100,1) # flash player white
+		await get_tree().create_timer(0.3).timeout # wait 0.3 sec
+		modulate_enemy(1,1,1,1) # return player to normal
+		current_hp += dmg
+		if current_hp > enemy_hp.max_value:
+			current_hp = enemy_hp.max_value
+			enemy_hp.value = current_hp
+			shadow_status.value = 0
+			return
+			
+		enemy_hp.value = current_hp
+		shadow_status.value = 0
 	
 	elif effect == 'bleed':
 		dmg = int(dmg)
