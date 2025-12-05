@@ -20,6 +20,8 @@ class_name Player extends AnimatedSprite2D
 
 
 @onready var _3: AnimatedSprite2D = $"../player_effects/3"
+@onready var _4: AnimatedSprite2D = $"../player_effects/4"
+
 
 
 ## Status effect 1 (player to enemy)
@@ -899,7 +901,33 @@ func status_effect () -> void:
 					deal_status_dmg(dmg, "shadow")
 				#check_if_you_dead()
 		await get_tree().create_timer(2.5).timeout
-
+	
+	## BLEED
+	if bleed_status.active:
+		text = "[center]You will begin to lose [color=red]blood[/color][/center]"
+		bleed_status.turn += 1
+		if bleed_status.turn >= bleed_status.duration:
+			bleed_status.active = false
+			bleed_status.icon_on = false
+			bleed_status.turn = 0
+			clear_status_icon("bleed.png")
+	
+		else:
+			# deal damage, show status icon plus alart
+			if bleed_status.icon_on == true:
+				var dmg = (bleed_status.percentage / 60.0) * player_hp.max_value
+				deal_status_dmg(dmg, "bleed")
+				
+				
+			else:
+				check_if_status_icon_is_available(bleed_status.texture) # set texture icon
+				bleed_status.icon_on = true
+				battle_scene.announcer_text(text)
+				var dmg = (bleed_status.percentage / 60.0) * player_hp.max_value
+				deal_status_dmg(dmg, "bleed")
+				
+				
+		await get_tree().create_timer(2.5).timeout
 
 func check_if_status_icon_is_available (texture_res) -> void:
 	if player_status_effect.status_1.texture == null:
@@ -1132,6 +1160,18 @@ func deal_status_dmg (value, effect : String) -> void :
 		player_shadow_status.value = 0
 		$"../stats_view/hp_value".text = str (current_hp)
 
+	elif effect == 'bleed':
+		value = int(value)
+		modulate = "red"
+		_4.play("bleed")
+		self.play("hit")
+		await get_tree().create_timer(0.4).timeout
+		modulate = "white"
+		$"dmg hit".text = str (value)
+		$dmg_info.play("dmg_p")
+		current_hp -= value
+		player_hp.value = current_hp
+		check_if_you_dead()
 
 func player_effect_modulate (effect_node : AnimatedSprite2D, r : float, g : float, b : float):
 	effect_node.self_modulate.r = r

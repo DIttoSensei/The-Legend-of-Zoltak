@@ -465,7 +465,20 @@ func perform_action (damage, player_def_mod) -> void:
 			enemy_shadow = true
 		
 	elif current_move.action_type == "Bleed":
-		pass
+		# if there is a status effect animation current stop it for the mean time
+		if status_animation == true:
+			enemy_effects.stop()
+			enemy_effects.visible = false
+		
+		$AnimationPlayer.play(current_animation)
+		damage = max(0, damage - int((player_def_mod / 2))) # player def deducts damage
+		SignalManager.player_damaged.emit(damage)
+		
+		if player.bleed_status.active == true:
+			return
+		var roll = randi_range(1, 100)
+		if roll <= status_chance:
+			player.bleed_status.active = true
 		
 	elif current_move.action_type == "Poison":
 		pass
