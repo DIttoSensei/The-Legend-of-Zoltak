@@ -1,4 +1,4 @@
-[gd_scene load_steps=248 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=249 format=3 uid="uid://c4t5kvfjhunpx"]
 
 [ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
@@ -1039,6 +1039,65 @@ animations = [{
 }],
 "loop": false,
 "name": &"bleed",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8gmp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("142_xide0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_l723c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_0ftm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_45e1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_4dnum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_svj0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_luwsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_3llng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_0ntqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_roi6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_uc8py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_w5qg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_v0blq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_al7tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_85oga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_ln0os")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_xide0")
+}],
+"loop": false,
+"name": &"show",
 "speed": 12.0
 }]
 
@@ -2874,6 +2933,14 @@ scale = Vector2(2.47656, 2.47656)
 sprite_frames = SubResource("SpriteFrames_811ag")
 animation = &"bleed"
 frame = 5
+frame_progress = 1.0
+
+[node name="5" type="AnimatedSprite2D" parent="Control/player_effects"]
+position = Vector2(150, 1162.67)
+scale = Vector2(6.58333, 6.58333)
+sprite_frames = SubResource("SpriteFrames_b8gmp")
+animation = &"show"
+frame = 16
 frame_progress = 1.0
 
 [node name="battle_gauge" type="Sprite2D" parent="Control"]
