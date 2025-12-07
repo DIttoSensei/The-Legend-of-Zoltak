@@ -12,3 +12,4 @@ class_name Action extends Resource
 @export var cost : int
 @export_multiline var action_info : String
 @export var purchased : bool 
+@export var timeout : bool = false
