@@ -101,6 +101,7 @@ func _ready() -> void:
 	SignalManager.player_attack.connect(show_and_store_attack)
 	SignalManager.show_item_info_board.connect(show_item_info)
 	
+	
 	## for full stats display
 	player.show_full_stat(hp, atk, def, dex, con)
 	player.show_full_mod_stat(hp__, atk__, def__, dex__, con__, wep_dmg, arm_def, itm_tp, crit)
@@ -150,7 +151,18 @@ func _on_roll_pressed() -> void:
 	# if the full start panel is showing hide it
 	if $Control/full_stats_info/Panel.visible == true:
 		full_stat_anim.play("hide")
+		
+	# Disable current action if timeout is active
+	var player_current_action = current_action.action_data
+	player_current_action.current_cooldown = player_current_action.cooldown
+	print ("cooldown: ", player_current_action.current_cooldown)
+	if player_current_action.current_cooldown > 0:
+		#SignalManager.disable_action.emit()
+		player_current_action.timeout = true
+	#else:
+		#player_current_action.timeout = false
 	
+	action_container.update_slots()
 
 	start_battle()
 	
@@ -266,6 +278,8 @@ func enemy_process () -> void:
 	
 	if battling == false:
 		enable_button()
+	
+	
 		
 func player_process () -> void:
 	## increase counter
@@ -292,6 +306,14 @@ func player_process () -> void:
 			enable_button()
 	
 		enemy_take_turn = false
+		SignalManager.turn_end.emit()
+		await get_tree().create_timer(0.5).timeout
+		action_container.update_slots()
+		#var player_current_action = current_action.action_data
+		#if player_current_action.current_cooldown == 0:
+			#pass
+		#else:
+			#player_current_action.current_cooldown -= 1
 	
 func enemy_status_check (enemy_name, damage, move_name) -> void:
 	## Some status checks will be added here
@@ -494,6 +516,9 @@ func player_attack() -> void:
 		announcer_text(text)
 		await get_tree().create_timer(1).timeout
 		enemy.attack_player()
+		SignalManager.turn_end.emit()
+		await get_tree().create_timer(0.5).timeout
+		action_container.update_slots()
 		return
 	else:
 		

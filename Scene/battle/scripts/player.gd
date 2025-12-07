@@ -938,13 +938,13 @@ func status_effect () -> void:
 			poisen_status.active = false
 			poisen_status.icon_on = false
 			poisen_status.turn = 0
-			clear_status_icon("poisen.png")
+			clear_status_icon("poison.png")
 	
 		else:
 			# deal damage, show status icon plus alart
 			if poisen_status.icon_on == true:
 				var dmg = (poisen_status.percentage / 50.0) * player_hp.max_value
-				deal_status_dmg(dmg, "poisen")
+				deal_status_dmg(dmg, "poison")
 				
 				
 			else:
@@ -952,7 +952,7 @@ func status_effect () -> void:
 				poisen_status.icon_on = true
 				battle_scene.announcer_text(text)
 				var dmg = (poisen_status.percentage / 40.0) * player_hp.max_value
-				deal_status_dmg(dmg, "poisen")
+				deal_status_dmg(dmg, "poison")
 				
 				
 		await get_tree().create_timer(2.5).timeout
@@ -1204,7 +1204,7 @@ func deal_status_dmg (value, effect : String) -> void :
 		$"../stats_view/hp_value".text = str (current_hp)
 		check_if_you_dead()
 	
-	elif effect == 'poisen':
+	elif effect == 'poison':
 		value = int(value)
 		modulate = "purple"
 		_5.play("show")
