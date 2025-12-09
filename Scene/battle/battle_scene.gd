@@ -90,6 +90,7 @@ func _ready() -> void:
 	load_player_actions()
 	load_player_inv()
 	
+	GlobalGameSystem.battle_started = true
 	
 	text = "[center]YOU ENCOINTERED THE [color=red]RAGING KNIGHT[/color][/center]"
 	enable_button()
@@ -152,18 +153,11 @@ func _on_roll_pressed() -> void:
 	if $Control/full_stats_info/Panel.visible == true:
 		full_stat_anim.play("hide")
 		
-	# Disable current action if timeout is active
-	var player_current_action = current_action.action_data
-	player_current_action.current_cooldown = player_current_action.cooldown
-	print ("cooldown: ", player_current_action.current_cooldown)
-	if player_current_action.current_cooldown > 0:
-		#SignalManager.disable_action.emit()
-		player_current_action.timeout = true
-	#else:
-		#player_current_action.timeout = false
+	## Disable current action if timeout is active
+	current_action.action_data.current_cooldown = current_action.action_data.cooldown
+
 	
 	action_container.update_slots()
-
 	start_battle()
 	
 	
@@ -279,8 +273,6 @@ func enemy_process () -> void:
 	if battling == false:
 		enable_button()
 	
-	
-		
 func player_process () -> void:
 	## increase counter
 		turn_counter += 1
@@ -306,15 +298,7 @@ func player_process () -> void:
 			enable_button()
 	
 		enemy_take_turn = false
-		SignalManager.turn_end.emit()
-		await get_tree().create_timer(0.5).timeout
-		action_container.update_slots()
-		#var player_current_action = current_action.action_data
-		#if player_current_action.current_cooldown == 0:
-			#pass
-		#else:
-			#player_current_action.current_cooldown -= 1
-	
+
 func enemy_status_check (enemy_name, damage, move_name) -> void:
 	## Some status checks will be added here
 	if enemy.paralized == true:
@@ -516,9 +500,6 @@ func player_attack() -> void:
 		announcer_text(text)
 		await get_tree().create_timer(1).timeout
 		enemy.attack_player()
-		SignalManager.turn_end.emit()
-		await get_tree().create_timer(0.5).timeout
-		action_container.update_slots()
 		return
 	else:
 		
@@ -722,6 +703,7 @@ func game_over () -> void:
 
 # victory function
 func player_victory () -> void:
+	GlobalGameSystem.battle_started = false
 	GlobalGameSystem.results = "victory"
 	GlobalGameSystem.player_hp = player.current_hp
 
