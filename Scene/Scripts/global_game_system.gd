@@ -14,6 +14,7 @@ var action_data_inv
 var player_coin
 var shop_item
 var player_class
+var battle_started : bool = false
 
 
 # for shop
