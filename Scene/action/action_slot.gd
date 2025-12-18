@@ -18,9 +18,8 @@ func set_slot_data(value: Actions) -> void:
 	update_state()
 
 func update_state() -> void:
-	print ("yes")
 	# Disable button if action is on cooldown
-	if  action_data.action_data.current_cooldown > 0:
+	if action_data.action_data.current_cooldown > 0:
 		timeout()
 		action_data.action_data.current_cooldown -= 1
 		
@@ -31,7 +30,6 @@ func update_state() -> void:
 
 func _on_pressed() -> void:
 	if  action_data.action_data.current_cooldown > 0:
-		print("Action",  action_data.action_data.action_name, "is on cooldown")
 		return
 	GlobalGameSystem.action_data_inv = action_data
 	$"../../../img".visible = false

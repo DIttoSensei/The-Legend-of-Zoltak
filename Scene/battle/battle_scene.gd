@@ -4,6 +4,7 @@ var turn_counter : int = 0
 var player_roll
 var enemy_roll
 var text
+var battle_gauge_value : float = 1.5
 var battling : bool = false
 var current_action : Actions
 var enemy_take_turn : bool = false
@@ -111,13 +112,11 @@ func _ready() -> void:
 func disable_button () -> void:
 	attack.disabled = true
 	inventory.disabled = true
-	battle_surge.disabled = true
 	full_stats.disabled = true
 
 func enable_button () -> void:
 	attack.disabled = false
 	inventory.disabled = false
-	battle_surge.disabled = false
 	full_stats.disabled = false
 
 func _on_attack_pressed() -> void:
@@ -223,7 +222,9 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	await enemy.perform_action(damage, player_def_mod)
 	
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.7).timeout
+	
+	print("player hp: ", player.current_hp)
 	# Check if player has no hp left
 	if player.current_hp <= 0:
 		game_over()
@@ -441,6 +442,8 @@ func player_status_check (damage, action):
 			player.deal_status_dmg(dmg,"confused")
 			text = "[center]You attacked yourself[/center]"
 			announcer_text(text)
+			player.set_battle_stat()
+			await get_tree().create_timer(1.2).timeout
 			## Check if player has no hp left
 			if player.current_hp <= 0:
 				game_over()
@@ -448,7 +451,6 @@ func player_status_check (damage, action):
 				return
 			elif enemy_take_turn == false:
 				player_take_turn = true
-				await get_tree().create_timer(1.5).timeout
 				text = "[center]Opponent prepared to attack[/center]"
 				announcer_text(text)
 				await get_tree().create_timer(1.5).timeout
@@ -675,10 +677,11 @@ func _on_exit_n_pressed() -> void:
 
 # function for battle gauge
 func _battle_gauge () -> void:
-	if battle_gauge.frame == 0:
+	if battle_gauge.frame <= 0:
 		$Control/battle_gauge/AnimationPlayer.play("ready")
-		
-	pass
+		activate_battle_surge_btn()
+	else:
+		deactivate_battle_surge_btn()
 
 
 
@@ -731,3 +734,37 @@ func _on_full_stats_pressed() -> void:
 		full_stat_anim.play("hide")
 		stat_conter = 0
 	pass # Replace with function body.
+
+
+func activate_battle_surge_btn () -> void:
+	battle_surge.disabled = false
+	battle_surge.modulate = 'white'
+	
+func deactivate_battle_surge_btn () -> void:
+	battle_surge.disabled = true
+	battle_surge.modulate = '4e4e4e'
+	
+func activate_item_btn () -> void:
+	inventory.disabled = false
+	inventory.modulate = 'white'
+	
+func deactivate_item_btn () -> void:
+	inventory.disabled = true
+	inventory.modulate = '4e4e4e'
+	
+	
+## When player battle surge is full and pressed
+func _on_battle_surge_pressed() -> void:
+	battle_gauge.frame = 7
+	$Control/battle_gauge/AnimationPlayer.stop()
+	$Control/player_effects/mystic.modulate = 'a61bff'
+	player.player_effect_modulate($Control/player_effects/mystic, 1,1,1)
+	$Control/player_effects/mystic.play("mystic")
+	await get_tree().create_timer(1.5).timeout
+	# reset
+	$Control/player_effects/mystic.modulate = 'ffffff'
+	player.player_effect_modulate($Control/player_effects/mystic, 100,100,100)
+	# increase player attack 
+	player.final_atk *= 1.5
+	player.atk_value.text =  str (player.final_atk + player.weapon_atk)
+	deactivate_battle_surge_btn()

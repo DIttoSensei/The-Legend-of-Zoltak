@@ -66,7 +66,8 @@ var poisen_status : Dictionary = {"active" : false, 'icon_on' : false, 'turn' : 
 var player_damage
 var current_hp : int
 var selected_inv : Array = []
-var status_chance = 100
+var status_chance = 20
+var full_status_chance = 100
 var text : String
 var text_2 : String
 var added_value_for_atk_down := 0
@@ -131,10 +132,6 @@ func _ready() -> void:
 	SignalManager.player_damaged.connect(take_damage)
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func modulate_player (r_value : int, g_value : int, b_value : int, a_value : int) -> void:
 	self_modulate.r = r_value
@@ -384,7 +381,7 @@ func perform_action (value, action : Action) -> void:
 		battle_scene.announcer_text(text)
 		await get_tree().create_timer(1.5).timeout
 		var roll = randi_range(1, 100)
-		if roll <= status_chance:
+		if roll <= full_status_chance:
 			player_heal_status.active = true
 		
 	elif action.action_type == "Defence":
@@ -397,7 +394,7 @@ func perform_action (value, action : Action) -> void:
 		text = "[center]Your [color=blue]ARMOR DEFENCE[/color] ticks up for 3 turns"
 		battle_scene.announcer_text(text)
 		var roll = randi_range(1, 100)
-		if roll <= status_chance:
+		if roll <= full_status_chance:
 			player_defence_status.active = true
 	
 	elif action.action_type == "Atk Down":
@@ -408,7 +405,7 @@ func perform_action (value, action : Action) -> void:
 		if enemy.attack_down_status.active == true:
 			return
 		var roll = randi_range(1,100)
-		if roll <= status_chance:
+		if roll <= full_status_chance:
 			enemy.attack_down_status.active = true
 		
 	elif action.action_type == "Def Breaker":
@@ -419,7 +416,7 @@ func perform_action (value, action : Action) -> void:
 		if enemy.def_breaker_status.active == true:
 			return
 		var roll = randi_range(1,100)
-		if roll <= status_chance:
+		if roll <= full_status_chance:
 			enemy.def_breaker_status.active = true
 		pass
 		
@@ -446,7 +443,7 @@ func perform_action (value, action : Action) -> void:
 		player_hex_status.value = value
 		await get_tree().create_timer(2).timeout
 		var roll = randi_range(1, 100)
-		if roll <= status_chance:
+		if roll <= full_status_chance:
 			player_hex_status.active = true
 			text = "[center][color=green]HEX[/color] activated, doubles hex based attacks"
 			battle_scene.announcer_text(text)
@@ -563,6 +560,7 @@ func status_effect () -> void:
 		text = "[center]"  + ' You have been ' + "[color=yellow]stunned[/color][/center]"
 		lightning_status.turn += 1
 		if lightning_status.turn >= lightning_status.duration:
+			battle_scene.activate_item_btn()
 			lightning_status.active = false
 			lightning_status.icon_on = false
 			lightning_status.turn = 0
@@ -576,6 +574,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(lightning_status.texture)
+				battle_scene.deactivate_item_btn()
 				lightning_status.icon_on = true
 				battle_scene.announcer_text(text)
 				deal_status_dmg(0, "lightning")
@@ -589,6 +588,7 @@ func status_effect () -> void:
 		text = "[center]You have been[color=lightblue] frozen[/color] and can't move[/center]"
 		ice_status.turn += 1
 		if ice_status.turn >= ice_status.duration:
+			battle_scene.activate_item_btn()
 			self.play("idle")
 			modulate = 'white'
 			ice_status.active = false
@@ -604,6 +604,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(ice_status.texture)
+				battle_scene.deactivate_item_btn()
 				ice_status.icon_on = true
 				battle_scene.announcer_text(text)
 				deal_status_dmg(0, "ice")
@@ -804,6 +805,7 @@ func status_effect () -> void:
 		text = "[center]You have been drenched in[color=purple] Psychic[/color] aura[/center]"
 		psychic_status.turn += 1
 		if psychic_status.turn >= psychic_status.duration:
+			battle_scene.activate_item_btn()
 			psychic_status.active = false
 			psychic_status.icon_on = false
 			psychic_status.turn = 0
@@ -819,6 +821,7 @@ func status_effect () -> void:
 				check_if_you_dead()
 			else:
 				check_if_status_icon_is_available(psychic_status.texture)
+				battle_scene.deactivate_item_btn() # prevent usage of items
 				player_effect_modulate(_3, 100,1,100)
 				modulate = "purple"
 				self.play("hit")
