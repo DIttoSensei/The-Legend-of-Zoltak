@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Enemies_res" load_steps=4 format=3 uid="uid://bt76v0cm4nb3a"]
+[gd_resource type="Resource" script_class="Enemies_res" load_steps=5 format=3 uid="uid://bt76v0cm4nb3a"]
 
 [ext_resource type="Script" path="res://Scene/action/action.gd" id="1_2gedn"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/enemies_res.gd" id="2_mqmv0"]
 [ext_resource type="Resource" uid="uid://dq7i0ymldk8q0" path="res://Scene/enemies/unknown/actions/eclipse_slash.tres" id="2_twl37"]
+[ext_resource type="Resource" uid="uid://cytokccbtgkls" path="res://Scene/enemies/unknown/actions/night_bringer.tres" id="3_nxvbx"]
 
 [resource]
 script = ExtResource("2_mqmv0")
@@ -11,4 +12,4 @@ hp = 650
 atk = 50
 def = 35
 dex = 20
-actions = Array[ExtResource("1_2gedn")]([ExtResource("2_twl37")])
+actions = Array[ExtResource("1_2gedn")]([ExtResource("2_twl37"), ExtResource("3_nxvbx")])

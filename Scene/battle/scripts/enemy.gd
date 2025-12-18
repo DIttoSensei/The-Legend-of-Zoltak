@@ -17,7 +17,7 @@ var current_animation
 var enemy_name
 var status_animation := false
 var current_status_animation : String
-var status_chance : int = 100
+var status_chance : int = 20
 
 
 @export var enemy_data : Enemies_res
@@ -121,6 +121,7 @@ func attack_player () -> void:
 		if move.current_cooldown == 0:
 			var move_name : String = move.action_name # move name
 			var move_damage : int = move.action_attribute
+		
 			var damage
 			if enemy_hex_modifier == 0:
 				damage = move_damage + (move_damage * atk / 100) # new damage with state modifer
@@ -167,6 +168,7 @@ func attack_player () -> void:
 			if move.current_cooldown < 0:
 				move.current_cooldown = 0
 			break
+			attack_player()
 
 func take_damage (damage : int) -> void:
 	enemy_damage = damage

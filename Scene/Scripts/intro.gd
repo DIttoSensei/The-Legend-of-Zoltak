@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if ConfirmQuit.show == true:
 		return
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch or event.is_action_pressed("ui_accept"):
 		if event.is_pressed():
 			input_locked = true
 			counter = 600
