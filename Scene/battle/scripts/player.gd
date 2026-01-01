@@ -291,12 +291,14 @@ func perform_action (value, action : Action) -> void:
 	if action.action_type == "Physical":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		
 	elif action.action_type == "Fire":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.fire_status.active == true:
@@ -308,6 +310,7 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Water":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.water_status.active == true:
@@ -319,6 +322,7 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Lightning":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.lightning_status.active == true:
@@ -330,6 +334,7 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Ice":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.ice_status.active == true:
@@ -341,6 +346,7 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Wind":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.wind_status.active == true:
@@ -353,6 +359,7 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Earth":
 		self.play("attack")
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.earth_status.active == true:
@@ -366,6 +373,7 @@ func perform_action (value, action : Action) -> void:
 		player_effect_modulate($"../player_effects/mystic", 100.0,100.0,66.4)
 		$"../player_effects/mystic".play("mystic") # Play mystic animation
 		$hit_box_hit.play("hit")
+		value += GameConfig.atk_buff_value # if atk buff has a value
 		#damage = max(0, damage - enemy.def) ## Perfrom true damage ignoring enemy defence
 		SignalManager.enemy_damaged.emit(value)
 	
@@ -561,6 +569,7 @@ func status_effect () -> void:
 		lightning_status.turn += 1
 		if lightning_status.turn >= lightning_status.duration:
 			battle_scene.activate_item_btn()
+			battle_scene.status_item_btn_freeze = false
 			lightning_status.active = false
 			lightning_status.icon_on = false
 			lightning_status.turn = 0
@@ -575,6 +584,7 @@ func status_effect () -> void:
 			else:
 				check_if_status_icon_is_available(lightning_status.texture)
 				battle_scene.deactivate_item_btn()
+				battle_scene.status_item_btn_freeze = true
 				lightning_status.icon_on = true
 				battle_scene.announcer_text(text)
 				deal_status_dmg(0, "lightning")
@@ -589,6 +599,7 @@ func status_effect () -> void:
 		ice_status.turn += 1
 		if ice_status.turn >= ice_status.duration:
 			battle_scene.activate_item_btn()
+			battle_scene.status_item_btn_freeze = false
 			self.play("idle")
 			modulate = 'white'
 			ice_status.active = false
@@ -605,6 +616,7 @@ func status_effect () -> void:
 			else:
 				check_if_status_icon_is_available(ice_status.texture)
 				battle_scene.deactivate_item_btn()
+				battle_scene.status_item_btn_freeze = true
 				ice_status.icon_on = true
 				battle_scene.announcer_text(text)
 				deal_status_dmg(0, "ice")
@@ -806,6 +818,7 @@ func status_effect () -> void:
 		psychic_status.turn += 1
 		if psychic_status.turn >= psychic_status.duration:
 			battle_scene.activate_item_btn()
+			battle_scene.status_item_btn_freeze = false
 			psychic_status.active = false
 			psychic_status.icon_on = false
 			psychic_status.turn = 0
@@ -822,6 +835,7 @@ func status_effect () -> void:
 			else:
 				check_if_status_icon_is_available(psychic_status.texture)
 				battle_scene.deactivate_item_btn() # prevent usage of items
+				battle_scene.status_item_btn_freeze = true
 				player_effect_modulate(_3, 100,1,100)
 				modulate = "purple"
 				self.play("hit")
@@ -1138,7 +1152,7 @@ func deal_status_dmg (value, effect : String) -> void :
 			brkr_value.text = str(added_value_for_def_brk)
 	
 	elif effect == 'confused': # for psychic effect
-		# make enemy attack self
+		# make player attack self
 		value = int(value)
 		modulate = 'purple'
 		self.play("hit")

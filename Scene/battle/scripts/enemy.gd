@@ -191,7 +191,7 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 	enemy_hp.value = current_hp
 	
 	await get_tree().create_timer(0.5).timeout
-	player.set_battle_stat()
+	#player.set_battle_stat()
 	
 	# check set and control status effect
 	

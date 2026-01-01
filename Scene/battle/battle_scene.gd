@@ -32,6 +32,8 @@ var enemy_critical_hit : bool = false
 @onready var results: CanvasLayer = $results
 
 @onready var player_inv: Inventory_Ui = $Control/inventory_border/Control/GridContainer
+@onready var player_buff_effect: AnimatedSprite2D = $"Control/player_effects/6"
+
 
 # info board
 @onready var item_icon: TextureRect = $Control/inventory_border/Control/Info_board/item_icon
@@ -80,7 +82,8 @@ signal hide
 ## Player effects
 @onready var heal: AnimatedSprite2D = $Control/player_effects/heal
 
-## for status
+## for status flags
+var status_item_btn_freeze := false # specific status stopes the use of items
 var status_active := false
 var player_status_active := false
 
@@ -115,9 +118,13 @@ func disable_button () -> void:
 	full_stats.disabled = true
 
 func enable_button () -> void:
-	attack.disabled = false
-	inventory.disabled = false
-	full_stats.disabled = false
+	if status_item_btn_freeze == true:
+		attack.disabled = false
+		full_stats.disabled = false
+	else:
+		attack.disabled = false
+		inventory.disabled = false
+		full_stats.disabled = false
 
 func _on_attack_pressed() -> void:
 	
@@ -161,6 +168,7 @@ func _on_roll_pressed() -> void:
 	
 	
 func player_roll_modifer (roll : int) -> void:
+	var buffed_stat : int = 0
 	player_atk_mod = int(player.final_atk * (0.5 + (roll/20.0)))
 	
 	var critical_rate = int(current_action.action_data.critical_rate.trim_suffix("%"))
@@ -176,12 +184,18 @@ func player_roll_modifer (roll : int) -> void:
 			player_atk_mod += player.hex_modifier + player.weapon_atk
 	else:
 		player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
+		###### FOR ATK BUFF
+		buffed_stat += player_atk_mod + GameConfig.atk_buff_value
+		
 	
 	player_def_mod = int(player.final_def * (0.5 + (roll/20.0))) + player.armor_def
+	### FOR DEFENCE BUFF
+	player_def_mod += GameConfig.def_buff_value
+	
 	player_dex_mod = int(player.final_dex * (0.5 + (roll/20.0)))
 	pass
 	
-	player.set_roll_stat_view(player_atk_mod,player_def_mod,player_dex_mod)
+	player.set_roll_stat_view(buffed_stat,player_def_mod,player_dex_mod)
 	
 	
 	
@@ -254,6 +268,7 @@ func enemy_process () -> void:
 		battle_gauge.frame -= 1
 		_battle_gauge()
 	
+	player.set_battle_stat()
 	player_take_turn = false
 	text = "[center]The air grew thick filled with a strange ominous aura[/center]" # announer for turn end
 	await announcer_text(text)
@@ -283,6 +298,7 @@ func player_process () -> void:
 			battle_gauge.frame -= 1
 			_battle_gauge()
 		
+		player.set_battle_stat()
 		text = "[center]The air grew thick filled with a strange ominous aura[/center]" # after turn text
 		announcer_text(text)
 		
@@ -590,7 +606,7 @@ func show_item_info () -> void:
 	
 	info_board.visible = true
 	
-	if GlobalGameSystem.button_data_inv.item_data.item_type != "Consumable" or GlobalGameSystem.button_data_inv == null:
+	if GlobalGameSystem.button_data_inv == null or GlobalGameSystem.button_data_inv.item_data.item_type != "Consumable":
 		inv_action.visible = false
 	else:
 		inv_action.visible = true
@@ -617,6 +633,9 @@ func _on_exit_inv_pressed() -> void:
 
 
 func _on_inv_action_pressed() -> void:
+	if GlobalGameSystem.button_data_inv == null or GlobalGameSystem.button_data_inv.item_data.item_type != "Consumable":
+		inv_action.visible = false
+		return
 	use_item()
 	$Control/inventory_border/Control/AnimationPlayer.play("close")
 	info_board.visible = false
@@ -646,7 +665,24 @@ func use_item () -> void:
 			player.set_hp(item.attribute_value) # set player hp
 			remove_item_slot() # remove the slot
 			pass # increase hp and update the value
+	
+	# For atk
+	if item.attribute == "Atk":
+		text = "[center]You used " + item.name + "[/center]"
+		announcer_text(text)
+		player_buff_effect.modulate = 'a80000'
+		player_buff_effect.play('show')
+		GameConfig.atk_buff_value = item.attribute_value
+		remove_item_slot()
 		
+	# For def
+	if item.attribute == 'Def':
+		text = '[center]You used ' + item.name + '[/center]'
+		announcer_text(text)
+		player_buff_effect.modulate = '0f00f2'
+		player_buff_effect.play('show')
+		GameConfig.def_buff_value = item.attribute_value
+		remove_item_slot()
 
 
 
@@ -756,7 +792,7 @@ func deactivate_item_btn () -> void:
 ## When player battle surge is full and pressed
 func _on_battle_surge_pressed() -> void:
 	battle_gauge.frame = 7
-	$Control/battle_gauge/AnimationPlayer.stop()
+	$Control/battle_gauge/AnimationPlayer.play("RESET")
 	$Control/player_effects/mystic.modulate = 'a61bff'
 	player.player_effect_modulate($Control/player_effects/mystic, 1,1,1)
 	$Control/player_effects/mystic.play("mystic")
