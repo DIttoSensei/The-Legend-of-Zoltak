@@ -1,4 +1,4 @@
-[gd_scene load_steps=250 format=3 uid="uid://c4t5kvfjhunpx"]
+[gd_scene load_steps=262 format=3 uid="uid://c4t5kvfjhunpx"]
 
 [ext_resource type="Texture2D" uid="uid://c8djmc0u3trd1" path="res://Scene/battle/img/1000022662.jpg" id="1_fawxu"]
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_td1xy"]
@@ -184,10 +184,21 @@
 [ext_resource type="Texture2D" uid="uid://dmp4gf7dcd6jr" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)9.png" id="151_roi6s"]
 [ext_resource type="Texture2D" uid="uid://olj7m72rd6i2" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)10.png" id="152_uc8py"]
 [ext_resource type="Texture2D" uid="uid://381gcqudefeu" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)11.png" id="153_w5qg5"]
+[ext_resource type="Texture2D" uid="uid://dpq440jde75jm" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame1.png" id="154_m7j16"]
 [ext_resource type="Texture2D" uid="uid://brxwsf03mpvwe" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)12.png" id="154_v0blq"]
+[ext_resource type="Texture2D" uid="uid://d2qte7ki8ox53" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame2.png" id="155_5agkh"]
 [ext_resource type="Texture2D" uid="uid://dwel73yc38rw8" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)13.png" id="155_al7tt"]
+[ext_resource type="Texture2D" uid="uid://eph4imsujtt8" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame3.png" id="156_8phf3"]
 [ext_resource type="Texture2D" uid="uid://c5xmfw6p4dkji" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)14.png" id="156_85oga"]
 [ext_resource type="Texture2D" uid="uid://2o0kjdifq06w" path="res://Scene/battle/img/effects/5/Dark VFX 2 (48x64)15.png" id="157_ln0os"]
+[ext_resource type="Texture2D" uid="uid://7vyh07lx8w8f" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame4.png" id="157_tu656"]
+[ext_resource type="Texture2D" uid="uid://ctayf7g3gwtm5" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame5.png" id="158_6i3nw"]
+[ext_resource type="Texture2D" uid="uid://2gtxeaoxc8lr" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame6.png" id="159_mx8w6"]
+[ext_resource type="Texture2D" uid="uid://075muvfsd44y" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame7.png" id="160_a3ft1"]
+[ext_resource type="Texture2D" uid="uid://by10wajb4acot" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame8.png" id="161_ky5n0"]
+[ext_resource type="Texture2D" uid="uid://b1a7cyc6mob4" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame9.png" id="162_cn8hj"]
+[ext_resource type="Texture2D" uid="uid://dumkhhtc075fv" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame10.png" id="163_3yye6"]
+[ext_resource type="Texture2D" uid="uid://cb3ifwk2kfvo1" path="res://Scene/battle/img/effects/heal/Priest_skill2_frame11.png" id="164_05xx3"]
 
 [sub_resource type="Animation" id="Animation_wqjyr"]
 length = 0.001
@@ -1095,6 +1106,53 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("142_xide0")
+}],
+"loop": false,
+"name": &"show",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ouhe1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_7tyh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_m7j16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_5agkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_8phf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_tu656")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_6i3nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_mx8w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_a3ft1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_ky5n0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_cn8hj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_3yye6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_05xx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_7tyh3")
 }],
 "loop": false,
 "name": &"show",
@@ -2973,6 +3031,14 @@ scale = Vector2(6.58333, 6.58333)
 sprite_frames = SubResource("SpriteFrames_b8gmp")
 animation = &"show"
 frame = 16
+frame_progress = 1.0
+
+[node name="6" type="AnimatedSprite2D" parent="Control/player_effects"]
+position = Vector2(149.5, 1197.5)
+scale = Vector2(2.58594, 2.58594)
+sprite_frames = SubResource("SpriteFrames_ouhe1")
+animation = &"show"
+frame = 12
 frame_progress = 1.0
 
 [node name="battle_gauge" type="Sprite2D" parent="Control"]

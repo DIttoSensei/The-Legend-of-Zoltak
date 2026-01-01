@@ -23,6 +23,7 @@ SceneTransition="*res://Scene/scene_transition.tscn"
 LevelManager="*res://00_glabal/level_manager.gd"
 SignalManager="*res://00_glabal/signal_manager.gd"
 ConfirmQuit="*res://00_glabal/confirm_quit.gd"
+GameConfig="*res://00_glabal/game_config.gd"
 
 [display]
 
