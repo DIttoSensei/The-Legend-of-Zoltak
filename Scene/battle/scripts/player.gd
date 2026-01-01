@@ -298,7 +298,7 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Fire":
 		self.play("attack")
 		$hit_box_hit.play("hit")
-		value += GameConfig.atk_buff_value # if atk buff has a value
+		value += GameConfig.atk_buff_value + GameConfig.fire_buff_value # if atk and fire buff has a value
 		value = max(0, value - enemy.def) # deduct damage from enemy def
 		SignalManager.enemy_damaged.emit(value)
 		if enemy.fire_status.active == true:

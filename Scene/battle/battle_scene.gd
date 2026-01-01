@@ -184,8 +184,8 @@ func player_roll_modifer (roll : int) -> void:
 			player_atk_mod += player.hex_modifier + player.weapon_atk
 	else:
 		player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
-		###### FOR ATK BUFF
-		buffed_stat += player_atk_mod + GameConfig.atk_buff_value
+		###### FOR ATK BASED BUFF
+		buffed_stat += player_atk_mod + GameConfig.atk_buff_value + GameConfig.fire_buff_value
 		
 	
 	player_def_mod = int(player.final_def * (0.5 + (roll/20.0))) + player.armor_def
@@ -646,6 +646,7 @@ func _on_inv_action_pressed() -> void:
 
 # function to use item
 func use_item () -> void:
+	### ADD OTHER USABLE ITEM ATTRIBUTES
 	var item = GlobalGameSystem.button_data_inv.item_data
 	
 	# For healing
@@ -682,6 +683,15 @@ func use_item () -> void:
 		player_buff_effect.modulate = '0f00f2'
 		player_buff_effect.play('show')
 		GameConfig.def_buff_value = item.attribute_value
+		remove_item_slot()
+		
+	# For fire
+	if item.attribute == 'Fire':
+		text = '[center]You used ' + item.name + '[/center]'
+		announcer_text(text)
+		player_buff_effect.modulate = 'ff3a5c'
+		player_buff_effect.play('show')
+		GameConfig.fire_buff_value = item.attribute_value
 		remove_item_slot()
 
 
