@@ -14,6 +14,6 @@ buff_texture = ExtResource("1_n24ns")
 buff_texture2 = ExtResource("2_jrfqw")
 item_type = "Consumable"
 attribute = "Fire"
-attribute_value = 25
+attribute_value = 900
 wearable_class = ""
 item_cost = 150
