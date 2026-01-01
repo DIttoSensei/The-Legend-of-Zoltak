@@ -15,5 +15,5 @@ buff_texture2 = ExtResource("2_vf2q2")
 item_type = "Wearable"
 attribute = "Def"
 attribute_value = 66
-wearable_class = "Headagear"
+wearable_class = "Headgear"
 item_cost = 180

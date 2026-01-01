@@ -674,6 +674,7 @@ func _on_inventory_pressed() -> void:
 	
 # show item info in the info board
 func show_item_info_board () -> void:
+	var action_btn = $"../inventory_border/Control/Info_board/action"
 	if GlobalGameSystem.button_data_inv == null or GlobalGameSystem.button_data_inv.item_data == null:
 		info_board.visible = false
 		return
@@ -687,13 +688,15 @@ func show_item_info_board () -> void:
 	item_attribute.text = (GlobalGameSystem.button_data_inv.item_data.attribute + " " + "+" + str(GlobalGameSystem.button_data_inv.item_data.attribute_value))
 	
 	# Hide the action button
-	$"../inventory_border/Control/Info_board/action".visible = true
+	action_btn.visible = true
 	
 	# check if the item selected can be equiped or used
 	if item_type.text == "Consumable":
-		action_label.text = "USE"
+		action_btn.visible = false
 	elif  item_type.text == "Wearable":
 		action_label.text = "EQUIP"
+	elif item_type.text == 'item':
+		action_btn.visible = false
 		
 	info_board.visible = true
 	pass
@@ -735,7 +738,18 @@ func _on_action_pressed() -> void:
 		# Set the specific wearable type to a specific slot
 		if slot.item_data.wearable_class == "Weapon":
 			target_grid.set_slot_at_index(slot, 4, previous_index)
-		
+			remove_item_slot()
+		elif slot.item_data.wearable_class == "Headgear":
+			target_grid.set_slot_at_index(slot, 0, previous_index)
+			remove_item_slot()
+		elif slot.item_data.wearable_class == "Chestplate":
+			target_grid.set_slot_at_index(slot, 1, previous_index)
+			remove_item_slot()
+		elif slot.item_data.wearable_class == "Relics":
+			target_grid.set_slot_at_index(slot, 2, previous_index)
+			remove_item_slot()
+		elif slot.item_data.wearable_class == "leggings":
+			target_grid.set_slot_at_index(slot, 3, previous_index)
 			remove_item_slot()
 		## Other specific wearable conditions goes here
 		
