@@ -231,7 +231,7 @@ func _on_exit_pressed() -> void:
 func _on_load_pressed() -> void:
 	load1.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.txt"
-	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
+	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
 	LevelManager.load_level()
 	GlobalGameSystem.fade_out()
 	pass # Replace with function body.
@@ -240,7 +240,7 @@ func _on_load_pressed() -> void:
 func _on_load2_pressed() -> void:
 	load2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.txt"
-	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
+	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
 	LevelManager.load_level()
 	GlobalGameSystem.fade_out()
 	pass # Replace with function body.
@@ -249,7 +249,7 @@ func _on_load2_pressed() -> void:
 func _on_load3_pressed() -> void:
 	load3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.txt"
-	LevelManager.load_new_level = "res://Scene/Stories/transition_to_main.tscn"
+	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
 	LevelManager.load_level()
 	GlobalGameSystem.fade_out()
 	pass # Replace with function body.

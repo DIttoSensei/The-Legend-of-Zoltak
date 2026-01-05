@@ -1,4 +1,4 @@
-extends VBoxContainer
+class_name Achievement extends VBoxContainer
 
 const ACHIVEMENT_SLOT = preload("res://Scene/achievements/achievement_ui.tscn")
 @export var data : PlayerAchivements

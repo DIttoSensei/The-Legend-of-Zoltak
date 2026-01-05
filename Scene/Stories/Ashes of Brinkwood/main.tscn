@@ -754,7 +754,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_15nkp"]
 script = ExtResource("65_vwklm")
-slots = Array[ExtResource("66_nv5sa")]([ExtResource("67_yy3pl"), ExtResource("68_itq0l"), null, null, null])
+slots = Array[ExtResource("66_nv5sa")]([ExtResource("67_yy3pl"), ExtResource("68_itq0l"), null, null])
 
 [sub_resource type="Animation" id="Animation_giua7"]
 length = 0.001

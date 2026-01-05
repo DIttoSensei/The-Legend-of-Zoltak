@@ -14,6 +14,7 @@ extends VBoxContainer
 @onready var coin: Label = $"../LittleScroll/coin"
 @onready var hp: TextureProgressBar = $"../HP/Hp_bar_solid"
 @onready var notification: CanvasLayer = $"../notification"
+@onready var main: Main_game = $"../.."
 
 
 # info board ui
@@ -75,6 +76,7 @@ var current_hp : int = 0
 var counter_inventory : int = 0
 var counter_achivement : int = 0
 var current_music : String = ""
+var shop_closed : bool = false
 
 # signals
 signal shown
@@ -92,7 +94,7 @@ func _ready() -> void:
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
-	load_page()  # Load the first page
+	  # Load the first page
 
 # Unused for now, but required if real-time updates are needed
 func _process(_delta: float) -> void:
@@ -101,8 +103,8 @@ func _process(_delta: float) -> void:
 
 # Get the current page data from the global system
 func get_current_page():
-	var chapter_data = GlobalGameSystem.ashes_of_brinkwood.get(current_chapter, {})
-	return chapter_data.get(current_page_index, {})
+	var chapter_data = GlobalGameSystem.ashes_of_brinkwood.get(main.save_file_current_chapter, {})
+	return chapter_data.get(main.save_file_current_page, {})
 
 
 
@@ -168,6 +170,7 @@ func load_page () -> void:
 	else:
 		choice_4.visible = false
 	
+	main.save_player_data() ## SAVE GAME
 	play_page_music()
 
 
@@ -175,19 +178,21 @@ func play_page_music () -> void:
 	current_page = get_current_page()
 	
 	var music  = current_page["music"]
-	if music == "":
-		if current_music == "":
+	
+	
+	if current_music == music:
+		if shop_closed == true:
+			GlobalGameSystem.global_audio.stream = load(music)
+			GlobalGameSystem.play_bg_audio()
+			shop_closed = false
 			return
 		else:
-			if GlobalGameSystem.global_audio.playing == true:
-				return
-			GlobalGameSystem.global_audio.stream = load(current_music)
-			await get_tree().create_timer(2).timeout
-			GlobalGameSystem.play_bg_audio()
 			return
-	
+		
+	GlobalGameSystem.fade_out() #FADE THE FUCKING AUDIO OUT DAMMIT
 	GlobalGameSystem.global_audio.stream = load(music)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
+	print ('yes1')
 	GlobalGameSystem.play_bg_audio()
 	current_music = music
 	
@@ -307,14 +312,16 @@ func _on_continue_pressed() -> void:
 	current_page = get_current_page()
 	
 	# Set the next page index
-	current_page_index = next_page
+	main.save_file_current_page = next_page
 	
 	
 	continue_butn.visible = false
 	$reward_indicator.visible = false
 	texture_rect.visible = true
 	load_page()
-
+	## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
+	main.save_file_current_page = next_page
+	
 
 
 ## when roll is being pressed
@@ -830,7 +837,7 @@ func _on_shop_pressed() -> void:
 	# trying to turn the visibility of the main game
 	pass # Replace with function body.
 	
-
+#After finishing with the shop
 func back_to_main_game () -> void:
 	var parent = $"../shop_layer"
 	var shop = parent.get_node_or_null("ShopUi")
@@ -840,10 +847,11 @@ func back_to_main_game () -> void:
 		
 		shop.visible = false
 		shop.queue_free()
+		shop_closed = true
 		play_page_music()
 	else:
 		pass
-	pass
+
 	
 # after finishing your battle
 func back_to_game () -> void:
