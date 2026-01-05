@@ -65,6 +65,15 @@ func _on_fade_out_complete ():
 	global_audio.stop()
 	global_audio.volume_db = 0
 
+## FOR MAIN GAME (TEXT BASED AREA)
+func fade_out_audio_main_game():
+	var tween_out = create_tween()
+	tween_out.tween_property(global_audio, "volume_db", -80, transition_duration)
+	tween_out.tween_callback(Callable(self, "_on_fade_out_main_game_audio_complete"))
+	
+func _on_fade_out_main_game_audio_complete ():
+	global_audio.volume_db = 0
+
 
 # global delay function
 func delay (seconds : float) -> void:

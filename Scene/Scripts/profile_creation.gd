@@ -130,6 +130,8 @@ func save_game () -> void :
 		"Action" : [],
 		"Journal" : [],
 		"Achievements" : [],
+		"Current_chapter" : 'Chapter_1',
+		"Current_page" : 'page_1', 
 		
 	}
 	var json_string = JSON.stringify(player_data, "\t")

@@ -21,7 +21,12 @@ class_name Main_game extends Node2D
 
 
 @onready var action_container: ActionContainer = $"Control/action display/ScrollContainer/action container"
+@onready var jornal_display: Journals = $Control/jornal_display
+@onready var achievement: Achievement = $Control/achivement2/ScrollContainer/VBoxContainer
 
+
+var save_file_current_page : String
+var save_file_current_chapter : String
 
 func _ready() -> void:
 	SceneTransition.fade_in()
@@ -46,6 +51,9 @@ func load_player_save_file () -> void:
 	# Load current page if one is present
 	########
 	
+	## Set page data from save file
+	save_file_current_chapter = player_save['Current_chapter']
+	save_file_current_page = player_save['Current_page']
 	
 	# Set those data for the game
 	atk.text = str(player_data["Atk"])
@@ -240,15 +248,66 @@ func load_player_save_file () -> void:
 	
 	# Load achievements if you have
 	####
-	pass
+	## START MAIN GAMNES
+	page.load_page()
+	#save_player_data()
 
 
 func save_player_data () -> void:
-	pass
+	var path = "user://" + GlobalGameSystem.save_name
+	var save = FileAccess.open(path, FileAccess.READ)
+	
+	# values from the save file
+	var player_save = JSON.parse_string(save.get_as_text())
+	save.close()
+	
+	var player_data = player_save['Player']
+	
+	## SAVE ACTIONS
+	var action_list = []
+	for action in action_container.data.actions:
+		if action.action_data:
+			action_list.append(action.action_data.resource_path)
+	player_save['Action'] = action_list
+	
+	## SAVE CURRENT PAGE & CHAPTER
+	player_save['Current_chapter'] = save_file_current_chapter
+	player_save['Current_page'] = save_file_current_page
+	
+	## SAVE JOURNAL
+	var journal_list = []
+	for journal in jornal_display.book.pages:
+		if journal.journal_data == null:
+			continue
+		else:
+			journal_list.append(journal.journal_data.resource_path)
+	player_save['Journal'] = journal_list
+	
+	## SAVE COLLECTED ACHIVEMENT
+	var achievement_list = []
+	for ach in achievement.data.slots:
+		if ach == null:
+			continue
+		else:
+			var entry = {
+				'res_path' : ach.resource_path, # SAVES PATH
+				'is_checked' : ach.achieved, # SAVES IF IT HAS BEEN ACHEIVED OR NOT
+			}
+			achievement_list.append(entry)
+	player_save['Achievements'] = achievement_list
+	
+	## Overwrite file
+	var file_write = FileAccess.open(path, FileAccess.WRITE)
+	file_write.store_string(JSON.stringify(player_save, "\t"))
+	file_write.close()
+	
+	
 	
 func save_stat_for_battle () -> void:
 	GlobalGameSystem.player_atk = int(atk.text)
 	GlobalGameSystem.player_def = int(def.text)
+	
+	
 	GlobalGameSystem.player_dex = int(dex.text)
 	GlobalGameSystem.player_int = int(Int.text)
 	GlobalGameSystem.player_con = int(con.text)

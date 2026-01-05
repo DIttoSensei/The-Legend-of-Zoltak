@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name Journals extends CanvasLayer
 
 
 @export var book : Player_Journal
