@@ -301,6 +301,22 @@ func save_player_data () -> void:
 	file_write.store_string(JSON.stringify(player_save, "\t"))
 	file_write.close()
 	
+#func save_achievment_in_save_file () -> void:
+	#var path = "user://" + GlobalGameSystem.save_name
+	#var save = FileAccess.open(path, FileAccess.READ)
+	#
+	## values from the save file
+	#var player_save = JSON.parse_string(save.get_as_text())
+	#save.close()
+	#
+	#
+	#
+	#
+	### Overwrite file
+	#var file_write = FileAccess.open(path, FileAccess.WRITE)
+	#file_write.store_string(JSON.stringify(player_save, "\t"))
+	#file_write.close()
+	#
 	
 	
 func save_stat_for_battle () -> void:

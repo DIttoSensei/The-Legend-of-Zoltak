@@ -62,7 +62,7 @@ const BATTLE = preload("res://Scene/battle/battle_scene.tscn")
 # State variables
 var current_chapter := "Chapter_1"
 var current_page_index = "page_1"
-var next_page 
+var next_page := ''
 var current_page := {}
 var counter = -5
 var current_text
@@ -170,7 +170,7 @@ func load_page () -> void:
 	else:
 		choice_4.visible = false
 	
-	main.save_player_data() ## SAVE GAME
+
 	play_page_music()
 
 
@@ -297,6 +297,10 @@ func show_continue () -> void:
 		$reward_indicator.text = current_reward_text
 		$AnimationPlayer2.play("show_continue")  # Looping animation should be defined in AnimationPlayer2
 		give_reward_or_loss()
+		## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
+		main.save_file_current_page = next_page
+		main.save_player_data()
+		## SHOW ANIMATION OF SAVING IN PROGRESS
 
 
 
@@ -311,16 +315,12 @@ func hide_options() -> void:
 func _on_continue_pressed() -> void:
 	current_page = get_current_page()
 	
-	# Set the next page index
-	main.save_file_current_page = next_page
-	
 	
 	continue_butn.visible = false
 	$reward_indicator.visible = false
 	texture_rect.visible = true
 	load_page()
-	## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
-	main.save_file_current_page = next_page
+	
 	
 
 
@@ -524,6 +524,7 @@ func set_choice_data ():
 
 	
 func give_reward_or_loss():
+	var play_journal_added_ani = false
 	# check which outcome you are currently in then add up coins if it the first
 	if current_outcome == current_choice["outcome_1"]:
 		current_coin += current_choice["outcome_1"]["reward"]["coin"]
@@ -538,6 +539,7 @@ func give_reward_or_loss():
 			
 			# First let check if the page already exist
 			var already_added = false
+			
 			for book in jornal_display.book.pages:
 				var page_data = book.journal_data
 				
@@ -547,17 +549,16 @@ func give_reward_or_loss():
 					break
 					
 			if not already_added:
+				play_journal_added_ani = true
 				jornal_display.add_page(new_page)
 			
-				# show a mini notification
-				var notification_text : String = "New Page entry added to journal"
-				$"../mini notification/mini notification label".text = notification_text
-				$"../mini notification/AnimationPlayer".play("show_notification")
-				await $"../mini notification/AnimationPlayer".animation_finished
+				
 		
 		
 		# add achivements if one is present
 		if current_choice["outcome_1"]["reward"]["achivement"] == "":
+			#main.save_player_data() ## SAVE GAME
+			### ADD STOP TO SAVING ANIMATION
 			pass
 		else:
 			var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
@@ -569,11 +570,24 @@ func give_reward_or_loss():
 							pass
 						else:
 							gained_achivement.achieved = true
+							achivement.update_slot()
+							
+							## AFTER BOTH JOURNAL AND ACHIEVMENT ARE ADDED PLAY THEIR RESPECTIBLE ANIMATION
+							if play_journal_added_ani == true:
+								# show a mini notification
+								var notification_text_j : String = "New Page entry added to journal"
+								$"../mini notification/mini notification label".text = notification_text_j
+								$"../mini notification/AnimationPlayer".play("show_notification")
+								await $"../mini notification/AnimationPlayer".animation_finished
+								play_journal_added_ani = false
+							
 							var notification_text : String = "New Achivements unlocked"
 							$"../mini notification/mini notification label".text = notification_text
-							achivement.update_slot()
 							$"../mini notification/AnimationPlayer".play("show_notification")
 							await $"../mini notification/AnimationPlayer".animation_finished
+							
+							#main.save_player_data() ## SAVE GAME
+							### ADD STOP TO SAVING ANIMATION
 							
 			
 			
@@ -602,10 +616,12 @@ func give_reward_or_loss():
 			hp.value = current_hp
 			
 		# add achivements if one is present
-		if current_choice["outcome_1"]["reward"]["achivement"] == "":
+		if current_choice["outcome_2"]["loss"]["achivement"] == "":
+			main.save_player_data() ## SAVE GAME
+			## ADD STOP TO SAVING ANIMATION
 			pass
 		else:
-			var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
+			var reward = current_choice["outcome_2"]["loss"]["achivement"] # store the achivements from the story.json
 			for i in range(achivement.data.slots.size()): # loop through the array
 				var gained_achivement = achivement.data.slots[i] # store em 
 				if gained_achivement: # if it not empty
@@ -619,6 +635,9 @@ func give_reward_or_loss():
 							achivement.update_slot()
 							$"../mini notification/AnimationPlayer".play("show_notification")
 							await $"../mini notification/AnimationPlayer".animation_finished
+							
+							#main.save_player_data() ## SAVE GAME
+							### ADD STOP TO SAVING ANIMATION
 							
 
 # for when you win the battel

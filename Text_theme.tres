@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://1rjbfgnnnwya"]
 
-[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="1_ryr3p"]
+[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="1_loico"]
 
 [sub_resource type="FontVariation" id="FontVariation_57kj8"]
-base_font = ExtResource("1_ryr3p")
+base_font = ExtResource("1_loico")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwjos"]
 content_margin_left = 4.0
