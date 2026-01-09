@@ -1,4 +1,4 @@
-extends VBoxContainer
+class_name GamePage extends VBoxContainer
 
 # Fetch UI elements when the node is ready
 @onready var texture_rect: TextureRect = $TextureRect
@@ -53,6 +53,8 @@ extends VBoxContainer
 
 # Action
 @onready var action_container: ActionContainer = $"../action display/ScrollContainer/action container"
+
+@onready var saving: SavingIcon = $"../../Saving"
 
 
 # constant
@@ -301,7 +303,7 @@ func show_continue () -> void:
 		main.save_file_current_page = next_page
 		main.save_player_data()
 		## SHOW ANIMATION OF SAVING IN PROGRESS
-
+		saving.play_saving_logic()
 
 
 # Hide all option buttons

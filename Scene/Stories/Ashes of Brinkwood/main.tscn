@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://c5w6dmvryahbj"]
+[gd_scene load_steps=110 format=3 uid="uid://c5w6dmvryahbj"]
 
 [ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/other/bg.png" id="1_uovk4"]
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/scripts/main.gd" id="1_v0woh"]
@@ -69,6 +69,7 @@
 [ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="66_nv5sa"]
 [ext_resource type="Resource" uid="uid://dlvpqxhqtvdvf" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/1.tres" id="67_yy3pl"]
 [ext_resource type="Resource" uid="uid://bgj6tgnfp8h7b" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/2.tres" id="68_itq0l"]
+[ext_resource type="PackedScene" uid="uid://cxdx5drl748u5" path="res://Scene/saving.tscn" id="70_3y5t4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk7f5"]
 atlas = ExtResource("3_wmowf")
@@ -2196,6 +2197,17 @@ libraries = {
 }
 
 [node name="shop_layer" type="CanvasLayer" parent="Control"]
+
+[node name="Saving" parent="." instance=ExtResource("70_3y5t4")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 529.0
+offset_top = 1007.0
+offset_right = 529.0
+offset_bottom = 1007.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="Control/jornal" to="Control/Page" method="_on_jornal_pressed"]
 [connection signal="pressed" from="Control/inventory" to="Control/Page" method="_on_inventory_pressed"]
