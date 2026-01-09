@@ -12,12 +12,13 @@ class_name Main_game extends Node2D
 # Others
 @onready var coin: Label = $Control/LittleScroll/coin
 @onready var player_name: Label = $Control/profile/Banner/Label
-@onready var page: VBoxContainer = $Control/Page
+@onready var page: GamePage = $Control/Page
 @onready var img: TextureRect = $Control/profile/Img_panel/img
 @onready var hp_bar_solid: TextureProgressBar = $Control/HP/Hp_bar_solid
 @onready var player_class: Sprite2D = $Control/HP/class
 @onready var selected_inventory: Selected_Inventory_Ui = $Control/inventory_border/Control/selected_inventory
 @onready var storage_inventory: Inventory_Ui = $Control/inventory_border/Control/GridContainer
+@onready var saving: SavingIcon = $Saving
 
 
 @onready var action_container: ActionContainer = $"Control/action display/ScrollContainer/action container"
@@ -296,28 +297,40 @@ func save_player_data () -> void:
 			achievement_list.append(entry)
 	player_save['Achievements'] = achievement_list
 	
+	## SAVE STORAGE INVENTORY
+	var storage_list = []
+	for storage in storage_inventory.data.slots:
+		if storage == null:
+			continue
+		else:
+			storage_list.append(storage.item_data.resource_path)
+	player_save['Storage_Inventory'] = storage_list
+	
+	## SAVE MAIN INVENTORY
+	var main_list = []
+	for main_inv in selected_inventory.data.slots:
+		if main_inv == null:
+			continue
+		else:
+			main_list.append(main_inv.item_data.resource_path)
+	player_save['Main_Inventory'] = main_list
+	
+	## SAVE PLAYER HP
+	var hp : int
+	hp = page.current_hp
+	player_save['Hp'] = hp
+	
+	## SAVE PLAYER COIN
+	var coin : int
+	coin = page.current_coin
+	player_save['currency'] = coin
+	
 	## Overwrite file
 	var file_write = FileAccess.open(path, FileAccess.WRITE)
 	file_write.store_string(JSON.stringify(player_save, "\t"))
 	file_write.close()
 	
-#func save_achievment_in_save_file () -> void:
-	#var path = "user://" + GlobalGameSystem.save_name
-	#var save = FileAccess.open(path, FileAccess.READ)
-	#
-	## values from the save file
-	#var player_save = JSON.parse_string(save.get_as_text())
-	#save.close()
-	#
-	#
-	#
-	#
-	### Overwrite file
-	#var file_write = FileAccess.open(path, FileAccess.WRITE)
-	#file_write.store_string(JSON.stringify(player_save, "\t"))
-	#file_write.close()
-	#
-	
+
 	
 func save_stat_for_battle () -> void:
 	GlobalGameSystem.player_atk = int(atk.text)
