@@ -279,13 +279,21 @@ func load_player_save_file () -> void:
 			inventory[4] = slot_5
 	else:
 		# load the inventory item from save data for both main and storage
+		for i in range(player_save['Main_Inventory'].size()):
+			var main_items = load(player_save['Main_Inventory'][i])
+			
+			var new_slot = Slot_data.new()
+			new_slot.item_data = main_items
+			
+			selected_inventory.data.slots[i] = new_slot
+		selected_inventory.update_inventory()
 		pass
 	####
 	
 	
-	# Load achievements if you have
+
 	####
-	## START MAIN GAMNES
+	## START MAIN   GAMNES
 	page.load_page()
 	#save_player_data()
 
