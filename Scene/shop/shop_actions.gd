@@ -53,7 +53,7 @@ func _on_action_pressed() -> void:
 	if GlobalGameSystem.player_coin >= slot_data.action_data.cost:
 		slot_data.action_data.purchased = true
 		item = true
-		save_purchased_in_save_file()
+		save_purchased_in_global_var()
 		is_purchased()
 		GlobalGameSystem.player_coin -= slot_data.action_data.cost
 		SignalManager.action_purchase.emit()
@@ -67,24 +67,12 @@ func is_purchased () -> void:
 	$Info_board/action/cost.text = "Purchased"
 	
 	
-func save_purchased_in_save_file () -> void:
-	var path = "user://" + GlobalGameSystem.save_name
-	var save = FileAccess.open(path, FileAccess.READ)
-	
-	# values from the save file
-	var player_save = JSON.parse_string(save.get_as_text())
-	save.close()
-	
+func save_purchased_in_global_var () -> void:
 	## SAVE PURCHASED
-	var purchased_list = []
 	var entry = {
 		'action_name' : slot_data.action_data.action_name,
 		'action_purchased' : slot_data.action_data.purchased,
 	}
-	purchased_list.append(entry) 
-	player_save['Shop_Action_Purchased'] = purchased_list
 	
-	## OVERWRITE FILE
-	var file_write = FileAccess.open(path, FileAccess.WRITE)
-	file_write.store_string(JSON.stringify(player_save, "\t"))
-	file_write.close()
+	GlobalGameSystem.player_purchsed_actions.append(entry)
+	
