@@ -193,6 +193,18 @@ func load_player_save_file () -> void:
 				
 	# Load journals if you have
 	#####
+	if !player_save["Journal"].is_empty():
+		# loop through save array
+		for saved_journal in player_save["Journal"]:
+			var journal_load = load(saved_journal)
+			
+			for journal in jornal_display.book.pages:
+				if journal.journal_data == null:
+					journal.journal_data = journal_load
+					break
+		jornal_display.set_page_data()
+		jornal_display._on_right_screentouch_pressed()
+				
 	
 	# Load inventory if you have
 	# check if main inventory is empty from the save file
