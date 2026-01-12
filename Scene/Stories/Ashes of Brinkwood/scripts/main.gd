@@ -89,8 +89,15 @@ func load_player_save_file () -> void:
 	# Load actions if you already have one or use default
 	#####
 	if !player_save["Action"].is_empty():
+		if action_container.data.actions.size() != 0:
+				action_container.clear_action_slots()
+				action_container.data.actions.resize(0)
+				
 		# load player actions from save file
-		pass
+		for saved_action in player_save["Action"]:
+			var action_load = load(saved_action)
+			action_container.data.add_items(action_load)
+		action_container.update_slots()
 	else:
 		var data1 = load("res://Scene/00_default_class_item_load/warrior/actions/Cleave.tres")
 		var data2 = load ("res://Scene/00_default_class_item_load/warrior/actions/Power_Slash.tres")
@@ -318,12 +325,16 @@ func save_player_data () -> void:
 	## SAVE PLAYER HP
 	var hp : int
 	hp = page.current_hp
-	player_save['Hp'] = hp
+	player_data['Hp'] = hp
 	
 	## SAVE PLAYER COIN
 	var coin : int
 	coin = page.current_coin
-	player_save['currency'] = coin
+	player_data['currency'] = coin
+	
+	## SAVE PLAYER PURCHASED ACTIONS
+	player_save['Shop_Action_Purchased'].append_array(GlobalGameSystem.player_purchsed_actions)
+	GlobalGameSystem.player_purchsed_actions.clear()
 	
 	## Overwrite file
 	var file_write = FileAccess.open(path, FileAccess.WRITE)
