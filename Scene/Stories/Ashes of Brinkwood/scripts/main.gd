@@ -204,7 +204,24 @@ func load_player_save_file () -> void:
 					break
 		jornal_display.set_page_data()
 		jornal_display._on_right_screentouch_pressed()
-				
+	
+	# Load collected Achivement
+	if !player_save["Achievements"].is_empty():
+		for ach_data in player_save["Achievements"]:
+			var path = ach_data['res_path']
+			var acheived = ach_data['is_checked']
+			
+			for achi in achievement.data.slots:
+				if achi == null:
+					continue
+				if achi.resource_path == path:
+					if acheived == true:
+						achi.achieved = true
+						break
+					else:
+						achi.achieved = false
+		achievement.update_slot()
+		
 	
 	# Load inventory if you have
 	# check if main inventory is empty from the save file
