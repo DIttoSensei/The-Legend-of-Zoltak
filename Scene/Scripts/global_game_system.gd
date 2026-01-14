@@ -15,7 +15,8 @@ var player_coin
 var shop_item
 var player_class
 var battle_started : bool = false
-var player_purchsed_actions = []
+var player_purchased_actions = []
+var player_load_purchased = []
 
 
 # for shop

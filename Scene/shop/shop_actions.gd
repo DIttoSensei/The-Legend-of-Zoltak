@@ -31,6 +31,7 @@ func set_slot_data (value : Actions) -> void:
 	if slot_data ==null or slot_data.action_data == null :
 		visible = false
 		return
+	load_purchased()
 	action_name.text = slot_data.action_data.action_name
 	item_icon.texture = slot_data.action_data.action_img
 	damage.text = "DMG " + str(slot_data.action_data.action_attribute)
@@ -74,5 +75,17 @@ func save_purchased_in_global_var () -> void:
 		'action_purchased' : slot_data.action_data.purchased,
 	}
 	
-	GlobalGameSystem.player_purchsed_actions.append(entry)
+	GlobalGameSystem.player_purchased_actions.append(entry)
+	
+func load_purchased () -> void:
+	for action in GlobalGameSystem.player_load_purchased:
+		var name = action['action_name']
+		var pur = action['purchased']
+		
+		if slot_data.action_data.action_name == name:
+			if pur == true:
+				slot_data.action_data.purchased = pur
+			else:
+				slot_data.action_data.purchased = pur
+	
 	
