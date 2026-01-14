@@ -86,8 +86,7 @@ func load_player_save_file () -> void:
 	# save class for shop items
 	GlobalGameSystem.player_class = player_data["Class"]
 		
-	# Load actions if you already have one or use default
-	#####
+	## Load actions if you already have one or use default
 	if !player_save["Action"].is_empty():
 		if action_container.data.actions.size() != 0:
 				action_container.clear_action_slots()
@@ -191,8 +190,7 @@ func load_player_save_file () -> void:
 				action_container.data.add_default_action(data1,data2,data3,data4,data5)
 				action_container.update_slots()
 				
-	# Load journals if you have
-	#####
+	## Load journals if you have ###############################################
 	if !player_save["Journal"].is_empty():
 		# loop through save array
 		for saved_journal in player_save["Journal"]:
@@ -204,7 +202,7 @@ func load_player_save_file () -> void:
 					break
 		jornal_display.set_page_data()
 		jornal_display._on_right_screentouch_pressed()
-	
+	############################################################################
 	# Load collected Achivement
 	if !player_save["Achievements"].is_empty():
 		for ach_data in player_save["Achievements"]:
@@ -287,15 +285,25 @@ func load_player_save_file () -> void:
 			
 			selected_inventory.data.slots[i] = new_slot
 		selected_inventory.update_inventory()
-		pass
-	####
-	
-	
-
-	####
-	## START MAIN   GAMNES
+		
+	## LOAD STORAGE IF ONE IS PRESENT #########################################
+	if player_save["Storage_Inventory"].is_empty():
+		storage_inventory.data.slots.fill(null)
+		storage_inventory.update_inventory()
+	else:
+		storage_inventory.data.slots.fill(null)
+		for i in range(player_save["Storage_Inventory"].size()):
+			var storage_item = load(player_save["Storage_Inventory"][i])
+			
+			var new_slot = Slot_data.new()
+			new_slot.item_data = storage_item
+			
+			storage_inventory.data.slots[i] = new_slot
+		storage_inventory.update_inventory()
+	###########################################################################
+	## START MAIN GAME
 	page.load_page()
-	#save_player_data()
+
 
 
 func save_player_data () -> void:
