@@ -301,6 +301,18 @@ func load_player_save_file () -> void:
 			storage_inventory.data.slots[i] = new_slot
 		storage_inventory.update_inventory()
 	###########################################################################
+	
+	## LOAD PURCHASED SHOP IN GLOBAL ARRAY
+	for shop in player_save["Shop_Action_Purchased"]:
+		var action_name = shop['action_name']
+		var purchased = shop['action_purchased']
+		
+		var entry = {
+			'action_name' : action_name,
+			'purchased' : purchased,
+		}
+		GlobalGameSystem.player_load_purchased.append(entry)
+		
 	## START MAIN GAME
 	page.load_page()
 
@@ -378,8 +390,8 @@ func save_player_data () -> void:
 	player_data['currency'] = coin
 	
 	## SAVE PLAYER PURCHASED ACTIONS
-	player_save['Shop_Action_Purchased'].append_array(GlobalGameSystem.player_purchsed_actions)
-	GlobalGameSystem.player_purchsed_actions.clear()
+	player_save['Shop_Action_Purchased'].append_array(GlobalGameSystem.player_purchased_actions)
+	GlobalGameSystem.player_purchased_actions.clear()
 	
 	## Overwrite file
 	var file_write = FileAccess.open(path, FileAccess.WRITE)

@@ -24,3 +24,6 @@ signal enemy_damaged (damage : int)
 signal player_attack (action_data)
 signal battle_won 
 signal turn_end
+
+# for laod file
+signal action_is_purchased (purchased : bool)
