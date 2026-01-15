@@ -87,5 +87,7 @@ func load_purchased () -> void:
 				slot_data.action_data.purchased = pur
 			else:
 				slot_data.action_data.purchased = pur
+		else:
+			slot_data.action_data.purchased = false
 	
 	
