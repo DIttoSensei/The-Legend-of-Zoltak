@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Zoltak"
-run/main_scene="res://Scene/Start Menu.tscn"
+run/main_scene="res://Scene/SplashScreen.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -29,6 +31,7 @@ GameConfig="*res://00_glabal/game_config.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=2160
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
