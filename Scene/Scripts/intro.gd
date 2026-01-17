@@ -25,9 +25,9 @@ func _on_timer_timeout() -> void:
 	counter += 1
 	
 	#label.visible_characters += 1
-	label.text = "[fade start=" + str(counter) + " length=10]
+	label.text = "[fade start=" + str(counter) + " length=10][center]
 Across this shadowed realm, where ancient stones hum with forgotten magic and the air tastes of ages past, there exists no single truth, but a tepestry woven from countless echoes. This is not the tale of one hero, nor a chronicle of a single evil, but a compilation of whispers from a forgotten time. Some speak of nobility and courage, others of nightmares given form, etched in blood and fear. from sorrow-cloaked peaks to lightless chasms, these are the sagas of ZOLTAK - a testament to what was, what is, and what yet might be...
-[/fade]"
+[/center][/fade]"
 	
 	#if label.visible_characters == label.text.length():
 		#timer.stop()
@@ -42,6 +42,8 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventScreenTouch or event.is_action_pressed("ui_accept"):
 		if event.is_pressed():
+			var audio = load("res://Asset/sound_effects/click_2.wav")
+			GlobalGameSystem.play_sfx_audio(audio)
 			input_locked = true
 			counter = 600
 			

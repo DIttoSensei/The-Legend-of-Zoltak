@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var global_audio: AudioStreamPlayer = $"global Audio"
+@onready var global_sfx: AudioStreamPlayer = $global_sfx
 
 @export var transition_duration : float = 2.00
 
@@ -56,6 +57,9 @@ func play_bg_audio () -> void:
 	global_audio.play()
 	pass
 
+func play_sfx_audio (audio) -> void:
+	global_sfx.stream = audio
+	global_sfx.play()
 
 # fade out the audio playing
 func fade_out():

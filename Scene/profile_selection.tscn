@@ -910,8 +910,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="IconCrossBeige" type="Sprite2D" parent="Control/CanvasLayer/Control/notice_board/exit"]
 z_index = 1
-position = Vector2(26.5, 22)
-scale = Vector2(2.5, 2.5)
+position = Vector2(23.4333, 22.125)
+scale = Vector2(2.11667, 2.11667)
 texture = ExtResource("11_bsj44")
 
 [node name="yes" type="TextureButton" parent="Control/CanvasLayer/Control/notice_board"]
@@ -955,6 +955,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_ipu4b")
 theme_override_font_sizes/font_size = 16
 text = "Are you sure you want to delete your profile"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]

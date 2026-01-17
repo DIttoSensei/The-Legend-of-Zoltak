@@ -4,8 +4,17 @@ extends Node2D
 @export_multiline var Stats_error : String
 @export_multiline var Save_display : String
 
+var bad_words_error : Array = ['Really?', 'Come on!', 'Would You stop that?', 'You are weird...denied!!',
+'Not happening pal', 'I know what you are', 'just pick something...appropriate?', 'you are hopeless', 'eww']
+
+var bad_words : Array = [
+	'fuck', 'shit', 'bitch', 'ass', 'dick', 'pussy', 'cunt', 'tit', 'boobs', 'boob', 'cum', 'bastard',
+	'slut', 'whore', 'retard', 'cuck', 'motherfucker', 'dumbass', 'jackass', 'shithead', 
+]
+
 var stats := []
 var last_total  := 0
+var age : int
 
 var state_cumulation : int
 
@@ -31,7 +40,7 @@ var state_cumulation : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#SceneTransition.fade_in()
+	SceneTransition.fade_in()
 	#display_notice()
 	#notice.text = Stats_error
 	
@@ -69,6 +78,8 @@ func get_stats_total () -> int:
 
 
 func display_notice () -> void :
+	var audio = load("res://Asset/sound_effects/033_Denied_03.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	$Control/CanvasLayer/Control.mouse_filter = Control.MOUSE_FILTER_STOP
 	animation_player.play("show")
 
@@ -82,13 +93,26 @@ func remove_notice () -> void:
 	
 
 func _on_exit_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_3.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	$Control/CanvasLayer/Control.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	remove_notice()
 	pass # Replace with function body.
 
 
 func _on_confirm_pressed() -> void:
-	if name_edit.text.length() < 4 or age_edit.text.length() < 2:
+	age = int(age_edit.text)
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	var names = name_edit.text.to_lower().strip_edges()
+	
+	
+	for bad in bad_words:
+		if names == bad:
+			notice.text = bad_words_error.pick_random()
+			display_notice()
+			return
+	if name_edit.text.length() < 4 or name_edit.text.length() > 8 or not age is int or str(age).length() < 2:
 		notice.text = Name_age_error
 		display_notice()
 	elif state_cumulation > 300 or state_cumulation < 300:
@@ -150,5 +174,7 @@ func save_game () -> void :
 
 ## Back button pressed
 func _on_texture_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	LevelManager.load_new_level = "res://Scene/profile_selection.tscn"
 	LevelManager.load_level()

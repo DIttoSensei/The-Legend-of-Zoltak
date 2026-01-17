@@ -31,7 +31,6 @@ GameConfig="*res://00_glabal/game_config.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=2160
-window/size/mode=4
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 

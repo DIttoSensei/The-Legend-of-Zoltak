@@ -33,6 +33,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event.is_action_pressed("ui_accept"):
 		if event.is_pressed():
 			# hamdle touch input
+			var audio = load("res://Asset/sound_effects/click_2.wav")
+			GlobalGameSystem.play_sfx_audio(audio)
 			input_locked = true
 			LevelManager.load_new_level = "res://Scene/into.tscn"
 			LevelManager.load_level()
