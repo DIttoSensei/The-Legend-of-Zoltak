@@ -21,6 +21,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_left_click_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	if count > images.size():
 		count = 0
 	
@@ -31,6 +33,8 @@ func _on_left_click_pressed() -> void:
 
 
 func _on_right_click_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	if count > images.size():
 		count = 0
 	

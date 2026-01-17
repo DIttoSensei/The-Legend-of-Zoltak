@@ -1,7 +1,6 @@
 extends VBoxContainer
 
 
-
 func _on_atk_slider_value_changed(value: float) -> void:
 	$Atk/Atk_slider/counter.text = str (value)
 	pass # Replace with function body.

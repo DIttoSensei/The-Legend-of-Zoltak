@@ -13,6 +13,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_texture_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	LevelManager.load_new_level = "res://Scene/Start Menu.tscn"
 	LevelManager.load_level()
 			#
@@ -23,8 +25,16 @@ func _on_texture_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	$"Control/story_1/play button".disabled = true
 	LevelManager.load_new_level = "res://Scene/Stories/begin_chapter.tscn"
 	LevelManager.load_level()
 	GlobalGameSystem.fade_out()
+	
+
+
+func _on_gear_icon_no_bg_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	

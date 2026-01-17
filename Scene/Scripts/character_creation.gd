@@ -157,6 +157,8 @@ func check_for_save_profile () -> void:
 
 # Function to display notice
 func delete_file_notice () -> void:
+	var audio = load("res://Asset/sound_effects/notice.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	# show notice to delete
 	$Control/CanvasLayer/Control.mouse_filter = Control.MOUSE_FILTER_STOP
 	$Control/CanvasLayer/Control/notice_board/AnimationPlayer.play("show")
@@ -175,6 +177,9 @@ func delete_save_file () -> void:
 
 ## Back button
 func _on_texture_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	LevelManager.load_new_level = "res://Scene/Start Menu.tscn"
 	LevelManager.load_level()
 	
@@ -184,18 +189,24 @@ func _on_texture_button_pressed() -> void:
 
 ## Create Button to create save files for each profile
 func _on_create_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	create.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.txt"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
 func _on_create_2_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	create_2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.txt"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
 func _on_create_3_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	create_3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.txt"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
@@ -206,29 +217,41 @@ func _on_create_3_pressed() -> void:
 	
 ## For delete profile
 func _on_delete_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	current_save = "SAVE_1.txt"
 	delete_file_notice()
 
 func _on_delete_1_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	current_save = "SAVE_2.txt"
 	delete_file_notice()
 
 func _on_delete_2_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	current_save = "SAVE_3.txt"
 	delete_file_notice()
 	
 func _on_yes_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	delete_save_file()
 	
 
 
 ## For canceling delete profile
 func _on_exit_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_3.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	$Control/CanvasLayer/Control.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$Control/CanvasLayer/Control/notice_board/AnimationPlayer.play("hide")
 
 
 func _on_load_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	load1.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.txt"
 	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
@@ -238,6 +261,8 @@ func _on_load_pressed() -> void:
 
 
 func _on_load2_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	load2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.txt"
 	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
@@ -247,6 +272,8 @@ func _on_load2_pressed() -> void:
 
 
 func _on_load3_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	load3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.txt"
 	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
