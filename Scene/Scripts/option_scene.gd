@@ -77,6 +77,17 @@ func _on_sfx_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	
+	var sfx = config.get_value("Settings", 'sfx_enabled')
+	if sfx == true:
+		sfx_label.text = 'OFF'
+		GlobalGameSystem.global_sfx.volume_db = -40
+		config.set_value('Settings', 'sfx_enabled', false)
+		config.save("user://settings.cfg")
+	elif sfx == false:
+		sfx_label.text = 'ON'
+		GlobalGameSystem.global_sfx.volume_db = 0
+		config.set_value('Settings', 'sfx_enabled', true)
+		config.save("user://settings.cfg")
 	
 
 func _on_reset_pressed() -> void:
