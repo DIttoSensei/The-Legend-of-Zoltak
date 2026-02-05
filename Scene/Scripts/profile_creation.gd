@@ -5,7 +5,9 @@ extends Node2D
 @export_multiline var Save_display : String
 
 var bad_words_error : Array = ['Really?', 'Come on!', 'Would You stop that?', 'You are weird...denied!!',
-'Not happening pal', 'I know what you are', 'just pick something...appropriate?', 'you are hopeless', 'eww']
+'Not happening pal', 'I know what you are', 'just pick something...appropriate?', 'you are hopeless', 'eww',
+'Wow, a comedic genius in our midst.', "carefull, don't strain your brain too hard.", 'Truly a msaterclass in naming.',
+'I bet you are real funny.', 'How original', 'The creativity is absolutly blinding.']
 
 var bad_words : Array = [
 	'fuck', 'shit', 'bitch', 'ass', 'dick', 'pussy', 'cunt', 'tit', 'boobs', 'boob', 'cum', 'bastard',
@@ -15,6 +17,7 @@ var bad_words : Array = [
 var stats := []
 var last_total  := 0
 var age : int
+
 
 var state_cumulation : int
 

@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$"Control/story_1/play button".disabled = false
+	$option_scene.disabled = false
 	pass # Replace with function body.
 
 
@@ -37,4 +38,8 @@ func _on_play_button_pressed() -> void:
 func _on_gear_icon_no_bg_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
+	$option_scene.disabled = true
+	LevelManager.load_new_level = "res://Scene/options_scene.tscn"
+	LevelManager.load_level()
+	
 	
