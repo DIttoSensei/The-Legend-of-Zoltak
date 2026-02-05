@@ -115,7 +115,7 @@ position = Vector2(978.938, 379.938)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("4_s18wv")
 
-[node name="GearIconNoBg" type="TextureButton" parent="."]
+[node name="option_scene" type="TextureButton" parent="."]
 modulate = Color(0.868939, 0.723233, 0.57957, 1)
 offset_left = 915.0
 offset_top = 315.0
@@ -126,4 +126,4 @@ texture_normal = ExtResource("11_ssntn")
 
 [connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Control/story_1/play button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="GearIconNoBg" to="." method="_on_gear_icon_no_bg_pressed"]
+[connection signal="pressed" from="option_scene" to="." method="_on_gear_icon_no_bg_pressed"]
