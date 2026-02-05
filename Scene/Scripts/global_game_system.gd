@@ -42,6 +42,8 @@ var player_wis
 var player_hp
 var results
 
+var can_play_audio = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_story_data()
@@ -63,6 +65,8 @@ func play_sfx_audio (audio) -> void:
 
 # fade out the audio playing
 func fade_out():
+	if can_play_audio == false:
+		return
 	var tween_out = create_tween()
 	tween_out.tween_property(global_audio, "volume_db", -80, transition_duration)
 	tween_out.tween_callback(Callable(self, "_on_fade_out_complete"))
@@ -73,6 +77,8 @@ func _on_fade_out_complete ():
 
 ## FOR MAIN GAME (TEXT BASED AREA)
 func fade_out_audio_main_game():
+	if can_play_audio == false:
+		return
 	var tween_out = create_tween()
 	tween_out.tween_property(global_audio, "volume_db", -80, transition_duration)
 	tween_out.tween_callback(Callable(self, "_on_fade_out_main_game_audio_complete"))
