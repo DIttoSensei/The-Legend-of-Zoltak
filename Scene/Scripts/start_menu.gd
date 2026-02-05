@@ -6,11 +6,14 @@ class_name Start_Menu extends Node2D
 
 const next_scene = preload("res://Scene/into.tscn")
 
+var config = ConfigFile.new()
 
 var input_locked := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	config.load("user://settings.cfg")
+	load_config()
 	input_locked = true
 	SceneTransition.fade_in()
 	animation_player_2.play("text_animation")
@@ -24,6 +27,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+# GAME CONFIG
+func load_config () -> void:
+	var music = config.get_value("Settings", "music_enabled")
+	var sfx = config.get_value("Settings", "sfx_enabled")
+	
+	if music == false:
+		GlobalGameSystem.global_audio.volume_db = -40
+		GlobalGameSystem.can_play_audio = false
+	else:
+		GlobalGameSystem.global_audio.volume_db = 0
+		GlobalGameSystem.can_play_audio = true
+	
+	
+
 
 func _input(event: InputEvent) -> void:
 	if input_locked:
