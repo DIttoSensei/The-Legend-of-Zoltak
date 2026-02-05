@@ -31,6 +31,9 @@ func _ready() -> void:
 
 
 func _on_exit_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	visible = false
 	current_index = 0
 	pass # Replace with function body.
@@ -87,6 +90,11 @@ func _on_left_screentouch_pressed() -> void:
 		if book.pages[current_index].journal_data == null:
 			current_index += 1
 			return
+		var next_index = current_index + 1
+		if book.pages[next_index].journal_data != null:
+			var sound = load ("res://Asset/sound_effects/page_open.mp3")
+			GlobalGameSystem.play_sfx_audio(sound)
+		
 		current_index %= book.pages.size()
 		set_page_data()
 		
@@ -101,5 +109,11 @@ func _on_right_screentouch_pressed() -> void:
 		if book.pages[current_index].journal_data == null:
 			current_index -= 1
 			return
+			
+		var next_index = current_index + 1
+		if book.pages[next_index].journal_data != null:
+			var sound = load ("res://Asset/sound_effects/page_open.mp3")
+			GlobalGameSystem.play_sfx_audio(sound)
+
 		current_index %= book.pages.size()
 		set_page_data()

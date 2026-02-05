@@ -678,16 +678,22 @@ func set_choice_data_for_battle () -> void:
 
 ## UI BUTTONS (I know there are better ways to do this)
 func _on_inventory_pressed() -> void:
+	var sound_open = load ("res://Asset/sound_effects/leather_inventory.wav")
+	var sound_close = load ("res://Asset/sound_effects/cloth-inventory.wav")
+	
 	# track time the button was pressed
 	info_board.visible = false
 	counter_inventory += 1
 	
 	if counter_inventory == 1 :
 		# bring forth the inventory
+		GlobalGameSystem.play_sfx_audio(sound_open)
 		$"../inventory_border/AnimationPlayer".play("inventory_open")
 		shown.emit()
+	
 	elif  counter_inventory > 1:
 		#close the inventory
+		GlobalGameSystem.play_sfx_audio(sound_close)
 		$"../inventory_border/AnimationPlayer".play("inventory_close")
 		hides.emit()
 		# hide the info board if it on
@@ -822,6 +828,9 @@ func remove_item_slot () -> void: ## Remove selected item from the inventory
 
 # Jornal section
 func _on_jornal_pressed() -> void:
+	var sound  = load ("res://Asset/sound_effects/book_open.mp3")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	jornal_display.set_page_data()
 	jornal_display.visible = true
 	pass # Replace with function body.

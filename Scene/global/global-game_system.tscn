@@ -9,4 +9,4 @@ script = ExtResource("1_8glq6")
 max_polyphony = 3
 
 [node name="global_sfx" type="AudioStreamPlayer" parent="."]
-max_polyphony = 5
+max_polyphony = 10
