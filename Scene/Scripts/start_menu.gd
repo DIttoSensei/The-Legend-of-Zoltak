@@ -34,7 +34,7 @@ func load_config () -> void:
 	var sfx = config.get_value("Settings", "sfx_enabled")
 	
 	if music == false:
-		GlobalGameSystem.global_audio.volume_db = -40
+		GlobalGameSystem.global_audio.volume_db = -90
 		GlobalGameSystem.can_play_audio = false
 	else:
 		GlobalGameSystem.global_audio.volume_db = 0

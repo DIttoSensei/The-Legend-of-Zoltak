@@ -60,7 +60,7 @@ func _on_music_pressed() -> void:
 	var music = config.get_value("Settings", "music_enabled")
 	if music == true:
 		music_label.text = 'OFF'
-		GlobalGameSystem.global_audio.volume_db = -40
+		GlobalGameSystem.global_audio.volume_db = -90
 		GlobalGameSystem.can_play_audio = false
 		config.set_value("Settings", "music_enabled", false)
 		config.save("user://settings.cfg")
@@ -80,7 +80,7 @@ func _on_sfx_pressed() -> void:
 	var sfx = config.get_value("Settings", 'sfx_enabled')
 	if sfx == true:
 		sfx_label.text = 'OFF'
-		GlobalGameSystem.global_sfx.volume_db = -40
+		GlobalGameSystem.global_sfx.volume_db = -90
 		config.set_value('Settings', 'sfx_enabled', false)
 		config.save("user://settings.cfg")
 	elif sfx == false:

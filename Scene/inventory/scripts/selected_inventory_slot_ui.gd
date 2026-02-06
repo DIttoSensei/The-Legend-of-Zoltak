@@ -20,6 +20,9 @@ func set_slot_data (value : Slot_data) -> void:
 
 # when button is pressed
 func _on_pressed() -> void:
+	var sound = load ("res://Asset/sound_effects/click_001.ogg")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	GlobalGameSystem.button_data_inv = slot_data
 	SignalManager.show_selected_item_board.emit()
 	pass # Replace with function body.

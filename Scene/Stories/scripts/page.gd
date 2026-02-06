@@ -737,6 +737,9 @@ func show_item_info_board () -> void:
 
 
 func _on_exit_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	info_board.visible = false
 	pass # Replace with function body.
 
@@ -764,6 +767,10 @@ func show_selected_inventory_board () -> void:
 
 func _on_action_pressed() -> void:
 	if action_label.text == "EQUIP":
+		
+		var sound = load ("res://Asset/sound_effects/equipping_item.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		var target_grid = selected_inventory
 		var slot = GlobalGameSystem.button_data_inv
 		
@@ -839,18 +846,25 @@ func _on_jornal_pressed() -> void:
 
 # Action section
 func _on_actions_pressed() -> void:
+	var sound = load ("res://Asset/sound_effects/spell_book.wav")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	$"../action display".visible = true
 	pass # Replace with function body.
 
 
 # Achivement section
 func _on_achivement_pressed() -> void:
+	var sound_open = load ("res://Asset/sound_effects/turn_page.wav")
+	var sound_close = load ("res://Asset/sound_effects/turn_page_reversed.wav")
 	counter_achivement += 1
 	
 	if counter_achivement == 1:
 		$"../achivement2/AnimationPlayer".play("show")
+		GlobalGameSystem.play_sfx_audio(sound_open)
 	elif counter_achivement > 1:
 		$"../achivement2/AnimationPlayer".play("hide")
+		GlobalGameSystem.play_sfx_audio(sound_close)
 		counter_achivement = 0
 	pass # Replace with function body.
 

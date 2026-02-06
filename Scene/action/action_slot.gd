@@ -31,6 +31,10 @@ func update_state() -> void:
 func _on_pressed() -> void:
 	if  action_data.action_data.current_cooldown > 0:
 		return
+		
+	var sound = load ("res://Asset/sound_effects/click_2.wav")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	GlobalGameSystem.action_data_inv = action_data
 	$"../../../img".visible = false
 	SignalManager.show_action_info.emit()

@@ -65,5 +65,8 @@ func display_action_info () -> void:
 
 
 func _on_exit_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	$"../..".visible = false
 	pass # Replace with function body.
