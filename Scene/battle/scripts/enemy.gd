@@ -175,6 +175,9 @@ func take_damage (damage : int) -> void:
 	pass
 
 func _on_hitbox_area_entered(_area: Area2D) -> void:
+	var sound = load ("res://Asset/sound_effects/battle_sfx/Damage_Medium_2.wav")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	if battle_scene.player_critical_hit == true:
 		GlobalGameSystem.hit_stop(0.05, 0.15) #perform hitstop
 		Input.vibrate_handheld(50, 1.0) # VIBRATE DEVICE 

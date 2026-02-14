@@ -153,6 +153,10 @@ func set_hp (value : int) -> void:
 	
 	
 func _on_area_2d_area_entered(_area: Area2D) -> void:
+	var sound = load ("res://Asset/sound_effects/battle_sfx/Damage_Medium_2.wav")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
+	
 	if battle_scene.enemy_critical_hit == true:
 		GlobalGameSystem.hit_stop(0.05, 0.15) #perform hitstop
 		Input.vibrate_handheld(50, 1.0)

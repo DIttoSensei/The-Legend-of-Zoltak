@@ -14,6 +14,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
 offset_right = 48.0
 offset_bottom = 48.0
+mouse_filter = 2
 texture = ExtResource("2_f50ir")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

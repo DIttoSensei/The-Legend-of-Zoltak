@@ -127,6 +127,8 @@ func enable_button () -> void:
 		full_stats.disabled = false
 
 func _on_attack_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	
 	if battling == true:
 		disable_button()
@@ -137,6 +139,9 @@ func _on_attack_pressed() -> void:
 
 
 func _on_roll_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	battling = true
 	$overlay/roll.visible = false
 	$overlay/Sprite2D/AnimationPlayer.play("roll_animation")
@@ -539,6 +544,9 @@ func _on_timer_timeout() -> void:
 
 # for action
 func _on_exit_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	$"Control/action display".visible = false
 	pass # Replace with function body.
 
@@ -620,12 +628,20 @@ func _on_exit_info_pressed() -> void:
 
 
 func _on_inventory_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	var audio_2 = load ("res://Asset/sound_effects/leather_inventory.wav")
+	play_multiple_audio(audio, audio_2)
+	
 	$Control/inventory_border/Control/AnimationPlayer.play("show")
 	show.emit()
 	pass # Replace with function body.
 
 
 func _on_exit_inv_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	var audio_2 = load ("res://Asset/sound_effects/cloth-inventory.wav")
+	play_multiple_audio(audio, audio_2)
+	
 	$Control/inventory_border/Control/AnimationPlayer.play("close")
 	info_board.visible = false
 	inv_action.visible = false
@@ -646,6 +662,7 @@ func _on_inv_action_pressed() -> void:
 
 # function to use item
 func use_item () -> void:
+	
 	### ADD OTHER USABLE ITEM ATTRIBUTES
 	var item = GlobalGameSystem.button_data_inv.item_data
 	
@@ -654,6 +671,9 @@ func use_item () -> void:
 		if player.current_hp == player.player_hp.max_value:
 			show_notification() # Show alart that hp is full already
 		elif player.current_hp < player.player_hp.max_value:
+			var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+			GlobalGameSystem.play_sfx_audio(sound)
+	
 			text = "[center]You used " + item.name + "[/center]"
 			announcer_text(text)
 			heal.modulate = "4df936" # change color to green
@@ -669,6 +689,8 @@ func use_item () -> void:
 	
 	# For atk
 	if item.attribute == "Atk":
+		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
 		text = "[center]You used " + item.name + "[/center]"
 		announcer_text(text)
 		player_buff_effect.modulate = 'a80000'
@@ -678,6 +700,8 @@ func use_item () -> void:
 		
 	# For def
 	if item.attribute == 'Def':
+		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
 		text = '[center]You used ' + item.name + '[/center]'
 		announcer_text(text)
 		player_buff_effect.modulate = '0f00f2'
@@ -687,6 +711,9 @@ func use_item () -> void:
 		
 	# For fire
 	if item.attribute == 'Fire':
+		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		text = '[center]You used ' + item.name + '[/center]'
 		announcer_text(text)
 		player_buff_effect.modulate = 'ff3a5c'
@@ -773,11 +800,17 @@ func player_victory () -> void:
 
 ## To show additional stats information through button
 func _on_full_stats_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/notice.wav")
+	var audio_2 = load ("res://Asset/sound_effects/notice-reversed.wav")
+	
+	
 	stat_conter += 1
 	if stat_conter == 1:
 		full_stat_anim.play("show")
+		GlobalGameSystem.play_sfx_audio(audio)
 	elif stat_conter > 1:
 		full_stat_anim.play("hide")
+		GlobalGameSystem.play_sfx_audio(audio_2)
 		stat_conter = 0
 	pass # Replace with function body.
 
@@ -801,6 +834,9 @@ func deactivate_item_btn () -> void:
 	
 ## When player battle surge is full and pressed
 func _on_battle_surge_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	battle_gauge.frame = 7
 	$Control/battle_gauge/AnimationPlayer.play("RESET")
 	$Control/player_effects/mystic.modulate = 'a61bff'
@@ -814,3 +850,16 @@ func _on_battle_surge_pressed() -> void:
 	player.final_atk *= 1.5
 	player.atk_value.text =  str (player.final_atk + player.weapon_atk)
 	deactivate_battle_surge_btn()
+	
+
+func play_multiple_audio (s1, s2 = null, s3 = null, s4 = null, s5 = null):
+	GlobalGameSystem.play_sfx_audio(s1)
+	
+	if s2:
+		GlobalGameSystem.play_sfx_audio(s2)
+	if s3:
+		GlobalGameSystem.play_sfx_audio(s3)
+	if s4:
+		GlobalGameSystem.play_sfx_audio(s4)
+	if s5:
+		GlobalGameSystem.play_sfx_audio(s5)

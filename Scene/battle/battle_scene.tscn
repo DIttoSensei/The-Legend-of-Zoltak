@@ -2829,10 +2829,15 @@ offset_bottom = 1856.0
 texture_normal = ExtResource("4_hfemv")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/attack"]
+[node name="Sprite2D" type="TextureRect" parent="Control/attack"]
 modulate = Color(0.968627, 0.847059, 0.435294, 1)
-position = Vector2(231.5, 215.5)
+layout_mode = 0
+offset_left = 119.5
+offset_top = 104.5
+offset_right = 135.5
+offset_bottom = 120.5
 scale = Vector2(13.9375, 13.9375)
+mouse_filter = 2
 texture = ExtResource("6_000pf")
 
 [node name="inventory" type="TextureButton" parent="Control"]
@@ -4110,6 +4115,7 @@ offset_top = 323.0
 offset_right = 2219.11
 offset_bottom = 581.0
 rotation = 3.14159
+mouse_filter = 2
 texture = ExtResource("61_1n4f5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/inventory_border/Control"]

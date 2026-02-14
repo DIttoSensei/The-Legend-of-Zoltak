@@ -3,8 +3,7 @@ extends Node2D
 
 @onready var coin: Label = $scroll/Label
 @onready var shop_container: Shop_Inventory = $items_shop/HBoxContainer
-@onready var sound_effect: AudioStreamPlayer = $sound_effect
-@onready var sound_effect_2: AudioStreamPlayer = $sound_effect2
+
 
 
 # exports
@@ -154,12 +153,18 @@ func load_action_shop () -> void:
 
 
 func _on_action_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	load_action_shop()
 	
 	pass # Replace with function body.
 
 
 func _on_item_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	load_item_shop()
 	
 	pass # Replace with function body.
@@ -223,6 +228,9 @@ func load_action_resources_from_folder (path : String, _slot : Array) -> void:
 
 func purchased_notif () -> void:
 	if GlobalGameSystem.item is Slot_data:
+		var sound = load ("res://Asset/sound_effects/sell_buy_item.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		current_coin = GlobalGameSystem.player_coin
 		coin.text = str(current_coin)
 		notif_message = "New Item added to your inventory."
@@ -233,6 +241,9 @@ func purchased_notif () -> void:
 	
 	
 func cant_purchase_notif () -> void:
+	var sound = load ("res://Asset/sound_effects/033_Denied_03.wav")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	notif_message = "Come back when you can afford the dirt this item is sitting on."
 	$CanvasLayer/Control/TextureRect/Label.text = notif_message
 	$CanvasLayer.visible = true
@@ -240,6 +251,9 @@ func cant_purchase_notif () -> void:
 	pass
 
 func inventory_full () -> void:
+	var sound = load ("res://Asset/sound_effects/033_Denied_03.wav")
+	GlobalGameSystem.play_sfx_audio(sound)
+	
 	notif_message = "Oh, splendid… your inventory’s full. Who could’ve seen that coming?"
 	$CanvasLayer/Control/TextureRect/Label.text = notif_message
 	$CanvasLayer.visible = true
@@ -248,6 +262,9 @@ func inventory_full () -> void:
 	
 func action_purchased () -> void:
 	if GlobalGameSystem.item is Actions:
+		var sound = load ("res://Asset/sound_effects/sell_buy_item.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		current_coin = GlobalGameSystem.player_coin
 		coin.text = str(current_coin)
 		notif_message = "Purchased! Another skill in your repertoire."
@@ -266,5 +283,8 @@ func action_cant_purchase () -> void:
 
 
 func _on_exit_n_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	$CanvasLayer.visible = false
 	pass # Replace with function body.

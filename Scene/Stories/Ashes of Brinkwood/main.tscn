@@ -2208,6 +2208,7 @@ offset_right = 529.0
 offset_bottom = 1007.0
 grow_horizontal = 1
 grow_vertical = 1
+mouse_filter = 2
 
 [connection signal="pressed" from="Control/jornal" to="Control/Page" method="_on_jornal_pressed"]
 [connection signal="pressed" from="Control/inventory" to="Control/Page" method="_on_inventory_pressed"]

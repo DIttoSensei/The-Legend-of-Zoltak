@@ -372,10 +372,6 @@ libraries = {
 "": SubResource("AnimationLibrary_321vq")
 }
 
-[node name="sound_effect" type="AudioStreamPlayer" parent="."]
-
-[node name="sound_effect2" type="AudioStreamPlayer" parent="."]
-
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="item_button" to="." method="_on_item_button_pressed"]
 [connection signal="pressed" from="action_button" to="." method="_on_action_button_pressed"]

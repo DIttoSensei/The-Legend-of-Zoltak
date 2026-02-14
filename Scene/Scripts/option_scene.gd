@@ -5,11 +5,20 @@ extends Node
 
 
 var config = ConfigFile.new()
+const SAVE_PATH = 'user://settings.cfg'
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	config.load("user://settings.cfg")
-	load_config()
+	var err = config.load(SAVE_PATH)
+	
+	if err != OK:
+		config.get_value("Settings", "music_enabled", true)
+		config.get_value("Settings", "sfx_enabled", true)
+		config.save(SAVE_PATH)
+		load_config()
+	else:
+		load_config()
+	
 	SceneTransition.fade_in()
 	pass # Replace with function body.
 
