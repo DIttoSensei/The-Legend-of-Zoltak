@@ -22,6 +22,8 @@ class_name Player extends AnimatedSprite2D
 @onready var _3: AnimatedSprite2D = $"../player_effects/3"
 @onready var _4: AnimatedSprite2D = $"../player_effects/4"
 @onready var _5: AnimatedSprite2D = $"../player_effects/5"
+@onready var effect_animation: AnimationPlayer = $"../player_effects/effect_animation"
+
 
 
 
@@ -155,6 +157,9 @@ func set_hp (value : int) -> void:
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	var sound = load ("res://Asset/sound_effects/battle_sfx/Damage_Medium_2.wav")
 	GlobalGameSystem.play_sfx_audio(sound)
+	
+	# play hit effect
+	effect_animation.play("show_1")
 	
 	
 	if battle_scene.enemy_critical_hit == true:
@@ -375,6 +380,10 @@ func perform_action (value, action : Action) -> void:
 	elif action.action_type == "Mystic":
 		self.play("attack")
 		player_effect_modulate($"../player_effects/mystic", 100.0,100.0,66.4)
+		
+		var sound = load ("res://Asset/sound_effects/battle_sfx/mystic.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		$"../player_effects/mystic".play("mystic") # Play mystic animation
 		$hit_box_hit.play("hit")
 		value += GameConfig.atk_buff_value # if atk buff has a value
@@ -387,6 +396,11 @@ func perform_action (value, action : Action) -> void:
 			battle_scene.announcer_text(text)
 			await get_tree().create_timer(1.5).timeout
 			return
+			
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		player_heal_status.value = value
 		$"../player_effects/heal".play("show")
 		text = "[center]Your [color=green]HP[/color] ticks up for 3 turns"
@@ -397,6 +411,10 @@ func perform_action (value, action : Action) -> void:
 			player_heal_status.active = true
 		
 	elif action.action_type == "Defence":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		if player_defence_status.active == true:
 			text = "[center][color=blue]ARMOR DEFENCE[/color] status already in effect[/center]"
 			battle_scene.announcer_text(text)
@@ -410,6 +428,10 @@ func perform_action (value, action : Action) -> void:
 			player_defence_status.active = true
 	
 	elif action.action_type == "Atk Down":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_down.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		self.play("attack")
 		$hit_box_hit.play("hit")
 		value = max(0, value - enemy.def) # deduct damage from enemy def
@@ -839,6 +861,11 @@ func status_effect () -> void:
 			else:
 				check_if_status_icon_is_available(psychic_status.texture)
 				battle_scene.deactivate_item_btn() # prevent usage of items
+				
+				# Play sound effect
+				var sound = load ("res://Asset/sound_effects/battle_sfx/psychic.wav")
+				GlobalGameSystem.play_sfx_audio(sound)
+				
 				battle_scene.status_item_btn_freeze = true
 				player_effect_modulate(_3, 100,1,100)
 				modulate = "purple"
@@ -1029,6 +1056,10 @@ func clear_status_icon (filename : String) -> void:
 
 func deal_status_dmg (value, effect : String) -> void :
 	if effect == "fire":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/fire.mp3")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = "red"
 		self.play("hit")
@@ -1041,6 +1072,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		check_if_you_dead()
 	
 	elif  effect == "water":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/water.mp3")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = 'blue'
 		self.play("hit")
@@ -1054,6 +1089,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		#show_full_mod_stat(hp__, atk__, def__, dex__, con__, wep_dmg, arm_def, itm_tp, crit)
 
 	elif effect == "lightning":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/lightning.mp3")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = 'yellow'
 		self.play("hit")
@@ -1061,6 +1100,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		modulate = "white"
 
 	elif effect == "ice":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/ice.mp3")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = 'lightblue'
 		self.play("hit")
@@ -1068,6 +1111,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		self.stop()
 
 	elif effect == 'wind':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/wind.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = 'lightgreen'
 		self.play("hit")
@@ -1080,6 +1127,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		dex__.text = "(" + str(final_dex - dex) + ")"
 
 	elif effect == 'earth':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/earth.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int (value)
 		modulate = 'brown'
 		self.play("hit")
@@ -1092,6 +1143,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		def__.text = "(" + str(final_def - def) + ")"
 
 	elif  effect == 'heal':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		$"../player_effects/heal".play("show") # play player effect heal
 		modulate_player(100,100,100,1) # flash player white
@@ -1108,6 +1163,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		$"../stats_view/hp_value".text = str (current_hp)
 		
 	elif effect == 'defence':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		set_battle_stat() ## original stat points
 		value = int(value)
 		player_effect_modulate($"../player_effects/2", 0, 0 , 100.0)
@@ -1120,6 +1179,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		def_value.text = str (final_def + armor_def)
 	
 	elif effect =='attack_down':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_down.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		added_value_for_atk_down += value
 		value = int (value)
 		modulate = 'ff7f6e'
@@ -1138,6 +1201,10 @@ func deal_status_dmg (value, effect : String) -> void :
 			_atk.text = str(added_value_for_atk_down)
 	
 	elif effect == 'def_breaker':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_down.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		added_value_for_def_brk += value
 		value = int (value)
 		modulate = 'blue'
@@ -1156,6 +1223,10 @@ func deal_status_dmg (value, effect : String) -> void :
 			brkr_value.text = str(added_value_for_def_brk)
 	
 	elif effect == 'confused': # for psychic effect
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/psychic.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		# make player attack self
 		value = int(value)
 		modulate = 'purple'
@@ -1171,6 +1242,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		$"../stats_view/hp_value".text = str (current_hp)
 		
 	elif effect == 'hex':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/hex_rpg.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		player_effect_modulate($"../player_effects/mystic", 0.018, 0.368, 0.014)
 		$"../player_effects/mystic".play("hex")
@@ -1180,6 +1255,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		hex_modifier = value
 		
 	elif effect == 'shadow':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/shadow.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = "black"
 		self.play("hit")
@@ -1193,6 +1272,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		check_if_you_dead()
 		
 	elif effect == "shadow_p":
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/shadow.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		player_effect_modulate($"../player_effects/2", 0, 0, 0)
 		$"../player_effects/2".play("shadow")
@@ -1212,6 +1295,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		$"../stats_view/hp_value".text = str (current_hp)
 
 	elif effect == 'bleed':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/blood_rpg.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = "red"
 		_4.play("bleed")
@@ -1226,6 +1313,10 @@ func deal_status_dmg (value, effect : String) -> void :
 		check_if_you_dead()
 	
 	elif effect == 'poison':
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/poison.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		value = int(value)
 		modulate = "purple"
 		_5.play("show")

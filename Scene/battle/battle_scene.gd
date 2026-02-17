@@ -186,7 +186,8 @@ func player_roll_modifer (roll : int) -> void:
 	if current_action.action_data.action_type == 'Hex':
 		if player.hex_modifier > 0:
 			print ('hex modifer: ', player.hex_modifier)
-			player_atk_mod += player.hex_modifier + player.weapon_atk
+			player_atk_mod += player.hex_modifier + player.weapon_atk + GameConfig.atk_buff_value + + GameConfig.fire_buff_value
+			buffed_stat = player_atk_mod
 	else:
 		player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
 		###### FOR ATK BASED BUFF
@@ -289,7 +290,7 @@ func enemy_process () -> void:
 	
 	print('enemy hp: ', enemy.enemy_hp.value)
 	battling = false
-	
+	reset_player_stat_buff ()
 	
 	if battling == false:
 		enable_button()
@@ -320,7 +321,8 @@ func player_process () -> void:
 			enable_button()
 	
 		enemy_take_turn = false
-
+		reset_player_stat_buff ()
+		
 func enemy_status_check (enemy_name, damage, move_name) -> void:
 	## Some status checks will be added here
 	if enemy.paralized == true:
@@ -479,6 +481,13 @@ func player_status_check (damage, action):
 			await get_tree().create_timer(2.5).timeout
 			#
 		player_status_active = true
+
+## BUFFS ONLY LAST FOR ONE TURN
+func reset_player_stat_buff () -> void:
+	GameConfig.atk_buff_value = 0
+	GameConfig.crit_buff_value = 0
+	GameConfig.fire_buff_value = 0
+	GameConfig.def_buff_value = 0
 
 ################################################################
 
@@ -689,36 +698,46 @@ func use_item () -> void:
 	
 	# For atk
 	if item.attribute == "Atk":
-		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
 		GlobalGameSystem.play_sfx_audio(sound)
 		text = "[center]You used " + item.name + "[/center]"
 		announcer_text(text)
 		player_buff_effect.modulate = 'a80000'
 		player_buff_effect.play('show')
-		GameConfig.atk_buff_value = item.attribute_value
+		GameConfig.atk_buff_value += item.attribute_value
+		
+		var value = int($Control/stats_view/atk_value.text)
+		value += item.attribute_value
+		$Control/stats_view/atk_value.text = str(value)
+		
 		remove_item_slot()
 		
 	# For def
 	if item.attribute == 'Def':
-		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
 		GlobalGameSystem.play_sfx_audio(sound)
 		text = '[center]You used ' + item.name + '[/center]'
 		announcer_text(text)
 		player_buff_effect.modulate = '0f00f2'
 		player_buff_effect.play('show')
-		GameConfig.def_buff_value = item.attribute_value
+		GameConfig.def_buff_value += item.attribute_value
+		
+		var value = int ($Control/stats_view/def_value.text)
+		value += item.attribute_value
+		$Control/stats_view/def_value.text = str(value)
+		
 		remove_item_slot()
 		
 	# For fire
 	if item.attribute == 'Fire':
-		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
 		GlobalGameSystem.play_sfx_audio(sound)
 		
 		text = '[center]You used ' + item.name + '[/center]'
 		announcer_text(text)
 		player_buff_effect.modulate = 'ff3a5c'
 		player_buff_effect.play('show')
-		GameConfig.fire_buff_value = item.attribute_value
+		GameConfig.fire_buff_value += item.attribute_value
 		remove_item_slot()
 
 

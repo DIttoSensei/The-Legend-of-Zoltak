@@ -11,14 +11,15 @@ const SAVE_PATH = 'user://settings.cfg'
 func _ready() -> void:
 	var err = config.load(SAVE_PATH)
 	
-	if err != OK:
-		config.get_value("Settings", "music_enabled", true)
-		config.get_value("Settings", "sfx_enabled", true)
-		config.save(SAVE_PATH)
-		load_config()
-	else:
-		load_config()
-	
+	#if err != OK:
+		#config.get_value("Settings", "music_enabled", true)
+		#config.get_value("Settings", "sfx_enabled", true)
+		#config.save(SAVE_PATH)
+		#load_config()
+	#else:
+		#load_config()
+		
+	load_config()
 	SceneTransition.fade_in()
 	pass # Replace with function body.
 

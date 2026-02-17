@@ -5,6 +5,7 @@ class_name Start_Menu extends Node2D
 
 
 const next_scene = preload("res://Scene/into.tscn")
+const SAVE_PATH = 'user://settings.cfg'
 
 var config = ConfigFile.new()
 
@@ -12,8 +13,12 @@ var input_locked := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	config.load("user://settings.cfg")
-	load_config()
+	var err = config.load(SAVE_PATH)
+	if err != OK:
+		create_config()
+	else:
+		load_config()
+	
 	input_locked = true
 	SceneTransition.fade_in()
 	animation_player_2.play("text_animation")
@@ -29,6 +34,12 @@ func _process(_delta: float) -> void:
 	pass
 
 # GAME CONFIG
+func create_config () -> void:
+	config.set_value("Settings", "music_enabled", true)
+	config.set_value("Settings", "sfx_enabled", true)
+	config.save(SAVE_PATH)
+	load_config()
+	
 func load_config () -> void:
 	var music = config.get_value("Settings", "music_enabled")
 	var sfx = config.get_value("Settings", "sfx_enabled")

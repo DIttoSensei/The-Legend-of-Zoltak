@@ -27,7 +27,7 @@ func _process(delta):
 
 # amount: Max pixels the camera moves (e.g., 8.0)
 # duration: Time in seconds the shake should last (e.g., 0.15)
-func shake(amount: float = 10.0, duration: float = 0.14):
+func shake(amount: float = 14.0, duration: float = 0.15):
 	shake_strength = amount
 	shake_duration = duration
 	
