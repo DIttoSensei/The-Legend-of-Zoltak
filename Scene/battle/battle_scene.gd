@@ -94,9 +94,13 @@ func _ready() -> void:
 	load_player_actions()
 	load_player_inv()
 	
+	var fog_node = get_node_or_null("fog")
+	if fog_node:
+		$"fog/Parallax2D/fog animation".play("fade_fog_in")
+	
 	GlobalGameSystem.battle_started = true
 	
-	text = "[center]YOU ENCOINTERED THE [color=red]RAGING KNIGHT[/color][/center]"
+	text = "[center]YOU ENCOINTERED [color=red]" + enemy.enemy_name + "[/color][/center]"
 	enable_button()
 	SceneTransition.fade_in()
 	announcer_text(text)
@@ -247,6 +251,7 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	print("player hp: ", player.current_hp)
 	# Check if player has no hp left
 	if player.current_hp <= 0:
+		player_take_turn == true
 		game_over()
 		## Switch scene to game over menu
 		return
@@ -449,6 +454,7 @@ func player_status_check (damage, action):
 			# Check if enemy has no hp left
 			if enemy.current_hp <= 0:
 				player_victory()
+				enemy_take_turn == true
 				## Switch scene to main game 
 				return
 			elif enemy_take_turn == false:
@@ -470,6 +476,7 @@ func player_status_check (damage, action):
 			## Check if player has no hp left
 			if player.current_hp <= 0:
 				game_over()
+				enemy_take_turn == true
 				## Switch scene to game over menu
 				return
 			elif enemy_take_turn == false:
@@ -521,6 +528,7 @@ func player_attack() -> void:
 	
 	## Check if enemy has no hp left
 	if enemy.current_hp <= 0:
+		enemy_take_turn == true
 		player_victory()
 		## Switch scene to game over menu
 		return

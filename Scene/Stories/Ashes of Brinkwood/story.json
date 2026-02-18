@@ -11,6 +11,7 @@
 				
 				"choice" : "🔹 fight",
 				"roll" : {"" : 0},
+				"battle" : "res://Scene/Stories/Ashes of Brinkwood/battles/knight_battle.tscn",
 				"outcome_1" : {"text" : "This is the first outcome congratulation you passed",
 							"next_page" : "page_2",
 							"reward" : {
@@ -38,6 +39,7 @@
 		"page_2": {
 			"img": "res://Asset/img/other/cha.png",
 			"roll" : {"dex" : 40},
+			"battle" : "",
 			"music" : "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
 			"text": "we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once).",
 			"choice_1": {

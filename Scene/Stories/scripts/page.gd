@@ -972,9 +972,10 @@ func copy_and_move_inventory () -> void:
 		storage_inventory.data.slots[i] = null
 
 func show_battle_scene() -> void:
+	var battle_scene = load (current_choice["battle"])
 	SceneTransition.battle_open()
 	await get_tree().create_timer(1).timeout
-	var add_battle_scene = BATTLE.instantiate()
+	var add_battle_scene = battle_scene.instantiate()
 	$"..".add_child(add_battle_scene)
 	add_battle_scene.z_index = 3
 	add_battle_scene.visible = true

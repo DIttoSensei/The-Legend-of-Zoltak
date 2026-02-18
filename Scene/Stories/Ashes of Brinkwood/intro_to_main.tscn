@@ -81,7 +81,7 @@ _data = {
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ig2fi"]
 frequency = 0.0075
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fodg4"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xdqkm"]
 width = 320
 height = 180
 seamless = true
@@ -92,7 +92,7 @@ noise = SubResource("FastNoiseLite_ig2fi")
 shader = ExtResource("2_tum0w")
 shader_parameter/density = 0.4
 shader_parameter/speed = Vector2(0.02, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_fodg4")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_xdqkm")
 
 [sub_resource type="Animation" id="Animation_iiwvs"]
 length = 0.001
