@@ -581,7 +581,7 @@ script = ExtResource("1_7tbob")
 Name_age_error = "Name must be at least 4-8 characters long.
 
 Age must be numerical and at least 2 characters long."
-Stats_error = "You have 300 points to distribute across all stats. choose wisely. While you can maximize any attribute, beware that extreme imbalances can come with hidden drawbacks"
+Stats_error = "You have 150 points to distribute across all stats. choose wisely. While you can maximize any attribute, beware that extreme imbalances can come with hidden drawbacks"
 Save_display = "SAVING PLEASE WAIT..."
 
 [node name="Page2" type="Sprite2D" parent="."]

@@ -7,9 +7,12 @@
 script = ExtResource("1_2yotc")
 action_name = "ARMOR PIERCE"
 action_img = ExtResource("1_qqn1u")
-action_type = "Defence Breaker"
+action_type = "Def Breaker"
 action_attribute = 25
 critical_rate = "15%"
 cooldown = 0
+current_cooldown = 0
 cost = 0
 action_info = "Perform a highly accurate shot that ignores the opponent defences."
+purchased = false
+timeout = false

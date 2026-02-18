@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scene/action/action.gd" id="1_7rftb"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/enemies_res.gd" id="2_lms88"]
-[ext_resource type="Resource" uid="uid://cmbm7c6addl63" path="res://Scene/enemies/knight/actions/thrust.tres" id="2_tthmi"]
+[ext_resource type="Resource" uid="uid://cr8afannqfv63" path="res://Scene/enemies/knight/actions/thrust.tres" id="2_tthmi"]
 [ext_resource type="Resource" uid="uid://gwwvxescm626" path="res://Scene/enemies/knight/actions/razor_cut.tres" id="3_mnpb4"]
 [ext_resource type="Resource" uid="uid://mhiq6usm3x0a" path="res://Scene/enemies/knight/actions/bulk_up.tres" id="4_i15xf"]
 

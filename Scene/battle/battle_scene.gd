@@ -790,6 +790,10 @@ func _battle_gauge () -> void:
 
 # Game over function
 func game_over () -> void:
+	var fog_node = get_node_or_null("fog")
+	if fog_node:
+		$"fog/Parallax2D/fog animation".play("RESET")
+	
 	player.stop()
 	player.modulate = "0000007f"
 	$results/result_text.text = "DEFEAT"
@@ -806,6 +810,11 @@ func game_over () -> void:
 
 # victory function
 func player_victory () -> void:
+	var fog_node = get_node_or_null("fog")
+	if fog_node:
+		$"fog/Parallax2D/fog animation".play("RESET")
+		
+		
 	GlobalGameSystem.battle_started = false
 	GlobalGameSystem.results = "victory"
 	GlobalGameSystem.player_hp = player.current_hp

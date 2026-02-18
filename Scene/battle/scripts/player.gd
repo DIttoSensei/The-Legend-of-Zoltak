@@ -411,21 +411,22 @@ func perform_action (value, action : Action) -> void:
 			player_heal_status.active = true
 		
 	elif action.action_type == "Defence":
-		# Play sound effect
-		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
-		GlobalGameSystem.play_sfx_audio(sound)
-		
 		if player_defence_status.active == true:
 			text = "[center][color=blue]ARMOR DEFENCE[/color] status already in effect[/center]"
 			battle_scene.announcer_text(text)
 			return
+			
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		player_defence_status.value = value
 		$"../player_effects/2".play("defence")
 		text = "[center]Your [color=blue]ARMOR DEFENCE[/color] ticks up for 3 turns"
 		battle_scene.announcer_text(text)
-		var roll = randi_range(1, 100)
-		if roll <= full_status_chance:
-			player_defence_status.active = true
+		#var roll = randi_range(1, 100)
+		#if roll <= full_status_chance:
+		player_defence_status.active = true
 	
 	elif action.action_type == "Atk Down":
 		# Play sound effect

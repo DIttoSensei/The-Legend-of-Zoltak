@@ -118,7 +118,7 @@ func _on_confirm_pressed() -> void:
 	if name_edit.text.length() < 4 or name_edit.text.length() > 8 or not age is int or str(age).length() < 2:
 		notice.text = Name_age_error
 		display_notice()
-	elif state_cumulation > 300 or state_cumulation < 300:
+	elif state_cumulation > 150 or state_cumulation < 150:
 		notice.text = Stats_error
 		display_notice()
 	else:

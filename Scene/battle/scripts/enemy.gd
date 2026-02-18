@@ -144,6 +144,7 @@ func attack_player () -> void:
 			if random_index == 0:
 				anim_name = "attack_1"
 				current_animation = anim_name
+				print("yes")
 			elif random_index == 1:
 				anim_name = "attack_2"
 				current_animation = anim_name
@@ -371,15 +372,21 @@ func perform_action (damage, player_def_mod) -> void:
 			battle_scene.announcer_text(text)
 			await get_tree().create_timer(1.5).timeout
 			return
+		
+		await get_tree().create_timer(1.5).timeout
+		
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/buff_up.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
+		#var roll = randi_range(1, 100)
+		#if roll <= status_chance:
+		enemy_defence_status.active = true
 		enemy_defence_status.value = damage
 		modulate_enemy_effects(_6, 0,0,100)
 		_6.play("defence")
 		text = "[center]Opponent [color=blue]ARMOR DEFENCE[/color] ticks up for 3 turns"
 		battle_scene.announcer_text(text)
-		await get_tree().create_timer(1.5).timeout
-		var roll = randi_range(1, 100)
-		if roll <= status_chance:
-			enemy_defence_status.active = true
 	
 	elif current_move.action_type == "Atk Down":
 		# if there is a status effect animation current stop it for the mean time

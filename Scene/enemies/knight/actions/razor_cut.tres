@@ -6,7 +6,7 @@
 script = ExtResource("1_6jnys")
 action_name = "RAZOR CUT"
 action_type = "Def Breaker"
-action_attribute = 25
+action_attribute = 30
 critical_rate = "10%"
 cooldown = 0
 current_cooldown = 0
