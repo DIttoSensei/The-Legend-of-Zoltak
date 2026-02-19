@@ -6,7 +6,7 @@
 script = ExtResource("1_x5nwq")
 action_name = "BULK UP"
 action_type = "Defence"
-action_attribute = 15
+action_attribute = 45
 critical_rate = "0%"
 cooldown = 0
 current_cooldown = 0

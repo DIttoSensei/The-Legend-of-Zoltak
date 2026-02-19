@@ -6,6 +6,11 @@ var def_buff_value : int = 0
 var crit_buff_value : int = 0
 var fire_buff_value : int = 0
 
+var relic_atk : int = 0
+var relic_def : int = 0
+var relic_crit : int = 0
+var relic_heal : int = 0
+
 
 
 

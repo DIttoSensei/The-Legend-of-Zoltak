@@ -9,6 +9,7 @@ var battling : bool = false
 var current_action : Actions
 var enemy_take_turn : bool = false
 var player_take_turn : bool = false
+var battle_surge_active : bool = false
 
 # modifers
 var player_atk_mod 
@@ -94,9 +95,9 @@ func _ready() -> void:
 	load_player_actions()
 	load_player_inv()
 	
-	var fog_node = get_node_or_null("fog")
+	var fog_node = get_node_or_null("Control/fog")
 	if fog_node:
-		$"fog/Parallax2D/fog animation".play("fade_fog_in")
+		$"Control/fog/Parallax2D/fog animation".play("fade_fog_in")
 	
 	GlobalGameSystem.battle_started = true
 	
@@ -129,6 +130,10 @@ func enable_button () -> void:
 		attack.disabled = false
 		inventory.disabled = false
 		full_stats.disabled = false
+	
+	if battle_surge_active == true:
+		battle_surge.disabled = false
+		
 
 func _on_attack_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
@@ -180,7 +185,7 @@ func player_roll_modifer (roll : int) -> void:
 	var buffed_stat : int = 0
 	player_atk_mod = int(player.final_atk * (0.5 + (roll/20.0)))
 	
-	var critical_rate = int(current_action.action_data.critical_rate.trim_suffix("%"))
+	var critical_rate = int(current_action.action_data.critical_rate.trim_suffix("%")) + GameConfig.relic_crit
 	var chance = randi_range(0,100)
 	if chance < critical_rate: ## For critical hits
 		player_critical_hit = true
@@ -190,17 +195,17 @@ func player_roll_modifer (roll : int) -> void:
 	if current_action.action_data.action_type == 'Hex':
 		if player.hex_modifier > 0:
 			print ('hex modifer: ', player.hex_modifier)
-			player_atk_mod += player.hex_modifier + player.weapon_atk + GameConfig.atk_buff_value + + GameConfig.fire_buff_value
+			player_atk_mod += player.hex_modifier + player.weapon_atk + GameConfig.atk_buff_value + GameConfig.fire_buff_value + GameConfig.relic_atk
 			buffed_stat = player_atk_mod
 	else:
 		player_atk_mod += current_action.action_data.action_attribute + player.weapon_atk
 		###### FOR ATK BASED BUFF
-		buffed_stat += player_atk_mod + GameConfig.atk_buff_value + GameConfig.fire_buff_value
+		buffed_stat += player_atk_mod + GameConfig.atk_buff_value + GameConfig.fire_buff_value + GameConfig.relic_atk
 		
 	
 	player_def_mod = int(player.final_def * (0.5 + (roll/20.0))) + player.armor_def
 	### FOR DEFENCE BUFF
-	player_def_mod += GameConfig.def_buff_value
+	player_def_mod += GameConfig.def_buff_value + GameConfig.relic_def
 	
 	player_dex_mod = int(player.final_dex * (0.5 + (roll/20.0)))
 	pass
@@ -240,13 +245,13 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	
 	text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
 	announcer_text(text)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	
 	## Perform action type
 	await enemy.perform_action(damage, player_def_mod)
 	
 	
-	await get_tree().create_timer(1.7).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	print("player hp: ", player.current_hp)
 	# Check if player has no hp left
@@ -258,7 +263,7 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 		
 	
 	if player_take_turn == false:
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.2).timeout
 		text = "[center]Now it's your turn[/center]"
 		announcer_text(text)
 		player_attack()
@@ -284,14 +289,16 @@ func enemy_process () -> void:
 	text = "[center]The air grew thick filled with a strange ominous aura[/center]" # announer for turn end
 	await announcer_text(text)
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.2).timeout
 	
 	if enemy.enemy_shadow == true:
 		await player.status_effect()
+		await player.relic_mod()
 		await enemy.status_effect() # check for status effect
 	else:
 		await enemy.status_effect() # check for status effect
 		await player.status_effect() # check for player status
+		await player.relic_mod()
 	
 	print('enemy hp: ', enemy.enemy_hp.value)
 	battling = false
@@ -315,10 +322,12 @@ func player_process () -> void:
 		
 		if enemy.enemy_shadow == true:
 			await player.status_effect()
+			await player.relic_mod()
 			await enemy.status_effect() # check for status effect
 		else:
 			await enemy.status_effect() # check for status effect
 			await player.status_effect() # check for player effect
+			await player.relic_mod()
 		
 		print('enemy hp: ', enemy.enemy_hp.value)
 		battling = false
@@ -334,13 +343,13 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 		enemy.deal_status_dmg(0, 'lightning')
 		text = "[center]" + "[color=red]" + enemy_name + "[/color]"+ " is paralazied and can't move[/center]"
 		announcer_text(text)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		if player_take_turn == false:
 			enemy_take_turn = true
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			text = "[center]You took the advantage and prepared to attack[/center]"
 			announcer_text(text)
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			player_attack()
 		#else:
 			#enemy_process() # to contunie with enemy battle logic
@@ -350,13 +359,13 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 		enemy.deal_status_dmg(0, 'ice')
 		text = "[center]" + "[color=red]" + enemy_name + "[/color]"+ " is frozen and can't move[/center]"
 		announcer_text(text)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		if player_take_turn == false:
 			enemy_take_turn = true
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			text = "[center]You took the advantage and prepared to attack[/center]"
 			announcer_text(text)
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			player_attack()
 		#else:
 			#enemy_process()
@@ -365,7 +374,7 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 	if enemy.confused == true:
 		text = "[center][color=red]" + enemy_name + "[/color] is confused and unpredictable[/center]"
 		announcer_text(text)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		var hit_chance = randi_range(1,2)
 		if hit_chance == 1: # (1) Attack player, (2) Attack self
 			text = "[center]" + "[color=red]"+ enemy_name + "[/color]" + " USED " + move_name + "[/center]"
@@ -379,12 +388,12 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 				return
 			elif player_take_turn == false:
 				enemy_take_turn = true
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				text = "[center]You prepared to attack[/center]"
 				announcer_text(text)
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				player_attack()
-			await get_tree().create_timer(2.5).timeout
+			await get_tree().create_timer(2).timeout
 			
 		if hit_chance == 2:
 			var dmg : int = damage / 2
@@ -398,12 +407,12 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 				return
 			elif player_take_turn == false:
 				enemy_take_turn = true
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				text = "[center]You prepared to attack[/center]"
 				announcer_text(text)
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				player_attack()
-			await get_tree().create_timer(2.5).timeout
+			await get_tree().create_timer(2).timeout
 			
 		status_active = true
 	
@@ -413,13 +422,13 @@ func player_status_check (damage, action):
 		player.deal_status_dmg(0, 'lightning')
 		text = "[center] You have been [color=yellow]paralazied[/color] and can't move[/center]"
 		announcer_text(text)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		if enemy_take_turn == false:
 			player_take_turn = true
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			text = "[center]Opponent took the advantage and prepared to attack[/center]"
 			announcer_text(text)
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			enemy.attack_player()
 		#else:
 			#enemy_process() # to contunie with enemy battle logic
@@ -429,13 +438,13 @@ func player_status_check (damage, action):
 		player.deal_status_dmg(0, 'ice')
 		text = "[center]You are [color=lightblue]frozen[/color] and can't move[/center]"
 		announcer_text(text)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		if enemy_take_turn == false:
 			player_take_turn = true
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			text = "[center]Opponent took the advantage and prepared to attack[/center]"
 			announcer_text(text)
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.2).timeout
 			enemy.attack_player()
 		#else:
 			#enemy_process()
@@ -444,7 +453,7 @@ func player_status_check (damage, action):
 	if player.confused == true:
 		text = "[center]You have gotten confused and actions unpredictable[/center]"
 		announcer_text(text)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		var hit_chance = randi_range(1,2)
 		if hit_chance == 1: # (1) Attack enemy, (2) Attack self
 			text = "[center]You USED[color=green] " + action.action_name + "[/color][/center]"
@@ -459,12 +468,12 @@ func player_status_check (damage, action):
 				return
 			elif enemy_take_turn == false:
 				player_take_turn = true
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				text = "[center]Enemy prepares to attack[/center]"
 				announcer_text(text)
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				enemy.attack_player()
-			await get_tree().create_timer(2.5).timeout
+			await get_tree().create_timer(2).timeout
 			
 		if hit_chance == 2: #Attack self
 			var dmg : int = damage / 2
@@ -483,9 +492,9 @@ func player_status_check (damage, action):
 				player_take_turn = true
 				text = "[center]Opponent prepared to attack[/center]"
 				announcer_text(text)
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(1.2).timeout
 				enemy.attack_player()
-			await get_tree().create_timer(2.5).timeout
+			await get_tree().create_timer(2).timeout
 			#
 		player_status_active = true
 
@@ -506,7 +515,7 @@ func player_attack() -> void:
 	var action : Action = current_action.action_data
 	var damage = player_atk_mod
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	## Some status checks will be added here
 	await player_status_check(damage, action)
@@ -518,12 +527,12 @@ func player_attack() -> void:
 	
 	text = "[center]You used " +"[color=green]" + action.action_name + "[/color][/center]"
 	announcer_text(text)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	## This is where the move type gets checked to perform it properties
 	## Eg if it a stun or poisen type move it does it work rather than just dmg
 	await player.perform_action (damage, action)
-	await get_tree().create_timer(1.7).timeout
+	await get_tree().create_timer(1.2).timeout
 	
 	
 	## Check if enemy has no hp left
@@ -790,9 +799,9 @@ func _battle_gauge () -> void:
 
 # Game over function
 func game_over () -> void:
-	var fog_node = get_node_or_null("fog")
+	var fog_node = get_node_or_null("Control/fog")
 	if fog_node:
-		$"fog/Parallax2D/fog animation".play("RESET")
+		$"Control/fog/Parallax2D/fog animation".play("RESET")
 	
 	player.stop()
 	player.modulate = "0000007f"
@@ -852,11 +861,12 @@ func _on_full_stats_pressed() -> void:
 
 
 func activate_battle_surge_btn () -> void:
-	battle_surge.disabled = false
+	battle_surge_active = true
 	battle_surge.modulate = 'white'
 	
 func deactivate_battle_surge_btn () -> void:
 	battle_surge.disabled = true
+	battle_surge_active = false
 	battle_surge.modulate = '4e4e4e'
 	
 func activate_item_btn () -> void:
@@ -870,7 +880,7 @@ func deactivate_item_btn () -> void:
 	
 ## When player battle surge is full and pressed
 func _on_battle_surge_pressed() -> void:
-	var audio = load("res://Asset/sound_effects/click_1.wav")
+	var audio = load("res://Asset/sound_effects/battle_sfx/mystic.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	
 	battle_gauge.frame = 7

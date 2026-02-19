@@ -1,4 +1,4 @@
-[gd_scene load_steps=311 format=3 uid="uid://qnmnoj0epg7m"]
+[gd_scene load_steps=312 format=3 uid="uid://qnmnoj0epg7m"]
 
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_n3l61"]
 [ext_resource type="Texture2D" uid="uid://doah3yaqfbp0h" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/1000185016.png" id="2_ysepm"]
@@ -1373,6 +1373,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(897.569, 893.891)]
+}
 
 [sub_resource type="Animation" id="Animation_0bsxo"]
 resource_name = "attack_1"
@@ -1517,12 +1529,64 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_6c1nv"]
+resource_name = "attack_4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(897.569, 893.891), Vector2(761.569, 893.891), Vector2(897.569, 893.891)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hurtbox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(39.4991, 11.681), Vector2(-54.7588, 11.681), Vector2(39.4991, 11.681)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqraf"]
 _data = {
 "RESET": SubResource("Animation_wm37n"),
 "attack_1": SubResource("Animation_0bsxo"),
 "attack_2": SubResource("Animation_ytx4t"),
 "attack_3": SubResource("Animation_w6t2c"),
+"attack_4": SubResource("Animation_6c1nv"),
 "death": SubResource("Animation_s6tu3"),
 "hit": SubResource("Animation_no14y"),
 "idle": SubResource("Animation_jwogv")
@@ -2197,6 +2261,76 @@ _data = {
 "show_1": SubResource("Animation_orrkk")
 }
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aog6o"]
+frequency = 0.0075
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fodg4"]
+width = 320
+height = 180
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_aog6o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5xyu"]
+shader = ExtResource("234_o6m8r")
+shader_parameter/density = 0.21
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fodg4")
+
+[sub_resource type="Animation" id="Animation_iiwvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/fog/Parallax2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rh11i"]
+resource_name = "fade_fog_in"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/fog/Parallax2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w5mqo"]
+resource_name = "fade_fog_out"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/fog/Parallax2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333338, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxxy4"]
+_data = {
+"RESET": SubResource("Animation_iiwvs"),
+"fade_fog_in": SubResource("Animation_rh11i"),
+"fade_fog_out": SubResource("Animation_w5mqo")
+}
+
 [sub_resource type="Animation" id="Animation_p7ar1"]
 length = 0.001
 tracks/0/type = "value"
@@ -2673,76 +2807,6 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_k8yix"),
 "roll_animation": SubResource("Animation_m4lal")
-}
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_aog6o"]
-frequency = 0.0075
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fodg4"]
-width = 320
-height = 180
-seamless = true
-seamless_blend_skirt = 0.75
-noise = SubResource("FastNoiseLite_aog6o")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5xyu"]
-shader = ExtResource("234_o6m8r")
-shader_parameter/density = 0.21
-shader_parameter/speed = Vector2(0.02, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_fodg4")
-
-[sub_resource type="Animation" id="Animation_iiwvs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fog/Parallax2D/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_rh11i"]
-resource_name = "fade_fog_in"
-length = 9.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fog/Parallax2D/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_w5mqo"]
-resource_name = "fade_fog_out"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("fog/Parallax2D/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333338, 3.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxxy4"]
-_data = {
-"RESET": SubResource("Animation_iiwvs"),
-"fade_fog_in": SubResource("Animation_rh11i"),
-"fade_fog_out": SubResource("Animation_w5mqo")
 }
 
 [node name="BattleScene" type="Node2D"]
@@ -3456,6 +3520,28 @@ theme_override_font_sizes/font_size = 30
 text = "CRITICAL HIT"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="fog" type="ParallaxBackground" parent="Control"]
+layer = 2
+scroll_ignore_camera_zoom = true
+
+[node name="Parallax2D" type="Parallax2D" parent="Control/fog"]
+
+[node name="ColorRect" type="ColorRect" parent="Control/fog/Parallax2D"]
+modulate = Color(1, 1, 1, 0)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_b5xyu")
+offset_left = -298.0
+offset_top = 161.0
+offset_right = 1378.0
+offset_bottom = 1139.0
+mouse_filter = 2
+
+[node name="fog animation" type="AnimationPlayer" parent="Control/fog/Parallax2D"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_lxxy4")
+}
 
 [node name="action display" type="CanvasLayer" parent="Control"]
 visible = false
@@ -4652,28 +4738,6 @@ theme_override_font_sizes/font_size = 50
 text = "VICTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="fog" type="ParallaxBackground" parent="."]
-layer = 2
-scroll_ignore_camera_zoom = true
-
-[node name="Parallax2D" type="Parallax2D" parent="fog"]
-
-[node name="ColorRect" type="ColorRect" parent="fog/Parallax2D"]
-modulate = Color(1, 1, 1, 0)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_b5xyu")
-offset_left = -298.0
-offset_top = 161.0
-offset_right = 1378.0
-offset_bottom = 1139.0
-mouse_filter = 2
-
-[node name="fog animation" type="AnimationPlayer" parent="fog/Parallax2D"]
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_lxxy4")
-}
 
 [connection signal="timeout" from="Control/top info/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Control/attack" to="." method="_on_attack_pressed"]

@@ -113,6 +113,7 @@ var rel_type
 var leggings_def
 var weapon_atk 
 var armor_def
+var relic_flag : bool = false
 
 @onready var player_hp: TextureProgressBar = $"../player_hp"
 @onready var camera: Camera2D = $"../Camera2D"
@@ -132,6 +133,7 @@ func _ready() -> void:
 	hp_value.text = str (current_hp)
 	
 	SignalManager.player_damaged.connect(take_damage)
+	relic_flag = true
 	pass # Replace with function body.
 
 
@@ -206,6 +208,21 @@ func load_selected_inv () -> void:
 	armor_def = headgear_def + chestplate_def + leggings_def
 	
 	current_armor_def = armor_def
+	relic_mod()
+	
+func relic_mod () -> void:
+	if rel_type == 'Atk':
+		GameConfig.relic_atk = rel_atr
+	elif rel_type == 'Def':
+		GameConfig.relic_def = rel_atr
+	elif rel_type == 'Crit':
+		GameConfig.relic_crit = rel_atr
+	elif rel_type == 'Heal':
+		if relic_flag == true:
+			deal_status_dmg(rel_atr, 'heal')
+		else:
+			return
+
 		
 func set_battle_stat () -> void:
 	atk = GlobalGameSystem.player_atk 
