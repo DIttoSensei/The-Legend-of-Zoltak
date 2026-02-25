@@ -97,6 +97,7 @@ func _ready() -> void:
 	
 	var fog_node = get_node_or_null("Control/fog")
 	if fog_node:
+		$Control/fog.visible = true
 		$"Control/fog/Parallax2D/fog animation".play("fade_fog_in")
 	
 	GlobalGameSystem.battle_started = true
@@ -821,7 +822,8 @@ func game_over () -> void:
 func player_victory () -> void:
 	var fog_node = get_node_or_null("fog")
 	if fog_node:
-		$"fog/Parallax2D/fog animation".play("RESET")
+		$"fog/Parallax2D/fog animation".stop()
+		$Control/fog.visible = false
 		
 		
 	GlobalGameSystem.battle_started = false
