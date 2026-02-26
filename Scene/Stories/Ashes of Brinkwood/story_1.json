@@ -1,0 +1,282 @@
+{
+  "Chapter_1": {
+
+
+	"page_1": {
+	  "img": "res://Asset/img/other/cons.png",
+	  "roll": {
+		"dex": 20
+	  },
+	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "text": "The carriage wheels groan against the uneven road, a rhythmic, bone-deep thud that has been your only music for forty-eight hours. Outside, the world of Brinkwood is a study in gray. The forest is choked by a low, clinging fog that smells of ozone and wet ash, but occasionally, the carriage passes a waystone ancient rock covered in strange red moss as you roll by.\nFernrick: (He is draped across the velvet bench opposite you, his posture impeccably relaxed despite the jolting path. He’s polishing a small, silver monocle, his eyes catching the flickering light of the interior lanterns.)\n\"Two days, my friend. Two days of your brooding silence and the smell of damp horse. I’ve read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"\n(He taps the monocle against his chin, looking at you with a mix of genuine curiosity and that signature Elven condescension.)",
+	  "choice_1": {
+		"choice": "🔹 continue",
+		"roll": {
+		  "": 0
+		},
+		"battle": "",
+		"next_page": "page_2"
+	  },
+	  "choice_2": {
+		"choice": "",
+		"roll": {
+		  "": 0
+		},
+		"battle": ""
+	  },
+	  "choice_3": {
+		"choice": "",
+		"roll": {
+		  "": 0
+		},
+		"battle": ""
+	  },
+	  "choice_4": {
+		"choice": "",
+		"roll": {
+		  "": 0
+		},
+		"battle": ""
+	  }
+	},
+
+
+	"page_2": {
+	  "img": "res://Asset/img/other/cha.png",
+	  "roll": {
+		"dex": 40
+	  },
+	  "battle": "",
+	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "text": "[i]'Think on it. Rumors says a decade of disappearances. A town large enough to be a kingdom, yet silent as a grave. Then, an anonymous letter arrives at the Guild, bearing the high-official seal of the very office meant to prevent such tragedies. It’s either the most sophisticated trap in the history of the Reach, or the people of Brinkwood have finally realized that their 'advanced' systems are failing them. Again, not much has been confirmed so we a mostly going in blind.'[/i]\n\n>>[b][i] \"He’s a talker, isn’t he? Fernrick loves the sound of his own thoughts—mostly because he thinks they’re the only ones worth hearing. But he’s right to be uneasy. You can feel it too, can’t you? That prickle on the back of your neck? That’s the feeling of a story that’s already been written, just waiting for you to step into the ink. Go on, give him an answer. It won't change where we're going, but I’d like to see what kind of person you’re pretending to be today.\" [/i][b]<<\n\nFernrick leans forward, his demure smile sharpening. [i]'Tell me, partner. When we step off this carriage and face the immigration clerks, how are we playing this? What does your 'gut' tell you about the letter that brought us here?'[/i]",
+	  "choice_1": {
+		"choice": "🔹 The letter is a plea from someone who has lost everything",
+		"roll": {
+		  "dex": 0
+		},
+		"battle": "",
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] 'Ah, the sentimental approach. How... charming of you. You think there’s a grieving soul behind that official wax, weeping in some dark corner of the city? I find it more likely they’re just desperate to save their own skin before the scandal breaks, but I suppose a little empathy might help us blend in with the commoners.\"\n\n>>[b][i] 'Empathy. A beautiful, fragile thing. It’s a shame it usually ends up shattered on the floor. I hope you’re right, for your sake. It’s much harder to narrate a tragedy when the hero is too busy crying to swing a blade.' [/i][/b]<<",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  },
+	  "choice_2": {
+		"choice": "🔹 it’s a power play. Someone wants to use us to remove a rival.",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] [i]'Now there’s the cynical spark I was looking for! You think we’re the scalpel meant to cut out a political tumor? It would explain the official seal. If we die, we’re just 'unfortunate mercenaries.' If we succeed, whoever sent the letter gets a clean town and all the credit. It’s almost Elven in its cruelty. I like it.'[/i]\n\n>>[b][i] 'Calculated. Cold. You’re looking for the puppet strings, aren’t you? It’s a good instinct. Just remember—even the person holding the strings is usually being pulled by something else. We’re all just dancing for an audience you can't see.' [/i][/b]",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  },
+	  "choice_3": {
+		"choice": "🔹 The 'disappearances' aren't what they seem. The letter is a warning.",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] [i](His expression shifts, becoming uncharacteristically serious) 'A warning? To stay away, or to prepare for something worse? You’re suggesting the children aren't just being taken—they're being... utilized. It would explain the lack of footprints. If the town's own 'code' is being used to hide the tracks, then we aren't just hunting a kidnapper.'\n\n>>[b][i] 'If only it were that simple. You’re starting to see the edges of the map, aren’t you? The situation isn't just dark; it’s beyond you. And how you belive some things are better left lost in the static. But you won't stop, will you?' [/i][/b]<<",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  },
+	  "choice_4": {
+		"choice": "🔹 It doesn't matter why it was sent. We have a job to do.",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] [i](He sighs, leaning back and rolling his eyes toward the carriage roof) 'So dull. So professional. You’re no fun at all, you know that? 'The Job' is just a polite word for 'surviving the next hour.' But fine. If you wish to be the blunt instrument of the Guild, I shall be the fine-edged blade that guides you. Just try not to get to worked up and get us into trouble.'[/i]\n\n>>[b][i] 'The stoic soldier. A classic choice. It’s easier to follow the path when you keep your eyes on your boots, I suppose. But don't be surprised when the path starts to move beneath you. I’ve seen 'duty' lead better people than you into a shallow grave.' [/i][/b]<<",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  }
+	},
+
+
+	"page_3": {
+	  "img": "res://Asset/img/other/cha.png",
+	  "roll": {
+		"dex": 40
+	  },
+	  "battle": "",
+	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "text": "[i]'Think on it. Rumors says a decade of disappearances. A town large enough to be a kingdom, yet silent as a grave. Then, an anonymous letter arrives at the Guild, bearing the high-official seal of the very office meant to prevent such tragedies. It’s either the most sophisticated trap in the history of the Reach, or the people of Brinkwood have finally realized that their 'advanced' systems are failing them. Again, not much has been confirmed so we a mostly going in blind.'[/i]\n\n>>[b][i] \"He’s a talker, isn’t he? Fernrick loves the sound of his own thoughts—mostly because he thinks they’re the only ones worth hearing. But he’s right to be uneasy. You can feel it too, can’t you? That prickle on the back of your neck? That’s the feeling of a story that’s already been written, just waiting for you to step into the ink. Go on, give him an answer. It won't change where we're going, but I’d like to see what kind of person you’re pretending to be today.\" [/i][b]<<\n\nFernrick leans forward, his demure smile sharpening. [i]'Tell me, partner. When we step off this carriage and face the immigration clerks, how are we playing this? What does your 'gut' tell you about the letter that brought us here?'[/i]",
+	  "choice_1": {
+		"choice": "🔹 The letter is a plea from someone who has lost everything",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] 'Ah, the sentimental approach. How... charming of you. You think there’s a grieving soul behind that official wax, weeping in some dark corner of the city? I find it more likely they’re just desperate to save their own skin before the scandal breaks, but I suppose a little empathy might help us blend in with the commoners.\"\n\n>>[b][i] 'Empathy. A beautiful, fragile thing. It’s a shame it usually ends up shattered on the floor. I hope you’re right, for your sake. It’s much harder to narrate a tragedy when the hero is too busy crying to swing a blade.' [/i][/b]<<",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  },
+	  "choice_2": {
+		"choice": "🔹 it’s a power play. Someone wants to use us to remove a rival.",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] [i]'Now there’s the cynical spark I was looking for! You think we’re the scalpel meant to cut out a political tumor? It would explain the official seal. If we die, we’re just 'unfortunate mercenaries.' If we succeed, whoever sent the letter gets a clean town and all the credit. It’s almost Elven in its cruelty. I like it.'[/i]\n\n>>[b][i] 'Calculated. Cold. You’re looking for the puppet strings, aren’t you? It’s a good instinct. Just remember—even the person holding the strings is usually being pulled by something else. We’re all just dancing for an audience you can't see.' [/i][/b]",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  },
+	  "choice_3": {
+		"choice": "🔹 The 'disappearances' aren't what they seem. The letter is a warning.",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] [i](His expression shifts, becoming uncharacteristically serious) 'A warning? To stay away, or to prepare for something worse? You’re suggesting the children aren't just being taken—they're being... utilized. It would explain the lack of footprints. If the town's own 'code' is being used to hide the tracks, then we aren't just hunting a kidnapper.'\n\n>>[b][i] 'If only it were that simple. You’re starting to see the edges of the map, aren’t you? The situation isn't just dark; it’s beyond you. And how you belive some things are better left lost in the static. But you won't stop, will you?' [/i][/b]<<",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  },
+	  "choice_4": {
+		"choice": "🔹 It doesn't matter why it was sent. We have a job to do.",
+		"roll": {
+		  "dex": 0
+		},
+		"outcome_1": {
+		  "text": "[b]Fernrick:[/b] [i](He sighs, leaning back and rolling his eyes toward the carriage roof) 'So dull. So professional. You’re no fun at all, you know that? 'The Job' is just a polite word for 'surviving the next hour.' But fine. If you wish to be the blunt instrument of the Guild, I shall be the fine-edged blade that guides you. Just try not to get to worked up and get us into trouble.'[/i]\n\n>>[b][i] 'The stoic soldier. A classic choice. It’s easier to follow the path when you keep your eyes on your boots, I suppose. But don't be surprised when the path starts to move beneath you. I’ve seen 'duty' lead better people than you into a shallow grave.' [/i][/b]<<",
+		  "next_page": "page_2",
+		  "reward": {
+			"coin": 0,
+			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
+			"achivement": "1",
+			"reward_text": "",
+			"items": []
+		  }
+		},
+		"outcome_2": {
+		  "text": "",
+		  "next_page": "page_2",
+		  "loss": {
+			"hp": 0,
+			"coin": 0,
+			"achivement": "1",
+			"loss_text": ""
+		  }
+		}
+	  }
+	}
+  }
+}

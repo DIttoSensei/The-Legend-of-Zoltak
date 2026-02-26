@@ -94,7 +94,7 @@ func delay (seconds : float) -> void:
 
 # loads the game story file in main scene
 func load_story_data():
-	var file = FileAccess.open("res://Scene/Stories/Ashes of Brinkwood/story.json", FileAccess.READ)
+	var file = FileAccess.open("res://Scene/Stories/Ashes of Brinkwood/story_1.json", FileAccess.READ)
 	if file:
 		var chapters = file.get_as_text()
 		ashes_of_brinkwood = JSON.parse_string(chapters)

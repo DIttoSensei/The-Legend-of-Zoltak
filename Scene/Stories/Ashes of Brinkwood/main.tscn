@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://c5w6dmvryahbj"]
+[gd_scene load_steps=115 format=3 uid="uid://c5w6dmvryahbj"]
 
 [ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/other/bg.png" id="1_uovk4"]
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/scripts/main.gd" id="1_v0woh"]
@@ -32,7 +32,9 @@
 [ext_resource type="Script" path="res://Scene/Stories/scripts/page.gd" id="29_6bxql"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="29_26tb2"]
 [ext_resource type="Texture2D" uid="uid://bliubbb01uqxj" path="res://Asset/img/other/RectangleBox_96x96.png" id="31_3vncn"]
+[ext_resource type="Texture2D" uid="uid://c7k6nysbnlg26" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/test.png" id="31_g8cte"]
 [ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="32_eo6sl"]
+[ext_resource type="Script" path="res://Scene/Scripts/scroll_box_container.gd" id="32_g67we"]
 [ext_resource type="Texture2D" uid="uid://djxabns8rx41n" path="res://Asset/img/other/CornerKnot_14x14.png" id="32_pkdf1"]
 [ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="33_0oah6"]
 [ext_resource type="Script" path="res://Scene/Stories/scripts/camera.gd" id="34_c5ugl"]
@@ -89,6 +91,66 @@ base_font = ExtResource("9_w4v0i")
 
 [sub_resource type="FontVariation" id="FontVariation_x7m3p"]
 base_font = ExtResource("9_w4v0i")
+
+[sub_resource type="Animation" id="Animation_6vr2s"]
+resource_name = "start_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 560)]
+}
+
+[sub_resource type="Animation" id="Animation_vsd55"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 560)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m53kq"]
+_data = {
+"RESET": SubResource("Animation_vsd55"),
+"start_fade": SubResource("Animation_6vr2s")
+}
 
 [sub_resource type="Animation" id="Animation_kkhdb"]
 length = 0.001
@@ -219,18 +281,6 @@ tracks/10/path = NodePath("continue:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("reward_indicator:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -402,22 +452,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("reward_indicator:visible")
+tracks/0/path = NodePath("continue:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("reward_indicator:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -431,46 +469,10 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("continue:visible")
+tracks/0/path = NodePath("continue:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("continue:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("reward_indicator:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("reward_indicator:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -1080,10 +1082,11 @@ theme_override_font_sizes/font_size = 12
 text = "100"
 
 [node name="border" type="Sprite2D" parent="Control"]
+visible = false
 modulate = Color(1, 0.772549, 0.6, 0.188235)
-position = Vector2(544.852, 345.899)
+position = Vector2(531.359, 331.067)
 rotation = 3.14159
-scale = Vector2(3.67096, 3.67096)
+scale = Vector2(3.05294, 3.05294)
 texture = ExtResource("47_l1m5a")
 
 [node name="border2" type="Sprite2D" parent="Control"]
@@ -1180,36 +1183,74 @@ scale = Vector2(0.0973666, 0.0973666)
 texture = ExtResource("28_4p0wr")
 
 [node name="Page" type="VBoxContainer" parent="Control"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 61.0
-offset_top = 387.0
-offset_right = 1017.0
-offset_bottom = 1707.0
+offset_top = 202.0
+offset_right = 1030.0
+offset_bottom = 2008.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 33
 script = ExtResource("29_6bxql")
 
+[node name="Control" type="Control" parent="Control/Page"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Control/Page"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="Control/Page"]
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="Control/Page"]
+layout_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="Control/Page"]
 modulate = Color(1, 1, 1, 0)
 clip_contents = true
 layout_mode = 2
-texture = ExtResource("13_1byey")
+texture = ExtResource("31_g8cte")
 stretch_mode = 3
 
 [node name="text_box" type="RichTextLabel" parent="Control/Page"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 560)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 20
 theme_override_fonts/normal_font = SubResource("FontVariation_x7m3p")
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 25
 bbcode_enabled = true
-text = "If you find yourself repeating this for 5+ stories later, we can convert this into a list-based loop to reduce duplication. But if you're cool keeping it manual and clear — what you're doing is totally fine for now.Let me know if you'd like help adding optional fallback handling, or loading these only on demand (not all at once)."
-fit_content = true
+text = "[b]Two days, my friend. Two days of your brooding silence and the smell of damp horse. I’ve read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"[/b]
+
+(He taps the monocle against his chin, looking at you with a mix of genuine curiosity and that signature Elven condescension.)
+
+\"Think on it. Rumors says a decade of disappearances. A town large enough to be a kingdom, yet silent as a grave. Then, an anonymous letter arrives at the Guild, bearing the high-official seal of the very office meant to prevent such tragedies. It’s either the most sophisticated trap in the history of the Reach, or the people of Brinkwood have finally realized that their 'advanced' systems are failing them. Again, not much has been confirmed so we a mostly going in blind.\"
+
+The Narrator: > \"He’s a talker, isn’t he? Fernrick loves the sound of his own thoughts—mostly because he thinks they’re the only ones worth hearing. But he’s right to be uneasy. You can feel it too, can’t you? That prickle on the back of your neck? That’s the feeling of a story that’s already been written, just waiting for you to step into the ink. Go on, give him an answer. It won't change where we're going, but I’d like to see what kind of person you’re pretending to be today.\"
+[b]Two days, my friend. Two days of your brooding silence and the smell of damp horse. I’ve read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"[/b]
+
+(He taps the monocle against his chin, looking at you with a mix of genuine curiosity and that signature Elven condescension.)
+
+\"Think on it. Rumors says a decade of disappearances. A town large enough to be a kingdom, yet silent as a grave. Then, an anonymous letter arrives at the Guild, bearing the high-official [b]Two days, my friend. Two days of your brooding silence and the smell of damp horse. I’ve read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"[/b]
+
+(He taps the monocle against his chin, looking at you with a mix of genuine curiosity and that signature Elven condescension.)
+
+\"Think on it. Rumors says a decade of disappearances. A town large enough to be a kingdom, yet silent as a grave. Then, an anonymous letter arrives at the Guild, bearing the high-official "
 autowrap_mode = 2
+script = ExtResource("32_g67we")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Page/text_box"]
+libraries = {
+"": SubResource("AnimationLibrary_m53kq")
+}
 
 [node name="Gap" type="Control" parent="Control/Page"]
 layout_mode = 2
@@ -1234,7 +1275,6 @@ alignment = 0
 visible = false
 layout_mode = 2
 theme = ExtResource("29_26tb2")
-text = "🔹 Right South"
 flat = true
 alignment = 0
 
@@ -1242,22 +1282,8 @@ alignment = 0
 visible = false
 layout_mode = 2
 theme = ExtResource("29_26tb2")
-text = "🔹 Right leg"
 flat = true
 alignment = 0
-
-[node name="reward_indicator" type="RichTextLabel" parent="Control/Page"]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 20
-theme_override_fonts/normal_font = SubResource("FontVariation_x7m3p")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "hoowowo"
-fit_content = true
-autowrap_mode = 2
 
 [node name="continue" type="Button" parent="Control/Page"]
 modulate = Color(1, 1, 1, 0)
@@ -2199,16 +2225,6 @@ libraries = {
 [node name="shop_layer" type="CanvasLayer" parent="Control"]
 
 [node name="Saving" parent="." instance=ExtResource("70_3y5t4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 529.0
-offset_top = 1007.0
-offset_right = 529.0
-offset_bottom = 1007.0
-grow_horizontal = 1
-grow_vertical = 1
-mouse_filter = 2
 
 [connection signal="pressed" from="Control/jornal" to="Control/Page" method="_on_jornal_pressed"]
 [connection signal="pressed" from="Control/inventory" to="Control/Page" method="_on_inventory_pressed"]

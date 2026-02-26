@@ -132,15 +132,19 @@ func load_page () -> void:
 	# Handle image (background)
 	if "img" in current_page and current_page["img"] != "":
 		texture_rect.texture = load(current_page["img"])
+		show_gaps()
 		$AnimationPlayer2.play("texture_fade")
 	else: 
 		texture_rect.texture = null
+		print("puss")
+		show_gaps()
 
 	# Handle text
 	if "text" in current_page and current_page["text"] != "":
 		current_text = current_page["text"]
 		counter = -5
-		typewriting_animation()
+		show_text_box()
+		#typewriting_animation()
 	else:
 		current_text = ""
 
@@ -155,26 +159,35 @@ func load_page () -> void:
 		choice.visible = false
 	
 	# Choice 2
-	if current_page["choice_2"] != "":
-		choice_2.text = current_page["choice_2"]
+	if current_page["choice_2"]["choice"] != "":
+		choice_2.text = current_page["choice_2"]["choice"]
 	else: 
 		choice_2.visible = false
 	
 	# Choice 3
-	if current_page["choice_3"] != "":
-		choice_3.text = current_page["choice_3"]
+	if current_page["choice_3"]["choice"] != "":
+		choice_3.text = current_page["choice_3"]["choice"]
 	else:
 		choice_3.visible = false
 		
 	# Choice 4
-	if current_page["choice_4"] != "":
-		choice_4.text = current_page["choice_4"]
+	if current_page["choice_4"]["choice"] != "":
+		choice_4.text = current_page["choice_4"]["choice"]
 	else:
 		choice_4.visible = false
 	
 
 	play_page_music()
 
+func show_gaps () -> void:
+	$Control2.visible = true
+	$Control3.visible = true
+	$Control4.visible = true
+	
+func hide_gaps () -> void:
+	$Control2.visible = false
+	$Control3.visible = false
+	$Control4.visible = false
 
 func play_page_music () -> void:
 	current_page = get_current_page()
@@ -215,6 +228,13 @@ func _on_choice_pressed() -> void:
 		copy_player_actions()
 		copy_and_move_inventory()
 		show_battle_scene()
+	elif current_choice["choice"] == "🔹 continue":
+		#hide_options()
+		texture_rect.visible = false
+		next_page =  current_choice["next_page"]
+		main.save_file_current_page = next_page
+		load_page()
+		pass
 	else:
 		$"../overlay".visible = true
 	
@@ -222,47 +242,62 @@ func _on_choice_pressed() -> void:
 
 func _on_choice_2_pressed() -> void:
 	## get current page
-	#current_page = get_current_page()
+	current_page = get_current_page()
 	#
 	## set the choice player clicked
-	#clicked_choice = choice
+	clicked_choice = choice
 	#
 	## roll die and store current choice info
-	#$"../overlay".visible = true
-	#current_choice = current_page["choice_2"]
+	$"../overlay".visible = true
+	current_choice = current_page["choice_2"]
 	pass # Replace with function body.
 
 
 func _on_choice_3_pressed() -> void:
 	## get current page
-	#current_page = get_current_page()
+	current_page = get_current_page()
 	#
 	## set the choice player clicked
-	#clicked_choice = choice
+	clicked_choice = choice
 	#
 	## roll die and store current choice info
-	#$"../overlay".visible = true
-	#current_choice = current_page["choice_3"]
+	$"../overlay".visible = true
+	current_choice = current_page["choice_3"]
 	pass # Replace with function body.
 
 
 func _on_choice_4_pressed() -> void:
 	## get current page
-	#current_page = get_current_page()
+	current_page = get_current_page()
 	#
 	## set the choice player clicked
-	#clicked_choice = choice
+	clicked_choice = choice
 	#
 	## roll die and store current choice info
-	#$"../overlay".visible = true
-	#current_choice = current_page["choice_4"]
+	$"../overlay".visible = true
+	current_choice = current_page["choice_4"]
 	pass # Replace with function body.
 
 
 
 # Start the typewriter text animation
-func typewriting_animation () -> void:
-	timer.start()
+#func typewriting_animation () -> void:
+	#timer.start()
+	
+	
+func show_text_box () -> void:
+	current_page = get_current_page()
+	
+	text_box.text = current_text
+
+	$text_box/AnimationPlayer.play("start_fade")
+	await get_tree().create_timer(2.5).timeout
+	if clicked_choice.has_meta("outcome") and current_text == clicked_choice.get_meta("outcome"):
+		hide_options()
+		show_continue()
+	else:
+		show_options()
+		$continue.visible = false
 
 # Called each time the timer triggers for the typewriter effect
 func _on_timer_timeout() -> void:
@@ -293,10 +328,12 @@ func show_options () -> void:
 
 # Play the continue button fade animation
 func show_continue () -> void:
-	if !$AnimationPlayer2.is_playing():
-		
 		# show reward and continue button
-		$reward_indicator.text = current_reward_text
+		show_gaps()
+		#$reward_indicator.text = current_reward_text
+		#$reward_indicator.visible = true
+		$continue.visible = true
+		#$reward.play("show")
 		$AnimationPlayer2.play("show_continue")  # Looping animation should be defined in AnimationPlayer2
 		give_reward_or_loss()
 		## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
@@ -319,7 +356,6 @@ func _on_continue_pressed() -> void:
 	
 	
 	continue_butn.visible = false
-	$reward_indicator.visible = false
 	texture_rect.visible = true
 	load_page()
 	
@@ -512,10 +548,11 @@ func set_choice_data ():
 	#var _outcome_reward
 	
 	## set next page, reset counter and start the typewriter animation
-	next_page = current_choice["outcome_1"]["next_page"]
+	next_page = current_outcome["next_page"]
 	## call the save player data func here ------------------->>>
 	counter = -5
-	typewriting_animation()
+	show_text_box()
+	#typewriting_animation()
 #
 	## Hide all options and show the continue button instead
 	hide_options()
@@ -665,11 +702,12 @@ func set_choice_data_for_battle () -> void:
 	#var _outcome_reward
 	
 	## set next page, reset counter and start the typewriter animation
-	next_page = current_choice["outcome_1"]["next_page"]
+	next_page = current_outcome["next_page"]
 	## call the save player data func here ------------------->>>
 	counter = -5
-	typewriting_animation()
-#
+	show_text_box()
+	#typewriting_animation()
+##
 	## Hide all options and show the continue button instead
 	hide_options()
 	texture_rect.visible = false

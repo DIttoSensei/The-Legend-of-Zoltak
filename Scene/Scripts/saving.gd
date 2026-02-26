@@ -1,4 +1,4 @@
-class_name SavingIcon extends Control
+class_name SavingIcon extends CanvasLayer
 
 
 @onready var animation_player: AnimationPlayer = $TextureRect/AnimationPlayer
