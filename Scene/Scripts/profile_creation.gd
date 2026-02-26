@@ -144,7 +144,7 @@ func save_game () -> void :
 			"Apperance" : pic.texture.resource_path,
 			"Atk" : int(atk.text),
 			"Def" : int(def.text),
-			"Dex" : int(def.text),
+			"Dex" : int(dex.text),
 			"Con" : int(con.text),
 			"Int" : int(Int.text),
 			"Cha" : int(cha.text),

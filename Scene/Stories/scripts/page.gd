@@ -128,10 +128,13 @@ func load_page () -> void:
 		continue_butn.visible = false
 		return  # Exit early to avoid errors
 	
+	# Textbox scroll reset
+	$text_box.get_v_scroll_bar().value = 0
 
 	# Handle image (background)
 	if "img" in current_page and current_page["img"] != "":
 		texture_rect.texture = load(current_page["img"])
+		texture_rect.visible = true
 		show_gaps()
 		$AnimationPlayer2.play("texture_fade")
 	else: 
@@ -229,7 +232,7 @@ func _on_choice_pressed() -> void:
 		copy_and_move_inventory()
 		show_battle_scene()
 	elif current_choice["choice"] == "🔹 continue":
-		#hide_options()
+		hide_options()
 		texture_rect.visible = false
 		next_page =  current_choice["next_page"]
 		main.save_file_current_page = next_page
@@ -291,13 +294,15 @@ func show_text_box () -> void:
 	text_box.text = current_text
 
 	$text_box/AnimationPlayer.play("start_fade")
-	await get_tree().create_timer(2.5).timeout
+	
 	if clicked_choice.has_meta("outcome") and current_text == clicked_choice.get_meta("outcome"):
 		hide_options()
 		show_continue()
 	else:
-		show_options()
 		$continue.visible = false
+		await get_tree().create_timer(4.5).timeout
+		show_options()
+		
 
 # Called each time the timer triggers for the typewriter effect
 func _on_timer_timeout() -> void:
@@ -330,17 +335,20 @@ func show_options () -> void:
 func show_continue () -> void:
 		# show reward and continue button
 		show_gaps()
+		give_reward_or_loss()
 		#$reward_indicator.text = current_reward_text
 		#$reward_indicator.visible = true
-		$continue.visible = true
-		#$reward.play("show")
-		$AnimationPlayer2.play("show_continue")  # Looping animation should be defined in AnimationPlayer2
-		give_reward_or_loss()
+		  # Looping animation should be defined in AnimationPlayer2
+		
 		## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
 		main.save_file_current_page = next_page
 		main.save_player_data()
 		## SHOW ANIMATION OF SAVING IN PROGRESS
 		saving.play_saving_logic()
+		
+		$continue.visible = true
+		#$reward.play("show")
+		$AnimationPlayer2.play("show_continue")
 
 
 # Hide all option buttons
@@ -366,7 +374,7 @@ func _on_continue_pressed() -> void:
 func _on_roll_pressed() -> void:
 	$"../overlay/roll".visible = false
 	$"../overlay/Sprite2D/AnimationPlayer".play("roll_animation")
-	await get_tree().create_timer(3.2).timeout
+	await get_tree().create_timer(0.9).timeout
 	current_roll = randi_range(1, 20)      # Returns value from 1 to 20
 	$"../overlay/Sprite2D/counter".text = str(current_roll)
 	await  get_tree().create_timer(1.5).timeout

@@ -92,8 +92,8 @@ base_font = ExtResource("9_w4v0i")
 [sub_resource type="FontVariation" id="FontVariation_x7m3p"]
 base_font = ExtResource("9_w4v0i")
 
-[sub_resource type="Animation" id="Animation_6vr2s"]
-resource_name = "start_fade"
+[sub_resource type="Animation" id="Animation_vsd55"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,10 +101,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -119,8 +119,8 @@ tracks/1/keys = {
 "values": [Vector2(300, 560)]
 }
 
-[sub_resource type="Animation" id="Animation_vsd55"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_6vr2s"]
+resource_name = "start_fade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,10 +128,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -522,7 +522,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_m4lal"]
 resource_name = "roll_animation"
-length = 3.0
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -530,10 +530,10 @@ tracks/0/path = NodePath("counter:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["20", "7", "2", "8", "5", "15", "7", "19", "14", "4", "17", "9", "1", "8", "9", "1", "11", "5", "2", "16", "5", "13", "18", "8", "2", "3", "6", "17", "11", "1", "4"]
+"values": ["20", "7", "2", "8", "5", "15", "7", "19", "14"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kg1cp"]
@@ -1228,7 +1228,7 @@ theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 25
 bbcode_enabled = true
-text = "[b]Two days, my friend. Two days of your brooding silence and the smell of damp horse. I’ve read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"[/b]
+text = "[color=6d0019]Two days, my friend. Two days of your brooding silence and the smell of damp horse. I’ve read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"[/b]
 
 (He taps the monocle against his chin, looking at you with a mix of genuine curiosity and that signature Elven condescension.)
 
