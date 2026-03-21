@@ -32,6 +32,7 @@ func _on_play_button_pressed() -> void:
 	LevelManager.load_new_level = "res://Scene/Stories/begin_chapter.tscn"
 	LevelManager.load_level()
 	GlobalGameSystem.fade_out()
+	GlobalGameSystem.game_map = $"Control/story_1/play button".get_meta("Map")
 	
 
 

@@ -132,13 +132,16 @@ func load_page () -> void:
 	$text_box.get_v_scroll_bar().value = 0
 
 	# Handle image (background)
+	show_gaps()
+	texture_rect.texture = load("res://Scene/Stories/Ashes of Brinkwood/scene_images/Pixel_Art_Scroll-removebg-preview.png")
+	$AnimationPlayer2.play("texture_fade")
+	
 	if "img" in current_page and current_page["img"] != "":
-		texture_rect.texture = load(current_page["img"])
-		texture_rect.visible = true
-		show_gaps()
-		$AnimationPlayer2.play("texture_fade")
+		#texture_rect.texture = load(current_page["img"])
+		#texture_rect.visible = true
+		pass
 	else: 
-		texture_rect.texture = null
+		#texture_rect.texture = null
 		print("puss")
 		show_gaps()
 
@@ -227,16 +230,18 @@ func _on_choice_pressed() -> void:
 	# roll die and store current choice info
 	current_choice = current_page["choice_1"]
 	
-	if current_choice["choice"] == "🔹 fight":
+	if current_choice["choice"] == "fight":
 		copy_player_actions()
 		copy_and_move_inventory()
 		show_battle_scene()
-	elif current_choice["choice"] == "🔹 continue":
+	elif current_choice["choice"] == "continue":
 		hide_options()
 		texture_rect.visible = false
 		next_page =  current_choice["next_page"]
 		main.save_file_current_page = next_page
 		load_page()
+	elif current_choice['choice'] == 'END':
+		## Load epilogue and result scene
 		pass
 	else:
 		$"../overlay".visible = true
@@ -333,27 +338,34 @@ func show_options () -> void:
 
 # Play the continue button fade animation
 func show_continue () -> void:
-		# show reward and continue button
-		show_gaps()
-		give_reward_or_loss()
+	# Textbox scroll reset
+	
+	$text_box.get_v_scroll_bar().value = 0
+	# show reward and continue button
+	show_gaps()
+	give_reward_or_loss()
 		#$reward_indicator.text = current_reward_text
 		#$reward_indicator.visible = true
 		  # Looping animation should be defined in AnimationPlayer2
 		
-		## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
-		main.save_file_current_page = next_page
-		main.save_player_data()
-		## SHOW ANIMATION OF SAVING IN PROGRESS
-		saving.play_saving_logic()
+	## TRIGGER SAVE FILE HERE (USE: main.save_file_current_page)
+	main.save_file_current_page = next_page
+	main.save_player_data()
+	## SHOW ANIMATION OF SAVING IN PROGRESS
+	saving.play_saving_logic()
 		
-		$continue.visible = true
+	$continue.visible = true
 		#$reward.play("show")
-		$AnimationPlayer2.play("show_continue")
+	$AnimationPlayer2.play("show_continue")
 
 
 # Hide all option buttons
 func hide_options() -> void:
 	animation_player.play("hide_choices")
+	choice.text = ""
+	choice_2.text = ""
+	choice_3.text = ""
+	choice_4.text = ""
 	#animation_player.stop()
 
 
@@ -1029,3 +1041,11 @@ func show_battle_scene() -> void:
 	
 	# remeber to switch muscic to battle
 	pass
+
+
+func _on_map_button_pressed() -> void:
+	var map = load(GlobalGameSystem.game_map)
+	var add_map = map.instantiate()
+	$"../..".add_child(add_map)
+	add_map.visible = true
+	pass # Replace with function body.

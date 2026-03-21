@@ -18,6 +18,7 @@ var player_class
 var battle_started : bool = false
 var player_purchased_actions = []
 var player_load_purchased = []
+var game_map
 
 
 # for shop

@@ -97,6 +97,7 @@ offset_bottom = 108.75
 scale = Vector2(0.23, 0.23)
 texture_normal = ExtResource("9_mdc1h")
 texture_pressed = ExtResource("10_uy4t2")
+metadata/Map = "res://Scene/Stories/Maps/Brinkwood/Brinkwood_map.tscn"
 
 [node name="Label" type="Label" parent="Control/story_1/play button"]
 layout_mode = 0
