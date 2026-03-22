@@ -5,6 +5,7 @@ signal show_selected_item_board
 signal show_action_info
 signal shop_exit
 signal add_item_to_inventory
+signal enable_camera
 
 # for item shop
 signal notification_purchase

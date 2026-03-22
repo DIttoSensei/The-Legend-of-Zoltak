@@ -1,14 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw2slu78tsg"]
+[gd_scene load_steps=11 format=3 uid="uid://dw2slu78tsg"]
 
 [ext_resource type="Script" path="res://Scene/Stories/Maps/map.gd" id="1_q6ypo"]
 [ext_resource type="Texture2D" uid="uid://c28i0q2vd6oe4" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/brinkwood(1).png" id="2_lxrwx"]
 [ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="2_s05i6"]
+[ext_resource type="PackedScene" uid="uid://dhnytnklo7dw6" path="res://Scene/Stories/Maps/icons.tscn" id="4_k3l3k"]
+[ext_resource type="Texture2D" uid="uid://c1nyemdmmbod7" path="res://Asset/Rpg1/buttonRound_brown.png" id="6_5n8av"]
+[ext_resource type="Texture2D" uid="uid://dte477ujvvdcd" path="res://Asset/Rpg1/barYellow_horizontalMid.png" id="7_8t5v0"]
+[ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="9_r63c4"]
 
-[node name="BrinkwoodMap" type="CanvasLayer"]
-visible = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xfiv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.259752, 0.158465, 0.0355551, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rd12w"]
+texture = ExtResource("7_8t5v0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ghmmk"]
+texture = ExtResource("7_8t5v0")
+
+[node name="BrinkwoodMap" type="Control"]
+z_index = 8
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_q6ypo")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,7 +48,86 @@ horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 script = ExtResource("2_s05i6")
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer"]
+[node name="map_img" type="TextureRect" parent="ScrollContainer"]
+custom_minimum_size = Vector2(2046, 2400)
 layout_mode = 2
 texture = ExtResource("2_lxrwx")
 stretch_mode = 3
+
+[node name="Icons" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = 303.0
+offset_top = 23.0
+offset_right = 353.0
+offset_bottom = 73.0
+
+[node name="Icons2" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_top = 55.0
+offset_bottom = 105.0
+
+[node name="Icons3" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = -401.0
+offset_top = -297.0
+offset_right = -351.0
+offset_bottom = -247.0
+
+[node name="Icons4" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = -553.0
+offset_top = 407.0
+offset_right = -503.0
+offset_bottom = 457.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(540, 1080)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 8
+
+[node name="exit" type="TextureButton" parent="CanvasLayer"]
+modulate = Color(0.478054, 0.290291, 0.048634, 1)
+top_level = true
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.02778
+anchor_bottom = 0.900463
+offset_left = 970.0
+offset_top = 54.0
+offset_right = -65.0
+offset_bottom = -1816.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 0
+
+[node name="IconCrossBeige" type="Sprite2D" parent="CanvasLayer/exit"]
+z_index = 1
+position = Vector2(38.1666, 35.125)
+scale = Vector2(3.58333, 3.58333)
+texture = ExtResource("9_r63c4")
+
+[node name="slider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -110.0
+offset_right = 288.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_icons/grabber = ExtResource("6_5n8av")
+theme_override_icons/grabber_highlight = ExtResource("6_5n8av")
+theme_override_styles/slider = SubResource("StyleBoxFlat_2xfiv")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_rd12w")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_ghmmk")
+min_value = 1.0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="CanvasLayer/slider" to="." method="_on_slider_value_changed"]

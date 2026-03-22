@@ -93,6 +93,7 @@ func _ready() -> void:
 	SignalManager.add_item_to_inventory.connect(add_shop_item_to_inv)
 	SignalManager.add_action_to_slot.connect(add_action_to_inv)
 	SignalManager.battle_won.connect(set_choice_data_for_battle)
+	SignalManager.enable_camera.connect(enable_camera)
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
@@ -1042,10 +1043,14 @@ func show_battle_scene() -> void:
 	# remeber to switch muscic to battle
 	pass
 
+func enable_camera () -> void:
+	$"../Camera2D".enabled = true
 
 func _on_map_button_pressed() -> void:
+	$"../Camera2D".enabled = false
 	var map = load(GlobalGameSystem.game_map)
 	var add_map = map.instantiate()
 	$"../..".add_child(add_map)
+	add_map.size = Vector2(1080, 2160)
 	add_map.visible = true
 	pass # Replace with function body.
