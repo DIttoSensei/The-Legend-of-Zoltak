@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://dm6g7ih50v5q8"]
+
+[ext_resource type="Texture2D" uid="uid://b62ld0gghlmk3" path="res://Scene/Stories/Maps/icons/map_129.png" id="1_gos0m"]
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_lw1dq"]
+
+[resource]
+script = ExtResource("1_lw1dq")
+type = "Unknown"
+name = "???"
+icon_image = ExtResource("1_gos0m")
+info = "???"
+battle_scene_path = ""
+completed = false
+cost = 0
+result_info = ""
+reward_type = ""
+reward_value = 0
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

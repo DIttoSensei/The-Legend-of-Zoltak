@@ -3,8 +3,7 @@ class_name MapIcon extends TextureButton
 @export var icon_data : IconData
 
 @onready var quest_name: Label = $CanvasLayer/quest_name
-@onready var scroll_container: ScrollContainer = $CanvasLayer/info_panel/ScrollContainer
-@onready var text: Label = $CanvasLayer/info_panel/ScrollContainer/text
+@onready var text: RichTextLabel = $CanvasLayer/info_panel/text
 @onready var event_button: TextureButton = $CanvasLayer/event_button
 @onready var exit: TextureButton = $CanvasLayer/exit
 @onready var canvas_layer: CanvasLayer = $CanvasLayer

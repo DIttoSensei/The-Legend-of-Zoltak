@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://cih1igc0qrmm7"]
+
+[ext_resource type="Texture2D" uid="uid://pgd7oqtyjtsg" path="res://Scene/Stories/Maps/icons/map_7.png" id="1_k3b78"]
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_p72ri"]
+
+[resource]
+script = ExtResource("1_p72ri")
+type = "Scroll"
+name = "IMG OFFICE"
+icon_image = ExtResource("1_k3b78")
+info = "[center] Also known as the Brinkwood Immigration and Intake Office, established under Ministry Directive 7, the immigration and Intake Office serves as the primary pivot of entry and record for all individuals and cargo passing through the gates of Brinkwood.
+
+All visitors are required to present valid documentations upon arrival. Records of entry, residency status, trade manifests and individual identification and maintained and cross referenced against the Ministry's central registry.
+
+The office processes an average of four hundred individuals daily during standard periods. During festival Season this number increases significantly.
+
+All records are retained indefinitely.[/center]"
+battle_scene_path = ""
+completed = false
+cost = 0
+result_info = ""
+reward_type = ""
+reward_value = 0
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

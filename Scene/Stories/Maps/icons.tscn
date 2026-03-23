@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhnytnklo7dw6"]
+[gd_scene load_steps=9 format=3 uid="uid://dhnytnklo7dw6"]
 
 [ext_resource type="Texture2D" uid="uid://pgd7oqtyjtsg" path="res://Scene/Stories/Maps/icons/map_7.png" id="1_3dnp6"]
-[ext_resource type="Script" path="res://Scene/Stories/Maps/icons.gd" id="2_2aiat"]
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icons.gd" id="2_2aiat"]
 [ext_resource type="Texture2D" uid="uid://0rdtkdgdpn6q" path="res://Asset/img/other/back.png" id="3_5kd3l"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="4_l327c"]
+[ext_resource type="Script" path="res://Scene/Scripts/scroll_box_container.gd" id="5_g1oj3"]
 [ext_resource type="Texture2D" uid="uid://dihcpyu18k8iv" path="res://Asset/Rpg1/buttonLong_brown.png" id="5_mmuqg"]
 [ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="6_tm7v1"]
 [ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="7_m7k0q"]
@@ -27,7 +28,6 @@ script = ExtResource("2_2aiat")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 9
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -83,33 +83,36 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5kd3l")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/info_panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -386.0
-offset_top = -367.0
-offset_right = 394.0
-offset_bottom = 364.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="text" type="Label" parent="CanvasLayer/info_panel/ScrollContainer"]
+[node name="text" type="RichTextLabel" parent="CanvasLayer/info_panel"]
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
+offset_left = 39.0
+offset_top = 42.0
+offset_right = 826.0
+offset_bottom = 763.0
 theme = ExtResource("4_l327c")
-theme_override_font_sizes/font_size = 40
-text = "Most AI chatbots do not truly remember in the way people expect. They operate within limited context windows, depend on session state, and often lose track of earlier details once a conversation gets long or a new session begins.
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 26
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center][color='blue']MINISTRY OF PUBLIC ORDER
+Eastern Gate - Official Entry Point[/color]
+The Eastern Gate serves as the primary entry point for all visitors, merchants and travelers arriving from the outer roads during the Festival of Lumens period. All individuals entering through the Eastern Gate are subject to documentation checks conducted by the City Watch.
 
-That is why users run into the same problems repeatedly: forgotten instructions, dropped context, circular replies, and answers that ignore what was already said.
+The Eastern Gate operates from first bell to last bell daily. Entry after last bell requires prior authorization from the Immigration and Intake Office. No exceptions.
+The City Watch officers stationed at the Eastern Gate are acting in their official capacity. Visitors are expected to comply with all requests promptly and without incident.
 
-The AI Bully job is designed to make those failures visible. Memvid exists to solve them by giving AI systems a more reliable memory foundation.
-"
-horizontal_alignment = 1
+[Handwritten, pinned slightly crooked]
+\"To whoever is in charge of the gate guards, I have attended this festival for three years. Every year the guards get worse. This year I was grunted at twice, pointed at once, and not spoken to at all despite asking a direct question. These men have the warmth of a wet stone. Is this the welcome Brinkwood wants to be known for? Sort it out.
+[color='brown']\"— A very tired merchant\"[/color]
+
+[Beneath that in different handwriting]
+[color='brown']\"— Agreed.\"[/color]
+
+[color='red]> For some reason i have this feeling like i know who wrote 'agreed' on the notice sheet' <[/color][/center]"
+fit_content = true
 autowrap_mode = 2
+script = ExtResource("5_g1oj3")
 
 [node name="event_button" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 8

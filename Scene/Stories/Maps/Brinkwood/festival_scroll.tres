@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://c8tcwrf8dwo2m"]
+
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_dekts"]
+[ext_resource type="Texture2D" uid="uid://pgd7oqtyjtsg" path="res://Scene/Stories/Maps/icons/map_7.png" id="1_vewko"]
+
+[resource]
+script = ExtResource("1_dekts")
+type = "Scroll"
+name = "FESTIVAL OF LUMENS"
+icon_image = ExtResource("1_vewko")
+info = "[center][color='yellow']The Festival of Lumens, issued by the Brinkwood Ministry of Culture and Public Affairs.[/color]
+The Festival of Lumens stands as Brinkwood's most celebrated and longstanding tradition. While no single founding date can be confirmed in the official record, early ministry documents reference the festival as already being an established practice, suggesting its origins predate formal record keeping in the city.
+The festival exists as a public celebration of the city's continued prosperity. Brinkwood has long distinguished itself as one of the most active trade hubs in the Reach, and the Festival of Lumens serves as an annual acknowledgment of that success, a gesture of goodwill from the Ministry to its citizens and a formal invitation to the wider empire to share in Brinkwood's abundance.
+Merchants, travelers, scholars and dignitaries from across the human empire are welcomed through the gates during the festival period. Trade volumes during this window consistently rank among the highest recorded in the city's history. The Immigration and Intake Office notes a significant increase in foot traffic during this period, averaging three to four times the standard daily intake.
+The festival is powered and illuminated by the city's Core Engine, which provides the light displays, enchanted street performances and ambient energy that have become synonymous with the celebration. The Ministry considers the festival its most visible demonstration of what Brinkwood's infrastructure is capable of.
+The following records document the festival's annual occurrence across the last thirty years:
+Year 1 of the current Ministry — Festival observed. Duration: 14 days.
+Year 2 — Festival observed. Duration: 5 days.
+Year 3 — Festival observed. Duration: 5 days.
+[Records continue in this format through to the present year.]
+The Ministry wishes to remind all visitors that the Festival of Lumens is a time of celebration, community and progress. Brinkwood welcomes you.[/center]"
+battle_scene_path = ""
+completed = false
+cost = 0
+result_info = ""
+reward_type = ""
+reward_value = 0
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://baulnlw6k0426"]
+
+[ext_resource type="Texture2D" uid="uid://dplnijs4rfpja" path="res://Scene/Stories/Maps/icons/map_24.png" id="1_ixwp8"]
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_wfcix"]
+
+[resource]
+script = ExtResource("1_wfcix")
+type = "Inn"
+name = "Ashen Flagon"
+icon_image = ExtResource("1_ixwp8")
+info = "[center]Welcome to the Ashen Flagon. 
+You seem tired, why not stay at our inn and get yourself back in shape,
+Just for [color='green']150 gold coins[/color] you feel good as new, what do you say?[/center]"
+battle_scene_path = ""
+completed = false
+cost = 150
+result_info = "[center]Splendid, hope to see you again!![/center]"
+reward_type = "hp"
+reward_value = 500
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

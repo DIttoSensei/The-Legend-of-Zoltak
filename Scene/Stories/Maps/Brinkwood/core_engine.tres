@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://qcorxmcg7ofe"]
+
+[ext_resource type="Texture2D" uid="uid://pgd7oqtyjtsg" path="res://Scene/Stories/Maps/icons/map_7.png" id="1_by06g"]
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_iccu0"]
+
+[resource]
+script = ExtResource("1_iccu0")
+type = "Scroll"
+name = "CORE ENGINE"
+icon_image = ExtResource("1_by06g")
+info = "[center][color='yellow']The Brinkwood Core Engine, Public Information Bulletin.
+Issued by the Brinkwood Ministry of Engineering and Infrastructure.[/color]
+The Core Engine represents the single greatest achievement in Brinkwood's history and stands as a landmark contribution to the broader field of arcane engineering across the human empire.
+What is known to the public is as follows.
+Approximately three decades ago, a team of Brinkwood's most distinguished engineers proposed a theoretical model for a self sustaining arcane power source. The premise was considered radical at the time. The prevailing understanding of arcane energy held that it could be harvested and directed but never reliably contained or made to sustain itself. Brinkwood's engineers disagreed.
+Their solution was a process now referred to in official documents as Arcane Field Collision. Concentrated arcane fields are generated and directed toward one another at precise intervals. When these fields collide the resulting discharge releases a burst of usable energy significantly greater than the energy required to generate the fields themselves. The process repeats in a continuous cycle, each collision feeding the next, producing more energy than it consumes.
+At the heart of this system sits what engineers refer to simply as the Core. The Core serves as the foundational fuel source from which the initial arcane fields are drawn. Without it the collision process cannot begin and the entire system fails. The exact composition of the Core is classified under Ministry Directive 12 and is not available for public record.
+The Core Engine is housed within the Central Infrastructure Complex, located at the heart of the city. The complex is visible from the main road and is marked on all official city maps. Access is restricted to authorized Ministry personnel only. Unauthorized entry is prohibited under Ministry Directive 12 and carries significant legal consequence.
+The Core Engine currently powers the entirety of Brinkwood's infrastructure. Street lighting, the Immigration and Intake Office's systems, the Festival of Lumens displays, and the city's internal communication networks all draw from a single unified source.
+The engineers responsible for the Engine's original construction are not named in any accessible public record. Full schematics have never been released. Questions regarding the Engine's operation or maintenance should be directed to the Office of Infrastructure.
+The Ministry states that the Core Engine is stable, maintained by a dedicated team, and poses no risk to the city or its inhabitants.[/center]"
+battle_scene_path = ""
+completed = false
+cost = 0
+result_info = ""
+reward_type = ""
+reward_value = 0
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

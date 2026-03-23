@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://00bv3e1hftqf"]
+
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_6xqd6"]
+[ext_resource type="Texture2D" uid="uid://c2iiuuuflu5vv" path="res://Scene/Stories/Maps/icons/map_56.png" id="1_naxue"]
+
+[resource]
+script = ExtResource("1_6xqd6")
+type = "Inn"
+name = "SLOPPY TIP"
+icon_image = ExtResource("1_naxue")
+info = "[center]Oh hey honey, need assistance?
+You look tensed sugarplum, how about we take you for a ride and make you feel all better...
+Oh my...isn't that our flyer? *giggles* I'll tell you what, for just [color='pink']80 gold coins[/color] we will have you limping like a baby frog, feeling all refreshed mmmmmh.
+
+[color='red']> I am in no position to judge but i believe we passed an inn on our way here and for one they have clean sheets not one covered in jizz if you know what i mean. Are you honestly doing this to save just 70 gold coins? <[/color][/center]"
+battle_scene_path = ""
+completed = false
+cost = 80
+result_info = "[center]Oh darling, that was beautiful. We can't wait to have you back soon...muah![/center]
+
+[color='red'][shake rate=30.0 level=10][center]> Freaking degenerate. <[/center]"
+reward_type = ""
+reward_value = 0
+nsfw = true
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

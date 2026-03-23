@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://keylr23j1uy2"]
+
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_jb1q1"]
+[ext_resource type="Texture2D" uid="uid://dahvjhvjofu0u" path="res://Scene/Stories/Maps/icons/map_25.png" id="1_rs2mf"]
+
+[resource]
+script = ExtResource("1_jb1q1")
+type = "Battle Quest"
+name = "TANGO"
+icon_image = ExtResource("1_rs2mf")
+info = "[center]Oh hey there, my name is Herald Tango and i happen to be a combat trainer.
+I'm currently here on vacation but my combat senses are becoming way to dull from not doing anything.
+If you are up for it let me take you on a training duel, it will be beneficial to both of us and I'll even throw in a little bonus. [/center]"
+battle_scene_path = ""
+completed = false
+result_info = "[center]Oh my you are not just some average fighter are you? Just as promised here is your reward and i hope to see you again my friend. [/center]"
+reward_type = "coin"
+reward_value = 150
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""
