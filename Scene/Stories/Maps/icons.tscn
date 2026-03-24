@@ -28,6 +28,7 @@ script = ExtResource("2_2aiat")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 9
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.336)
 
 [node name="quest_name" type="Label" parent="CanvasLayer"]
@@ -92,25 +94,18 @@ offset_right = 826.0
 offset_bottom = 763.0
 theme = ExtResource("4_l327c")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 26
+theme_override_constants/line_separation = 30
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[center][color='blue']MINISTRY OF PUBLIC ORDER
-Eastern Gate - Official Entry Point[/color]
-The Eastern Gate serves as the primary entry point for all visitors, merchants and travelers arriving from the outer roads during the Festival of Lumens period. All individuals entering through the Eastern Gate are subject to documentation checks conducted by the City Watch.
+text = "[center][color='yellow']The Brinkwood Immigration Office.
+Established under Ministry Directive 7.[/color]
+The immigration and Intake Office serves as the primary pivot of entry and record for all individuals and cargo passing through the gates of Brinkwood.
 
-The Eastern Gate operates from first bell to last bell daily. Entry after last bell requires prior authorization from the Immigration and Intake Office. No exceptions.
-The City Watch officers stationed at the Eastern Gate are acting in their official capacity. Visitors are expected to comply with all requests promptly and without incident.
+All visitors are required to present valid documentations upon arrival. Records of entry, residency status, trade manifests and individual identification and maintained and cross referenced against the Ministry's central registry.
 
-[Handwritten, pinned slightly crooked]
-\"To whoever is in charge of the gate guards, I have attended this festival for three years. Every year the guards get worse. This year I was grunted at twice, pointed at once, and not spoken to at all despite asking a direct question. These men have the warmth of a wet stone. Is this the welcome Brinkwood wants to be known for? Sort it out.
-[color='brown']\"— A very tired merchant\"[/color]
+The office processes an average of four hundred individuals daily during standard periods. During festival Season this number increases significantly.
 
-[Beneath that in different handwriting]
-[color='brown']\"— Agreed.\"[/color]
-
-[color='red]> For some reason i have this feeling like i know who wrote 'agreed' on the notice sheet' <[/color][/center]"
-fit_content = true
+All records are retained indefinitely.[/center]"
 autowrap_mode = 2
 script = ExtResource("5_g1oj3")
 
@@ -152,7 +147,7 @@ vertical_alignment = 1
 
 [node name="exit" type="TextureButton" parent="CanvasLayer"]
 top_level = true
-z_index = 1
+z_index = -1
 anchors_preset = -1
 anchor_right = 1.02778
 anchor_bottom = 0.900463

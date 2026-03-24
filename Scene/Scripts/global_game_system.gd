@@ -19,6 +19,9 @@ var battle_started : bool = false
 var player_purchased_actions = []
 var player_load_purchased = []
 var game_map
+var main_battle : bool = false
+var map_battle_quest_won : bool = false
+var make_current_audio_empty : bool = false
 
 
 # for shop

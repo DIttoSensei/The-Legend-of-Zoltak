@@ -25,7 +25,7 @@ func _ready() -> void:
 	SignalManager.action_not_purchased.connect(action_cant_purchase)
 	
 	coin.text = str(current_coin)
-	SceneTransition.fade_in()
+	
 	
 	load_action()
 	load_shop()

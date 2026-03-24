@@ -1,12 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw2slu78tsg"]
+[gd_scene load_steps=27 format=3 uid="uid://dw2slu78tsg"]
 
 [ext_resource type="Script" path="res://Scene/Stories/Maps/map.gd" id="1_q6ypo"]
 [ext_resource type="Texture2D" uid="uid://c28i0q2vd6oe4" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/brinkwood(1).png" id="2_lxrwx"]
 [ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="2_s05i6"]
 [ext_resource type="PackedScene" uid="uid://dhnytnklo7dw6" path="res://Scene/Stories/Maps/icons.tscn" id="4_k3l3k"]
+[ext_resource type="Resource" uid="uid://ddsli113mqifk" path="res://Scene/Stories/Maps/Brinkwood/east_gate_notice.tres" id="5_ecxqm"]
 [ext_resource type="Texture2D" uid="uid://c1nyemdmmbod7" path="res://Asset/Rpg1/buttonRound_brown.png" id="6_5n8av"]
+[ext_resource type="Resource" uid="uid://bbc6ove4ktxaj" path="res://Scene/Stories/Maps/Brinkwood/ash_spot_notice.tres" id="6_xvlkf"]
 [ext_resource type="Texture2D" uid="uid://dte477ujvvdcd" path="res://Asset/Rpg1/barYellow_horizontalMid.png" id="7_8t5v0"]
+[ext_resource type="Resource" uid="uid://c8tcwrf8dwo2m" path="res://Scene/Stories/Maps/Brinkwood/festival_scroll.tres" id="7_dnnee"]
+[ext_resource type="Resource" uid="uid://qcorxmcg7ofe" path="res://Scene/Stories/Maps/Brinkwood/core_engine.tres" id="8_40cbi"]
+[ext_resource type="Resource" uid="uid://cih1igc0qrmm7" path="res://Scene/Stories/Maps/Brinkwood/IMG_office.tres" id="9_oamrb"]
 [ext_resource type="Texture2D" uid="uid://b50a87w6nrbyh" path="res://Asset/Rpg1/iconCross_brown.png" id="9_r63c4"]
+[ext_resource type="Resource" uid="uid://baulnlw6k0426" path="res://Scene/Stories/Maps/Brinkwood/inn.tres" id="10_g7jup"]
+[ext_resource type="Resource" uid="uid://keylr23j1uy2" path="res://Scene/Stories/Maps/Brinkwood/lone_swordsman.tres" id="11_312eo"]
+[ext_resource type="Resource" uid="uid://00bv3e1hftqf" path="res://Scene/Stories/Maps/Brinkwood/sloppy_tip.tres" id="12_q71s0"]
+[ext_resource type="Resource" uid="uid://dm6g7ih50v5q8" path="res://Scene/Stories/Maps/Brinkwood/unknown.tres" id="13_3iwsc"]
+[ext_resource type="Texture2D" uid="uid://cerembv4bc2dw" path="res://Asset/img/other/scroll.png" id="17_f3ban"]
+[ext_resource type="Texture2D" uid="uid://pgd7oqtyjtsg" path="res://Scene/Stories/Maps/icons/map_7.png" id="18_ni5kt"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="19_j7g8i"]
+[ext_resource type="Texture2D" uid="uid://dplnijs4rfpja" path="res://Scene/Stories/Maps/icons/map_24.png" id="20_m2sry"]
+[ext_resource type="Texture2D" uid="uid://dahvjhvjofu0u" path="res://Scene/Stories/Maps/icons/map_25.png" id="21_i8oq8"]
+[ext_resource type="Texture2D" uid="uid://b62ld0gghlmk3" path="res://Scene/Stories/Maps/icons/map_129.png" id="22_mc46v"]
+[ext_resource type="Texture2D" uid="uid://cjiwooouhjawh" path="res://Scene/Stories/Maps/icons/map_130.png" id="23_o7ahg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xfiv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -62,25 +78,71 @@ offset_left = 303.0
 offset_top = 23.0
 offset_right = 353.0
 offset_bottom = 73.0
+icon_data = ExtResource("5_ecxqm")
 
 [node name="Icons2" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
 layout_mode = 1
-offset_top = 55.0
-offset_bottom = 105.0
+offset_left = 176.0
+offset_top = -152.0
+offset_right = 256.0
+offset_bottom = -72.0
+icon_data = ExtResource("6_xvlkf")
 
 [node name="Icons3" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
 layout_mode = 1
-offset_left = -401.0
-offset_top = -297.0
-offset_right = -351.0
-offset_bottom = -247.0
+offset_left = -40.0
+offset_top = 128.0
+offset_right = 40.0
+offset_bottom = 208.0
+icon_data = ExtResource("7_dnnee")
 
 [node name="Icons4" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
 layout_mode = 1
-offset_left = -553.0
-offset_top = 407.0
-offset_right = -503.0
-offset_bottom = 457.0
+offset_left = -232.0
+offset_top = 464.0
+offset_right = -152.0
+offset_bottom = 544.0
+icon_data = ExtResource("8_40cbi")
+
+[node name="Icons5" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = 280.0
+offset_top = 136.0
+offset_right = 360.0
+offset_bottom = 216.0
+icon_data = ExtResource("9_oamrb")
+
+[node name="Icons6" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = 88.0
+offset_top = 32.0
+offset_right = 168.0
+offset_bottom = 112.0
+icon_data = ExtResource("10_g7jup")
+
+[node name="Icons7" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = 472.0
+offset_top = 288.0
+offset_right = 552.0
+offset_bottom = 368.0
+icon_data = ExtResource("11_312eo")
+
+[node name="Icons8" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = -8.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 8.0
+icon_data = ExtResource("12_q71s0")
+
+[node name="Icons9" parent="ScrollContainer/map_img" instance=ExtResource("4_k3l3k")]
+layout_mode = 1
+offset_left = -176.0
+offset_top = -368.0
+offset_right = -96.0
+offset_bottom = -288.0
+icon_data = ExtResource("13_3iwsc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(540, 1080)
@@ -130,6 +192,207 @@ min_value = 1.0
 max_value = 2.0
 step = 0.1
 value = 1.0
+
+[node name="legends" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -2228.0
+offset_right = 420.0
+offset_bottom = -1728.0
+grow_vertical = 0
+scale = Vector2(1.32278, 1.32278)
+texture = ExtResource("17_f3ban")
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/legends"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -108.0
+offset_right = -52.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_ni5kt")
+
+[node name="Label" type="Label" parent="CanvasLayer/legends/icon"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -10.5
+offset_right = 112.0
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("19_j7g8i")
+theme_override_font_sizes/font_size = 20
+text = "SCROLL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="icon2" type="TextureRect" parent="CanvasLayer/legends"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -68.0
+offset_right = -52.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_m2sry")
+
+[node name="Label" type="Label" parent="CanvasLayer/legends/icon2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -10.5
+offset_right = 112.0
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("19_j7g8i")
+theme_override_font_sizes/font_size = 20
+text = "INN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="icon3" type="TextureRect" parent="CanvasLayer/legends"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -25.0
+offset_right = -52.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_i8oq8")
+
+[node name="Label" type="Label" parent="CanvasLayer/legends/icon3"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -10.5
+offset_right = 153.0
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("19_j7g8i")
+theme_override_font_sizes/font_size = 20
+text = "BATTLE QUEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="icon4" type="TextureRect" parent="CanvasLayer/legends"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = 21.0
+offset_right = -52.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_mc46v")
+
+[node name="Label" type="Label" parent="CanvasLayer/legends/icon4"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -10.0
+offset_right = 155.0
+offset_bottom = 13.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("19_j7g8i")
+theme_override_font_sizes/font_size = 20
+text = "UNKNOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="icon5" type="TextureRect" parent="CanvasLayer/legends"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = 70.0
+offset_right = -52.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_o7ahg")
+
+[node name="Label" type="Label" parent="CanvasLayer/legends/icon5"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -10.5
+offset_right = 112.0
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("19_j7g8i")
+theme_override_font_sizes/font_size = 20
+text = "NOTICE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/legends"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -299.172
+offset_top = -161.44
+offset_right = -194.172
+offset_bottom = -137.44
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("19_j7g8i")
+theme_override_font_sizes/font_size = 25
+text = "LEGENDS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="CanvasLayer/slider" to="." method="_on_slider_value_changed"]

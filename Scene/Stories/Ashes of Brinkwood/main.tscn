@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://c5w6dmvryahbj"]
+[gd_scene load_steps=116 format=3 uid="uid://c5w6dmvryahbj"]
 
 [ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/other/bg.png" id="1_uovk4"]
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/scripts/main.gd" id="1_v0woh"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://djxabns8rx41n" path="res://Asset/img/other/CornerKnot_14x14.png" id="32_pkdf1"]
 [ext_resource type="Texture2D" uid="uid://c0n0ykipymfqh" path="res://Asset/Rpg1/buttonLong_brown_pressed.png" id="33_0oah6"]
 [ext_resource type="Script" path="res://Scene/Stories/scripts/camera.gd" id="34_c5ugl"]
+[ext_resource type="Texture2D" uid="uid://cd8kpfdknwwj" path="res://Asset/Rpg1/iconCircle_brown.png" id="34_xa3q6"]
 [ext_resource type="Script" path="res://Scene/inventory/scripts/inventory_ui.gd" id="37_b7bnd"]
 [ext_resource type="Script" path="res://Scene/inventory/scripts/selected_inventory_ui.gd" id="38_a0cps"]
 [ext_resource type="Resource" uid="uid://bjwigbfik13vn" path="res://Scene/inventory/player_inventory.tres" id="38_fugpa"]
@@ -1184,7 +1185,6 @@ scale = Vector2(0.0973666, 0.0973666)
 texture = ExtResource("28_4p0wr")
 
 [node name="Page" type="VBoxContainer" parent="Control"]
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1272,11 +1272,17 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("29_26tb2")
-text = "🔹 Right wing The 'disappearances' aren't what they seem. The letter is a warning"
+text = "Right wing The 'Right wing The 'Right wing The 'Right wing The '"
 flat = true
 alignment = 0
 text_overrun_behavior = 2
 autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Page/choice"]
+modulate = Color(0.435192, 0.435192, 0.435192, 1)
+position = Vector2(-17.3333, 16.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("34_xa3q6")
 
 [node name="choice2" type="Button" parent="Control/Page"]
 visible = false
@@ -1287,6 +1293,12 @@ alignment = 0
 text_overrun_behavior = 2
 autowrap_mode = 2
 
+[node name="Sprite2D2" type="Sprite2D" parent="Control/Page/choice2"]
+modulate = Color(0.435192, 0.435192, 0.435192, 1)
+position = Vector2(-17.3333, 16.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("34_xa3q6")
+
 [node name="choice3" type="Button" parent="Control/Page"]
 visible = false
 layout_mode = 2
@@ -1296,6 +1308,12 @@ alignment = 0
 text_overrun_behavior = 2
 autowrap_mode = 2
 
+[node name="Sprite2D3" type="Sprite2D" parent="Control/Page/choice3"]
+modulate = Color(0.435192, 0.435192, 0.435192, 1)
+position = Vector2(-17.3333, 18.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("34_xa3q6")
+
 [node name="choice4" type="Button" parent="Control/Page"]
 visible = false
 layout_mode = 2
@@ -1304,6 +1322,12 @@ flat = true
 alignment = 0
 text_overrun_behavior = 2
 autowrap_mode = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control/Page/choice4"]
+modulate = Color(0.435192, 0.435192, 0.435192, 1)
+position = Vector2(-17.3333, 19.7501)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("34_xa3q6")
 
 [node name="continue" type="Button" parent="Control/Page"]
 modulate = Color(1, 1, 1, 0)

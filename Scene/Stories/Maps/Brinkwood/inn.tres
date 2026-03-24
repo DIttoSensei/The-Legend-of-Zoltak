@@ -15,6 +15,8 @@ battle_scene_path = ""
 completed = false
 cost = 150
 result_info = "[center]Splendid, hope to see you again!![/center]"
+no_coin_info = "[center]Tsk no money? well can't help you there, I'm running a business not a charity work. Come back when you can afford a room.[/center]
+"
 reward_type = "hp"
 reward_value = 500
 nsfw = false

@@ -12,6 +12,7 @@ func fade_out () -> void:
 	animation_player.play("fade_out")
 	
 func battle_open () -> void:
+	#GlobalGameSystem.fade_out()
 	animation_player.play("battle_open")
 	
 func battle_close () -> void:

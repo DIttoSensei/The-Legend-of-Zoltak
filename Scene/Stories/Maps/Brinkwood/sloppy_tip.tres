@@ -19,8 +19,11 @@ cost = 80
 result_info = "[center]Oh darling, that was beautiful. We can't wait to have you back soon...muah![/center]
 
 [color='red'][shake rate=30.0 level=10][center]> Freaking degenerate. <[/center]"
-reward_type = ""
-reward_value = 0
+no_coin_info = "[center]Huh?? Apologies stranger but umm...we don't serve [color='red']unresourceful[/color] customers and by [color='red']unresourceful[/color] we mean, what's the word again? Ah yes...[color='red']BROKE.[/color]
+Now hit the road before we file a complaint.[/center]
+"
+reward_type = "hp"
+reward_value = 500
 nsfw = true
 nsfw_audio_start_path = ""
 nsfw_audio_end_path = ""

@@ -14,4 +14,4 @@ hp = 550
 atk = 47
 def = 57
 dex = 17
-actions = Array[ExtResource("1_igthg")]([ExtResource("2_7dhup"), ExtResource("3_k1rn5"), ExtResource("4_wgpls"), ExtResource("5_0lxt1")])
+actions = Array[ExtResource("1_igthg")]([ExtResource("2_7dhup"), ExtResource("3_k1rn5"), ExtResource("4_wgpls"), ExtResource("5_0lxt1"), null])

@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvgq2gguhdrqu"]
+[gd_scene load_steps=3 format=3 uid="uid://cvgq2gguhdrqu"]
 
 [ext_resource type="Script" path="res://Scene/Scripts/global_game_system.gd" id="1_8glq6"]
+[ext_resource type="AudioStream" uid="uid://bslsg7dcp1d5k" path="res://Asset/ost/Crown and Steel - Medieval Free Song(2).mp3" id="2_8en45"]
 
 [node name="Global-gameSystem" type="Node2D"]
 script = ExtResource("1_8glq6")
 
 [node name="global Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8en45")
 max_polyphony = 3
 
 [node name="global_sfx" type="AudioStreamPlayer" parent="."]

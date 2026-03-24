@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=3 format=3 uid="uid://bbc6ove4ktxaj"]
+
+[ext_resource type="Script" path="res://Scene/Stories/Maps/icons/res/icon_res.gd" id="1_5muon"]
+[ext_resource type="Texture2D" uid="uid://cjiwooouhjawh" path="res://Scene/Stories/Maps/icons/map_130.png" id="1_xw4a4"]
+
+[resource]
+script = ExtResource("1_5muon")
+type = "Notice"
+name = "ASH SPOT NOTICE"
+icon_image = ExtResource("1_xw4a4")
+info = "[center][color='blue']ASH SPOT DISTRICT - NOTICE BOARD[/color]
+To all residents and visitors of the Ash Spot District,
+Please be advised that Lady Amberley, Third Seat of the Ministry, has returned to her estate as of this week. Residents are reminded to conduct themselves with appropriate decorum in the surrounding streets. Lady Amberley has made her expectations regarding noise, loitering and general conduct in the vicinity of her estate very clear on previous occasions.
+This is not a new reminder.
+[Ash Spot District Residents Committee]
+
+[Handwritten beneath it]
+[color='brown']On the bright side the patrols have already thinned out. Slept properly for the first time in two weeks. Small mercies.\"[/color]
+
+[Different handwriting beneath that]
+[color='brown']\"Small mercies? Sure. But what about those things she has roaming the estate at night. Walked past the gate 3 weeks ago and I came across one of her so called \"pets\", thank heavens it didn't see me. I'll take the patrols any day.\"[/color][/center]"
+battle_scene_path = ""
+completed = false
+cost = 0
+result_info = ""
+reward_type = ""
+reward_value = 0
+nsfw = false
+nsfw_audio_start_path = ""
+nsfw_audio_end_path = ""

@@ -6,6 +6,9 @@ signal show_action_info
 signal shop_exit
 signal add_item_to_inventory
 signal enable_camera
+signal map_rewards
+signal battle_quest_won
+signal play_main_audio
 
 # for item shop
 signal notification_purchase
@@ -28,3 +31,7 @@ signal turn_end
 
 # for laod file
 signal action_is_purchased (purchased : bool)
+
+# for map
+signal battle_action_copy
+signal battle_inv_copy

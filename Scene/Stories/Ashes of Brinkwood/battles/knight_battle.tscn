@@ -2812,6 +2812,7 @@ _data = {
 [node name="BattleScene" type="Node2D"]
 position = Vector2(5, 0)
 script = ExtResource("1_n3l61")
+ost_path = "res://Asset/ost/Secret in the Dark (original OST).mp3"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -3544,7 +3545,7 @@ libraries = {
 }
 
 [node name="action display" type="CanvasLayer" parent="Control"]
-layer = 2
+layer = 10
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Control/action display"]
@@ -4628,7 +4629,7 @@ scale = Vector2(16.3667, 16.3667)
 texture = ExtResource("230_0wmyi")
 
 [node name="overlay" type="CanvasLayer" parent="."]
-layer = 3
+layer = 10
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="overlay"]
@@ -4701,6 +4702,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="results" type="CanvasLayer" parent="."]
+layer = 10
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="results"]
@@ -4740,6 +4742,8 @@ theme_override_font_sizes/font_size = 50
 text = "VICTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="Control/top info/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Control/attack" to="." method="_on_attack_pressed"]

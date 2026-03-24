@@ -8,7 +8,9 @@ script = ExtResource("1_p72ri")
 type = "Scroll"
 name = "IMG OFFICE"
 icon_image = ExtResource("1_k3b78")
-info = "[center] Also known as the Brinkwood Immigration and Intake Office, established under Ministry Directive 7, the immigration and Intake Office serves as the primary pivot of entry and record for all individuals and cargo passing through the gates of Brinkwood.
+info = "[center][color='yellow']The Brinkwood Immigration Office.
+Established under Ministry Directive 7.[/color]
+The immigration and Intake Office serves as the primary pivot of entry and record for all individuals and cargo passing through the gates of Brinkwood.
 
 All visitors are required to present valid documentations upon arrival. Records of entry, residency status, trade manifests and individual identification and maintained and cross referenced against the Ministry's central registry.
 
@@ -19,6 +21,7 @@ battle_scene_path = ""
 completed = false
 cost = 0
 result_info = ""
+no_coin_info = ""
 reward_type = ""
 reward_value = 0
 nsfw = false

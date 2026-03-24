@@ -88,12 +88,20 @@ var status_item_btn_freeze := false # specific status stopes the use of items
 var status_active := false
 var player_status_active := false
 
-
+@export var ost_path : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_player_actions()
 	load_player_inv()
+	
+	if ost_path == "":
+		pass
+	else:
+		print('play audio')
+		GlobalGameSystem.global_audio.stream = load(ost_path)
+		#GlobalGameSystem.delay(2)
+		GlobalGameSystem.play_bg_audio()
 	
 	var fog_node = get_node_or_null("Control/fog")
 	if fog_node:
@@ -813,9 +821,18 @@ func game_over () -> void:
 	results.visible = false
 	SceneTransition.battle_open()
 	await get_tree().create_timer(1.5).timeout
-		
-	LevelManager.load_new_level = "res://Scene/game_over.tscn"
-	LevelManager.load_level()
+	
+	if GlobalGameSystem.main_battle == true:
+		LevelManager.load_new_level = "res://Scene/game_over.tscn"
+		LevelManager.load_level()
+	else:
+		self.visible = false
+		GlobalGameSystem.map_battle_quest_won = false
+		GlobalGameSystem.make_current_audio_empty = true
+		SignalManager.battle_quest_won.emit()
+		SignalManager.play_main_audio.emit()
+		self.queue_free()
+	
 	pass
 
 # victory function
@@ -840,8 +857,17 @@ func player_victory () -> void:
 	results.visible = false
 	SceneTransition.battle_open()
 	await get_tree().create_timer(1.5).timeout
-	SignalManager.battle_won.emit()
-	pass
+	
+	if GlobalGameSystem.main_battle == true:
+		SignalManager.battle_won.emit()
+		GlobalGameSystem.main_battle = false
+	else:
+		self.visible = false
+		GlobalGameSystem.map_battle_quest_won = true
+		GlobalGameSystem.make_current_audio_empty = true
+		SignalManager.battle_quest_won.emit()
+		self.queue_free()
+	SignalManager.play_main_audio.emit()
 
 
 

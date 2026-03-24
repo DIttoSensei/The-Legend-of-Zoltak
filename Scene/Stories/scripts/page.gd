@@ -94,6 +94,10 @@ func _ready() -> void:
 	SignalManager.add_action_to_slot.connect(add_action_to_inv)
 	SignalManager.battle_won.connect(set_choice_data_for_battle)
 	SignalManager.enable_camera.connect(enable_camera)
+	SignalManager.map_rewards.connect(process_map_rewards)
+	SignalManager.battle_action_copy.connect(copy_player_actions)
+	SignalManager.battle_inv_copy.connect(copy_and_move_inventory)
+	SignalManager.play_main_audio.connect(play_page_music)
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
@@ -161,27 +165,35 @@ func load_page () -> void:
 	# Choice 1
 	if current_page["choice_1"]["choice"] != "":
 		choice.text = current_page["choice_1"]["choice"]
+		$choice/Sprite2D.visible = true
 		#choice.set_meta("outcome", current_page["choice_1"]["outcome_1"]["text"])
 	else:
 		choice.visible = false
-	
+		$choice/Sprite2D.visible = false
+		
 	# Choice 2
 	if current_page["choice_2"]["choice"] != "":
 		choice_2.text = current_page["choice_2"]["choice"]
+		$choice2/Sprite2D2.visible = true
 	else: 
 		choice_2.visible = false
+		$choice2/Sprite2D2.visible = false
 	
 	# Choice 3
 	if current_page["choice_3"]["choice"] != "":
 		choice_3.text = current_page["choice_3"]["choice"]
+		$choice3/Sprite2D3.visible = true
 	else:
 		choice_3.visible = false
+		$choice3/Sprite2D3.visible = false
 		
 	# Choice 4
 	if current_page["choice_4"]["choice"] != "":
 		choice_4.text = current_page["choice_4"]["choice"]
+		$choice4/Sprite2D4.visible = true
 	else:
 		choice_4.visible = false
+		$choice4/Sprite2D4.visible = false
 	
 
 	play_page_music()
@@ -201,7 +213,10 @@ func play_page_music () -> void:
 	
 	var music  = current_page["music"]
 	
-	
+	if GlobalGameSystem.make_current_audio_empty == true:
+		current_music = ""
+		GlobalGameSystem.make_current_audio_empty = false
+		
 	if current_music == music:
 		if shop_closed == true:
 			GlobalGameSystem.global_audio.stream = load(music)
@@ -232,12 +247,13 @@ func _on_choice_pressed() -> void:
 	current_choice = current_page["choice_1"]
 	
 	if current_choice["choice"] == "fight":
+		GlobalGameSystem.main_battle = true
 		copy_player_actions()
 		copy_and_move_inventory()
 		show_battle_scene()
 	elif current_choice["choice"] == "continue":
 		hide_options()
-		texture_rect.visible = false
+		#texture_rect.visible = false
 		next_page =  current_choice["next_page"]
 		main.save_file_current_page = next_page
 		load_page()
@@ -958,6 +974,7 @@ func back_to_main_game () -> void:
 	
 # after finishing your battle
 func back_to_game () -> void:
+	play_page_music()
 	var parent = $".."
 	var battle = parent.get_node_or_null("BattleScene")
 	current_hp = GlobalGameSystem.player_hp
@@ -1031,6 +1048,8 @@ func copy_and_move_inventory () -> void:
 		storage_inventory.data.slots[i] = null
 
 func show_battle_scene() -> void:
+	GlobalGameSystem.main_battle = true
+	current_music = ""
 	var battle_scene = load (current_choice["battle"])
 	SceneTransition.battle_open()
 	await get_tree().create_timer(1).timeout
@@ -1054,3 +1073,9 @@ func _on_map_button_pressed() -> void:
 	add_map.size = Vector2(1080, 2160)
 	add_map.visible = true
 	pass # Replace with function body.
+	
+func process_map_rewards () -> void:
+	current_coin = GlobalGameSystem.player_coin
+	coin.text = str(current_coin)
+	current_hp = GlobalGameSystem.player_hp
+	hp.value = current_hp

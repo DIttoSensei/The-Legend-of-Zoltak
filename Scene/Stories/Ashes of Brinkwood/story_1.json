@@ -1211,11 +1211,11 @@
 	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
 	  "text": "The first guard is walking a slow, rhythmic path near the fountain. He’s looking away, but his ears are twitching at every rustle of the wind.",
 	  "choice_1": {
-		"choice": "continue",
+		"choice": "fight",
 		"roll": {
 		  "": 0
 		},
-		"battle": "",
+		"battle": "res://Scene/Stories/Ashes of Brinkwood/battles/knight_battle.tscn",
 		"next_page": "page_17",
 		"outcome_1": {
 		  "text": "Bessa: \"One down, two to go\"",
@@ -1269,11 +1269,11 @@
 	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
 	  "text": "Guard: \"Huh? whose there?\"\nThe second guard is walking towrads your direction at increasing pace...",
 	  "choice_1": {
-		"choice": "continue",
+		"choice": "fight",
 		"roll": {
 		  "": 0
 		},
-		"battle": "",
+		"battle": "res://Scene/Stories/Ashes of Brinkwood/battles/knight_battle.tscn",
 		"next_page": "page_18",
 		"outcome_1": {
 		  "text": "Bessa: \"Two down, one to go, we are getting close.\"",
@@ -1327,11 +1327,11 @@
 	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
 	  "text": "You barely have a moment to breathe after the second guard drops. Fernrick straightens up, brushing the dirt from his sleeve, and Bessa is already scanning the path ahead.\nThen the footsteps come.\nNot the slow, rhythmic patrol of the others. These are deliberate. Unhurried. The kind of steps that belong to someone who already knows exactly where you are.\nA figure emerges from the shadows at the far end of the garden. Broader than the others. The moonlight catches the dull gleam of heavier armor, a sergeant's insignia etched into the pauldron. He stops a few feet away and looks at the two unconscious guards on the ground, then slowly raises his eyes to the three of you.\nHe doesn't shout. He doesn't reach for a horn.\nHe just draws his weapon.",
 	  "choice_1": {
-		"choice": "continue",
+		"choice": "fight",
 		"roll": {
 		  "": 0
 		},
-		"battle": "",
+		"battle": "res://Scene/Stories/Ashes of Brinkwood/battles/commander_knight_battle.tscn",
 		"next_page": "page_19",
 		"outcome_1": {
 		  "text": "You successfully neutralized the guards, you, bessa and Fernrick scale the side of the mansion. The stone is cold, but the ivy provides enough grip to reach a narrow balcony on the second floor. You slip through a latched window, landing silently on a plush, midnight-blue rug. The room is cavernous and smells of expensive jasmine and old parchment",
