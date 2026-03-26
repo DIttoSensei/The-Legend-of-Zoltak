@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="Enemies_res" load_steps=3 format=3 uid="uid://7swodow3i015"]
+[gd_resource type="Resource" script_class="Enemies_res" load_steps=7 format=3 uid="uid://7swodow3i015"]
 
 [ext_resource type="Script" path="res://Scene/action/action.gd" id="1_l60al"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/enemies_res.gd" id="2_0budr"]
+[ext_resource type="Resource" uid="uid://d4dwuqup64317" path="res://Scene/enemies/Moves/Rank_1/cleave.tres" id="2_ip3q8"]
+[ext_resource type="Resource" uid="uid://gx12ss81au2a" path="res://Scene/enemies/Moves/Rank_1/cross_slash.tres" id="3_okd7k"]
+[ext_resource type="Resource" uid="uid://dg4pq1sxmgxak" path="res://Scene/enemies/Moves/Rank_1/slit.tres" id="4_m1c0h"]
+[ext_resource type="Resource" uid="uid://73ljtnuxjqb1" path="res://Scene/enemies/Moves/Rank_1/umbra cut.tres" id="5_hqse5"]
 
 [resource]
 script = ExtResource("2_0budr")
@@ -10,4 +14,4 @@ hp = 220
 atk = 56
 def = 20
 dex = 22
-actions = Array[ExtResource("1_l60al")]([])
+actions = Array[ExtResource("1_l60al")]([ExtResource("2_ip3q8"), ExtResource("3_okd7k"), ExtResource("4_m1c0h"), ExtResource("5_hqse5")])

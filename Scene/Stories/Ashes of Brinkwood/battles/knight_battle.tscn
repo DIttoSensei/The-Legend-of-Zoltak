@@ -1443,7 +1443,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_w6t2c"]
 resource_name = "attack_3"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

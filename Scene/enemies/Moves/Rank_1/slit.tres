@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://dg4pq1sxmgxak"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_ecpl4"]
+
+[resource]
+script = ExtResource("1_ecpl4")
+action_name = "SLIT"
+action_type = "Ice"
+action_attribute = 25
+critical_rate = "10%"
+cooldown = 0
+current_cooldown = 0
+cost = 0
+action_info = ""
+purchased = false
+timeout = false

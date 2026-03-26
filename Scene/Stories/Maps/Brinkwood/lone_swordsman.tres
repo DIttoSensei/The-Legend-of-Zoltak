@@ -11,7 +11,7 @@ icon_image = ExtResource("1_rs2mf")
 info = "[center]Oh hey there, my name is Herald Tango and i happen to be a combat trainer.
 I'm currently here on vacation but my combat senses are becoming way to dull from not doing anything.
 If you are up for it let me take you on a training duel, it will be beneficial to both of us and I'll even throw in a little bonus. [/center]"
-battle_scene_path = "res://Scene/Stories/Ashes of Brinkwood/battles/knight_battle.tscn"
+battle_scene_path = "res://Scene/Stories/Ashes of Brinkwood/battles/tango.tscn"
 completed = false
 battle_fail = "[center]I will assume that you are not on top of your game at the moment, why not come back when you feel you can take me on properly. Until then stranger.[/center]"
 cost = 0

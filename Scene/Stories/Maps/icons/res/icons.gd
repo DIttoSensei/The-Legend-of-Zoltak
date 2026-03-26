@@ -9,6 +9,8 @@ class_name MapIcon extends TextureButton
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var i_name: Label = $name
 
+var current_hp
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,6 +91,7 @@ func _on_event_button_pressed() -> void:
 				GlobalGameSystem.player_hp = 100
 				
 	elif icon_data.type == 'Battle Quest':
+		current_hp = GlobalGameSystem.player_hp
 		GlobalGameSystem.global_sfx_2.stop()
 		#$CanvasLayer/ColorRect.MOUSE_FILTER_IGNORE
 		SignalManager.battle_action_copy.emit()
@@ -104,7 +107,10 @@ func _on_event_button_pressed() -> void:
 
 
 func battle_victory () -> void:
+	GlobalGameSystem.player_hp = current_hp
 	GlobalGameSystem.reduce_bg_music_by_half = true
+	var sound = load ("res://Asset/ost/sound_effects/cold_wind.mp3")
+	GlobalGameSystem.play_sfx2_audio(sound, 10.0)
 	#$CanvasLayer/ColorRect.MOUSE_FILTER_STOP
 	var parent = $CanvasLayer
 	#battle.visible = false

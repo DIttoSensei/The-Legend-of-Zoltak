@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Action" load_steps=2 format=3 uid="uid://73ljtnuxjqb1"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_ucshd"]
+
+[resource]
+script = ExtResource("1_ucshd")
+action_name = "UMBRA CUT"
+action_type = "Shadow"
+action_attribute = 16
+critical_rate = "2%"
+cooldown = 0
+current_cooldown = 0
+cost = 0
+action_info = ""
+purchased = false
+timeout = false
