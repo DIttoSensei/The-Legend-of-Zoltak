@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://myswybuvynpa"]
+
+[ext_resource type="Texture2D" uid="uid://djrlpcfitddv4" path="res://Asset/img/other/dragonhpbar.png" id="1_wb3i3"]
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="1_yi8sc"]
+
+[resource]
+script = ExtResource("1_yi8sc")
+section_name = "Power Gauge"
+img = ExtResource("1_wb3i3")
+info = "[center][color='red']POWER GAUGE[/color]
+The Power Gauge is a meter that builds up automatically as the battle progresses, increasing with each turn that passes. Keep an eye on it.
+When the gauge is full it will begin flashing and a button that was previously greyed out will light up indicating it is ready to use. Activating it grants you a boost in power that applies to whichever action you have selected.
+One important thing to remember. The Power Gauge must be activated before you choose your action and roll the die. If you choose your action and roll without activating it first you will not be able to use it that turn. Get into the habit of checking your gauge at the start of every turn so you never miss the window to use it.[/center]"

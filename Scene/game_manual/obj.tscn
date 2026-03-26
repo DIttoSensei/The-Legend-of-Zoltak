@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw70xay0rim3d"]
+
+[ext_resource type="Texture2D" uid="uid://djefh0tti1om6" path="res://Asset/img/other/8dd9e97cde3351d4250481112bbc1bb8-removebg-preview.png" id="1_b0awt"]
+[ext_resource type="Script" path="res://Scene/game_manual/obj.gd" id="2_1a8vo"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="4_oqtcx"]
+
+[node name="obj" type="TextureButton"]
+texture_normal = ExtResource("1_b0awt")
+script = ExtResource("2_1a8vo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.5
+offset_top = -70.5
+offset_right = 250.5
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_oqtcx")
+theme_override_constants/line_spacing = 20
+theme_override_font_sizes/font_size = 45
+text = "TestingTesting Testing Testing Testing Testing"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

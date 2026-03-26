@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://dd00odbehwtlu"]
+
+[ext_resource type="Texture2D" uid="uid://cpixnmft1gy84" path="res://Asset/img/other/atk.png" id="1_hqjbm"]
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="1_n3d6s"]
+
+[resource]
+script = ExtResource("1_n3d6s")
+section_name = "How to Battle"
+img = ExtResource("1_hqjbm")
+info = "[center][color='yellow']The Basics[/color]
+Combat in Ashes of Brinkwood is turn based. When a battle begins you will have access to everything in your inventory including potions and buff items alongside all of your active combat actions.
+
+[color='yellow']Taking Your Turn[/color]
+To act in battle click the sword icon and select an action from your available options. Once you have made your choice the game will prompt you to roll a die. From there the game handles the rest, calculating the outcome based on your stats and the action you chose.
+
+[color='yellow']Who Goes First[/color]
+Speed sometimes matters? The game checks your Dexterity stat to determine who attacks first each turn. Keep that in mind when building your character if you are the type to go for a speed build.
+
+[color='yellow']Know Your Actions[/color]
+Every action has its own attributes and not all of them work the same way. Take the time to read each one carefully before committing to it. Some actions are powerful but come with a cooldown meaning once used they will be unavailable for a set number of turns. Using a cooldown action at the wrong moment can leave you without options when you need them most.
+
+[color='yellow']How to Win[/color]
+The key to surviving is strategy. Do not pick actions at random and do not blow your best moves all at once. Think ahead, manage your cooldowns and use your items wisely. A well planned fight is far easier than a desperate one. Seriously plan ahead.
+
+[color='yellow']Expanding Your Arsenal[/color]
+If you find yourself lacking options you can visit the shop to purchase new actions as well as items to bring into battle. The more tools you have the more flexibility you carry into every fight.
+[/center]"

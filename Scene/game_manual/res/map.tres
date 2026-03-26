@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://bytmvhcv3x3ot"]
+
+[ext_resource type="Texture2D" uid="uid://0l8cp5xmm3xh" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/Pixel_Art_Scroll-removebg-preview.png" id="1_js4uo"]
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="2_ec6ar"]
+
+[resource]
+script = ExtResource("2_ec6ar")
+section_name = "Map"
+img = ExtResource("1_js4uo")
+info = "[center][color='yellow']THE MAP[/color]
+The map is a window into the world of Zoltak that the main story alone cannot fully show you.
+Because the game is text based there is only so much the narrative can stop to explain. The map fills in those gaps. Through it you can access activities that exist outside of the main story, things that bring the city to life and reward those who take the time to explore.
+Current activities available through the map include optional side battles, lore entries about locations and events in the city, visits to the inn and more. None of these are required to progress the story but for those who want to understand Zoltak beyond what the narrative tells them the map is where that understanding lives.
+
+[color='yellow']It is worth noting that the map is still growing. Only a portion of what I had planned has been added at this stage. If the idea receives well I intend to add more activities to it going forward. Also you can access it by clicking on the big flashing map icon in the main game.[/color][/center]"

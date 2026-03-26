@@ -24,6 +24,7 @@ var main_battle : bool = false
 var map_battle_quest_won : bool = false
 var make_current_audio_empty : bool = false
 var reduce_bg_music_by_half : bool = false
+var manual_data : ManualData
 
 
 # for shop

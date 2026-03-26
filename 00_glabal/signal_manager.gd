@@ -35,3 +35,6 @@ signal action_is_purchased (purchased : bool)
 # for map
 signal battle_action_copy
 signal battle_inv_copy
+
+# dor manual
+signal show_manual_content

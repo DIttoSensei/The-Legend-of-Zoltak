@@ -153,6 +153,41 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 46
 text = "CREDITS"
 
+[node name="manual" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = 528.5
+offset_right = 219.0
+offset_bottom = 641.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_87ea4")
+texture_pressed = ExtResource("5_yq1nf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="manual"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_h4pcg")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
+text = "MANUAL"
+
 [node name="reset" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -350,6 +385,7 @@ texture = ExtResource("12_lgpbd")
 [connection signal="pressed" from="socials/discord" to="." method="_on_discord_pressed"]
 [connection signal="pressed" from="socials/itch_io" to="." method="_on_itch_io_pressed"]
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="manual" to="." method="_on_manual_pressed"]
 [connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="crypt" to="." method="_on_crypt_pressed"]
 [connection signal="pressed" from="music" to="." method="_on_music_pressed"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://i2wuut4vs12"]
+
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="1_30xkj"]
+[ext_resource type="Texture2D" uid="uid://duwur0qh3j3y2" path="res://Scene/shop/item/img/fb2171.png" id="1_hpxsb"]
+
+[resource]
+script = ExtResource("1_30xkj")
+section_name = "Relics"
+img = ExtResource("1_hpxsb")
+info = "[center][color='yellow']RELICS[/color]
+Relics are special items that provide passive effects when equipped. Once a relic is equipped it works automatically in battle without any input needed from you.
+Each relic has its own specific attribute value that determines how much of an effect it provides. For example a relic that restores health will heal you by a set amount every turn without you having to do anything.
+Take your time to read what each relic does and experiment with different combinations. The right relic equipped at the right time can make a noticeable difference.
+
+[color='yellow']Note: Can be purchased in the shop[/color][/center]"

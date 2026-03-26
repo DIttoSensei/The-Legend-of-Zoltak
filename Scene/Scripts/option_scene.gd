@@ -56,6 +56,37 @@ func _on_back_button_pressed() -> void:
 	pass # Replace with function body
 	pass # Replace with function body.
 
+func manage_audio_reset () -> void:
+	## For global audio
+	var music = config.get_value("Settings", "music_enabled")
+	if music == true:
+		music_label.text = 'OFF'
+		GlobalGameSystem.global_audio.volume_db = -90
+		GlobalGameSystem.can_play_audio = false
+		config.set_value("Settings", "music_enabled", false)
+		config.save("user://settings.cfg")
+	elif music == false:
+		music_label.text = 'ON'
+		GlobalGameSystem.global_audio.volume_db = 0
+		GlobalGameSystem.can_play_audio = true
+		config.set_value("Settings", "music_enabled", true)
+		config.save("user://settings.cfg")
+		
+	## For sfx
+	var sfx = config.get_value("Settings", 'sfx_enabled')
+	if sfx == true:
+		sfx_label.text = 'OFF'
+		GlobalGameSystem.global_sfx.volume_db = -90
+		GlobalGameSystem.global_sfx_2.volume_db = -90
+		config.set_value('Settings', 'sfx_enabled', false)
+		config.save("user://settings.cfg")
+	elif sfx == false:
+		sfx_label.text = 'ON'
+		GlobalGameSystem.global_sfx.volume_db = 0
+		GlobalGameSystem.global_sfx_2.volume_db = 0
+		config.set_value('Settings', 'sfx_enabled', true)
+		config.save("user://settings.cfg")
+	
 
 func _on_crypt_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
@@ -106,6 +137,13 @@ func _on_reset_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	
+	## for sfx
+	var sfx = config.get_value("Settings", 'sfx_enabled')
+	var music = config.get_value("Settings", "music_enabled")
+	sfx = false
+	music = false
+	manage_audio_reset()
+	
 
 func _on_credits_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
@@ -128,3 +166,11 @@ func _on_discord_pressed() -> void:
 func _on_itch_io_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
+
+
+func _on_manual_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	LevelManager.load_new_level = "res://Scene/game_manual/manual.tscn"
+	LevelManager.load_level()
+	pass # Replace with function body.

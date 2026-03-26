@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://bowunbrgm7y4h"]
+
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="1_byl1c"]
+[ext_resource type="Texture2D" uid="uid://berktd1hy1nl4" path="res://Asset/img/other/warrior.png" id="1_eujge"]
+
+[resource]
+script = ExtResource("1_byl1c")
+section_name = "Builds"
+img = ExtResource("1_eujge")
+info = "[center][color='yellow']BUILD[/color]
+A build is basically the playstyle you want your character to have. Are you going for someone who hits hard, takes hits well, moves fast or something in between? That is your build.
+Now I will be honest, I am still figuring out how much your build will actually impact the overall experience so rather than locking you into anything I gave you 150 points to freely distribute across your stats during character creation. Put them wherever you want and see what happens.
+One thing worth knowing though is that all stats depend on one specific stat to function effectively. I am not going to tell you which one because figuring that out yourself is part of the fun.
+What I will say is this. Think about it logically. You cannot land a hit on your target if you are lacking in a certain area. That is your only clue and I am leaving it there.
+Experiment, try different combinations and see what works for you.[/center]"

@@ -43,6 +43,7 @@ folder_colors={
 "res://Scene/action/": "red",
 "res://Scene/battle/": "pink",
 "res://Scene/enemies/": "teal",
+"res://Scene/game_manual/": "orange",
 "res://Scene/inventory/": "yellow",
 "res://Scene/journal/": "blue",
 "res://Scene/shop/": "purple"

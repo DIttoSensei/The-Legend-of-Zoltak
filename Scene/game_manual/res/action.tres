@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://cpys8xssyypst"]
+
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="1_jmrky"]
+[ext_resource type="Texture2D" uid="uid://mqbuyl25lq8r" path="res://Asset/img/other/action-removebg-preview.png" id="1_nyb43"]
+
+[resource]
+script = ExtResource("1_jmrky")
+section_name = "Actions"
+img = ExtResource("1_nyb43")
+info = "[center][color='yellow']ACTIONS[/color]
+Actions are your primary tools in battle. Every class in the game from Warriors to Summoners comes with their own unique set of moves, so how you fight will depend entirely on who you chose to be.
+Every action belongs to an attribute type and each attribute can carry a status effect that triggers against your opponent. These effects do not occur every time you use an action. Each one has its own percentage chance of activating so do not rely on them but do not ignore them either. Landing one at the right moment can shift a fight entirely.
+Below is a breakdown of every attribute and what it does.
+Physical — Standard damage with no additional effect.
+[color='red']Fire[/color] — Chance to inflict Burns, dealing damage over time.
+[color='blue']Water[/color] — Chance to slow your opponent reducing their speed.
+[color='green']Wind[/color] — Chance to slow your opponent reducing their speed.
+[color='yellow']Lightning[/color] — Chance to Paralyze your opponent, preventing them from acting.
+[color='a3c1ff']Ice[/color] — Chance to Freeze your opponent, preventing them from acting.
+[color='brown']Earth[/color] — Chance to lower your opponent's Defense.
+[color='white']Mystic[/color] — Ignores your opponent's Defense entirely when dealing damage.
+[color='green']Heal[/color] — Restores your HP over a specific number of turns.
+[color='blue']Defense[/color] — Temporarily increases your own Defense.
+[color='red']Attack Down[/color] — Chance to lower your opponent's Attack.
+[color='blue']Def Breaker[/color] — Reduces your opponent's Defense.
+[color='purple']Psychic[/color] — Chance to Confuse your opponent, causing unpredictable behavior in battle.
+[color='green']Hex[/color] — Deals double the damage of the same moveset used against it.
+Shadow — Drains your opponent's HP and adds it directly to yours.
+[color='red']Bleed[/color] — Deals damage gradually over multiple turns.
+[color='purple']Poison[/color] — Deals damage gradually over multiple turns.
+
+Read your actions carefully before heading into a fight. Knowing what each one does and when to use it is the difference between a clean victory and an early grave.[/center]"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ManualData" load_steps=3 format=3 uid="uid://qry2e8blov8w"]
+
+[ext_resource type="Script" path="res://Scene/game_manual/manual_res.gd" id="1_2xsei"]
+[ext_resource type="Texture2D" uid="uid://hq3l1lkmha5i" path="res://Asset/img/other/book-removebg-preview.png" id="1_u0dns"]
+
+[resource]
+script = ExtResource("1_2xsei")
+section_name = "Player Journal"
+img = ExtResource("1_u0dns")
+info = "[center][color='yellow']PLAYER JOURNAL[/color]
+The journal is a record that builds itself as you play. As you progress through the main story certain choices will reward you with a new journal entry. When this happens you will be notified that something has been added.
+Entries are not handed out freely. They are tied to the decisions you make meaning the journal you build will reflect how you played. Different choices can lead to different entries so two players may not end up with the same record.
+Each entry serves a purpose. Some will shed further light on events that happened in the story, expanding on things the narrative did not have the space to fully explain. Others may offer a different perspective on something you already experienced.
+It is worth going back to read them.[/center]"
