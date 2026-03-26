@@ -10,6 +10,9 @@ var base_size = Vector2(2046,2400)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalGameSystem.global_audio.volume_db = -18
+	var sound = load ("res://Asset/ost/sound_effects/cold_wind.mp3")
+	GlobalGameSystem.play_sfx2_audio(sound, 10.0)
 	#SceneTransition.fade_in()
 	$ScrollContainer.set_deferred("scroll_vertical", 205)
 	$ScrollContainer.set_deferred("scroll_horizontal", 485)
@@ -17,6 +20,8 @@ func _ready() -> void:
 
 	
 func _on_exit_pressed() -> void:
+	GlobalGameSystem.global_audio.volume_db = 0
+	GlobalGameSystem.reduce_bg_music_by_half = false
 	var sound = load ("res://Asset/sound_effects/click_4_p.wav")
 	GlobalGameSystem.play_sfx_audio(sound)
 	self.visible = false

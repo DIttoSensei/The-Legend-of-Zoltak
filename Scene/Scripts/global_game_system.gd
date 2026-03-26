@@ -4,6 +4,7 @@ extends Node2D
 @onready var global_sfx: AudioStreamPlayer = $global_sfx
 
 @export var transition_duration : float = 2.00
+@onready var global_sfx_2: AudioStreamPlayer = $global_sfx2
 
 # Var decleration
 var audio : Resource 
@@ -22,6 +23,7 @@ var game_map
 var main_battle : bool = false
 var map_battle_quest_won : bool = false
 var make_current_audio_empty : bool = false
+var reduce_bg_music_by_half : bool = false
 
 
 # for shop
@@ -60,12 +62,21 @@ func _process(_delta: float) -> void:
 
 
 func play_bg_audio () -> void:
+	if reduce_bg_music_by_half == true:
+		global_audio.volume_db = -18
+	else:
+		global_audio.volume_db = 0
 	global_audio.play()
 	pass
 
 func play_sfx_audio (audio) -> void:
 	global_sfx.stream = audio
 	global_sfx.play()
+
+func play_sfx2_audio (audio, volume : float = 0) -> void:
+	global_sfx_2.stream = audio
+	global_sfx.volume_db = volume
+	global_sfx_2.play()
 
 # fade out the audio playing
 func fade_out():

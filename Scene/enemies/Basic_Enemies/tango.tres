@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemies_res" load_steps=3 format=3 uid="uid://7swodow3i015"]
+
+[ext_resource type="Script" path="res://Scene/action/action.gd" id="1_l60al"]
+[ext_resource type="Script" path="res://Scene/battle/scripts/enemies_res.gd" id="2_0budr"]
+
+[resource]
+script = ExtResource("2_0budr")
+name = "TANGO"
+hp = 220
+atk = 56
+def = 20
+dex = 22
+actions = Array[ExtResource("1_l60al")]([])

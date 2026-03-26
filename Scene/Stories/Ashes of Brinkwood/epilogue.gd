@@ -1,4 +1,4 @@
-class_name IntroToMain extends CanvasLayer
+extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $Control/AnimationPlayer
 @onready var effect_audio: AudioStreamPlayer = $effect_audio
@@ -23,6 +23,7 @@ var counter := 1
 var transition_duration : float = 5.0
 
 func _ready() -> void:
+	label.text = ""
 	await get_tree().create_timer(3.5).timeout
 	timer.start()
 	effect_audio.volume_db = -60
@@ -43,6 +44,7 @@ func _ready() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "loading":
+		# Pass the path of the score board
 		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
 		LevelManager.load_level_single_transition()
 	

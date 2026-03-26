@@ -1,0 +1,250 @@
+[gd_scene load_steps=23 format=3 uid="uid://dwcfvomncav6m"]
+
+[ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/epilogue.gd" id="1_4caow"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="2_j3kph"]
+[ext_resource type="Shader" path="res://Scene/Stories/Ashes of Brinkwood/fog.gdshader" id="3_jwhxk"]
+[ext_resource type="AudioStream" uid="uid://6bsy8heucnkb" path="res://Asset/ost/sound_effects/wind-blowing-sfx.mp3" id="4_q21rl"]
+[ext_resource type="AudioStream" uid="uid://btwhtlxbhdjwq" path="res://Asset/ost/sound_effects/rubbish_chant_by_me.mp3" id="5_6i8l6"]
+
+[sub_resource type="Animation" id="Animation_tnio2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ks563"]
+resource_name = "loading"
+length = 8.0
+
+[sub_resource type="Animation" id="Animation_jq7j1"]
+resource_name = "text_fade"
+length = 10.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xl3cw"]
+_data = {
+"RESET": SubResource("Animation_tnio2"),
+"loading": SubResource("Animation_ks563"),
+"text_fade": SubResource("Animation_jq7j1")
+}
+
+[sub_resource type="Animation" id="Animation_oaqjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q8mnm"]
+resource_name = "text_fade_in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nqra2"]
+resource_name = "text_fade_out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6is8h"]
+_data = {
+"RESET": SubResource("Animation_oaqjb"),
+"text_fade_in": SubResource("Animation_q8mnm"),
+"text_fade_out": SubResource("Animation_nqra2")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ig2fi"]
+frequency = 0.0075
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xdqkm"]
+width = 320
+height = 180
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_ig2fi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np8r6"]
+shader = ExtResource("3_jwhxk")
+shader_parameter/density = 0.4
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_xdqkm")
+
+[sub_resource type="Animation" id="Animation_iiwvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fog/Parallax2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rh11i"]
+resource_name = "fade_fog_in"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fog/Parallax2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w5mqo"]
+resource_name = "fade_fog_out"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fog/Parallax2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333338, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxxy4"]
+_data = {
+"RESET": SubResource("Animation_iiwvs"),
+"fade_fog_in": SubResource("Animation_rh11i"),
+"fade_fog_out": SubResource("Animation_w5mqo")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0587"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgjge"]
+
+[node name="epilogue" type="CanvasLayer"]
+script = ExtResource("1_4caow")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_xl3cw")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 308.0
+offset_right = 1046.0
+offset_bottom = 1748.0
+theme = ExtResource("2_j3kph")
+theme_override_constants/line_separation = 30
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]And in that perfect, terrible emptiness, you hear one final sound:  
+A whisper, so quiet you almost miss it:  
+\"Don't forget.\"
+
+Then even that is gone."
+fit_content = true
+
+[node name="text animation" type="AnimationPlayer" parent="Control/RichTextLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_6is8h")
+}
+
+[node name="fog" type="ParallaxBackground" parent="."]
+layer = 2
+scroll_ignore_camera_zoom = true
+
+[node name="Parallax2D" type="Parallax2D" parent="fog"]
+
+[node name="ColorRect" type="ColorRect" parent="fog/Parallax2D"]
+modulate = Color(1, 1, 1, 0)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_np8r6")
+offset_left = -1163.0
+offset_right = 2458.0
+offset_bottom = 2150.0
+mouse_filter = 2
+
+[node name="fog animation" type="AnimationPlayer" parent="fog/Parallax2D"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_lxxy4")
+}
+
+[node name="effect_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q21rl")
+max_polyphony = 5
+
+[node name="effect_audio_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6i8l6")
+volume_db = -14.0
+max_polyphony = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Button" type="Button" parent="."]
+z_index = 7
+offset_left = 699.0
+offset_top = 1936.0
+offset_right = 1064.0
+offset_bottom = 2134.0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k0587")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jgjge")
+flat = true
+
+[connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Control/RichTextLabel/text animation" to="." method="_on_text_animation_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

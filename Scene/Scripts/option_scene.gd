@@ -91,11 +91,13 @@ func _on_sfx_pressed() -> void:
 	if sfx == true:
 		sfx_label.text = 'OFF'
 		GlobalGameSystem.global_sfx.volume_db = -90
+		GlobalGameSystem.global_sfx_2.volume_db = -90
 		config.set_value('Settings', 'sfx_enabled', false)
 		config.save("user://settings.cfg")
 	elif sfx == false:
 		sfx_label.text = 'ON'
 		GlobalGameSystem.global_sfx.volume_db = 0
+		GlobalGameSystem.global_sfx_2.volume_db = 0
 		config.set_value('Settings', 'sfx_enabled', true)
 		config.save("user://settings.cfg")
 	

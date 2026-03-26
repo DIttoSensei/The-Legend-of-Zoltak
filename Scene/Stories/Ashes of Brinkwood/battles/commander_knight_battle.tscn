@@ -1508,6 +1508,22 @@ tracks/3/keys = {
 "values": [Vector2(39.4991, 11.681), Vector2(-54.7588, 11.681), Vector2(39.4991, 11.681)]
 }
 
+[sub_resource type="Animation" id="Animation_a5hge"]
+resource_name = "attack_5"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="Animation" id="Animation_s6tu3"]
 resource_name = "death"
 length = 0.83
@@ -1566,22 +1582,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_jwogv"]
 resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_a5hge"]
-resource_name = "attack_5"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false

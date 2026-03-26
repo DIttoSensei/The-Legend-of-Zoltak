@@ -1,4 +1,4 @@
-[gd_scene load_steps=304 format=3 uid="uid://0wc8u4yat6ir"]
+[gd_scene load_steps=303 format=3 uid="uid://0wc8u4yat6ir"]
 
 [ext_resource type="Script" path="res://Scene/battle/battle_scene.gd" id="1_ehjl2"]
 [ext_resource type="Texture2D" uid="uid://doah3yaqfbp0h" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/1000185016.png" id="2_stxh6"]
@@ -199,9 +199,8 @@
 [ext_resource type="Texture2D" uid="uid://bg6yy72csm00e" path="res://Scene/battle/img/effects/8/paladin_skill5_frame12.png" id="197_rci5u"]
 [ext_resource type="Texture2D" uid="uid://b8ty1i5wkxsej" path="res://Scene/battle/img/effects/hit/Hit Effect 01 1.png" id="198_tu1qt"]
 [ext_resource type="Texture2D" uid="uid://dpt3luxuvtl4k" path="res://Scene/battle/img/dragonhpbar.png" id="199_e381m"]
-[ext_resource type="Texture2D" uid="uid://c8ty65x8sb1o0" path="res://Scene/Stories/Ashes of Brinkwood/scene_images/knight-Sheet_whitefx.png" id="200_jdf08"]
+[ext_resource type="Texture2D" uid="uid://cpym1n0f6n3ib" path="res://Scene/Stories/Ashes of Brinkwood/sprites/adventurer-v1.5-Sheet.png" id="200_8kk0y"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/enemy.gd" id="201_xrrw8"]
-[ext_resource type="Resource" uid="uid://danntwnv4mn6w" path="res://Scene/enemies/Basic_Enemies/commander_knight.tres" id="202_4w72x"]
 [ext_resource type="PackedScene" uid="uid://c8ym5qkfh5k17" path="res://Scene/battle/enemy_status_effect.tscn" id="203_uy7xe"]
 [ext_resource type="Texture2D" uid="uid://dsfbf0rmjvu6q" path="res://Asset/img/other/UI_TravelBook_BookPageLeft01a.png" id="205_soepf"]
 [ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="206_faake"]
@@ -3296,13 +3295,13 @@ libraries = {
 
 [node name="enemy" type="Sprite2D" parent="Control"]
 position = Vector2(897.569, 893.891)
-scale = Vector2(5.34703, 6.23661)
-texture = ExtResource("200_jdf08")
+scale = Vector2(6.62717, 7.72973)
+texture = ExtResource("200_8kk0y")
 flip_h = true
 hframes = 7
-vframes = 6
+vframes = 16
+region_rect = Rect2(170.486, 307.301, 25.6579, 25.6579)
 script = ExtResource("201_xrrw8")
-enemy_data = ExtResource("202_4w72x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/enemy"]
 libraries = {
@@ -3311,6 +3310,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="hitbox" type="Area2D" parent="Control/enemy"]
+visible = false
 position = Vector2(-3.85056, 6.2041)
 collision_layer = 2
 monitorable = false
@@ -3319,6 +3319,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_uttwu")
 
 [node name="hurtbox" type="Area2D" parent="Control/enemy"]
+visible = false
 position = Vector2(-43.3886, 8.97928)
 collision_layer = 2
 monitoring = false
@@ -3406,10 +3407,10 @@ libraries = {
 
 [node name="shadow" type="TextureRect" parent="Control/enemy"]
 modulate = Color(0.12549, 0.113725, 0.027451, 0.321569)
-offset_left = -29.0952
-offset_top = 13.5864
-offset_right = 2761.91
-offset_bottom = 1091.58
+offset_left = -18.2998
+offset_top = 8.58936
+offset_right = 2097.7
+offset_bottom = 825.589
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("35_xuq65")
 

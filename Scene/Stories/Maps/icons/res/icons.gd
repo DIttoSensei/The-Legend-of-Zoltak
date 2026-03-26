@@ -48,6 +48,9 @@ func _on_pressed() -> void:
 		return
 	show_map_quest_data()
 	if icon_data.type == 'Inn':
+		if icon_data.nsfw == true:
+			sound = load ("res://Asset/ost/sound_effects/giggle1.mp3")
+			GlobalGameSystem.play_sfx_audio(sound)
 		if GlobalGameSystem.player_hp == 100:
 			event_button.visible = false
 		else:
@@ -66,9 +69,6 @@ func _on_pressed() -> void:
 func _on_event_button_pressed() -> void:
 	## FOR INN
 	if icon_data.type == 'Inn':
-		if icon_data.nsfw == true:
-			# Play sun sun audio 1
-			pass
 		if GlobalGameSystem.player_coin < icon_data.cost:
 			var sound = load ("res://Asset/sound_effects/033_Denied_03.wav")
 			GlobalGameSystem.play_sfx_audio(sound)
@@ -76,8 +76,8 @@ func _on_event_button_pressed() -> void:
 			text.text = icon_data.no_coin_info
 		else:
 			if icon_data.nsfw == true:
-				# play sun sun audio 2
-				pass
+				var sound = load ("res://Asset/ost/sound_effects/giggle.mp3")
+				GlobalGameSystem.play_sfx_audio(sound)
 			else:
 				var sound = load ('res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav')
 				GlobalGameSystem.play_sfx_audio(sound)
@@ -89,6 +89,7 @@ func _on_event_button_pressed() -> void:
 				GlobalGameSystem.player_hp = 100
 				
 	elif icon_data.type == 'Battle Quest':
+		GlobalGameSystem.global_sfx_2.stop()
 		#$CanvasLayer/ColorRect.MOUSE_FILTER_IGNORE
 		SignalManager.battle_action_copy.emit()
 		SignalManager.battle_inv_copy.emit()
@@ -103,6 +104,7 @@ func _on_event_button_pressed() -> void:
 
 
 func battle_victory () -> void:
+	GlobalGameSystem.reduce_bg_music_by_half = true
 	#$CanvasLayer/ColorRect.MOUSE_FILTER_STOP
 	var parent = $CanvasLayer
 	#battle.visible = false
