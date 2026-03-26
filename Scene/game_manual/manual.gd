@@ -8,6 +8,7 @@ var can_transition : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SceneTransition.fade_in()
 	SignalManager.show_manual_content.connect(show_content)
 	pass # Replace with function body.
 
@@ -17,6 +18,7 @@ func _process(delta: float) -> void:
 	pass
 
 func show_content () -> void:
+	info.get_v_scroll_bar().value = 0
 	can_transition = false
 	var data = GlobalGameSystem.manual_data
 	section_1.visible = false

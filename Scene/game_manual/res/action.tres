@@ -10,7 +10,7 @@ img = ExtResource("1_nyb43")
 info = "[center][color='yellow']ACTIONS[/color]
 Actions are your primary tools in battle. Every class in the game from Warriors to Summoners comes with their own unique set of moves, so how you fight will depend entirely on who you chose to be.
 Every action belongs to an attribute type and each attribute can carry a status effect that triggers against your opponent. These effects do not occur every time you use an action. Each one has its own percentage chance of activating so do not rely on them but do not ignore them either. Landing one at the right moment can shift a fight entirely.
-Below is a breakdown of every attribute and what it does.
+Below is a breakdown of every attribute and what it does.[/center]
 Physical — Standard damage with no additional effect.
 [color='red']Fire[/color] — Chance to inflict Burns, dealing damage over time.
 [color='blue']Water[/color] — Chance to slow your opponent reducing their speed.
@@ -29,4 +29,4 @@ Shadow — Drains your opponent's HP and adds it directly to yours.
 [color='red']Bleed[/color] — Deals damage gradually over multiple turns.
 [color='purple']Poison[/color] — Deals damage gradually over multiple turns.
 
-Read your actions carefully before heading into a fight. Knowing what each one does and when to use it is the difference between a clean victory and an early grave.[/center]"
+[center]Read your actions carefully before heading into a fight. Knowing what each one does and when to use it is the difference between a clean victory and an early grave.[/center]"

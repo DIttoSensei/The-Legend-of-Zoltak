@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="3_l56u8"]
 [ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="4_jkjbq"]
 [ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/other/Aro_Png.png" id="5_tsosy"]
-[ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="7_2jswb"]
 [ext_resource type="PackedScene" uid="uid://bw70xay0rim3d" path="res://Scene/game_manual/obj.tscn" id="7_4x8oa"]
+[ext_resource type="Script" path="res://Scene/game_manual/scroll_container_manual.gd" id="7_654p2"]
 [ext_resource type="Resource" uid="uid://bqp71f2exy6il" path="res://Scene/game_manual/res/how_to_play.tres" id="8_6e3gb"]
 [ext_resource type="Resource" uid="uid://dd00odbehwtlu" path="res://Scene/game_manual/res/how_to_battle.tres" id="9_eodsd"]
 [ext_resource type="Resource" uid="uid://myswybuvynpa" path="res://Scene/game_manual/res/power_gauge.tres" id="10_l6f0u"]
@@ -18,7 +18,7 @@
 [ext_resource type="Resource" uid="uid://76g7mltdmlpg" path="res://Scene/game_manual/res/shop.tres" id="14_7ivy3"]
 [ext_resource type="Resource" uid="uid://i2wuut4vs12" path="res://Scene/game_manual/res/relics.tres" id="15_6v5c5"]
 [ext_resource type="Resource" uid="uid://bowunbrgm7y4h" path="res://Scene/game_manual/res/builds.tres" id="16_1r2qd"]
-[ext_resource type="Texture2D" uid="uid://duwur0qh3j3y2" path="res://Scene/shop/item/img/fb2171.png" id="17_gu7m8"]
+[ext_resource type="Texture2D" uid="uid://b7avbyro5l7li" path="res://Asset/img/other/shop_stand_in_pixel_art_style-removebg-preview.png" id="18_mf8yi"]
 
 [node name="Manual" type="Control"]
 layout_mode = 3
@@ -75,10 +75,11 @@ texture = ExtResource("5_tsosy")
 custom_minimum_size = Vector2(822, 1547)
 layout_mode = 0
 offset_left = 134.0
-offset_top = 544.0
+offset_top = 456.0
 offset_right = 956.0
-offset_bottom = 2001.0
-script = ExtResource("7_2jswb")
+offset_bottom = 2003.0
+horizontal_scroll_mode = 0
+script = ExtResource("7_654p2")
 
 [node name="CenterContainer" type="VBoxContainer" parent="section_1"]
 layout_mode = 2
@@ -125,13 +126,13 @@ manual_res = ExtResource("16_1r2qd")
 
 [node name="img" type="TextureRect" parent="."]
 visible = false
-custom_minimum_size = Vector2(500, 500)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-offset_left = 286.0
-offset_top = 478.0
-offset_right = 786.0
-offset_bottom = 988.0
-texture = ExtResource("17_gu7m8")
+offset_left = 314.0
+offset_top = 470.0
+offset_right = 756.0
+offset_bottom = 912.0
+texture = ExtResource("18_mf8yi")
 expand_mode = 4
 stretch_mode = 5
 
@@ -143,10 +144,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -447.0
-offset_top = -20.0
-offset_right = 519.0
-offset_bottom = 986.0
+offset_left = -481.0
+offset_top = -141.0
+offset_right = 485.0
+offset_bottom = 1018.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_caway")
@@ -154,17 +155,29 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 35
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
-text = "[center][color='yellow']Getting Started[/color]
-Before your journey begins you will need to create a save file. This will take you to the character creation screen where you can give your character a name, age and other details that will define who they are. Once created your save file is set and the game will automatically record your progress as you play, allowing you to pick up right where you left off at any time.
+text = "[center][color='yellow']ACTIONS[/color]
+Actions are your primary tools in battle. Every class in the game from Warriors to Summoners comes with their own unique set of moves, so how you fight will depend entirely on who you chose to be.
+Every action belongs to an attribute type and each attribute can carry a status effect that triggers against your opponent. These effects do not occur every time you use an action. Each one has its own percentage chance of activating so do not rely on them but do not ignore them either. Landing one at the right moment can shift a fight entirely.
+Below is a breakdown of every attribute and what it does.[/center]
+Physical — Standard damage with no additional effect.
+[color='red']Fire[/color] — Chance to inflict Burns, dealing damage over time.
+[color='blue']Water[/color] — Chance to slow your opponent reducing their speed.
+[color='green']Wind[/color] — Chance to slow your opponent reducing their speed.
+[color='yellow']Lightning[/color] — Chance to Paralyze your opponent, preventing them from acting.
+[color='a3c1ff']Ice[/color] — Chance to Freeze your opponent, preventing them from acting.
+[color='brown']Earth[/color] — Chance to lower your opponent's Defense.
+[color='white']Mystic[/color] — Ignores your opponent's Defense entirely when dealing damage.
+[color='green']Heal[/color] — Restores your HP over a specific number of turns.
+[color='blue']Defense[/color] — Temporarily increases your own Defense.
+[color='red']Attack Down[/color] — Chance to lower your opponent's Attack.
+[color='blue']Def Breaker[/color] — Reduces your opponent's Defense.
+[color='purple']Psychic[/color] — Chance to Confuse your opponent, causing unpredictable behavior in battle.
+[color='green']Hex[/color] — Deals double the damage of the same moveset used against it.
+Shadow — Drains your opponent's HP and adds it directly to yours.
+[color='red']Bleed[/color] — Deals damage gradually over multiple turns.
+[color='purple']Poison[/color] — Deals damage gradually over multiple turns.
 
-[color='yellow']The Game[/color]
-The Legends of Zoltak is a text based RPG. At its core the game is about experiencing the story through words, making choices and living with the outcomes. Pay attention to what you read, the details matter.
-
-[color='yellow']Making Choices[/color]
-Throughout the story you will be presented with choices. Some choices will feel like they led to the same place regardless of what you picked. Don't let that fool you. Not every consequence announces itself. Some outcomes are quiet. Some are delayed. And some choices that seemed harmless early on will come back to find you much later in ways you won't see coming.
-
-[color='yellow']How Success is Determined[/color]
-When a choice requires more than just a decision the game will ask you to roll a die. The result is then measured against your character's stats to determine whether you succeed or not. However do not assume that maxing out your stats guarantees success. The game uses a balancing system where certain stats depend on others to function effectively. A character strong in one area may still fall short if the stats that support it are lacking. Build carefully and build with balance in mind.[/color]"
+[center]Read your actions carefully before heading into a fight. Knowing what each one does and when to use it is the difference between a clean victory and an early grave.[/center]"
 script = ExtResource("10_olqji")
 
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

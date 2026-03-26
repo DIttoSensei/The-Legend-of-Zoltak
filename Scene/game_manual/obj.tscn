@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="4_oqtcx"]
 
 [node name="obj" type="TextureButton"]
+mouse_filter = 1
 texture_normal = ExtResource("1_b0awt")
 script = ExtResource("2_1a8vo")
 
