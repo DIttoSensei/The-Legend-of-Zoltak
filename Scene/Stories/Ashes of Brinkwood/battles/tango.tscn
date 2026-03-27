@@ -2312,6 +2312,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
 
 [sub_resource type="Animation" id="Animation_rlk1s"]
 resource_name = "hide"
@@ -2488,6 +2500,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-1111, 1224)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_t0t0c"]
@@ -3862,6 +3886,7 @@ theme_override_font_sizes/font_size = 55
 text = "USE"
 
 [node name="full_stats_info" type="Control" parent="Control"]
+z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4205,12 +4230,13 @@ libraries = {
 [node name="inventory_color_rect" type="ColorRect" parent="Control"]
 visible = false
 layout_mode = 0
-offset_right = 1077.0
+offset_left = -14.0
+offset_right = 1091.0
 offset_bottom = 2164.0
 color = Color(0, 0, 0, 0.498039)
 
 [node name="inventory_border" type="TextureRect" parent="Control"]
-z_index = 1
+z_index = 10
 layout_mode = 0
 offset_left = -1111.0
 offset_top = 1224.0

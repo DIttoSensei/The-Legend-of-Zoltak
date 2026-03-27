@@ -34,6 +34,7 @@ func _on_exit_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(sound)
 	canvas_layer.visible = false
 	SignalManager.map_rewards.emit()
+	print ("Global Hp: " + str(GlobalGameSystem.player_hp))
 	pass # Replace with function body.
 
 func show_map_quest_data () -> void:
@@ -46,38 +47,41 @@ func show_map_quest_data () -> void:
 func _on_pressed() -> void:
 	var sound = load ("res://Asset/sound_effects/click_3.wav")
 	GlobalGameSystem.play_sfx_audio(sound)
+	GlobalGameSystem.current_icon_data = icon_data
+	var current_data = GlobalGameSystem.current_icon_data
 	if icon_data == null:
 		return
 	show_map_quest_data()
-	if icon_data.type == 'Inn':
-		if icon_data.nsfw == true:
+	if current_data.type == 'Inn':
+		if current_data.nsfw == true:
 			sound = load ("res://Asset/ost/sound_effects/giggle1.mp3")
 			GlobalGameSystem.play_sfx_audio(sound)
 		if GlobalGameSystem.player_hp == 100:
 			event_button.visible = false
 		else:
 			event_button.visible = true
-	elif icon_data.type == 'Unknown':
+	elif current_data.type == 'Unknown':
 		event_button.visible = false
-	elif icon_data.type == 'Battle Quest':
+	elif current_data.type == 'Battle Quest':
+		GlobalGameSystem.current_icon_data = current_data
 		event_button.visible = true
-	elif icon_data.type == 'Scroll':
+	elif current_data.type == 'Scroll':
 		event_button.visible = false 
-	elif icon_data.type == 'Notice':
+	elif current_data.type == 'Notice':
 		event_button.visible = false
 	pass # Replace with function body.
 
 
 func _on_event_button_pressed() -> void:
 	## FOR INN
-	if icon_data.type == 'Inn':
-		if GlobalGameSystem.player_coin < icon_data.cost:
+	if GlobalGameSystem.current_icon_data.type == 'Inn':
+		if GlobalGameSystem.player_coin < GlobalGameSystem.current_icon_data.cost:
 			var sound = load ("res://Asset/sound_effects/033_Denied_03.wav")
 			GlobalGameSystem.play_sfx_audio(sound)
 			event_button.visible = false
-			text.text = icon_data.no_coin_info
+			text.text = GlobalGameSystem.current_icon_data.no_coin_info
 		else:
-			if icon_data.nsfw == true:
+			if GlobalGameSystem.current_icon_data.nsfw == true:
 				var sound = load ("res://Asset/ost/sound_effects/giggle.mp3")
 				GlobalGameSystem.play_sfx_audio(sound)
 			else:
@@ -85,12 +89,12 @@ func _on_event_button_pressed() -> void:
 				GlobalGameSystem.play_sfx_audio(sound)
 			text.text = icon_data.result_info
 			event_button.visible = false
-			GlobalGameSystem.player_coin -= icon_data.cost
-			GlobalGameSystem.player_hp += icon_data.reward_value
+			GlobalGameSystem.player_coin -= GlobalGameSystem.current_icon_data.cost
+			GlobalGameSystem.player_hp += GlobalGameSystem.current_icon_data.reward_value
 			if GlobalGameSystem.player_hp > 100:
 				GlobalGameSystem.player_hp = 100
 				
-	elif icon_data.type == 'Battle Quest':
+	elif GlobalGameSystem.current_icon_data.type == 'Battle Quest':
 		current_hp = GlobalGameSystem.player_hp
 		GlobalGameSystem.global_sfx_2.stop()
 		#$CanvasLayer/ColorRect.MOUSE_FILTER_IGNORE
@@ -107,7 +111,10 @@ func _on_event_button_pressed() -> void:
 
 
 func battle_victory () -> void:
-	GlobalGameSystem.player_hp = current_hp
+	if GlobalGameSystem.can_accept_victory == false:
+		return
+	SignalManager.reset_action_cooldown.emit()
+	#GlobalGameSystem.player_hp = current_hp
 	GlobalGameSystem.reduce_bg_music_by_half = true
 	var sound = load ("res://Asset/ost/sound_effects/cold_wind.mp3")
 	GlobalGameSystem.play_sfx2_audio(sound, 10.0)
@@ -120,9 +127,12 @@ func battle_victory () -> void:
 		event_button.visible = false
 		SceneTransition.battle_close()
 		# give reward
-		GlobalGameSystem.player_coin += icon_data.reward_value
+		print ("Global coin: " + str(GlobalGameSystem.player_coin))
+		GlobalGameSystem.player_coin += GlobalGameSystem.current_icon_data.reward_value
+		print ("reward coin: " +  str(GlobalGameSystem.current_icon_data.reward_value))
+		print ("Global coin: " + str(GlobalGameSystem.player_coin))
 	else:
 		text.text = icon_data.battle_fail
 		event_button.visible = false
 		SceneTransition.battle_close()
-
+	GlobalGameSystem.can_accept_victory = false

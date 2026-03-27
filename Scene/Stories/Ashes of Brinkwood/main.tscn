@@ -913,7 +913,7 @@ offset_top = 12.0
 offset_right = 493.0
 offset_bottom = 157.0
 scale = Vector2(2.53398, 2.53398)
-value = 100.0
+value = 20.0
 rounded = true
 texture_progress = ExtResource("4_em4mx")
 

@@ -22,11 +22,12 @@ func _ready() -> void:
 func _on_exit_pressed() -> void:
 	GlobalGameSystem.global_audio.volume_db = 0
 	GlobalGameSystem.reduce_bg_music_by_half = false
+	GlobalGameSystem.global_sfx_2.stop()
 	var sound = load ("res://Asset/sound_effects/click_4_p.wav")
 	GlobalGameSystem.play_sfx_audio(sound)
 	self.visible = false
-	queue_free()
 	SignalManager.enable_camera.emit()
+	queue_free()
 	pass # Replace with function body.
 
 

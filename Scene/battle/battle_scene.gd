@@ -92,6 +92,7 @@ var player_status_active := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalGameSystem.can_accept_victory = true
 	load_player_actions()
 	load_player_inv()
 	
@@ -844,9 +845,14 @@ func player_victory () -> void:
 		
 		
 	GlobalGameSystem.battle_started = false
+	
+	if GlobalGameSystem.main_battle == false:
+		GlobalGameSystem.map_battle_quest_won = true
+		return
+	
 	GlobalGameSystem.results = "victory"
 	GlobalGameSystem.player_hp = player.current_hp
-
+	
 	enemy_animation.play("death")
 	await get_tree().create_timer(0.84).timeout
 	enemy.visible = false
@@ -863,9 +869,8 @@ func player_victory () -> void:
 		GlobalGameSystem.main_battle = false
 	else:
 		self.visible = false
-		GlobalGameSystem.map_battle_quest_won = true
-		GlobalGameSystem.make_current_audio_empty = true
 		SignalManager.battle_quest_won.emit()
+		GlobalGameSystem.make_current_audio_empty = true
 		self.queue_free()
 	SignalManager.play_main_audio.emit()
 

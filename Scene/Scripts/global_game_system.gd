@@ -26,6 +26,10 @@ var make_current_audio_empty : bool = false
 var reduce_bg_music_by_half : bool = false
 var manual_data : ManualData
 
+# for battle quest
+var current_icon_data : IconData # For battle quest
+var can_accept_victory : bool = false
+
 
 # for shop
 var item

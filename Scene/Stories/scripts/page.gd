@@ -98,6 +98,7 @@ func _ready() -> void:
 	SignalManager.battle_action_copy.connect(copy_player_actions)
 	SignalManager.battle_inv_copy.connect(copy_and_move_inventory)
 	SignalManager.play_main_audio.connect(play_page_music)
+	SignalManager.reset_action_cooldown.connect(reset_all_action_cooldown)
 	
 	# defualt value of clicked choice
 	clicked_choice = choice
@@ -927,6 +928,9 @@ func _on_actions_pressed() -> void:
 	$"../action display".visible = true
 	pass # Replace with function body.
 
+func reset_all_action_cooldown () -> void:
+	for action in action_container.data.actions:
+		action.action_data.current_cooldown = 0
 
 # Achivement section
 func _on_achivement_pressed() -> void:
@@ -974,6 +978,7 @@ func back_to_main_game () -> void:
 	
 # after finishing your battle
 func back_to_game () -> void:
+	reset_all_action_cooldown() # reset all actions cooldown
 	play_page_music()
 	var parent = $".."
 	var battle = parent.get_node_or_null("BattleScene")

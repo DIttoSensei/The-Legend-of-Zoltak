@@ -28,6 +28,7 @@ signal enemy_damaged (damage : int)
 signal player_attack (action_data)
 signal battle_won 
 signal turn_end
+signal reset_action_cooldown
 
 # for laod file
 signal action_is_purchased (purchased : bool)
@@ -36,5 +37,5 @@ signal action_is_purchased (purchased : bool)
 signal battle_action_copy
 signal battle_inv_copy
 
-# dor manual
+# for manual
 signal show_manual_content
