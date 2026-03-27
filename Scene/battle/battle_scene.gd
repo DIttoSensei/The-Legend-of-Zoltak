@@ -847,8 +847,9 @@ func player_victory () -> void:
 	GlobalGameSystem.battle_started = false
 	
 	if GlobalGameSystem.main_battle == false:
+		print ("main battle is false")
 		GlobalGameSystem.map_battle_quest_won = true
-		return
+		
 	
 	GlobalGameSystem.results = "victory"
 	GlobalGameSystem.player_hp = player.current_hp
@@ -865,9 +866,11 @@ func player_victory () -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	if GlobalGameSystem.main_battle == true:
+		print("signal not been emited")
 		SignalManager.battle_won.emit()
 		GlobalGameSystem.main_battle = false
 	else:
+		print("signal  emited")
 		self.visible = false
 		SignalManager.battle_quest_won.emit()
 		GlobalGameSystem.make_current_audio_empty = true

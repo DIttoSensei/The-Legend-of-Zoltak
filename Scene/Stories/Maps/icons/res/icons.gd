@@ -63,6 +63,7 @@ func _on_pressed() -> void:
 	elif current_data.type == 'Unknown':
 		event_button.visible = false
 	elif current_data.type == 'Battle Quest':
+		GlobalGameSystem.main_battle = false
 		GlobalGameSystem.current_icon_data = current_data
 		event_button.visible = true
 	elif current_data.type == 'Scroll':
@@ -111,6 +112,8 @@ func _on_event_button_pressed() -> void:
 
 
 func battle_victory () -> void:
+	if GlobalGameSystem.current_icon_data != self.icon_data:
+		return
 	if GlobalGameSystem.can_accept_victory == false:
 		return
 	SignalManager.reset_action_cooldown.emit()
@@ -119,20 +122,16 @@ func battle_victory () -> void:
 	var sound = load ("res://Asset/ost/sound_effects/cold_wind.mp3")
 	GlobalGameSystem.play_sfx2_audio(sound, 10.0)
 	#$CanvasLayer/ColorRect.MOUSE_FILTER_STOP
-	var parent = $CanvasLayer
 	#battle.visible = false
 	
 	if GlobalGameSystem.map_battle_quest_won == true:
-		text.text = icon_data.result_info
+		text.text = GlobalGameSystem.current_icon_data.result_info
 		event_button.visible = false
 		SceneTransition.battle_close()
 		# give reward
-		print ("Global coin: " + str(GlobalGameSystem.player_coin))
 		GlobalGameSystem.player_coin += GlobalGameSystem.current_icon_data.reward_value
-		print ("reward coin: " +  str(GlobalGameSystem.current_icon_data.reward_value))
-		print ("Global coin: " + str(GlobalGameSystem.player_coin))
 	else:
-		text.text = icon_data.battle_fail
+		text.text = GlobalGameSystem.current_icon_data.battle_fail
 		event_button.visible = false
 		SceneTransition.battle_close()
 	GlobalGameSystem.can_accept_victory = false
