@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpx7wxio4os3w"]
+
+[ext_resource type="Script" path="res://Scene/Scripts/credits.gd" id="1_pty7h"]
+[ext_resource type="VideoStream" path="res://credits.ogv" id="2_p750a"]
+[ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="2_pgo5g"]
+[ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="3_4sbbg"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/other/Aro_Png.png" id="4_06n5a"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="6_l8guf"]
+[ext_resource type="Script" path="res://Scene/Scripts/scroll_box_container.gd" id="7_fcf4l"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pty7h")
+
+[node name="back" type="TextureButton" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = 166.0
+offset_right = -981.0
+offset_bottom = -1926.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("2_pgo5g")
+texture_pressed = ExtResource("3_4sbbg")
+stretch_mode = 0
+
+[node name="AroPng-removebg-preview" type="Sprite2D" parent="back"]
+modulate = Color(0.807843, 0.65098, 0.458824, 1)
+position = Vector2(30.8419, 32.3419)
+rotation = 3.14159
+scale = Vector2(0.113368, 0.113368)
+texture = ExtResource("4_06n5a")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = -14.0
+offset_right = -734.0
+offset_bottom = -1409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+stream = ExtResource("2_p750a")
+autoplay = true
+expand = true
+loop = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.428)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 362.0
+offset_right = 491.0
+offset_bottom = 2038.0
+grow_horizontal = 2
+theme = ExtResource("6_l8guf")
+theme_override_constants/line_separation = 29
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]
+[font_size=60]Programming / Development[/font_size]
+Richard Andrew
+
+[font_size=60]Story[/font_size]
+Richard Andrew
+
+[font_size=60]Writer / Story Editor[/font_size]
+Monijesu Omisore
+
+[font_size=60]Assets[/font_size]
+UI Pack (RPG Expansion) by kenney (kenney.nl/assets/ui-pack-rpg-expansion)
+500 Fantasy Pixel Art Portraits: A World of Characters for Your Projects by Batareya
+Fantasy Minimal Pixel Art GUI by etahoshi
+8000+ Raven Fantasy Icons - RPG Icons, Pixel Art Icons, Textures and Sprites by Clockwork Raven
+RPG Icon Pack - 100+ Dark Fantasy Equipment by Clockwork Raven
+Tavern Interior Pixel Art Assets by Christoph Anry
+Light Weapons (Pixel-Art) (Old) by Scracho
+
+[font_size=60]Music / Soundtrack[/font_size]
+Grim's Arc (Original Soundtrack)
+K4RD (Original Soundtrack)
+Alexander Nakarada
+Kevin Macleod
+Logan Epic Canto
+Vlad Bakutov (Pixabay)
+Leviathan_Music (Tango battle theme)
+
+[font_size=60]Sound Effects[/font_size]
+Wind Effect Sound Effect by Juan Carlos (Pixabay)
+Sound Effect by freesound_community (Pixabay)
+Sound Effect by floraphonic (Pixabay)
+Sound Effect by Katja Savia (Pixabay)
+Sound Effect by Pankaj Yadav (Pixabay)
+
+[font_size=60]Legal[/font_size]
+Autumn Walk by Alexander Nakarada (https://www.creatorchords.com)
+Licensed under Creative Commons BY Attribution 4.0 License
+https://creativecommons.org/licenses/by/4.0/
+Heartbeat by Alexander Nakarada (https://www.creatorchords.com)
+Licensed under Creative Commons BY Attribution 4.0 License
+https://creativecommons.org/licenses/by/4.0/
+Music by Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0
+
+[color='red]Note, If by chance your asset or work has been used in this game and wasn't credited or your work wasn't credited properly? Please contact me and let me know and I'll be sure to take the most appropriate action. Thank you.[/color]
+[/center]"
+script = ExtResource("7_fcf4l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.5
+offset_top = 160.0
+offset_right = 177.5
+offset_bottom = 245.0
+grow_horizontal = 2
+theme = ExtResource("6_l8guf")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

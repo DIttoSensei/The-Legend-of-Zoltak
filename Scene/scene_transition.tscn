@@ -376,7 +376,8 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
-layer = 11
+process_mode = 3
+layer = 33
 script = ExtResource("1_inr8v")
 
 [node name="Control" type="Control" parent="."]

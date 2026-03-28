@@ -9,18 +9,15 @@ const SAVE_PATH = 'user://settings.cfg'
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var err = config.load(SAVE_PATH)
-	
-	#if err != OK:
-		#config.get_value("Settings", "music_enabled", true)
-		#config.get_value("Settings", "sfx_enabled", true)
-		#config.save(SAVE_PATH)
-		#load_config()
-	#else:
-		#load_config()
-		
-	load_config()
 	SceneTransition.fade_in()
+	if !GlobalGameSystem.global_audio.playing:
+		GlobalGameSystem.global_audio.stream = preload("res://Asset/ost/Autumn_Walk.mp3")
+		await get_tree().create_timer(2).timeout
+		GlobalGameSystem.play_bg_audio()
+	
+	var err = config.load(SAVE_PATH)
+	load_config()
+	
 	pass # Replace with function body.
 
 
@@ -50,22 +47,14 @@ func _on_back_button_pressed() -> void:
 	LevelManager.load_new_level = "res://Scene/Stories/story_select.tscn"
 	LevelManager.load_level()
 	
-	## wait time before killing the node
-	await get_tree().create_timer(2).timeout
-	queue_free()
+	
 	pass # Replace with function body
-	pass # Replace with function body.
 
 func manage_audio_reset () -> void:
 	## For global audio
 	var music = config.get_value("Settings", "music_enabled")
-	if music == true:
-		music_label.text = 'OFF'
-		GlobalGameSystem.global_audio.volume_db = -90
-		GlobalGameSystem.can_play_audio = false
-		config.set_value("Settings", "music_enabled", false)
-		config.save("user://settings.cfg")
-	elif music == false:
+	
+	if music == false:
 		music_label.text = 'ON'
 		GlobalGameSystem.global_audio.volume_db = 0
 		GlobalGameSystem.can_play_audio = true
@@ -74,13 +63,8 @@ func manage_audio_reset () -> void:
 		
 	## For sfx
 	var sfx = config.get_value("Settings", 'sfx_enabled')
-	if sfx == true:
-		sfx_label.text = 'OFF'
-		GlobalGameSystem.global_sfx.volume_db = -90
-		GlobalGameSystem.global_sfx_2.volume_db = -90
-		config.set_value('Settings', 'sfx_enabled', false)
-		config.save("user://settings.cfg")
-	elif sfx == false:
+	
+	if sfx == false:
 		sfx_label.text = 'ON'
 		GlobalGameSystem.global_sfx.volume_db = 0
 		GlobalGameSystem.global_sfx_2.volume_db = 0
@@ -148,6 +132,9 @@ func _on_reset_pressed() -> void:
 func _on_credits_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
+	LevelManager.load_new_level = "res://Scene/credits.tscn"
+	GlobalGameSystem.fade_out()
+	LevelManager.load_level()
 
 	
 ### SOCIALS ZONE
