@@ -1,5 +1,6 @@
 extends Control
 
+@onready var video_stream: VideoStreamPlayer = $VideoStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,23 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_continue_pressed() -> void:
+	video_stream.paused = true
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
+	GlobalGameSystem.fade_out()
+	LevelManager.load_new_level = GlobalGameSystem.current_main_game
+	LevelManager.load_level()
+	pass # Replace with function body.
+
+
+func _on_quit_pressed() -> void:
+	video_stream.paused = true
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
+	GlobalGameSystem.fade_out()
+	LevelManager.load_new_level = "res://Scene/Start Menu.tscn"
+	LevelManager.load_level()
+	

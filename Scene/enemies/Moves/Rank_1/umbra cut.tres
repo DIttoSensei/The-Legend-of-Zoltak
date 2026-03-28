@@ -6,7 +6,7 @@
 script = ExtResource("1_ucshd")
 action_name = "UMBRA CUT"
 action_type = "Shadow"
-action_attribute = 16
+action_attribute = 45
 critical_rate = "2%"
 cooldown = 0
 current_cooldown = 0

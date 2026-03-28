@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyphyfhbjos87"]
+[gd_scene load_steps=10 format=3 uid="uid://cyphyfhbjos87"]
 
 [ext_resource type="Script" path="res://Scene/Scripts/game_over.gd" id="1_mlkmb"]
 [ext_resource type="VideoStream" path="res://Asset/img/other/game_over.ogv" id="2_l63ff"]
 [ext_resource type="AudioStream" uid="uid://bqyx4togj7o5x" path="res://Asset/sound_effects/gentle-rainfall-16960.mp3" id="3_jk7k0"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="4_iiw7s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4mk0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bvr2"]
 
 [sub_resource type="Animation" id="Animation_btyh6"]
 length = 0.001
@@ -118,6 +122,7 @@ offset_right = 129.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h4mk0")
 
 [node name="Label" type="Label" parent="continue"]
 layout_mode = 1
@@ -139,7 +144,7 @@ text = "CONTINUE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="quit\'" type="Button" parent="."]
+[node name="quit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,8 +157,9 @@ offset_right = 129.0
 offset_bottom = 546.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1bvr2")
 
-[node name="Label" type="Label" parent="quit\'"]
+[node name="Label" type="Label" parent="quit"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,3 +183,6 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_g0wws")
 }
+
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

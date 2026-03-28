@@ -30,6 +30,7 @@ var save_file_current_page : String
 var save_file_current_chapter : String
 
 func _ready() -> void:
+	GlobalGameSystem.current_main_game = scene_file_path
 	SceneTransition.fade_in()
 	load_player_save_file()
 	

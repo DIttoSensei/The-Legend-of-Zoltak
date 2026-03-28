@@ -25,6 +25,7 @@ var map_battle_quest_won : bool = false
 var make_current_audio_empty : bool = false
 var reduce_bg_music_by_half : bool = false
 var manual_data : ManualData
+var current_main_game : String
 
 # for battle quest
 var current_icon_data : IconData # For battle quest
