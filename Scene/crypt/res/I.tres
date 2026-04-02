@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CryptBtnRes" load_steps=3 format=3 uid="uid://ckn40d7elafwq"]
+
+[ext_resource type="Script" path="res://Scene/crypt/scripts/crypt_btn_res.gd" id="1_bib0o"]
+[ext_resource type="Texture2D" uid="uid://7xaanvniyuy7" path="res://Scene/crypt/img/I.jpg" id="1_xver5"]
+
+[resource]
+script = ExtResource("1_bib0o")
+name = "I"
+img = ExtResource("1_xver5")
+info = "[center]
+When i was thinking of how to design the gear item that the character Bessa gave the player, this was what came to mind.
+Well not exactly, the general idea was it shaped like a gear...that's it but i started looking at steampunk references on Pinterest and got the idea of putting a core right at the center to make it look less bland and more of having a practical use, the first draft didn't look like a gear at all so i tore the paper and started another.
+The purpose of the design is showcase that the world is actually advancing in tech...in a way, magical based tech to be specific and my main inspiration for that will and always will be Final Fantasy VI (MagiTech) 
+[/center]"

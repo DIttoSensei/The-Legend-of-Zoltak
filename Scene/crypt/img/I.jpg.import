@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj7v8ldswxc3m"
-path="res://.godot/imported/1000080794.png-76e44cc37bd56c9ded69b9ceaeebbdce.ctex"
+uid="uid://7xaanvniyuy7"
+path="res://.godot/imported/I.jpg-5aa12155dd2348a706b239952ba0187c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/img/other/1000080794.png"
-dest_files=["res://.godot/imported/1000080794.png-76e44cc37bd56c9ded69b9ceaeebbdce.ctex"]
+source_file="res://Scene/crypt/img/I.jpg"
+dest_files=["res://.godot/imported/I.jpg-5aa12155dd2348a706b239952ba0187c.ctex"]
 
 [params]
 

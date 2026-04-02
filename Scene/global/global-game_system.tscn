@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scene/Scripts/global_game_system.gd" id="1_8glq6"]
 [ext_resource type="AudioStream" uid="uid://bslsg7dcp1d5k" path="res://Asset/ost/Crown and Steel - Medieval Free Song(2).mp3" id="2_8en45"]
-[ext_resource type="AudioStream" uid="uid://dbh2186c6ag47" path="res://Asset/ost/sound_effects/cold_wind.mp3" id="3_bwa2b"]
+[ext_resource type="AudioStream" uid="uid://dl8nc8vss8kh0" path="res://Asset/sound_effects/tanweraman-night-ambience-with-cricket-sound-271304.mp3" id="3_gx3k6"]
 
 [node name="Global-gameSystem" type="Node2D"]
 script = ExtResource("1_8glq6")
@@ -15,6 +15,11 @@ max_polyphony = 3
 max_polyphony = 10
 
 [node name="global_sfx2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_bwa2b")
-volume_db = 10.0
+stream = ExtResource("3_gx3k6")
+volume_db = -1.012
+max_polyphony = 10
+
+[node name="global_sfx3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gx3k6")
+volume_db = -1.012
 max_polyphony = 10

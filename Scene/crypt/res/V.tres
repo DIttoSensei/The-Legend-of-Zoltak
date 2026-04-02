@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CryptBtnRes" load_steps=3 format=3 uid="uid://cjm32ft35iqfy"]
+
+[ext_resource type="Script" path="res://Scene/crypt/scripts/crypt_btn_res.gd" id="1_1esfx"]
+[ext_resource type="Texture2D" uid="uid://tv1u1i7ftnxo" path="res://Scene/crypt/img/V.jpg" id="1_ecw66"]
+
+[resource]
+script = ExtResource("1_1esfx")
+name = "V"
+img = ExtResource("1_ecw66")
+info = "[center]
+And right here we have Bessa, two designs one being her casual wear and the other being her office wear.
+I don't really have much to say besides her name *chuckles* which was just a random name my writer picked and was even surprised i went with it, her words were [color='yellow]\"Genuinely still laughing that you took my shitpost name seriously\"[/color]
+[/center]"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CryptBtnRes" load_steps=3 format=3 uid="uid://d26hp5yuvymkw"]
+
+[ext_resource type="Script" path="res://Scene/crypt/scripts/crypt_btn_res.gd" id="1_j2ydj"]
+[ext_resource type="Texture2D" uid="uid://c6luj8gat4lp5" path="res://Scene/crypt/img/III.jpg" id="1_jo3s3"]
+
+[resource]
+script = ExtResource("1_j2ydj")
+name = "III"
+img = ExtResource("1_jo3s3")
+info = "[center]
+Ok at first this character was meant as a joke, i didn't even made this drawing when i made him but something about his name was just funny to me \"Herald Tango\", a stupid and random name i thought first when i asked myself what to name this character.
+So after taking a liking to him i decided to draw him and this was what i could think of, it not perfect since I'm still a beginner in this whole art stuff but it gets the point across, because of him the lore of combat trainer became a thing, a group of individual with registered license to be able to train and help people with combat drills. Think of it as a personal trainer in our own world.
+[/center]"

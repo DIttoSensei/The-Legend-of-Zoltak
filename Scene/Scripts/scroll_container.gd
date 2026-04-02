@@ -17,6 +17,7 @@ func _gui_input(event):
 
 	# Touch drag
 	elif event is InputEventScreenDrag and touch_dragging:
+		get_viewport().gui_release_focus()
 		scroll_horizontal = scroll_start.x - (event.position.x - touch_start.x)
 		scroll_vertical   = scroll_start.y - (event.position.y - touch_start.y)
 		accept_event()

@@ -1,0 +1,130 @@
+[gd_scene load_steps=15 format=3 uid="uid://br3s2bvxu7o75"]
+
+[ext_resource type="Script" path="res://Scene/crypt/scripts/crypt.gd" id="1_qbrv6"]
+[ext_resource type="VideoStream" path="res://Scene/crypt/crypt.ogv" id="2_lsl83"]
+[ext_resource type="Texture2D" uid="uid://c4jk5mfid76e3" path="res://Asset/Rpg1/buttonSquare_brown.png" id="3_gy31r"]
+[ext_resource type="Texture2D" uid="uid://bwdagu51vjjq8" path="res://Asset/Rpg1/buttonSquare_brown_pressed.png" id="4_b1lu2"]
+[ext_resource type="Texture2D" uid="uid://cxack440nxgtk" path="res://Asset/img/other/Aro_Png.png" id="5_l6bed"]
+[ext_resource type="Script" path="res://Scene/Scripts/scroll_container.gd" id="6_ndy3d"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="6_yhcjv"]
+[ext_resource type="PackedScene" uid="uid://bqyysgivebsop" path="res://Scene/crypt/crypt_btn.tscn" id="7_rju25"]
+[ext_resource type="Resource" uid="uid://ckn40d7elafwq" path="res://Scene/crypt/res/I.tres" id="9_ox1ra"]
+[ext_resource type="Resource" uid="uid://dkl2wy2n4vj2m" path="res://Scene/crypt/res/II.tres" id="10_6a1px"]
+[ext_resource type="Resource" uid="uid://d26hp5yuvymkw" path="res://Scene/crypt/res/III.tres" id="11_oingp"]
+[ext_resource type="Resource" uid="uid://5bmv024n71t6" path="res://Scene/crypt/res/IV.tres" id="12_t6mvv"]
+[ext_resource type="Resource" uid="uid://cjm32ft35iqfy" path="res://Scene/crypt/res/V.tres" id="13_by3pv"]
+[ext_resource type="Resource" uid="uid://3idur4lgeoq6" path="res://Scene/crypt/res/VI.tres" id="14_yn5d7"]
+
+[node name="Crypt" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbrv6")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_right = 21.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_lsl83")
+autoplay = true
+expand = true
+loop = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.343)
+
+[node name="back_button" type="TextureButton" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 214.0
+offset_right = -973.0
+offset_bottom = -1878.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("3_gy31r")
+texture_pressed = ExtResource("4_b1lu2")
+stretch_mode = 0
+
+[node name="AroPng-removebg-preview" type="Sprite2D" parent="back_button"]
+modulate = Color(0.807843, 0.65098, 0.458824, 1)
+position = Vector2(30.8419, 32.3419)
+rotation = 3.14159
+scale = Vector2(0.113368, 0.113368)
+texture = ExtResource("5_l6bed")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.0
+offset_top = 210.0
+offset_right = 129.0
+offset_bottom = 291.0
+grow_horizontal = 2
+theme = ExtResource("6_yhcjv")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 86
+text = "CRYPT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(1004, 1507)
+layout_mode = 2
+offset_left = 41.0
+offset_top = 401.0
+offset_right = 1045.0
+offset_bottom = 1926.0
+script = ExtResource("6_ndy3d")
+
+[node name="HBoxContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1004, 1507)
+layout_mode = 2
+columns = 2
+
+[node name="crypt_btn" parent="ScrollContainer/HBoxContainer" instance=ExtResource("7_rju25")]
+layout_mode = 2
+data = ExtResource("9_ox1ra")
+
+[node name="crypt_btn2" parent="ScrollContainer/HBoxContainer" instance=ExtResource("7_rju25")]
+layout_mode = 2
+data = ExtResource("10_6a1px")
+
+[node name="crypt_btn3" parent="ScrollContainer/HBoxContainer" instance=ExtResource("7_rju25")]
+layout_mode = 2
+data = ExtResource("11_oingp")
+
+[node name="crypt_btn4" parent="ScrollContainer/HBoxContainer" instance=ExtResource("7_rju25")]
+layout_mode = 2
+data = ExtResource("12_t6mvv")
+
+[node name="crypt_btn5" parent="ScrollContainer/HBoxContainer" instance=ExtResource("7_rju25")]
+layout_mode = 2
+data = ExtResource("13_by3pv")
+
+[node name="crypt_btn6" parent="ScrollContainer/HBoxContainer" instance=ExtResource("7_rju25")]
+layout_mode = 2
+data = ExtResource("14_yn5d7")
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

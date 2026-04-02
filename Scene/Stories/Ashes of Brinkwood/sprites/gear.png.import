@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdcv4lqv1prsc"
-path="res://.godot/imported/1000080794-0.png-e23595dfe4ac4e834f2beaf86d82de97.ctex"
+uid="uid://n0avjbx33s3o"
+path="res://.godot/imported/gear.png-19aee97ba24608d4fa06ae93b637de9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/img/other/1000080794-0.png"
-dest_files=["res://.godot/imported/1000080794-0.png-e23595dfe4ac4e834f2beaf86d82de97.ctex"]
+source_file="res://Scene/Stories/Ashes of Brinkwood/sprites/gear.png"
+dest_files=["res://.godot/imported/gear.png-19aee97ba24608d4fa06ae93b637de9b.ctex"]
 
 [params]
 

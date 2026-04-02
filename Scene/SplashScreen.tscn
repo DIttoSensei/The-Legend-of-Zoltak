@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b02jtay1ynluo"]
+[gd_scene load_steps=11 format=3 uid="uid://b02jtay1ynluo"]
 
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="1_3t3bp"]
 [ext_resource type="Script" path="res://Scene/Scripts/splash_screen.gd" id="1_amnpl"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://bg32eonfx2ku0" path="res://Asset/Fonts/Dune_Rise.ttf" id="3_4wuh8"]
 [ext_resource type="Texture2D" uid="uid://b3fkdcbeidm1u" path="res://1000143684.png" id="4_xadk0"]
 [ext_resource type="Texture2D" uid="uid://cq6jnv2pkh8dt" path="res://Asset/img/other/1000017210.png" id="6_58lj3"]
+
+[sub_resource type="FontVariation" id="FontVariation_mva7h"]
+base_font = ExtResource("3_4wuh8")
 
 [sub_resource type="Animation" id="Animation_ac5t0"]
 length = 0.001
@@ -228,6 +231,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -241,7 +245,7 @@ offset_bottom = 39.9999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0)
-theme_override_fonts/font = ExtResource("3_4wuh8")
+theme_override_fonts/font = SubResource("FontVariation_mva7h")
 theme_override_font_sizes/font_size = 100
 text = "CORVUS.Q"
 horizontal_alignment = 1
@@ -250,12 +254,14 @@ autowrap_mode = 2
 
 [node name="godot" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 2
 position = Vector2(661.714, 1505)
 scale = Vector2(0.181641, 0.181641)
 texture = ExtResource("2_hbt8g")
 
 [node name="logo" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 2
 position = Vector2(541, 670)
 texture = ExtResource("4_xadk0")
 

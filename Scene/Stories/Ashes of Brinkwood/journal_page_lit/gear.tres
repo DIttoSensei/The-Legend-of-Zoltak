@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="JournalPage" load_steps=3 format=3 uid="uid://bvpddapenylp5"]
+
+[ext_resource type="Script" path="res://Scene/journal/journal_page.gd" id="1_tuhrs"]
+[ext_resource type="Texture2D" uid="uid://n0avjbx33s3o" path="res://Scene/Stories/Ashes of Brinkwood/sprites/gear.png" id="2_4kpum"]
+
+[resource]
+script = ExtResource("1_tuhrs")
+heading = "UNKNOWN GEAR"
+texture_rect = ExtResource("2_4kpum")
+info = "A Strange metallic gear of unknown origin. It carries an arcane presence within its core that is difficult to place, feels...odd to say. Looks like a part from a larger machine, could say it looks like a key of some sort?"

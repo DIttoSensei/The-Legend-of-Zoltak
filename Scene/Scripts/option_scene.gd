@@ -68,6 +68,7 @@ func manage_audio_reset () -> void:
 		sfx_label.text = 'ON'
 		GlobalGameSystem.global_sfx.volume_db = 0
 		GlobalGameSystem.global_sfx_2.volume_db = 0
+		GlobalGameSystem.global_sfx_3.volume_db = 0
 		config.set_value('Settings', 'sfx_enabled', true)
 		config.save("user://settings.cfg")
 	
@@ -75,6 +76,9 @@ func manage_audio_reset () -> void:
 func _on_crypt_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
+	LevelManager.load_new_level = "res://Scene/crypt/crypt.tscn"
+	GlobalGameSystem.fade_out()
+	LevelManager.load_level()
 	
 
 
@@ -107,12 +111,14 @@ func _on_sfx_pressed() -> void:
 		sfx_label.text = 'OFF'
 		GlobalGameSystem.global_sfx.volume_db = -90
 		GlobalGameSystem.global_sfx_2.volume_db = -90
+		GlobalGameSystem.global_sfx_3.volume_db = -90
 		config.set_value('Settings', 'sfx_enabled', false)
 		config.save("user://settings.cfg")
 	elif sfx == false:
 		sfx_label.text = 'ON'
 		GlobalGameSystem.global_sfx.volume_db = 0
 		GlobalGameSystem.global_sfx_2.volume_db = 0
+		GlobalGameSystem.global_sfx_3.volume_db = 0
 		config.set_value('Settings', 'sfx_enabled', true)
 		config.save("user://settings.cfg")
 	
