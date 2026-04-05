@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Achievements" load_steps=2 format=3 uid="uid://srgw5fse4h7x"]
+
+[ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="1_naa57"]
+
+[resource]
+script = ExtResource("1_naa57")
+id = "4"
+title = "At Least One of Us is Thinking"
+text = "Side with Fernrick at least once during the midnight walk."
+achieved = false

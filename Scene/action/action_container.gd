@@ -29,9 +29,9 @@ func _ready() -> void:
 func clear_action_slots () -> void:
 	var padding = $PADDING
 	
-	for chid in self.get_children():
-		if chid != padding:
-			chid.queue_free()
+	for child in self.get_children():
+		if child != padding:
+			child.queue_free()
 			
 			
 func add_action_to_slot () -> void:

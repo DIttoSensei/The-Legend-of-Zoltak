@@ -4,8 +4,11 @@ extends Node2D
 @onready var global_sfx: AudioStreamPlayer = $global_sfx
 
 @export var transition_duration : float = 2.00
+
 @onready var global_sfx_2: AudioStreamPlayer = $global_sfx2
 @onready var global_sfx_3: AudioStreamPlayer = $global_sfx3
+
+var transition_duration_in : float = 0.80
 
 # Var decleration
 var audio : Resource 
@@ -95,12 +98,26 @@ func play_sfx3_audio (audio, volume : float = 0) -> void:
 func fade_out():
 	if can_play_audio == false:
 		return
+	
 	var tween_out = create_tween()
 	tween_out.tween_property(global_audio, "volume_db", -80, transition_duration)
 	tween_out.tween_callback(Callable(self, "_on_fade_out_complete"))
+	return tween_out
+	
+func fade_in():
+	if can_play_audio == false:
+		return
+	var tween_in = create_tween()
+	global_audio.volume_db = -80
+	global_audio.play()
+	tween_in.tween_property(global_audio, "volume_db", 0, transition_duration_in)
+	#tween_in.tween_callback(Callable(self, "_on_fade_in_complete"))
 	
 func _on_fade_out_complete ():
 	global_audio.stop()
+	global_audio.volume_db = 0
+	
+func _on_fade_in_complete ():
 	global_audio.volume_db = 0
 
 ## FOR MAIN GAME (TEXT BASED AREA)

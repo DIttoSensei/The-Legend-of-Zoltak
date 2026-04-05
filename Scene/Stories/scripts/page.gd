@@ -79,6 +79,8 @@ var counter_inventory : int = 0
 var counter_achivement : int = 0
 var current_music : String = ""
 var shop_closed : bool = false
+var start_scene_audio_wait_time : bool = true
+var given_reward : bool = false
 
 # signals
 signal shown
@@ -213,11 +215,17 @@ func play_page_music () -> void:
 	current_page = get_current_page()
 	
 	var music  = current_page["music"]
+	var current_stream = GlobalGameSystem.global_audio.stream
+	
+	if current_stream and current_stream.resource_path == music:
+		return
 	
 	if GlobalGameSystem.make_current_audio_empty == true:
+		print ("not here")
 		current_music = ""
 		GlobalGameSystem.make_current_audio_empty = false
-		
+	
+	print (current_music)
 	if current_music == music:
 		if shop_closed == true:
 			GlobalGameSystem.global_audio.stream = load(music)
@@ -227,12 +235,23 @@ func play_page_music () -> void:
 		else:
 			return
 		
-	GlobalGameSystem.fade_out() #FADE THE FUCKING AUDIO OUT DAMMIT
+	var fade_task = GlobalGameSystem.fade_out() #FADE THE FUCKING AUDIO OUT DAMMIT
+	
+	if fade_task:
+		await fade_task.finished
+		print("fade complete")
+		
+	if GlobalGameSystem.reduce_bg_music_by_half == true:
+		GlobalGameSystem.global_audio.volume_db = -12
+		GlobalGameSystem.reduce_bg_music_by_half = false
+	else:
+		GlobalGameSystem.global_audio.volume_db = 0
+	
 	GlobalGameSystem.global_audio.stream = load(music)
-	await get_tree().create_timer(4).timeout
 	print ('yes1')
-	GlobalGameSystem.play_bg_audio()
+	GlobalGameSystem.fade_in()
 	current_music = music
+	print (current_music)
 	
 	
 ## When the choices are pressed
@@ -248,25 +267,39 @@ func _on_choice_pressed() -> void:
 	current_choice = current_page["choice_1"]
 	
 	if current_choice["choice"] == "fight":
+		var audio = load("res://Asset/sound_effects/click_2.wav")
+		GlobalGameSystem.play_sfx_audio(audio)
 		GlobalGameSystem.main_battle = true
 		copy_player_actions()
 		copy_and_move_inventory()
 		show_battle_scene()
 	elif current_choice["choice"] == "continue":
+		var audio = load("res://Asset/ost/sound_effects/running.mp3")
+		GlobalGameSystem.play_sfx_audio(audio)
 		hide_options()
+		reward_for_ctn()
+		
 		#texture_rect.visible = false
 		next_page =  current_choice["next_page"]
 		main.save_file_current_page = next_page
 		load_page()
 	elif current_choice['choice'] == 'END':
 		## Load epilogue and result scene
-		pass
+		var audio = load("res://Asset/sound_effects/click_2.wav")
+		GlobalGameSystem.play_sfx_audio(audio)
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/epilogue.tscn"
+		GlobalGameSystem.fade_out()
+		LevelManager.load_level()
 	else:
+		var audio = load("res://Asset/sound_effects/click_2.wav")
+		GlobalGameSystem.play_sfx_audio(audio)
 		$"../overlay".visible = true
 	
 	
 
 func _on_choice_2_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_2.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	## get current page
 	current_page = get_current_page()
 	#
@@ -280,6 +313,8 @@ func _on_choice_2_pressed() -> void:
 
 
 func _on_choice_3_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_2.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	## get current page
 	current_page = get_current_page()
 	#
@@ -293,6 +328,8 @@ func _on_choice_3_pressed() -> void:
 
 
 func _on_choice_4_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_2.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	## get current page
 	current_page = get_current_page()
 	#
@@ -390,6 +427,8 @@ func hide_options() -> void:
 
 # When the player hits "continue", move to next page
 func _on_continue_pressed() -> void:
+	var audio = load("res://Asset/ost/sound_effects/running.mp3")
+	GlobalGameSystem.play_sfx_audio(audio)
 	current_page = get_current_page()
 	
 	
@@ -402,6 +441,9 @@ func _on_continue_pressed() -> void:
 
 ## when roll is being pressed
 func _on_roll_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_1.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
+	
 	$"../overlay/roll".visible = false
 	$"../overlay/Sprite2D/AnimationPlayer".play("roll_animation")
 	await get_tree().create_timer(0.9).timeout
@@ -597,40 +639,125 @@ func set_choice_data ():
 	texture_rect.visible = false
 	continue_butn.visible = true
 	
+
+func reward_for_ctn () -> void:
+	var play_journal_added_ani : bool = false
+	var play_achievemnet_ani = false
+	
+	## This is a func for choice one if a continue has a reward to give
+	var value = current_choice.get("journal_data")
+	var value_2 = current_choice.get("achivement")
+	if value != null:
+		var new_page = current_choice["journal_data"]
+			
+		# First let check if the page already exist
+		var already_added = false
+			
+		for book in jornal_display.book.pages:
+			var page_data = book.journal_data
+				
+				
+			if page_data and page_data.resource_path == new_page:
+				already_added = true
+				break
+					
+		if not already_added:
+			#play_journal_added_ani = true
+			jornal_display.add_page(new_page)
+			play_journal_added_ani = true
+	
+	if value_2 != null:
+		var reward = current_choice["achivement"] # store the achivements from the story.json
+		for i in range(achivement.data.slots.size()): # loop through the array
+			var gained_achivement = achivement.data.slots[i] # store em 
+			if gained_achivement: # if it not empty
+				if gained_achivement.id == reward: #if the id is the same as that in the json file
+					if gained_achivement.achieved == true: # check if it true
+						pass
+					else:
+						gained_achivement.achieved = true
+						achivement.update_slot()
+						play_achievemnet_ani = true
+						
+	## AFTER BOTH JOURNAL AND ACHIEVMENT ARE ADDED PLAY THEIR RESPECTIBLE ANIMATION
+	if play_journal_added_ani == true:
+		# show a mini notification
+		var notification_text_j : String = "New Page entry added to journal"
+		$"../mini notification/mini notification label".text = notification_text_j
+		$"../mini notification/AnimationPlayer".play("show_notification")
+		await $"../mini notification/AnimationPlayer".animation_finished
+		play_journal_added_ani = false
+		
+	if play_achievemnet_ani == true:
+		var notification_text : String = "New Achivements unlocked"
+		$"../mini notification/mini notification label".text = notification_text
+		$"../mini notification/AnimationPlayer".play("show_notification")
+		await $"../mini notification/AnimationPlayer".animation_finished
+		play_achievemnet_ani = false
+
+
+
+
+func coin_reward () -> void:
+	print ("reward coin: " + str(current_choice["outcome_1"]["reward"]["coin"]))
+	current_coin += current_choice["outcome_1"]["reward"]["coin"]
+	GlobalGameSystem.player_coin = current_coin # store the player coin in a global var
+	coin.text = str(current_coin)
+	
+func journal_reward () -> bool:
+	var play_journal_added_ani : bool = false
+	var new_page = current_choice["outcome_1"]["reward"]["journal_page"]
+
+	# First let check if the page already exist
+	var already_added = false
+			
+	for book in jornal_display.book.pages:
+		var page_data = book.journal_data
+				
+				
+		if page_data and page_data.resource_path == new_page:
+			already_added = true
+			break
+
+	if not already_added:
+		play_journal_added_ani = true
+		jornal_display.add_page(new_page)
+	
+	return play_journal_added_ani
 	
 
+func achievment_reward () -> bool:
+	var play_achievemnet_ani = false
+	var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
+	for i in range(achivement.data.slots.size()): # loop through the array
+		var gained_achivement = achivement.data.slots[i] # store em 
+		if gained_achivement: # if it not empty
+			if gained_achivement.id == reward: #if the id is the same as that in the json file
+				if gained_achivement.achieved == true: # check if it true
+					pass
+				else:
+					gained_achivement.achieved = true
+					achivement.update_slot()
+					play_achievemnet_ani = true
+					
+	return play_achievemnet_ani
+	
+	
 	
 func give_reward_or_loss():
+	print ("the culprit")
 	var play_journal_added_ani = false
+	var play_achievemnet_ani = false
+	
 	# check which outcome you are currently in then add up coins if it the first
 	if current_outcome == current_choice["outcome_1"]:
-		current_coin += current_choice["outcome_1"]["reward"]["coin"]
-		GlobalGameSystem.player_coin = current_coin # store the player coin in a global var
-		coin.text = str(current_coin)
+		coin_reward()
 		
 		# add journal page if one is present
 		if current_choice["outcome_1"]["reward"]["journal_page"] == "":
 			pass
 		else:
-			var new_page = current_choice["outcome_1"]["reward"]["journal_page"]
-			
-			# First let check if the page already exist
-			var already_added = false
-			
-			for book in jornal_display.book.pages:
-				var page_data = book.journal_data
-				
-				
-				if page_data and page_data.resource_path == new_page:
-					already_added = true
-					break
-					
-			if not already_added:
-				play_journal_added_ani = true
-				jornal_display.add_page(new_page)
-			
-				
-		
+			play_journal_added_ani = journal_reward()
 		
 		# add achivements if one is present
 		if current_choice["outcome_1"]["reward"]["achivement"] == "":
@@ -638,35 +765,26 @@ func give_reward_or_loss():
 			### ADD STOP TO SAVING ANIMATION
 			pass
 		else:
-			var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
-			for i in range(achivement.data.slots.size()): # loop through the array
-				var gained_achivement = achivement.data.slots[i] # store em 
-				if gained_achivement: # if it not empty
-					if gained_achivement.id == reward: #if the id is the same as that in the json file
-						if gained_achivement.achieved == true: # check if it true
-							pass
-						else:
-							gained_achivement.achieved = true
-							achivement.update_slot()
+			play_achievemnet_ani = achievment_reward()
 							
-							## AFTER BOTH JOURNAL AND ACHIEVMENT ARE ADDED PLAY THEIR RESPECTIBLE ANIMATION
-							if play_journal_added_ani == true:
-								# show a mini notification
-								var notification_text_j : String = "New Page entry added to journal"
-								$"../mini notification/mini notification label".text = notification_text_j
-								$"../mini notification/AnimationPlayer".play("show_notification")
-								await $"../mini notification/AnimationPlayer".animation_finished
-								play_journal_added_ani = false
+		## AFTER BOTH JOURNAL AND ACHIEVMENT ARE ADDED PLAY THEIR RESPECTIBLE ANIMATION
+		if play_journal_added_ani == true:
+			# show a mini notification
+			var notification_text_j : String = "New Page entry added to journal"
+			$"../mini notification/mini notification label".text = notification_text_j
+			$"../mini notification/AnimationPlayer".play("show_notification")
+			await $"../mini notification/AnimationPlayer".animation_finished
+			play_journal_added_ani = false
+		
+		if play_achievemnet_ani == true:
+			var notification_text : String = "New Achivements unlocked"
+			$"../mini notification/mini notification label".text = notification_text
+			$"../mini notification/AnimationPlayer".play("show_notification")
+			await $"../mini notification/AnimationPlayer".animation_finished
+			play_achievemnet_ani = false
 							
-							var notification_text : String = "New Achivements unlocked"
-							$"../mini notification/mini notification label".text = notification_text
-							$"../mini notification/AnimationPlayer".play("show_notification")
-							await $"../mini notification/AnimationPlayer".animation_finished
 							
-							#main.save_player_data() ## SAVE GAME
-							### ADD STOP TO SAVING ANIMATION
 							
-			
 			
 	# remove if its the second
 	elif current_outcome == current_choice["outcome_2"]:
@@ -724,9 +842,11 @@ func set_choice_data_for_battle () -> void:
 	back_to_game()
 	
 	if GlobalGameSystem.results == "victory":
+		
 		clicked_choice.set_meta("outcome", current_choice["outcome_1"]["text"])
 		current_outcome = current_choice["outcome_1"]
 		current_reward_text = current_choice["outcome_1"]["reward"]["reward_text"]
+		
 	else:
 		clicked_choice.set_meta("outcome", current_choice["outcome_2"]["text"])
 		current_outcome = current_choice["outcome_2"]
@@ -978,8 +1098,11 @@ func back_to_main_game () -> void:
 	
 # after finishing your battle
 func back_to_game () -> void:
+	var play_journal_added_ani = false
+	var play_achievemnet_ani = false
+
 	reset_all_action_cooldown() # reset all actions cooldown
-	play_page_music()
+	#play_page_music()
 	var parent = $".."
 	var battle = parent.get_node_or_null("BattleScene")
 	current_hp = GlobalGameSystem.player_hp
@@ -996,13 +1119,14 @@ func back_to_game () -> void:
 	else:
 		pass
 	
+	
 ## Adding item from the shop to your inventory
 func add_shop_item_to_inv() -> void:
 	for i in range(storage_inventory.data.slots.size()):
 		if storage_inventory.data.slots[i] == null:
 			storage_inventory.data.slots[i] = GlobalGameSystem.item
 			storage_inventory.update_inventory()
-			return  # ✅ stop after placing the item
+			return  #stop after placing the item
 	# if the loop finishes without finding space
 	print("No space in storage!")
 	
@@ -1071,6 +1195,8 @@ func enable_camera () -> void:
 	$"../Camera2D".enabled = true
 
 func _on_map_button_pressed() -> void:
+	var audio = load("res://Asset/sound_effects/click_2.wav")
+	GlobalGameSystem.play_sfx_audio(audio)
 	$"../Camera2D".enabled = false
 	var map = load(GlobalGameSystem.game_map)
 	var add_map = map.instantiate()

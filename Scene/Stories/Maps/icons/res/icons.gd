@@ -118,7 +118,8 @@ func battle_victory () -> void:
 		return
 	SignalManager.reset_action_cooldown.emit()
 	#GlobalGameSystem.player_hp = current_hp
-	GlobalGameSystem.reduce_bg_music_by_half = true
+	#GlobalGameSystem.reduce_bg_music_by_half = true
+	#GlobalGameSystem.global_audio.volume_db = -12
 	var sound = load ("res://Asset/ost/sound_effects/cold_wind.mp3")
 	GlobalGameSystem.play_sfx2_audio(sound, 10.0)
 	#$CanvasLayer/ColorRect.MOUSE_FILTER_STOP

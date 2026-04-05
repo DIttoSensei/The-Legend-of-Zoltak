@@ -5,10 +5,12 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/Heartbeat - Royalty Free Fantasy Music [LKEBUbxKz88].mp3",
 	  "text": "Forty-eight hours. The carriage wheels find every crack in the road and report back faithfully with a low, bone-grinding thud that has become the rhythm of your world. Outside, Brinkwood begins as fog: gray, clinging, smelling of ozone and old ash. A waystone drifts past the window, its surface swallowed under red moss, gone before you can read it.\nFernrick: (He is draped across the velvet bench opposite, one ankle crossed over his knee. A small silver monocle turns between his fingers, catching the lamp light. He has been watching you for the last twenty minutes. Not much else to look at though.)\n\"Two days, my friend. Two days of your silence and the smell of wet horse. I've read three grimoires and memorized the local tax codes of the last three hamlets we passed just to keep my mind from rotting. You, however... you have that look again. The look of someone trying to solve a puzzle with half the pieces missing.\"\n(He taps the monocle against his chin, looking at you with a mix of genuine curiosity and that signature Elven condescension.)",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "1",
 		"roll": {
 		  "": 0
 		},
@@ -43,7 +45,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/Heartbeat - Royalty Free Fantasy Music [LKEBUbxKz88].mp3",
 	  "text": "Fernrick: \"A decade of disappearances. A town large enough to be a kingdom, yet silent as a grave. Then, an anonymous letter arrives at the Guild, bearing the high-official seal of the very office meant to prevent such tragedies. It's either the most sophisticated trap in the history of the Reach, or the people of Brinkwood have finally realized that their 'advanced' systems are failing them. Again, not much has been confirmed so we a mostly going in blind.\"\n\n[color=6d0019]> \"He's a talker, isn't he? Fernrick loves the sound of his own thoughts—mostly because he thinks they're the only ones worth hearing. But he's right to be uneasy. You can feel it too, can't you? That prickle on the back of your neck? That's the feeling of a story that's already been written, just waiting for you to step into the ink. Go on, give him an answer. It won't change where we're going, but I'd like to see what kind of person you're pretending to be today.\" <[/color]\n\nFernrick leans forward, his demure smile sharpening.\n\nFernrick: \"Tell me, partner. When we step off this carriage and face the immigration clerks, how are we playing this? What does your gut tell you about the letter that brought us here?\"",
 	  "choice_1": {
 		"choice": "The letter is a plea from someone who has lost everything",
@@ -56,8 +58,8 @@
 		  "next_page": "page_3",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -68,7 +70,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -83,8 +85,8 @@
 		  "next_page": "page_3",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -95,7 +97,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -110,8 +112,8 @@
 		  "next_page": "page_3",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "5",
 			"reward_text": "",
 			"items": []
 		  }
@@ -122,7 +124,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -137,8 +139,8 @@
 		  "next_page": "page_3",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -149,7 +151,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -160,7 +162,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/Heartbeat - Royalty Free Fantasy Music [LKEBUbxKz88].mp3",
 	  "text": "The carriage stops hard. Outside, the low hum of the waystones cuts off and is replaced by something mechanical: a shriek of iron on iron as the gates grind open. A bar of white artificial light slices through the window and catches Fernrick's face, draining the colour from it.\n\n[color=6d0019]> \"And here we are. Brinkwood. The Immigration Office awaits, and they are not the patient sort. Shall we see whether your 'credentials' hold up, or if I have to start thinking of a way to describe your stay in a dungeon?\" <[/color]\n\nThe gates of Brinkwood are massive iron and soot-stained timber. The guards wear functional plate armor, though their shields bear a seal etched in silver that seems to shimmer slightly if you look at it too long.\n\nFernrick: (He steps out of the carriage, smoothing his travel cloak with practiced grace. He looks at the guards with a weary expression, his eyes sharp and judgmental. He looks at the gatehouse, then at the road behind you.)\n\n\"Finally. My bones were beginning to feel like they belonged to the carriage. Look at this place... they've spent a fortune on the walls and nothing on the roads. It's the hallmark of a city that's more afraid of what's outside than what's within.\"",
 	  "choice_1": {
 		"choice": "continue",
@@ -198,7 +200,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/rpg-city.mp3",
 	  "text": "Fenrick: \"The guards here are likely underpaid and overworked. Best to be polite, but brief. I'll handle the papers. Just try to look like you belong here. If you embarrass me, I'll make sure you regret it before the guards even find their handcuffs.\"\n\nThe Guard: (Approaching with a heavy, rhythmic clank. He looks tired. He holds up a hand.) \"Papers. Names and business. No one enters Brinkwood after sundown without a verified stamp.\"\n\n[color=6d0019]> \"The guard looks like he'd rather be anywhere else but here. Perfect time to see what your mouth can do. Go on.\" <[/color]",
 	  "choice_1": {
 		"choice": "We're with the Adventurer's Guild. Here for the investigation.",
@@ -211,8 +213,8 @@
 		  "next_page": "page_5",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "2",
 			"reward_text": "",
 			"items": []
 		  }
@@ -223,7 +225,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -238,8 +240,8 @@
 		  "next_page": "page_5",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "2",
 			"reward_text": "",
 			"items": []
 		  }
@@ -250,7 +252,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -265,8 +267,8 @@
 		  "next_page": "page_5",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "2",
 			"reward_text": "",
 			"items": []
 		  }
@@ -277,7 +279,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -292,8 +294,8 @@
 		  "next_page": "page_5",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "2",
 			"reward_text": "",
 			"items": []
 		  }
@@ -304,7 +306,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -315,7 +317,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/quite.mp3",
 	  "text": "You step into the heart of the city. Contrary to the rumors you have heard, the main road is a riot of color. Banners for the Festival of Lumens hang from every balcony, and the streets are filled with families and children running between stalls. The \"Bright Visuals\" are everywhere here magical street performers making illusory fireworks dance in the air and kids playing with glowing, enchanted hoops.\n\n[color=6d0019]> \"Wait... this isn't right. Thought it was supposed to be a depressed town? Look at all these happy faces. It's almost…normal. Either the rumors were a lie, or this city has the best public relations team in history. Keep your guard up\" <[/color]\n\nFernrick: (He looks genuinely confused, squinting at a group of children)\n\n\"I'm so confused. Everything looks so... normal. More than normal. I can't shake the feeling that something isn't right or its probably my imagination. Come on, let's get to the bottom of this\"\n\n(You enter the Immigration Office. It's chaotic. Travelers from all over the Reach are lined up, filling the air with a dozen different languages. The walls are lined with rows of desks where workers are stamping documents with rhythmic, mechanical speed.)\n\n[color=6d0019]> \"looks like brinkwood festivals are pretty popular, look at all these people, seems like a convenient way to mask your objectives if you catch my drift\" <[/color]",
 	  "choice_1": {
 		"choice": "continue",
@@ -353,7 +355,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/'The Medieval Banquet' by Silvermansound.mp3",
 	  "text": "A woman in a crisp black Ministry uniform weaves through the crowd. She has a bright, professional smile and she is quite the looker, she began scanning your face with her eyes like she's reading a ledger. She stops in front of you and Fernrick, performing a perfect, shallow bow.\n\nBessa: \"Greetings, honored guests! Welcome to Brinkwood. My name is Bessa, and I've been assigned as your Personal Festival Liaison. Because you are traveling under the... 'Aethelgard Scholar' permit, the Ministry has granted you a private guide to ensure your stay is as enlightening as it is safe.\"\n\nFernrick: (Arching an eyebrow and speaking in a low voice towards you) \"A guide?. 'Aethelgard Scholar permit??, That's an actual thing? (faces bessa) We didn't request a shadow, Bessa. We are quite capable of finding our own way around.\"\n\nBessa: (Her smile never wavers) \"Oh, it's no trouble at all, Master Elf!\"\n\nFernrick: Master elf?\n\nBessa: \"It's a new city policy for the festival. Safety first! I'll be handling your lodgings, your itinerary, and ensuring you don't wander into any... restricted construction zones. Shall we head to your tavern? It's the finest in the district.\"\n\n[color=6d0019]> \" She's a wall of politeness if I must say. Makes you want to question her actions. If you didn't get that I'm saying ask her some question so you can at least get something to work with\" <[/color]",
 	  "choice_1": {
 		"choice": "We heard the city was quiet lately. Something about... missing people?",
@@ -366,8 +368,8 @@
 		  "next_page": "page_7",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -378,7 +380,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -393,8 +395,8 @@
 		  "next_page": "page_7",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -405,7 +407,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -420,8 +422,8 @@
 		  "next_page": "page_7",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -432,7 +434,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -447,8 +449,8 @@
 		  "next_page": "page_7",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -459,7 +461,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -470,7 +472,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/Tavern Music - Ivan Duch.mp3",
 	  "text": "The \"Ashen Flagon\" is warm and bustling. The magical lights are soft, the food smells incredible, and the atmosphere is genuinely festive. Families are eating, and the \"Bright Visuals\" are everywhere. Little illusory birds made of light fluttering around the rafters.\n\nBessa: (She leads you to a booth and collapses into a chair with a heavy, ungraceful groan. She doesn't wait for you to sit. She signals a waiter and points at a large pitcher.)\n\n\"Gods... my feet are killing me. You have no idea how many 'Scholars' I've had to walk around today. If I have to explain the history of the Runic Fountain one more time, I'm going to throw myself into it.\"\n\n(The drinks arrive. Bessa grabs a full cup of 'Wood Gold' and downs the entire thing in one long, aggressive gulp. She slams the empty cup on the table and wipes her mouth with her sleeve, letting out a satisfied, heavy sigh.)\n\nFernrick: (He stands there, one hand on the back of the chair, staring at her with wide eyes. His white hair is perfectly in place, and even in his shock, he looks like he stepped out of a painting. He slowly looks at the empty cup, then back to you.)\n\n\"...I... I was prepared for a battle of wits. I was not prepared for a Ministry official to chug an entire pint of ale in six seconds. Is this a human custom I missed in my studies, or is she just remarkably efficient at self-destruction?\"",
 	  "choice_1": {
 		"choice": "continue",
@@ -508,7 +510,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/Tavern Music - Ivan Duch.mp3",
 	  "text": "Bessa: (Slumping back, eyes half-closed) \"It's called 'Friday,' Master Elf. I spend ten hours a day stamping immigration forms. This festival is my only chance to actually breathe. So long as you two don't wander and get arrested, I can just sit here, drink, and pretend I don't have three thousand more forms waiting for me. It's the most relaxing day I've had in months.\"\n\n[color=6d0019]> \"I love her energy. She seems ok and normal to say the least just don't get too comfortable, though. The quieter the room, the louder the scream.\" <[/color]\n\nFernrick sits down gracefully, though he keeps his eyes on the crowd. He leans in toward Bessa, lowering his voice so the happy families nearby can't hear him.\n\nFernrick: \"Bessa, you seem like a reasonable person. But the rumors... people outside the gates say this city is a tomb. They talk about children vanishing. Yet, I look around and I see... this. How can both be true?\"",
 	  "choice_1": {
 		"choice": "(Show her the anonymous letter with the official seal.)",
@@ -521,8 +523,8 @@
 		  "next_page": "page_9",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -533,7 +535,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -548,8 +550,8 @@
 		  "next_page": "page_9",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -560,7 +562,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -575,8 +577,8 @@
 		  "next_page": "page_9",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "3",
 			"reward_text": "",
 			"items": []
 		  }
@@ -587,7 +589,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -602,8 +604,8 @@
 		  "next_page": "page_9",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -614,7 +616,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -626,7 +628,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/quite.mp3",
 	  "text": "Bessa: (She leans forward, her eyes suddenly much sharper than they were three pints ago. She rests her chin on her hand, a playful but dangerous smirk on her face.)\n\n\"You know... you two are terrible at this. You aren't asking about the wine list, the nearest library or even the best brothel in town. You're Adventurers, aren't you?\"\n\nFernrick: (He stiffens.) \"I beg your pardon? We are accredited researchers from———\"\n\nBessa: \"Stop. Just stop. No point in playing pretend anymore at this point…FERNRICK\"\n\n[color=6d0019]> \"Oh, she's good. She played the 'drunk clerk' card to get you to lower your guard, and you walked right into it. And she even know who fernrick is, oh this just got a whole lot interesting just who is she.\" <[/color]\n\nBessa: (She taps her finger against her chin) \"Remind me again... what was the name of that prestigious institution you're from? The one on your permit?\"",
 	  "choice_1": {
 		"choice": "he Aethelgard Lyceum. A very exclusive circle.",
@@ -639,8 +641,8 @@
 		  "next_page": "page_10",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -651,7 +653,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -666,8 +668,8 @@
 		  "next_page": "page_10",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -678,7 +680,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -693,8 +695,8 @@
 		  "next_page": "page_10",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -705,7 +707,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -720,8 +722,8 @@
 		  "next_page": "page_10",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -732,7 +734,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -743,10 +745,12 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Stranger's Hand.wav",
 	  "text": "Bessa: (She laughs, her playful tone resurfacing again. She reaches into her suit jacket and pulls out a small, heavy object wrapped in a piece of damp velvet. She slides it across the table toward you.)\n\n\"Relax. I'm not going to sell you out. If I wanted you arrested, the guards would have been here before the first round of drinks. Hold onto this. Don't let the 'Lumen-Eyes' in the hallways see it.\"\n\nYou unwrap the velvet. Inside is a small, black metallic gear with some sort of pulsing core. Blue circuit etched into the center. It feels warm almost like it has a heartbeat.\n\nFernrick: (Staring at the gear, then at Bessa) \"What is this? And why are you helping us if we're 'Guild-rats'?\"\n\nBessa: (Standing up and stretching) \"Let's just say I have my own paperwork to settle. You two look exhausted. Go to your rooms. Get some sleep. I'll be back at nightfall to pick you up. We're going somewhere the Ministry doesn't 'Optimize.' And Fernrick? relax, you don't want to get wrinkles on that cute face of yours.\"\n\n[color=6d0019]> \"A mysterious gear and a midnight rendezvous. We've officially left the 'Happy Festival' and entered the 'Deadly Conspiracy.' Whatever that gear is, it's not government-issued. Get some rest. I have a feeling tonight is going to be very long, and very bloody.\" <[/color]",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/gear.tres",
+		"achivement" : "",
 		"roll": {
 		  "": 0
 		},
@@ -781,7 +785,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Fleeting Thought.wav",
 	  "text": "The oil lamp is low. Fernrick is sitting on the edge of his bed, his \"beautiful\" features tight with stress. He's looking at you, waiting for your input. He's not just talking at you anymore; he's looking for a partner to help him with answers.\n\nFernrick: \"We're in trouble. Let's look at the facts. Bessa knew our names. She knew 'Aethelgard' was a lie. If she's handled this 'a dozen times' like it's a routine... then we aren't the first adventurers the Guild has sent into this.\"\n\n(He leans in, his voice dropping to a whisper.)\n\nFernrick: \"Why would Master Igris send us here with a blown cover? Either he's an idiot, or we're being used as a distraction. But then there's Bessa. She technically works for the Ministry, but she gave us that pulsing gear. I can't tell if she's our 'inside help' or if she's just fattening us up for the slaughter.\"\n\nFernrick: \"I've been running the numbers in my head, and they don't add up. Master Igris isn't technically a fool, and the Guild doesn't make 'clerical errors' on high-level missions. So why give us a cover name that Bessa treats like a punchline?\"\n\n(He looks at the gear, then back at you.)\n\nFernrick: \"If there were others sent before us... what happened to them? Did they fail? Did they ever return back? I don't like being the blind man in a knife fight. We need to know what we're walking into.\"",
 	  "choice_1": {
 		"choice": "The trap is the point. Igris used a fake name to have Bessa find us.",
@@ -794,8 +798,8 @@
 		  "next_page": "page_12",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -806,7 +810,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -821,8 +825,8 @@
 		  "next_page": "page_12",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -833,7 +837,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -848,8 +852,8 @@
 		  "next_page": "page_12",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -860,7 +864,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -875,8 +879,8 @@
 		  "next_page": "page_12",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -887,7 +891,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -898,7 +902,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/quite.mp3",
 	  "text": "The oil lamp in Room 404 finally burns down and dies, leaving you and Fernrick in the heavy, silent dark of the Brinkwood night. The gear sits on the nightstand, its blue circuit tracing its slow, even pulse in the dark, the only light in the room. You manage a few hours of something that approximates sleep.\n\nThree sharp knocks at the door jolts you awake. Fernrick is already on his feet before the third one lands, lamp lit, one hand on his hilt. He creeps to the door, cracks it open an inch and freezes. He doesn't move. He doesn't even breathe.\n\nBessa: (Standing in the hallway, she has traded her sharp Ministry suit for a flowing and patterned maiden's gown. The fabric is soft, ivory, and looks expensive. She looks like she belongs at a gala, not a midnight extraction. She waits.) \"Cat got your tongue, Fernrick? Or do you usually stare this long when in face with a beautiful maiden in the middle of the night?\"\n\nFernrick: (He blinks, eyes traveling down the dress and back up, his face flushing just a bit before he catches himself.) \"Oh... it's just you. Don't flatter yourself, I was just wondering which Ministry office you had to rob to afford this beauty. It's a bit much for an alleyway, don't you think?\"\n\nBessa: (knowing smile) You bitch (Rolls her eyes, sighs and walks in) \"Ok now, like i said before We have somewhere to be. And ah-ah-ah…\" (She raises a finger as you open your mouth to speak) \"Save the interrogation for later. first we need to get moving. If you don't want to, that's fine. You can stay here and still have non of your questions answered. Just don't expect to find what you're looking for. So we on the same page? good, now chop chop.\"\n\nFernrick looks at you, you can see in his eyes that this is probably the only chance you both have.\n\nFernrick: (sigh) \"Lead the way\"",
 	  "choice_1": {
 		"choice": "continue",
@@ -936,7 +940,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/peak night.mp3",
 	  "text": "Bessa leads you out of the Ashen Flagon through a narrow servants' passage. The cool night air of Brinkwood hits you, but it's different now, the once vibrant noise has faded only leaving the calm sounds of crickets. Bessa moves with surprising grace for someone who was chugging ale hours ago, her ivory gown shimmering faintly in the shadows.\n\nFernrick: (Hurrying to keep pace, his boots clicking sharply on the cobbles. He's leaning toward Bessa, his face a mask of intense focus.) \"Now that we are clear of the common rooms, I have a litany of questions. Starting with why…\"\n\nBessa: (Without looking back, she snaps her fingers) \"Hush. Every word you waste on 'why' is a word that could alert a guard on duty. We're in the 'Ash Spot district' right now which happens to have quite a handful of patrolling guards due to it being a noble resident so we have to prevent drawing attention. If you want to keep your tongue, I suggest you use it for breathing, not complaining. (smirks)\"\n\nFernrick: (He stops dead) Did she seriously just... 'hush' me? I'm trying to make sense of this mess and be reasonable and she's telling me to shut up? The nerve on this woman.\"\n\nFernrick looks at you, practically vibrating with wounded pride, waiting for you to take his side.",
 	  "choice_1": {
 		"choice": "She's not wrong, Fernrick. You were being loud.",
@@ -949,8 +953,8 @@
 		  "next_page": "page_14",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -961,7 +965,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -976,8 +980,8 @@
 		  "next_page": "page_14",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -988,7 +992,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1003,8 +1007,8 @@
 		  "next_page": "page_14",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1015,7 +1019,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1030,8 +1034,8 @@
 		  "next_page": "page_14",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "4",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1042,7 +1046,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1054,7 +1058,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/peak night.mp3",
 	  "text": "You emerge from the narrow alleyways into the \"Ash Spot\" district. Here, the cobblestones are polished, and the air smells of jasmine instead of coal-ash. Ahead of you stands a sprawling mansion of white stone and dark ivy, its windows dark and silent.\n\nFernrick: (Staring at the mansion, his anger momentarily replaced by wonder, murmuring quietly to himself.) \"Oh my... look at those carvings. Every detail, the vines along the archway, the figures etched above the door... someone sat with a chisel and just... worked. Hours. Days maybe.\" (His eyes trace slowly up the facade.) \"And the symmetry of it. The way the windows are framed, the patterns in the stonework... it's beautiful. Genuinely beautiful.\" (He trails off for a moment, almost forgetting himself entirely.) \"You just don't see this kind of care anymore.\" (He snaps out of it.) \"Wait. What are we doing at a private residence? Bessa, this is clearly a violation o…\"\n\nBessa: \"Shhh!\"\n\nFernrick: (His face turning a deep shade of crimson.) \"Shhh? Did she? She just…? look here you…\"\n\nBefore he can finish his protest, you reach out and firmly clap your hand over Fernrick's mouth. His muffled indignant noises die down into a desperate mmph-mmph as he tries to maintain his dignity.\n\nBessa: (Giving you a grateful nod and a wink.) \"Thanks for that. He was about to wake up the whole district. We need to get in without alerting the guards. Once we're inside the mansion, you'll get the answers you're looking for.\"\n\nWithout waiting for a response, Bessa hitches up her ivory skirts, grabs a decorative ledge, and with a surprisingly athletic kick, vaults over the high iron gate. She vanishes into the shadows of the mansion's garden.\n\nFernrick: (Pryring your hand off his face and gasping for air.) \"She is committing a felony! A high-level, Ministry-grade felony! And she's dragging us into it like common pickpockets! What do we do? We can't seriously be following her into a noble's house!\"",
 	  "choice_1": {
 		"choice": "We've come this far. A little breaking and entering won't kill us.",
@@ -1067,8 +1071,8 @@
 		  "next_page": "page_15",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1079,7 +1083,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1094,8 +1098,8 @@
 		  "next_page": "page_14",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1106,7 +1110,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1121,8 +1125,8 @@
 		  "next_page": "page_15",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1133,7 +1137,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1148,8 +1152,8 @@
 		  "next_page": "page_15",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1160,7 +1164,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1171,7 +1175,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Iron Chrous.mp3",
 	  "text": "You and Fernrick clear the gate and land in the damp grass. Bessa is already waiting, leaning casually against a stone pillar.\n\nBessa: (Grinning as you both land) \"Oh, good. You didn't run off after all. I was half-convinced you'd be halfway back to the tavern by now, clucking like chickens. What a pair of lowly adventurers you'd be if you'd left me to do all the heavy lifting.\"\n\nFernrick: (Brushing dirt off his sleeve) \"What do take us for exactly? you owe us answers remember so I'll be damned to let that go after coming this far. so what's the situation?\"\n\nBessa: (Her face goes serious) \"Three guards patrolling the garden. If we want to get into that mansion, we have to take care of them.\"\n\nFernrick: \"Wait... what do you mean by 'take care of them'?\"\n\nBessa: \"Of course i don't mean kill them. We just have to put them to sleep.\"\n\nFernrick: \"Can't we just sneak past? I'm quite light on my feet when I need to be.\"\n\nBessa: \"Two reasons: One: You can but that doesn't mean we can. Two: these aren't your typical gate guards. They're trained in high-level perception; they'll pick you up even if you move with the shadow. We have to ambush them, one by one. No exceptions and fast.\"",
 	  "choice_1": {
 		"choice": "continue",
@@ -1208,7 +1212,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Iron Chrous.mp3",
 	  "text": "The first guard is walking a slow, rhythmic path near the fountain. He’s looking away, but his ears are twitching at every rustle of the wind.",
 	  "choice_1": {
 		"choice": "fight",
@@ -1222,8 +1226,8 @@
 		  "next_page": "page_17",
 		  "reward": {
 			"coin": 150,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1234,7 +1238,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1266,7 +1270,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Iron Chrous.mp3",
 	  "text": "Guard: \"Huh? whose there?\"\nThe second guard is walking towrads your direction at increasing pace...",
 	  "choice_1": {
 		"choice": "fight",
@@ -1280,8 +1284,8 @@
 		  "next_page": "page_18",
 		  "reward": {
 			"coin": 150,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1292,7 +1296,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1324,7 +1328,7 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Iron Chrous.mp3",
 	  "text": "You barely have a moment to breathe after the second guard drops. Fernrick straightens up, brushing the dirt from his sleeve, and Bessa is already scanning the path ahead.\n\nThen the footsteps come.\n\nNot the slow, rhythmic patrol of the others. These are deliberate. Unhurried. The kind of steps that belong to someone who already knows exactly where you are.\n\nA figure emerges from the shadows at the far end of the garden. Broader than the others. The moonlight catches the dull gleam of heavier armor, a sergeant's insignia etched into the pauldron. He stops a few feet away and looks at the two unconscious guards on the ground, then slowly raises his eyes to the three of you.\n\nHe doesn't shout. He doesn't reach for a horn.\n\nHe just draws his weapon.",
 	  "choice_1": {
 		"choice": "fight",
@@ -1338,8 +1342,8 @@
 		  "next_page": "page_19",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1350,7 +1354,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1382,10 +1386,12 @@
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/quite.mp3",
 	  "text": "Fernrick: (In a frantic, hushed whisper, his eyes darting around the dark room) \"Alright... we are in. Now, quickly where is the study?\"\n\nBessa: (She pauses in the middle of the room, her ivory gown a pale ghost in the dark. She looks at him with a look of genuine confusion.) \"What study?\"\n\nFernrick: (Stuttering) \"Wha... what do you mean, 'what study'? The noble's study! You said we would get our answers here! Why else would we be breaking into a high-ranking noble's home?\"\n\nBessa: \"Yeah, I said you'd get answers but I never said a thing about a study.\"\n\nFernrick: (His whisper is now a frantic hiss) \"Then what in the world are we doing?! Breaking into a noble's house for…\"",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "6",
 		"roll": {
 		  "": 0
 		},
@@ -1420,7 +1426,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Culmination.mp3",
 	  "text": "The lights flare to life. A woman sits in a high-backed chair, watching you with calm, steady eyes. A brass lamp on a massive oak desk flares to life, spilling warm, amber light across the room. The transition is jarring, forcing you to squint. Sitting in a high-backed leather chair is a woman dressed in charcoal-grey silks, her silver hair hangs loose, long and unbound. She holds a crystal glass of amber liquid, watching the three of you with a calm focus.\n\n[color='red']???[/color]: \"Not just any noble's house. A member of the Ministry... welcome to my mansion.\"\n\nBessa: (She relaxes, offering a shallow bow) \"i'll like you to meet Lady Amberley. Third Seat of the Ministry. The one who actually wanted you here.\"\n\nFernrick: (He is instantly 'locked-in.' His body goes rigid, his weight shifting to the balls of his feet. He looks like a cornered animal, eyes darting between Bessa and Amberley, calculating every exit and every threat in the room.)\n\nLady Amberley: (Her voice is like velvet over gravel; smooth, but authoritative.) \"Be at ease Master Fernrick. I mean you both no harm.\"\n\nFernrick: (His voice is cold yet with visible stress, his ears twitching.) \"I am seconds away from assuming this is a very elaborate execution. I'll recommend you all explain exactly what is happening this instant.\"\n\nLady Amberley: \"Very well. Bessa is my... 'apprentice' for lack of a better word. Our relationship is between the two of us and is not known by anyone else, she is my eyes and ears when needs be. By now you should be able to figure part of it out, you were brought here by my own orders and to put your mind at ease, no the other ministry members aren't aware of any of these.\"",
 	  "choice_1": {
 		"choice": "Is that why we had to break in? Because you aren't supposed to actually know each other?",
@@ -1433,8 +1439,8 @@
 		  "next_page": "page_21",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1445,7 +1451,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1478,7 +1484,7 @@
 		"dex": 40
 	  },
 	  "battle": "",
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Culmination.mp3",
 	  "text": "Lady Amberley: (Cutting him short with a sharp look.) \"Covert action has been the case for over a decade, Master Fernrick, and we have gotten nothing but losses, do you have any idea how much has been sacrificed?, we can't sit and wait any longer, enough is enough and i am willing to do whatever it takes, even if i have to burn it all down just to see it all end, with or without help from the guild.\"",
 	  "choice_1": {
 		"choice": "If you're the one who requested us... then what about the letter?",
@@ -1491,8 +1497,8 @@
 		  "next_page": "page_22",
 		  "reward": {
 			"coin": 0,
-			"journal_page": "res://Scene/Stories/Ashes of Brinkwood/journal_page_lit/testing_journal.tres",
-			"achivement": "1",
+			"journal_page": "",
+			"achivement": "",
 			"reward_text": "",
 			"items": []
 		  }
@@ -1503,7 +1509,7 @@
 		  "loss": {
 			"hp": 0,
 			"coin": 0,
-			"achivement": "1",
+			"achivement": "",
 			"loss_text": ""
 		  }
 		}
@@ -1530,12 +1536,12 @@
 		"battle": ""
 	  }
 	},
-	"page_22 ": {
+	"page_22": {
 	  "img": "res://Asset/img/other/cons.png",
 	  "roll": {
 		"dex": 20
 	  },
-	  "music": "res://Asset/ost/Horsemen Approach (ft. Kevin MacLeod) - Royalty Free Celtic Fantasy Music [D7jzJPrSszc].mp3",
+	  "music": "res://Asset/ost/original/Culmination.mp3",
 	  "text": "Lady Amberley: \"I find it strange because I have never sent a formal letter to the Guild office to request any adventurers. I recently just dealt with Igris personally to avoid any paper trail.\"\n\nFernrick: \"What do you mean recently?\"\n\nLady Amberley: \"I mean that the reason you both are standing right here and now is because i personally dealt with Igris, with the help of bessa of course.\"\n\nFernrick: \"So if I'm getting this correctly, you requested adventurers from the guild but not through the formal process cause you dealt with Igris personally. Meaning the individual who requested adventurers in that letter wasn't you but another individual who got their hands on a ministry seal.\"\n\nYou point to the seal. She leans in, the amber light catching the lines of age and worry on her face. Her expression turns grim.\n\nLady Amberley: \"This is a Ministry seal... but it definitely not from my office.\"\n\nFernrick: (His hands go to his temples, rubbing them vigorously.) \"Come to think of it, this letter was not from Master Igris. It was given to us by a Guild attendant who said it was part of our mission briefing. It had the wax, the stamp, the official vellum... This doesn't make any sense! So if it's not you, then who else wanted us in Brinkwood?\"",
 	  "choice_1": {
 		"choice": "END",

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Achievements" load_steps=2 format=3 uid="uid://bhscj1ltourcv"]
+
+[ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="1_k4s0e"]
+
+[resource]
+script = ExtResource("1_k4s0e")
+id = "5"
+title = "Gut Feeling"
+text = "Choose \"The letter is a warning\" in the carriage scene and succeed."
+achieved = false

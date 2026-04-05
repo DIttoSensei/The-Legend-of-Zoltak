@@ -10,7 +10,7 @@ var base_size = Vector2(2046,2400)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalGameSystem.global_audio.volume_db = -18
+	GlobalGameSystem.global_audio.volume_db = -12
 	var sound = load ("res://Asset/ost/sound_effects/cold_wind.mp3")
 	GlobalGameSystem.play_sfx2_audio(sound, 10.0)
 	#SceneTransition.fade_in()

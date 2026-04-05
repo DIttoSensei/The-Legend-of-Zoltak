@@ -154,6 +154,36 @@ _data = {
 
 [node name="epilogue" type="CanvasLayer"]
 script = ExtResource("1_4caow")
+batch_1 = "[center]
+You feel heavy...AGAIN
+You tried to move your body but it wouldn't listen....
+[/center]"
+batch_2 = "[center]
+Your eyes, they are filled with darkness...It's fine, you are getting used to it.
+
+But wait...
+
+You see something...it's faint but you see it.
+No its just the fog...endless fog.
+[/center]"
+batch_3 = "[center]
+That's it. That's all there is.
+
+It's voice! You can't hear it's voice anymore..
+You tried to call out
+
+...
+
+No response.
+[/center]"
+batch_4 = "[center]
+You can't scream either, do you even have a mouth?
+
+You stop fighting, You know you can't do anything without them...
+
+You went back to sleep...
+It's for the best.
+[/center]"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -188,11 +218,16 @@ theme = ExtResource("2_j3kph")
 theme_override_constants/line_separation = 30
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]And in that perfect, terrible emptiness, you hear one final sound:  
-A whisper, so quiet you almost miss it:  
-\"Don't forget.\"
+text = "[center]
+That's it. That's all there is.
 
-Then even that is gone."
+It's voice! You can't hear it's voice anymore..
+You tried to call out
+
+...
+
+No response.
+[/center]"
 fit_content = true
 
 [node name="text animation" type="AnimationPlayer" parent="Control/RichTextLabel"]
@@ -243,6 +278,29 @@ offset_bottom = 2134.0
 theme_override_styles/hover = SubResource("StyleBoxEmpty_k0587")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_jgjge")
 flat = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -121.0
+offset_right = 314.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_j3kph")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 30
+theme_override_font_sizes/font_size = 50
+text = "Thank You For Playing
+Hope See You Next Time..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Control/RichTextLabel/text animation" to="." method="_on_text_animation_animation_finished"]

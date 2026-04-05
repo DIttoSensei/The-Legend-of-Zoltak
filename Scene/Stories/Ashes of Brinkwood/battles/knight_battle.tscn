@@ -2811,7 +2811,6 @@ _data = {
 [node name="BattleScene" type="Node2D"]
 position = Vector2(5, 0)
 script = ExtResource("1_n3l61")
-ost_path = "res://Asset/ost/Secret in the Dark (original OST).mp3"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

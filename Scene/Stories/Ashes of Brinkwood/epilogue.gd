@@ -45,7 +45,11 @@ func _ready() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "loading":
 		# Pass the path of the score board
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+		$Label.visible = true
+		await get_tree().create_timer(3).timeout
+		$Label.visible = false
+		await get_tree().create_timer(5).timeout
+		LevelManager.load_new_level = "res://Scene/Start Menu.tscn"
 		LevelManager.load_level_single_transition()
 	
 	pass # Replace with function body.

@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_ctpkw")
 id = "2"
-text = "Defeat your first enemy"
+title = "First Impression"
+text = "Successfully pass the gate with a sucess outcome."
 achieved = false

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Achievements" load_steps=2 format=3 uid="uid://domexd4g112gw"]
+
+[ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="1_m7gto"]
+
+[resource]
+script = ExtResource("1_m7gto")
+id = "6"
+title = "No Turning Back"
+text = "Defeat all three guards."
+achieved = false

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Enemies_res" load_steps=7 format=3 uid="uid://danntwnv4mn6w"]
+[gd_resource type="Resource" script_class="Enemies_res" load_steps=8 format=3 uid="uid://danntwnv4mn6w"]
 
 [ext_resource type="Script" path="res://Scene/action/action.gd" id="1_igthg"]
 [ext_resource type="Resource" uid="uid://b62tnnd1md072" path="res://Scene/enemies/Moves/Rank_1/thrust.tres" id="2_7dhup"]
 [ext_resource type="Resource" uid="uid://c2821ake5aiev" path="res://Scene/enemies/Moves/Rank_1/razor_cut.tres" id="3_k1rn5"]
 [ext_resource type="Resource" uid="uid://hs7jft7thtmc" path="res://Scene/enemies/Moves/Rank_1/bulk_up.tres" id="4_wgpls"]
 [ext_resource type="Resource" uid="uid://btb7qbbqf3has" path="res://Scene/enemies/Moves/Rank_1/bash.tres" id="5_0lxt1"]
+[ext_resource type="Resource" uid="uid://dtahetodgcba4" path="res://Scene/enemies/Moves/Rank_1/rations.tres" id="6_1i6e4"]
 [ext_resource type="Script" path="res://Scene/battle/scripts/enemies_res.gd" id="6_l6rgf"]
 
 [resource]
@@ -14,4 +15,4 @@ hp = 550
 atk = 47
 def = 57
 dex = 17
-actions = Array[ExtResource("1_igthg")]([ExtResource("2_7dhup"), ExtResource("3_k1rn5"), ExtResource("4_wgpls"), ExtResource("5_0lxt1"), null])
+actions = Array[ExtResource("1_igthg")]([ExtResource("2_7dhup"), ExtResource("3_k1rn5"), ExtResource("4_wgpls"), ExtResource("5_0lxt1"), ExtResource("6_1i6e4")])

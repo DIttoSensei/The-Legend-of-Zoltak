@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv38f7qkwiqwi"]
+[gd_scene load_steps=12 format=3 uid="uid://bv38f7qkwiqwi"]
 
 [ext_resource type="Texture2D" uid="uid://b66p12pvglnle" path="res://Asset/img/other/8bit.png" id="1_f1kc3"]
 [ext_resource type="Script" path="res://Scene/achievements/achievement_ui.gd" id="1_j21qw"]
@@ -6,16 +6,33 @@
 [ext_resource type="Texture2D" uid="uid://85y6dwsthl5t" path="res://Asset/img/other/fc15.png" id="2_nu3jd"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="3_44e0n"]
 [ext_resource type="Texture2D" uid="uid://cta7a76xm5gfh" path="res://Asset/img/other/golden_frame_in_pixel_art_style-removebg-preview.png" id="4_mt87f"]
+[ext_resource type="Texture2D" uid="uid://dlct2yqdimyvt" path="res://Asset/img/other/panel-removebg-preview-Picsart-AiImageEnhancer.png" id="7_goc2p"]
 
-[node name="AchievementUi" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8814t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxl06"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bneop"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v62p3"]
+
+[node name="AchievementUi" type="Button"]
 modulate = Color(0.487009, 0.487009, 0.487009, 1)
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = -222.0
+offset_bottom = -1865.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8814t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gxl06")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bneop")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v62p3")
+flat = true
 script = ExtResource("1_j21qw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -49,3 +66,40 @@ autowrap_mode = 2
 position = Vector2(151.5, 138.5)
 scale = Vector2(0.906, 0.906)
 texture = ExtResource("4_mt87f")
+
+[node name="info" type="TextureRect" parent="."]
+visible = false
+top_level = true
+offset_left = 408.0
+offset_top = 168.0
+offset_right = 914.0
+offset_bottom = 464.0
+texture = ExtResource("7_goc2p")
+
+[node name="Label" type="Label" parent="info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -94.0
+offset_right = 199.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_44e0n")
+theme_override_font_sizes/font_size = 30
+text = "Kill 500 enemies and dont forget to make out"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Achievements" load_steps=2 format=3 uid="uid://plowbqcxa05t"]
+
+[ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="1_wt5mb"]
+
+[resource]
+script = ExtResource("1_wt5mb")
+id = "3"
+title = "She's Just Tired"
+text = "Choose to pour Bessa another drink and succeed."
+achieved = false

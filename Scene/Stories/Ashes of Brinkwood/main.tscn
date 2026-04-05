@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://c5w6dmvryahbj"]
+[gd_scene load_steps=120 format=3 uid="uid://c5w6dmvryahbj"]
 
 [ext_resource type="Texture2D" uid="uid://cubfycx1oyajm" path="res://Asset/img/other/bg.png" id="1_uovk4"]
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/scripts/main.gd" id="1_v0woh"]
@@ -68,12 +68,15 @@
 [ext_resource type="Texture2D" uid="uid://cq6jnv2pkh8dt" path="res://Asset/img/other/1000017210.png" id="62_60vvj"]
 [ext_resource type="Texture2D" uid="uid://0rdtkdgdpn6q" path="res://Asset/img/other/back.png" id="63_rvjtd"]
 [ext_resource type="Script" path="res://Scene/achievements/achievements_container.gd" id="64_ox1yo"]
-[ext_resource type="PackedScene" uid="uid://bv38f7qkwiqwi" path="res://Scene/achievements/achievement_ui.tscn" id="64_qeot7"]
 [ext_resource type="Script" path="res://Scene/achievements/player_achievements.gd" id="65_vwklm"]
 [ext_resource type="Script" path="res://Scene/achievements/achievements.gd" id="66_nv5sa"]
 [ext_resource type="Resource" uid="uid://dlvpqxhqtvdvf" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/1.tres" id="67_yy3pl"]
 [ext_resource type="Resource" uid="uid://bgj6tgnfp8h7b" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/2.tres" id="68_itq0l"]
 [ext_resource type="PackedScene" uid="uid://cxdx5drl748u5" path="res://Scene/saving.tscn" id="70_3y5t4"]
+[ext_resource type="Resource" uid="uid://plowbqcxa05t" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/3.tres" id="73_1hx85"]
+[ext_resource type="Resource" uid="uid://srgw5fse4h7x" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/4.tres" id="74_t50lf"]
+[ext_resource type="Resource" uid="uid://bhscj1ltourcv" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/5.tres" id="75_3025u"]
+[ext_resource type="Resource" uid="uid://domexd4g112gw" path="res://Scene/Stories/Ashes of Brinkwood/Achievements/6.tres" id="76_2oqnh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk7f5"]
 atlas = ExtResource("3_wmowf")
@@ -760,7 +763,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_15nkp"]
 script = ExtResource("65_vwklm")
-slots = Array[ExtResource("66_nv5sa")]([ExtResource("67_yy3pl"), ExtResource("68_itq0l"), null, null])
+slots = Array[ExtResource("66_nv5sa")]([ExtResource("67_yy3pl"), ExtResource("68_itq0l"), ExtResource("73_1hx85"), ExtResource("74_t50lf"), ExtResource("75_3025u"), ExtResource("76_2oqnh")])
 
 [sub_resource type="Animation" id="Animation_giua7"]
 length = 0.001
@@ -1234,7 +1237,7 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 560)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = 20
+theme_override_constants/line_separation = 26
 theme_override_fonts/normal_font = SubResource("FontVariation_x7m3p")
 theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/italics_font_size = 32
@@ -1281,8 +1284,8 @@ autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/Page/choice"]
 modulate = Color(0.435192, 0.435192, 0.435192, 1)
-position = Vector2(-17.3333, 16.75)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-11.5416, 16.5417)
+scale = Vector2(0.887253, 0.887253)
 texture = ExtResource("34_xa3q6")
 
 [node name="choice2" type="Button" parent="Control/Page"]
@@ -1296,8 +1299,8 @@ autowrap_mode = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Control/Page/choice2"]
 modulate = Color(0.435192, 0.435192, 0.435192, 1)
-position = Vector2(-17.3333, 16.75)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-11.5416, 19.5416)
+scale = Vector2(0.887253, 0.887253)
 texture = ExtResource("34_xa3q6")
 
 [node name="choice3" type="Button" parent="Control/Page"]
@@ -1311,8 +1314,8 @@ autowrap_mode = 2
 
 [node name="Sprite2D3" type="Sprite2D" parent="Control/Page/choice3"]
 modulate = Color(0.435192, 0.435192, 0.435192, 1)
-position = Vector2(-17.3333, 18.75)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-11.5416, 18.5416)
+scale = Vector2(0.887253, 0.887253)
 texture = ExtResource("34_xa3q6")
 
 [node name="choice4" type="Button" parent="Control/Page"]
@@ -1326,8 +1329,8 @@ autowrap_mode = 2
 
 [node name="Sprite2D4" type="Sprite2D" parent="Control/Page/choice4"]
 modulate = Color(0.435192, 0.435192, 0.435192, 1)
-position = Vector2(-17.3333, 19.7501)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-11.5416, 16.5416)
+scale = Vector2(0.887253, 0.887253)
 texture = ExtResource("34_xa3q6")
 
 [node name="continue" type="Button" parent="Control/Page"]
@@ -1714,13 +1717,16 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Control/jornal_display/page"]
-custom_minimum_size = Vector2(719, 0)
+custom_minimum_size = Vector2(719, 250)
 layout_mode = 2
 theme = ExtResource("29_26tb2")
+theme_override_constants/line_spacing = 10
 theme_override_font_sizes/font_size = 25
 text = "Brütal Legend is an action-adventure that marries visceral action combat with open-world freedom. Set in a universe somewhere between Lord of the Rings and Spinal Tap, it's a fresh take on the action/driving genre, which in this case is full of imitation cover bands, demons intent on enslaving humanity and Heavy metal tunes. Featuring the talents of 
 
-Brütal Legend is an action-adventure that marries visceral action combat with open-world freedom. Set in a universe somewhere between Lord of the Rings and Spinal Tap, it's a fresh take on the action/driving genre, which in this case is full of imitation cover bands, demons intent on enslaving humanity and Heavy metal tunes. Featuring the talents of "
+Brütal Legend is an action-adventure that marries visceral action combat with open-world freedom. Set in a universe somewhere between Lord of the Rings and Spinal Tap, it's a fresh take on the action/driving genre, which in this case is full of imitation cover bands, dm
+
+"
 autowrap_mode = 2
 
 [node name="left screentouch" type="Button" parent="Control/jornal_display"]
@@ -2237,7 +2243,8 @@ theme_override_constants/separation = 300
 script = ExtResource("64_ox1yo")
 data = SubResource("Resource_15nkp")
 
-[node name="AchievementUi" parent="Control/achivement2/ScrollContainer/VBoxContainer" instance=ExtResource("64_qeot7")]
+[node name="PADDING" type="Control" parent="Control/achivement2/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="mini notification" type="TextureRect" parent="Control"]

@@ -866,16 +866,20 @@ func player_victory () -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	if GlobalGameSystem.main_battle == true:
-		print("signal not been emited")
 		SignalManager.battle_won.emit()
 		GlobalGameSystem.main_battle = false
+		if ost_path != "":
+			SignalManager.play_main_audio.emit()
 	else:
 		print("signal  emited")
 		self.visible = false
 		SignalManager.battle_quest_won.emit()
-		GlobalGameSystem.make_current_audio_empty = true
+		if ost_path != "":
+			GlobalGameSystem.make_current_audio_empty = true
+			GlobalGameSystem.reduce_bg_music_by_half = true
+			SignalManager.play_main_audio.emit()
 		self.queue_free()
-	SignalManager.play_main_audio.emit()
+	
 
 
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cx2vht6ifi0kb"
+path="res://.godot/imported/Tides of Grace.mp3-e8a2c908981691d20ee73902c1a3590b.mp3str"
+
+[deps]
+
+source_file="res://Asset/ost/original/Tides of Grace.mp3"
+dest_files=["res://.godot/imported/Tides of Grace.mp3-e8a2c908981691d20ee73902c1a3590b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

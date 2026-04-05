@@ -357,6 +357,11 @@ func perform_action (damage, player_def_mod) -> void:
 			battle_scene.announcer_text(text)
 			await get_tree().create_timer(1.5).timeout
 			return
+			
+		# Play sound effect
+		var sound = load ("res://Asset/sound_effects/battle_sfx/8bit-powerup1.wav")
+		GlobalGameSystem.play_sfx_audio(sound)
+		
 		enemy_heal_status.value = damage
 		$"5".play("heal")
 		text = "[center]Opponent [color=green]HP[/color] ticks up for 3 turns"
