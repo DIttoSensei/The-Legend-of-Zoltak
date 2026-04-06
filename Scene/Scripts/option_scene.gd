@@ -159,6 +159,7 @@ func _on_discord_pressed() -> void:
 func _on_itch_io_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
+	OS.shell_open("https://corvusq.itch.io/the-legends-of-zoltak")
 
 
 func _on_manual_pressed() -> void:

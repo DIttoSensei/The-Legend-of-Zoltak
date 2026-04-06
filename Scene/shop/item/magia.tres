@@ -16,4 +16,4 @@ item_type = "Wearable"
 attribute = "Heal"
 attribute_value = 20
 wearable_class = "Relics"
-item_cost = 1200
+item_cost = 860

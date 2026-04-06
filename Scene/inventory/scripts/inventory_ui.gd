@@ -30,7 +30,8 @@ func clear_inventory () -> void:
 
 func update_inventory () -> void:
 	clear_inventory()
-	for s in data.slots:
+	for i in range(data.slots.size()):
 		var new_slot = INVENTORY_SLOT.instantiate()
 		add_child(new_slot)
-		new_slot.slot_data = s
+		new_slot.slot_index = i
+		new_slot.slot_data = data.slots[i]

@@ -16,4 +16,4 @@ item_type = "Wearable"
 attribute = "Def"
 attribute_value = 35
 wearable_class = "Headgear"
-item_cost = 110
+item_cost = 320

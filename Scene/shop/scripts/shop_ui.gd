@@ -30,7 +30,7 @@ func _ready() -> void:
 	load_action()
 	load_shop()
 	
-	GlobalGameSystem.global_audio.stream = preload("res://Asset/ost/White Woodlands - Alexander Nakarada.mp3")
+	GlobalGameSystem.global_audio.stream = preload("res://Asset/ost/original/Symphony of the Brave.mp3")
 	GlobalGameSystem.play_bg_audio()
 	
 	#load_item_shop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3ahgq1ymxr3"]
+[gd_scene load_steps=21 format=3 uid="uid://b3ahgq1ymxr3"]
 
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/intro_to_main.gd" id="1_h6gbw"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="2_pofj1"]
@@ -148,67 +148,55 @@ _data = {
 "fade_fog_out": SubResource("Animation_w5mqo")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0587"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgjge"]
-
 [node name="intro to main" type="CanvasLayer"]
 script = ExtResource("1_h6gbw")
-batch_1 = "[center]You are falling.  
-No, not falling. There is no down here. No up. No ground rushing toward you, no sky pulling away.  
-You are simply... moving. Drifting through something that isn't quite space, isn't quite darkness. It's the color of bruised light, of shadows that writhe and pulse with their own rhythm.  
-The sound is everywhere and nowhere at once.  
-It roars like a storm, thunder that rolls on endlessly, waves crashing against shores that don't exist. But beneath the chaos, there's something else. A hum. Low and constant, like the world itself is breathing.  
+batch_1 = "[center]You are falling.
+No. Not falling. There is no down here. No up. You are simply moving through something that isn't quite space, isn't quite darkness. It's the color of bruised light, of shadows that pulse with their own rhythm.
+The sound is everywhere at once. Thunder that rolls endlessly, waves crashing against shores that don't exist. Beneath the chaos: a hum. Low and constant, like the world itself is breathing.
+[/center]
 "
-batch_2 = "[center]You try to move your arms.  
-Do you have arms?  
-You can't tell. You feel like you should have a body, the memory of weight, of substance, but when you try to look down, there's nothing. Just the endless, churning void.  
-The sound shifts.  
-It's still loud, still overwhelming, but now there's a pattern to it. Something almost like... words?  
-No. Not words. A voice.  
-Someone is calling.  
-You strain to hear, pushing against the roar of the not-storm. The voice comes in fragments, broken syllables swallowed by the chaos:
+batch_2 = "[center]You try to move your arms.
+Do you have arms?
+You can't tell. The memory of a body lingers, but when you look down, there's nothing. Just the churning void.
+The sound shifts. A pattern emerges. Something almost like... a voice.
+Someone is calling.
+You strain to hear through the roar. The voice comes in fragments:
+[/center]
 "
 batch_3 = "[center]\"can you\"
-\"please\"
-\"have to\" 
-You try to respond. Try to call back. But you have no voice. No mouth. No breath.  
-The void churns faster. The light-that-isn't-light pulses brighter, more violent. Colors that have no names bleed into the darkness, colors that hurt to perceive, that feel wrong somehow, like they're not meant to exist.  
-The voice calls again, clearer this time:  
-\"find me\"  
-The desperation in those two words cuts through everything else. Raw. Terrified.  
-Who are you? you try to scream into the void."
-batch_4 = "[center]Where are you?  
-Nothing. The storm swallows your silent words.  
-You reach out, or try to. Some instinct, some desperate need to connect, to grab hold of something real,  
-For just a moment, you feel something.  
-A presence.  
-Not the voice. Something else. Something watching from the edges of this impossible place. You can't see it, can't hear it, but you know it's there.  
-It's vast. Ancient. And it's aware of you.  
-The attention feels like ice water in your veins, like falling through thin ice into a frozen lake."
-batch_5 = "[center]Panic floods through you, primal, animal panic that screams RUN.  
-But you can't run. You can't move. You can only drift, suspended in this space between spaces, while something beyond comprehension notices you exist.  
-The voice calls one more time:  
-\"PLEASE\"  
-And then,  
-Silence.  
-Not peaceful silence. Not the absence of sound.  
-This is silence like a held breath. Like the moment before impact. Like the space between heartbeats when you realize something has gone terribly, irreversibly wrong.  
-The void collapses.  "
-batch_6 = "[center]Everything, the roaring storm, the writhing colors, the presence watching from the dark, all of it inverts, folding in on itself like the world is being swallowed by its own shadow.  
-You feel yourself pulled forward, backward, sideways, inward,  
-And then,  
-Nothing.
-
-Darkness.  
-Complete.  
-Absolute.  
-Empty."
-batch_7 = "[center]And in that perfect, terrible emptiness, you hear one final sound:  
-A whisper, so quiet you almost miss it:  
+ \"please\"
+ \"have to\"
+You try to respond. But you have no voice. No mouth. No breath.
+The void churns faster. Colors that have no names bleed into the darkness. Colors that hurt to perceive, that feel wrong, like they're not meant to exist.
+The voice calls again, clearer:
+\"find me\"
+The desperation cuts through everything else. Raw. Terrified.
+You reach out. Or try to. Some instinct, some desperate need to connect.
+And you feel something.
+[/center]
+"
+batch_4 = "[center]Not the voice. Something else. Something watching from the edges.
+You can't see it, can't hear it, but you know it's there. Vast. Ancient. Aware of you.
+Its attention feels like ice water in your veins. Panic floods through you, primal and screaming: RUN.
+But you can't run. You can only drift while something beyond comprehension notices you exist.
+The voice calls one last time:
+[/center]"
+batch_5 = "[center]\"PLEASE\"
+Then:
+Silence.
+Not peaceful silence. Silence like a held breath. Like the moment before impact.
+The void collapses.
+Everything inverts, folding in on itself like the world is being swallowed by its own shadow. You feel yourself pulled forward, backward, inward.
+And then:
+[/center] "
+batch_6 = "[center]Nothing.
+Darkness. Complete. Absolute. Empty.
+...
+In that perfect, terrible emptiness, you hear one final sound:
+A whisper, so quiet you almost miss it:
 \"Don't forget.\"
-
-Then even that is gone."
+Then even that is gone.
+[/center]"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -289,17 +277,6 @@ max_polyphony = 5
 wait_time = 2.0
 one_shot = true
 
-[node name="Button" type="Button" parent="."]
-z_index = 7
-offset_left = 699.0
-offset_top = 1936.0
-offset_right = 1064.0
-offset_bottom = 2134.0
-theme_override_styles/hover = SubResource("StyleBoxEmpty_k0587")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_jgjge")
-flat = true
-
 [connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Control/RichTextLabel/text animation" to="." method="_on_text_animation_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

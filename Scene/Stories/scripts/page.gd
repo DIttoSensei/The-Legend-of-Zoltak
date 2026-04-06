@@ -647,7 +647,7 @@ func reward_for_ctn () -> void:
 	## This is a func for choice one if a continue has a reward to give
 	var value = current_choice.get("journal_data")
 	var value_2 = current_choice.get("achivement")
-	if value != null:
+	if value != "":
 		var new_page = current_choice["journal_data"]
 			
 		# First let check if the page already exist
@@ -666,7 +666,7 @@ func reward_for_ctn () -> void:
 			jornal_display.add_page(new_page)
 			play_journal_added_ani = true
 	
-	if value_2 != null:
+	if value_2 != "":
 		var reward = current_choice["achivement"] # store the achivements from the story.json
 		for i in range(achivement.data.slots.size()): # loop through the array
 			var gained_achivement = achivement.data.slots[i] # store em 
@@ -975,19 +975,20 @@ func _on_action_pressed() -> void:
 		# Set the specific wearable type to a specific slot
 		if slot.item_data.wearable_class == "Weapon":
 			target_grid.set_slot_at_index(slot, 4, previous_index)
-			remove_item_slot()
+			
 		elif slot.item_data.wearable_class == "Headgear":
 			target_grid.set_slot_at_index(slot, 0, previous_index)
-			remove_item_slot()
+			
 		elif slot.item_data.wearable_class == "Chestplate":
 			target_grid.set_slot_at_index(slot, 1, previous_index)
-			remove_item_slot()
+			
 		elif slot.item_data.wearable_class == "Relics":
 			target_grid.set_slot_at_index(slot, 2, previous_index)
-			remove_item_slot()
+		
 		elif slot.item_data.wearable_class == "leggings":
 			target_grid.set_slot_at_index(slot, 3, previous_index)
-			remove_item_slot()
+			
+		info_board.visible = false
 		## Other specific wearable conditions goes here
 		
 	elif action_label.text == "USE":
@@ -1020,7 +1021,7 @@ func _on_action_pressed() -> void:
 func remove_item_slot () -> void: ## Remove selected item from the inventory
 	## Remove from storage but keep the slot
 	var slot = GlobalGameSystem.button_data_inv
-	var index = storage_inventory.data.slots.find(slot)
+	var index = GlobalGameSystem.active_slot_index
 	if index != -1:
 		storage_inventory.data.slots[index] = null
 		

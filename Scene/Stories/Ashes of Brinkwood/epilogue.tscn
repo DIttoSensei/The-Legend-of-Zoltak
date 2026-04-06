@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwcfvomncav6m"]
+[gd_scene load_steps=21 format=3 uid="uid://dwcfvomncav6m"]
 
 [ext_resource type="Script" path="res://Scene/Stories/Ashes of Brinkwood/epilogue.gd" id="1_4caow"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="2_j3kph"]
@@ -148,10 +148,6 @@ _data = {
 "fade_fog_out": SubResource("Animation_w5mqo")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0587"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgjge"]
-
 [node name="epilogue" type="CanvasLayer"]
 script = ExtResource("1_4caow")
 batch_1 = "[center]
@@ -269,16 +265,6 @@ max_polyphony = 5
 wait_time = 2.0
 one_shot = true
 
-[node name="Button" type="Button" parent="."]
-z_index = 7
-offset_left = 699.0
-offset_top = 1936.0
-offset_right = 1064.0
-offset_bottom = 2134.0
-theme_override_styles/hover = SubResource("StyleBoxEmpty_k0587")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_jgjge")
-flat = true
-
 [node name="Label" type="Label" parent="."]
 visible = false
 anchors_preset = 8
@@ -305,4 +291,3 @@ autowrap_mode = 2
 [connection signal="animation_finished" from="Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Control/RichTextLabel/text animation" to="." method="_on_text_animation_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

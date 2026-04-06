@@ -16,4 +16,4 @@ item_type = "Wearable"
 attribute = "Def"
 attribute_value = 75
 wearable_class = "Chestplate"
-item_cost = 200
+item_cost = 500

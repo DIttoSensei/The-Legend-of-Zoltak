@@ -138,11 +138,3 @@ func _on_text_animation_animation_finished(anim_name: StringName) -> void:
 		counter += 1
 		timer.start()
 	
-
-
-func _on_button_pressed() -> void:
-	fog_animation.play('fade_fog_out')
-	fade_out(effect_audio)
-	fade_out(effect_audio_2)
-	$Control/AnimationPlayer.play("loading")
-	pass # Replace with function body.

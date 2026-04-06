@@ -45,9 +45,17 @@ func _ready() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "loading":
 		# Pass the path of the score board
+		
+		## CHANGE THIS LATER
 		$Label.visible = true
 		await get_tree().create_timer(3).timeout
 		$Label.visible = false
+		$Label.text = "And to my late friend, you wanted to see me finish this. I finally did"
+		$Label.visible = true
+		await get_tree().create_timer(3).timeout
+		$Label.visible = false
+		
+		
 		await get_tree().create_timer(5).timeout
 		LevelManager.load_new_level = "res://Scene/Start Menu.tscn"
 		LevelManager.load_level_single_transition()
@@ -144,11 +152,3 @@ func _on_text_animation_animation_finished(anim_name: StringName) -> void:
 		counter += 1
 		timer.start()
 	
-
-
-func _on_button_pressed() -> void:
-	fog_animation.play('fade_fog_out')
-	fade_out(effect_audio)
-	fade_out(effect_audio_2)
-	$Control/AnimationPlayer.play("loading")
-	pass # Replace with function body.

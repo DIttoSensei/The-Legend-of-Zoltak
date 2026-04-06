@@ -2,6 +2,7 @@ extends Button
 class_name InventorySlotUi
 
 var slot_data : Slot_data : set = set_slot_data
+var slot_index : int = -1
 
 @onready var texture_rect: TextureRect = $TextureRect
 
@@ -25,5 +26,8 @@ func _on_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(sound)
 	
 	GlobalGameSystem.button_data_inv = slot_data
+	
+	GlobalGameSystem.active_slot_index = slot_index
+	
 	SignalManager.show_item_info_board.emit()
 	pass # Replace with function body.

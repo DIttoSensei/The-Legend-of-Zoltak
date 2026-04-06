@@ -16,4 +16,4 @@ item_type = "Wearable"
 attribute = "Crit"
 attribute_value = 89
 wearable_class = "Relics"
-item_cost = 350
+item_cost = 760

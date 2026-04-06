@@ -31,6 +31,7 @@ var reduce_bg_music_by_half : bool = false
 var manual_data : ManualData
 var current_main_game : String
 var current_crpt_data : CryptBtnRes
+var active_slot_index
 
 # for battle quest
 var current_icon_data : IconData # For battle quest

@@ -31,17 +31,11 @@ func update_inventory () -> void:
 func set_slot_at_index(slot_data: Slot_data, index: int, previous_index : int) -> void:
 	# var flag for see if your storage inventory has space or not
 	var existing_item = data.slots[index]
-	print(previous_index)
-	if previous_index == 1:
-		print("first")
-		storage_inventory.data.slots[1] = existing_item
-		data.slots[index] = slot_data
-		update_inventory()
-		return
-	storage_inventory.data.slots[previous_index] = existing_item
 	data.slots[index] = slot_data
-	print("second")
+	storage_inventory.data.slots[previous_index] = existing_item
+	storage_inventory.update_inventory()
 	update_inventory()
+	
 
 
 

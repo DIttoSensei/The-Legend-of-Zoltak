@@ -40,6 +40,8 @@ extends Node2D
 
 
 var current_save : String
+var intro : bool = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -71,9 +73,9 @@ func _process(_delta: float) -> void:
 
 ## Function to check for profiles and update status
 func check_for_save_profile () -> void:
-	var save_1 = FileAccess.open("user://SAVE_1.txt", FileAccess.READ)
-	var save_2 = FileAccess.open("user://SAVE_2.txt", FileAccess.READ)
-	var save_3 = FileAccess.open("user://SAVE_3.txt", FileAccess.READ)
+	var save_1 = FileAccess.open("user://SAVE_1.zol", FileAccess.READ)
+	var save_2 = FileAccess.open("user://SAVE_2.zol", FileAccess.READ)
+	var save_3 = FileAccess.open("user://SAVE_3.zol", FileAccess.READ)
 	if save_1:
 		label_1.visible = false
 		data.visible = true
@@ -82,8 +84,19 @@ func check_for_save_profile () -> void:
 		delete.visible = true
 		
 		# values from the save file
-		var player_data = JSON.parse_string(save_1.get_as_text())["Player"]
+		var text_content = save_1.get_as_text()
 		save_1.close()
+		
+		var data_file = JSON.parse_string(text_content)
+		var player_data = data_file["Player"]
+		if data_file["Show_intro"] == true:
+			data_file["Show_intro"] = false
+			var save = FileAccess.open("user://SAVE_1.zol", FileAccess.WRITE)
+			var json_string = JSON.stringify(data_file)
+			save.store_string(json_string)
+			save.close()
+		else:
+			intro = false
 		
 		# create the value to the labels
 		var text = player_data["Name"] + "\n" + player_data["Age"] + "\n" + player_data["Race"] + "\n" + player_data["Class"]
@@ -109,8 +122,19 @@ func check_for_save_profile () -> void:
 		delete_2.visible = true
 		
 		# values from the save file
-		var player_data = JSON.parse_string(save_2.get_as_text())["Player"]
+		var text_content = save_2.get_as_text()
 		save_2.close()
+		
+		var data_file = JSON.parse_string(text_content)
+		var player_data = data_file["Player"]
+		if data_file["Show_intro"] == true:
+			data_file["Show_intro"] = false
+			var save = FileAccess.open("user://SAVE_2.zol", FileAccess.WRITE)
+			var json_string = JSON.stringify(data_file)
+			save.store_string(json_string)
+			save.close()
+		else:
+			intro = false
 		
 		# create the value to the labels
 		var text = player_data["Name"] + "\n" + player_data["Age"] + "\n" + player_data["Race"] + "\n" + player_data["Class"]
@@ -136,8 +160,20 @@ func check_for_save_profile () -> void:
 		delete_3.visible = true
 		
 		# values from the save file
-		var player_data = JSON.parse_string(save_3.get_as_text())["Player"]
+		var text_content = save_3.get_as_text()
 		save_3.close()
+		
+		var data_file = JSON.parse_string(text_content)
+		var player_data = data_file["Player"]
+		if data_file["Show_intro"] == true:
+			data_file["Show_intro"] = false
+			var save = FileAccess.open("user://SAVE_3.zol", FileAccess.WRITE)
+			var json_string = JSON.stringify(data_file)
+			save.store_string(json_string)
+			save.close()
+		else:
+			intro = false
+		
 		
 		# create the value to the labels
 		var text = player_data["Name"] + "\n" + player_data["Age"] + "\n" + player_data["Race"] + "\n" + player_data["Class"]
@@ -192,7 +228,7 @@ func _on_create_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	create.disabled = true
-	GlobalGameSystem.save_name = "SAVE_1.txt"
+	GlobalGameSystem.save_name = "SAVE_1.zol"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
@@ -200,7 +236,7 @@ func _on_create_2_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	create_2.disabled = true
-	GlobalGameSystem.save_name = "SAVE_2.txt"
+	GlobalGameSystem.save_name = "SAVE_2.zol"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
@@ -208,7 +244,7 @@ func _on_create_3_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	create_3.disabled = true
-	GlobalGameSystem.save_name = "SAVE_3.txt"
+	GlobalGameSystem.save_name = "SAVE_3.zol"
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 	
@@ -219,19 +255,19 @@ func _on_create_3_pressed() -> void:
 func _on_delete_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
-	current_save = "SAVE_1.txt"
+	current_save = "SAVE_1.zol"
 	delete_file_notice()
 
 func _on_delete_1_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
-	current_save = "SAVE_2.txt"
+	current_save = "SAVE_2.zol"
 	delete_file_notice()
 
 func _on_delete_2_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
-	current_save = "SAVE_3.txt"
+	current_save = "SAVE_3.zol"
 	delete_file_notice()
 	
 func _on_yes_pressed() -> void:
@@ -253,21 +289,31 @@ func _on_load_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	load1.disabled = true
-	GlobalGameSystem.save_name = "SAVE_1.txt"
-	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
-	LevelManager.load_level()
-	GlobalGameSystem.fade_out()
-	pass # Replace with function body.
+	GlobalGameSystem.save_name = "SAVE_1.zol"
+	if intro == true:
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
+		LevelManager.load_level()
+		GlobalGameSystem.fade_out()
+	else:
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+		LevelManager.load_level()
+		GlobalGameSystem.fade_out()
+	
 
 
 func _on_load2_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	load2.disabled = true
-	GlobalGameSystem.save_name = "SAVE_2.txt"
-	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
-	LevelManager.load_level()
-	GlobalGameSystem.fade_out()
+	GlobalGameSystem.save_name = "SAVE_2.zol"
+	if intro == true:
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
+		LevelManager.load_level()
+		GlobalGameSystem.fade_out()
+	else:
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+		LevelManager.load_level()
+		GlobalGameSystem.fade_out()
 	pass # Replace with function body.
 
 
@@ -275,8 +321,13 @@ func _on_load3_pressed() -> void:
 	var audio = load("res://Asset/sound_effects/click_1.wav")
 	GlobalGameSystem.play_sfx_audio(audio)
 	load3.disabled = true
-	GlobalGameSystem.save_name = "SAVE_3.txt"
-	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
-	LevelManager.load_level()
-	GlobalGameSystem.fade_out()
+	GlobalGameSystem.save_name = "SAVE_3.zol"
+	if intro == true:
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
+		LevelManager.load_level()
+		GlobalGameSystem.fade_out()
+	else:
+		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+		LevelManager.load_level()
+		GlobalGameSystem.fade_out()
 	pass # Replace with function body.

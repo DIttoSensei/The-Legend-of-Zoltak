@@ -150,7 +150,7 @@ func save_game () -> void :
 			"Cha" : int(cha.text),
 			"Wis" : int(wis.text),
 			"Dialogue_Page" : "",
-			"currency" : 8000,
+			"currency" : 300,
 		},
 		"Main_Inventory" : [],
 		"Storage_Inventory" : [],
@@ -160,6 +160,7 @@ func save_game () -> void :
 		"Current_chapter" : 'Chapter_1',
 		"Current_page" : 'page_1', 
 		"Shop_Action_Purchased" : [],
+		"Show_intro" : true,
 		
 	}
 	var json_string = JSON.stringify(player_data, "\t")

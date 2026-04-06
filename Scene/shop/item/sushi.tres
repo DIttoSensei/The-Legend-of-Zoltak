@@ -16,4 +16,4 @@ item_type = "Consumable"
 attribute = "Heal"
 attribute_value = 75
 wearable_class = ""
-item_cost = 150
+item_cost = 410
