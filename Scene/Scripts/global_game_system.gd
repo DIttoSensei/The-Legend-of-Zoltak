@@ -32,6 +32,7 @@ var manual_data : ManualData
 var current_main_game : String
 var current_crpt_data : CryptBtnRes
 var active_slot_index
+var play_intro : bool = true
 
 # for battle quest
 var current_icon_data : IconData # For battle quest
@@ -61,9 +62,13 @@ var player_hp
 var results
 
 var can_play_audio = true
+var audio_setting_on : bool = true
+var config = ConfigFile.new()
+const SAVE_PATH = 'user://settings.cfg'
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var err = config.load(SAVE_PATH)
 	load_story_data()
 	pass # Replace with function body.
 
@@ -78,8 +83,25 @@ func play_bg_audio () -> void:
 		global_audio.volume_db = -18
 	else:
 		global_audio.volume_db = 0
+		
+	check_bg_audio_volume()
 	global_audio.play()
 	pass
+	
+func check_bg_audio_volume () -> void:
+	config.load(SAVE_PATH)
+	
+	var music = config.get_value("Settings", "music_enabled")
+	if music == false:
+		print(typeof(music))
+		global_audio.volume_db = -90
+		print('false')
+		#can_play_audio = false
+	elif music == true:
+		print ('true')
+		global_audio.volume_db = 0
+		#can_play_audio = true
+
 
 func play_sfx_audio (audio) -> void:
 	global_sfx.stream = audio

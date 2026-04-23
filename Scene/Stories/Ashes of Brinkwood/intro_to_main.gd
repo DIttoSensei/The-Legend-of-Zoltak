@@ -8,6 +8,7 @@ class_name IntroToMain extends CanvasLayer
 @onready var label: RichTextLabel = $Control/RichTextLabel
 @onready var text_animation: AnimationPlayer = $"Control/RichTextLabel/text animation"
 @onready var effect_audio_2: AudioStreamPlayer = $effect_audio_2
+@onready var ctn_animation: AnimationPlayer = $Control/continue/ctn_ani
 
 var counter := 1
 
@@ -23,6 +24,7 @@ var counter := 1
 var transition_duration : float = 5.0
 
 func _ready() -> void:
+	SceneTransition.fade_in()
 	await get_tree().create_timer(3.5).timeout
 	timer.start()
 	effect_audio.volume_db = -60
@@ -72,7 +74,13 @@ func _on_fade_in_complete ():
 	
 	
 func start_text () -> void: 
+	$Control/RichTextLabel.visible = true
 	text_animation.play('text_fade_in')
+	#await get_tree().create_timer(1.2).timeout
+	##$Control/continue.disabled = false
+	if $Control/continue.visible == false:
+			ctn_animation.play("show")
+			#$Control/continue.disabled = false
 	
 
 
@@ -131,10 +139,25 @@ func end_scene () -> void:
 
 func _on_text_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == 'text_fade_in':
-		await get_tree().create_timer(15).timeout
 		text_animation.play('text_fade_out')
+		ctn_animation.play("hide")
+		
 	
 	elif anim_name == 'text_fade_out':
+		$Control/RichTextLabel.visible = false
 		counter += 1
 		timer.start()
 	
+
+
+func _on_continue_pressed() -> void:
+	text_animation.play('text_fade_out')
+	$Control/continue.disabled = true
+	$Control/continue.visible = false
+	pass # Replace with function body.
+
+
+#func _on_ctn_ani_animation_finished(anim_name: StringName) -> void:
+	#if anim_name == "show":
+		#$Control/continue.disabled = false
+	#pass # Replace with function body.

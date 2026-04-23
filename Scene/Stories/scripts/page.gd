@@ -1,7 +1,7 @@
 class_name GamePage extends VBoxContainer
 
 # Fetch UI elements when the node is ready
-@onready var texture_rect: TextureRect = $TextureRect
+@onready var texture_rect: Sprite2D = $TextureRect
 @onready var text_box: RichTextLabel = $text_box
 @onready var choice: Button = $choice
 @onready var choice_2: Button = $choice2
@@ -707,6 +707,9 @@ func coin_reward () -> void:
 func journal_reward () -> bool:
 	var play_journal_added_ani : bool = false
 	var new_page = current_choice["outcome_1"]["reward"]["journal_page"]
+	
+	if new_page == "":
+		return play_journal_added_ani
 
 	# First let check if the page already exist
 	var already_added = false
@@ -729,6 +732,10 @@ func journal_reward () -> bool:
 func achievment_reward () -> bool:
 	var play_achievemnet_ani = false
 	var reward = current_choice["outcome_1"]["reward"]["achivement"] # store the achivements from the story.json
+	
+	if reward == "":
+		return play_achievemnet_ani
+		
 	for i in range(achivement.data.slots.size()): # loop through the array
 		var gained_achivement = achivement.data.slots[i] # store em 
 		if gained_achivement: # if it not empty

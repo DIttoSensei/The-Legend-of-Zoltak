@@ -265,7 +265,7 @@ func enemy_attack (enemy_name, move_name, damage, anim_name) -> void:
 	
 	print("player hp: ", player.current_hp)
 	# Check if player has no hp left
-	if player.current_hp <= 0:
+	if player.current_hp < 1:
 		player_take_turn == true
 		game_over()
 		## Switch scene to game over menu
@@ -392,7 +392,7 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 			await enemy.perform_action(damage, player_def_mod)
 			await get_tree().create_timer(0.5).timeout
 			# Check if player has no hp left
-			if player.current_hp <= 0:
+			if player.current_hp < 1:
 				game_over()
 				## Switch scene to game over menu
 				return
@@ -411,7 +411,7 @@ func enemy_status_check (enemy_name, damage, move_name) -> void:
 			text = "[center][color=red]" + enemy_name + "[/color] attacked itself[/center]"
 			announcer_text(text)
 			## Check if enemy has no hp left
-			if enemy.current_hp <= 0:
+			if enemy.current_hp < 1:
 				player_victory()
 				## Switch scene to game over menu
 				return
@@ -493,7 +493,7 @@ func player_status_check (damage, action):
 			player.set_battle_stat()
 			await get_tree().create_timer(1.2).timeout
 			## Check if player has no hp left
-			if player.current_hp <= 0:
+			if player.current_hp < 1:
 				game_over()
 				enemy_take_turn == true
 				## Switch scene to game over menu

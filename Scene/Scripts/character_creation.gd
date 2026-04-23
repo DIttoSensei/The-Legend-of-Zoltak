@@ -40,8 +40,9 @@ extends Node2D
 
 
 var current_save : String
-var intro : bool = true
-
+var intro : bool = false
+var intro_1 : bool = false
+var intro_2 : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,12 +55,17 @@ func _ready() -> void:
 	create_3.disabled = false
 	
 	check_for_save_profile()
-	if GlobalGameSystem.global_audio.stream == preload("res://Asset/ost/Medieval song-Dance of the nymphs.mp3"):
+	if GlobalGameSystem.global_audio.stream.resource_path == "res://Asset/ost/Medieval song-Dance of the nymphs.mp3":
 		pass
 	else:
 		GlobalGameSystem.global_audio.stream = preload("res://Asset/ost/Medieval song-Dance of the nymphs.mp3")
-		GlobalGameSystem.delay(2)
+	
+		await get_tree().create_timer(2).timeout
 		GlobalGameSystem.play_bg_audio()
+		
+		#if GlobalGameSystem.audio_setting_on == false:
+			#return
+		#GlobalGameSystem.play_bg_audio()
 		
 		## if the confirm quit notice is shown hide this one
 	#if ConfirmQuit.show == true:
@@ -95,6 +101,7 @@ func check_for_save_profile () -> void:
 			var json_string = JSON.stringify(data_file)
 			save.store_string(json_string)
 			save.close()
+			intro = true
 		else:
 			intro = false
 		
@@ -127,14 +134,17 @@ func check_for_save_profile () -> void:
 		
 		var data_file = JSON.parse_string(text_content)
 		var player_data = data_file["Player"]
+
+		
 		if data_file["Show_intro"] == true:
 			data_file["Show_intro"] = false
 			var save = FileAccess.open("user://SAVE_2.zol", FileAccess.WRITE)
 			var json_string = JSON.stringify(data_file)
 			save.store_string(json_string)
 			save.close()
+			intro_1 = true
 		else:
-			intro = false
+			intro_1 = false
 		
 		# create the value to the labels
 		var text = player_data["Name"] + "\n" + player_data["Age"] + "\n" + player_data["Race"] + "\n" + player_data["Class"]
@@ -171,8 +181,9 @@ func check_for_save_profile () -> void:
 			var json_string = JSON.stringify(data_file)
 			save.store_string(json_string)
 			save.close()
+			intro_2 = true
 		else:
-			intro = false
+			intro_2 = false
 		
 		
 		# create the value to the labels
@@ -229,6 +240,7 @@ func _on_create_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(audio)
 	create.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.zol"
+	GlobalGameSystem.play_intro = true
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
@@ -237,6 +249,7 @@ func _on_create_2_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(audio)
 	create_2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.zol"
+	GlobalGameSystem.play_intro = true
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 
@@ -245,6 +258,7 @@ func _on_create_3_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(audio)
 	create_3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.zol"
+	GlobalGameSystem.play_intro = true
 	LevelManager.load_new_level = "res://Scene/Profile_creation.tscn"
 	LevelManager.load_level()
 	
@@ -290,14 +304,10 @@ func _on_load_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(audio)
 	load1.disabled = true
 	GlobalGameSystem.save_name = "SAVE_1.zol"
-	if intro == true:
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
-		LevelManager.load_level()
-		GlobalGameSystem.fade_out()
-	else:
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
-		LevelManager.load_level()
-		GlobalGameSystem.fade_out()
+	
+	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+	LevelManager.load_level()
+	GlobalGameSystem.fade_out()
 	
 
 
@@ -306,15 +316,9 @@ func _on_load2_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(audio)
 	load2.disabled = true
 	GlobalGameSystem.save_name = "SAVE_2.zol"
-	if intro == true:
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
-		LevelManager.load_level()
-		GlobalGameSystem.fade_out()
-	else:
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
-		LevelManager.load_level()
-		GlobalGameSystem.fade_out()
-	pass # Replace with function body.
+	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+	LevelManager.load_level()
+	GlobalGameSystem.fade_out()
 
 
 func _on_load3_pressed() -> void:
@@ -322,12 +326,6 @@ func _on_load3_pressed() -> void:
 	GlobalGameSystem.play_sfx_audio(audio)
 	load3.disabled = true
 	GlobalGameSystem.save_name = "SAVE_3.zol"
-	if intro == true:
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
-		LevelManager.load_level()
-		GlobalGameSystem.fade_out()
-	else:
-		LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
-		LevelManager.load_level()
-		GlobalGameSystem.fade_out()
-	pass # Replace with function body.
+	LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+	LevelManager.load_level()
+	GlobalGameSystem.fade_out()

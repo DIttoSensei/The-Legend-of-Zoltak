@@ -96,6 +96,7 @@ func _on_event_button_pressed() -> void:
 				GlobalGameSystem.player_hp = 100
 				
 	elif GlobalGameSystem.current_icon_data.type == 'Battle Quest':
+		event_button.visible = false
 		current_hp = GlobalGameSystem.player_hp
 		GlobalGameSystem.global_sfx_2.stop()
 		#$CanvasLayer/ColorRect.MOUSE_FILTER_IGNORE

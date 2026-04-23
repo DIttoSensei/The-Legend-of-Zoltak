@@ -1,4 +1,4 @@
-extends Node2D
+class_name ProfileCreation extends Node2D
 
 @export_multiline var Name_age_error : String
 @export_multiline var Stats_error : String
@@ -17,9 +17,9 @@ var bad_words : Array = [
 var stats := []
 var last_total  := 0
 var age : int
+var current_slider : HSlider
 
-
-var state_cumulation : int
+var final_total : int
 
 @onready var animation_player: AnimationPlayer = $Control/CanvasLayer/Control/notice_board/AnimationPlayer
 @onready var name_edit: LineEdit = $Control/Profile_data1/Name/LineEdit
@@ -66,11 +66,22 @@ func _process(_delta: float) -> void:
 	
 	# perform states calculation each frame to update
 	var current_total = get_stats_total()
-	if current_total != last_total:
-		last_total = current_total
-		$Control/Profile_data2/Stats_total.text = str(current_total)
-		state_cumulation = int($Control/Profile_data2/Stats_total.text)
-	pass
+		
+	if current_slider == null:
+		return
+	var total_used = current_total - current_slider.value
+	var max_allowed = 150-total_used
+	if current_slider.value > max_allowed:
+		current_slider.set_block_signals(true)
+		current_slider.value = max_allowed
+		current_slider.set_block_signals(false)
+		
+	final_total = get_stats_total()
+	$Control/Profile_data2/Stats_total.text = str(final_total)
+	
+	for stat in stats:
+		var counter_label = stat.get_node("counter")
+		counter_label.text = str(stat.value)
 
 
 func get_stats_total () -> int:
@@ -118,7 +129,7 @@ func _on_confirm_pressed() -> void:
 	if name_edit.text.length() < 4 or name_edit.text.length() > 8 or not age is int or str(age).length() < 2:
 		notice.text = Name_age_error
 		display_notice()
-	elif state_cumulation > 150 or state_cumulation < 150:
+	elif final_total > 150 or final_total < 150:
 		notice.text = Stats_error
 		display_notice()
 	else:
@@ -129,8 +140,14 @@ func _on_confirm_pressed() -> void:
 		await get_tree().create_timer(3).timeout
 		remove_notice()
 		
-		LevelManager.load_new_level = "res://Scene/profile_selection.tscn"
-		LevelManager.load_level()
+		if GlobalGameSystem.play_intro == true:
+			LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/intro_to_main.tscn"
+			LevelManager.load_level()
+			GlobalGameSystem.fade_out()
+		else:
+			LevelManager.load_new_level = "res://Scene/Stories/Ashes of Brinkwood/main.tscn"
+			LevelManager.load_level()
+			GlobalGameSystem.fade_out()
 
 
 func save_game () -> void :

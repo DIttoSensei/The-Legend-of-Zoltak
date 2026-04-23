@@ -47,9 +47,16 @@ func load_config () -> void:
 	if music == false:
 		GlobalGameSystem.global_audio.volume_db = -90
 		GlobalGameSystem.can_play_audio = false
+		GlobalGameSystem.audio_setting_on = false
 	else:
 		GlobalGameSystem.global_audio.volume_db = 0
 		GlobalGameSystem.can_play_audio = true
+		
+	
+	if sfx == false:
+		GlobalGameSystem.global_sfx.volume_db = 0
+		GlobalGameSystem.global_sfx_2.volume_db = 0
+		GlobalGameSystem.global_sfx_3.volume_db = 0
 	
 	
 

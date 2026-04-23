@@ -166,6 +166,8 @@
 	  "text": "The carriage stops hard. Outside, the low hum of the waystones cuts off and is replaced by something mechanical: a shriek of iron on iron as the gates grind open. A bar of white artificial light slices through the window and catches Fernrick's face, draining the colour from it.\n\n[color=6d0019]> \"And here we are. Brinkwood. The Immigration Office awaits, and they are not the patient sort. Shall we see whether your 'credentials' hold up, or if I have to start thinking of a way to describe your stay in a dungeon?\" <[/color]\n\nThe gates of Brinkwood are massive iron and soot-stained timber. The guards wear functional plate armor, though their shields bear a seal etched in silver that seems to shimmer slightly if you look at it too long.\n\nFernrick: (He steps out of the carriage, smoothing his travel cloak with practiced grace. He looks at the guards with a weary expression, his eyes sharp and judgmental. He looks at the gatehouse, then at the road behind you.)\n\n\"Finally. My bones were beginning to feel like they belonged to the carriage. Look at this place... they've spent a fortune on the walls and nothing on the roads. It's the hallmark of a city that's more afraid of what's outside than what's within.\"",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "",
 		"roll": {
 		  "": 0
 		},
@@ -321,6 +323,8 @@
 	  "text": "You step into the heart of the city. Contrary to the rumors you have heard, the main road is a riot of color. Banners for the Festival of Lumens hang from every balcony, and the streets are filled with families and children running between stalls. The \"Bright Visuals\" are everywhere here magical street performers making illusory fireworks dance in the air and kids playing with glowing, enchanted hoops.\n\n[color=6d0019]> \"Wait... this isn't right. Thought it was supposed to be a depressed town? Look at all these happy faces. It's almost…normal. Either the rumors were a lie, or this city has the best public relations team in history. Keep your guard up\" <[/color]\n\nFernrick: (He looks genuinely confused, squinting at a group of children)\n\n\"I'm so confused. Everything looks so... normal. More than normal. I can't shake the feeling that something isn't right or its probably my imagination. Come on, let's get to the bottom of this\"\n\n(You enter the Immigration Office. It's chaotic. Travelers from all over the Reach are lined up, filling the air with a dozen different languages. The walls are lined with rows of desks where workers are stamping documents with rhythmic, mechanical speed.)\n\n[color=6d0019]> \"looks like brinkwood festivals are pretty popular, look at all these people, seems like a convenient way to mask your objectives if you catch my drift\" <[/color]",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "",
 		"roll": {
 		  "": 0
 		},
@@ -476,6 +480,8 @@
 	  "text": "The \"Ashen Flagon\" is warm and bustling. The magical lights are soft, the food smells incredible, and the atmosphere is genuinely festive. Families are eating, and the \"Bright Visuals\" are everywhere. Little illusory birds made of light fluttering around the rafters.\n\nBessa: (She leads you to a booth and collapses into a chair with a heavy, ungraceful groan. She doesn't wait for you to sit. She signals a waiter and points at a large pitcher.)\n\n\"Gods... my feet are killing me. You have no idea how many 'Scholars' I've had to walk around today. If I have to explain the history of the Runic Fountain one more time, I'm going to throw myself into it.\"\n\n(The drinks arrive. Bessa grabs a full cup of 'Wood Gold' and downs the entire thing in one long, aggressive gulp. She slams the empty cup on the table and wipes her mouth with her sleeve, letting out a satisfied, heavy sigh.)\n\nFernrick: (He stands there, one hand on the back of the chair, staring at her with wide eyes. His white hair is perfectly in place, and even in his shock, he looks like he stepped out of a painting. He slowly looks at the empty cup, then back to you.)\n\n\"...I... I was prepared for a battle of wits. I was not prepared for a Ministry official to chug an entire pint of ale in six seconds. Is this a human custom I missed in my studies, or is she just remarkably efficient at self-destruction?\"",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "",
 		"roll": {
 		  "": 0
 		},
@@ -906,6 +912,8 @@
 	  "text": "The oil lamp in Room 404 finally burns down and dies, leaving you and Fernrick in the heavy, silent dark of the Brinkwood night. The gear sits on the nightstand, its blue circuit tracing its slow, even pulse in the dark, the only light in the room. You manage a few hours of something that approximates sleep.\n\nThree sharp knocks at the door jolts you awake. Fernrick is already on his feet before the third one lands, lamp lit, one hand on his hilt. He creeps to the door, cracks it open an inch and freezes. He doesn't move. He doesn't even breathe.\n\nBessa: (Standing in the hallway, she has traded her sharp Ministry suit for a flowing and patterned maiden's gown. The fabric is soft, ivory, and looks expensive. She looks like she belongs at a gala, not a midnight extraction. She waits.) \"Cat got your tongue, Fernrick? Or do you usually stare this long when in face with a beautiful maiden in the middle of the night?\"\n\nFernrick: (He blinks, eyes traveling down the dress and back up, his face flushing just a bit before he catches himself.) \"Oh... it's just you. Don't flatter yourself, I was just wondering which Ministry office you had to rob to afford this beauty. It's a bit much for an alleyway, don't you think?\"\n\nBessa: (knowing smile) You bitch (Rolls her eyes, sighs and walks in) \"Ok now, like i said before We have somewhere to be. And ah-ah-ah…\" (She raises a finger as you open your mouth to speak) \"Save the interrogation for later. first we need to get moving. If you don't want to, that's fine. You can stay here and still have non of your questions answered. Just don't expect to find what you're looking for. So we on the same page? good, now chop chop.\"\n\nFernrick looks at you, you can see in his eyes that this is probably the only chance you both have.\n\nFernrick: (sigh) \"Lead the way\"",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "",
 		"roll": {
 		  "": 0
 		},
@@ -1179,6 +1187,8 @@
 	  "text": "You and Fernrick clear the gate and land in the damp grass. Bessa is already waiting, leaning casually against a stone pillar.\n\nBessa: (Grinning as you both land) \"Oh, good. You didn't run off after all. I was half-convinced you'd be halfway back to the tavern by now, clucking like chickens. What a pair of lowly adventurers you'd be if you'd left me to do all the heavy lifting.\"\n\nFernrick: (Brushing dirt off his sleeve) \"What do take us for exactly? you owe us answers remember so I'll be damned to let that go after coming this far. so what's the situation?\"\n\nBessa: (Her face goes serious) \"Three guards patrolling the garden. If we want to get into that mansion, we have to take care of them.\"\n\nFernrick: \"Wait... what do you mean by 'take care of them'?\"\n\nBessa: \"Of course i don't mean kill them. We just have to put them to sleep.\"\n\nFernrick: \"Can't we just sneak past? I'm quite light on my feet when I need to be.\"\n\nBessa: \"Two reasons: One: You can but that doesn't mean we can. Two: these aren't your typical gate guards. They're trained in high-level perception; they'll pick you up even if you move with the shadow. We have to ambush them, one by one. No exceptions and fast.\"",
 	  "choice_1": {
 		"choice": "continue",
+		"journal_data" : "",
+		"achivement" : "",
 		"roll": {
 		  "": 0
 		},
