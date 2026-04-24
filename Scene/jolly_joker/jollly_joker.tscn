@@ -1,0 +1,323 @@
+[gd_scene load_steps=27 format=3 uid="uid://dm53weqwkua2t"]
+
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/jolly_joker.gd" id="1_ddqdm"]
+[ext_resource type="Texture2D" uid="uid://dicu7keex7qwl" path="res://Asset/img/other/file_000000008dfc71f49519e61d321920ae.png" id="2_uj7qc"]
+[ext_resource type="Texture2D" uid="uid://cq6jnv2pkh8dt" path="res://Asset/img/other/1000017210.png" id="3_nu4w0"]
+[ext_resource type="Texture2D" uid="uid://cy6ykx4hip1s4" path="res://Scene/jolly_joker/assets/1.png" id="4_64rml"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/player_deck.gd" id="5_fck6s"]
+[ext_resource type="Texture2D" uid="uid://buyjp3mu1gemv" path="res://Scene/jolly_joker/assets/23.png" id="5_njtpv"]
+[ext_resource type="Resource" uid="uid://bovpqtbn30r71" path="res://Scene/jolly_joker/res/player_stack.tres" id="6_elmos"]
+[ext_resource type="Texture2D" uid="uid://b30knllsmyy5t" path="res://Scene/jolly_joker/assets/2.png" id="6_m32fk"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/market_deck.gd" id="6_o7ex7"]
+[ext_resource type="Texture2D" uid="uid://ch6dywmamfjgc" path="res://Asset/img/other/little_scroll.png" id="7_e6t4u"]
+[ext_resource type="Resource" uid="uid://cepe8leq05h2f" path="res://Scene/jolly_joker/res/market_stack.tres" id="7_fbnvi"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/market_spawn.gd" id="7_nn4pw"]
+[ext_resource type="Texture2D" uid="uid://db4wks5sx6k5a" path="res://Asset/img/other/Pixel_Münze-removebg-preview.png" id="8_c68pv"]
+[ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="9_ccu05"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/ai_dec.gd" id="12_8qq1b"]
+[ext_resource type="Resource" uid="uid://pkckabnfb7p" path="res://Scene/jolly_joker/res/ai_stack.tres" id="13_7x8er"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/main_stack.gd" id="17_cjmgv"]
+[ext_resource type="Resource" uid="uid://bciofgphtgmij" path="res://Scene/jolly_joker/res/main.tres" id="18_4aq4w"]
+[ext_resource type="Texture2D" uid="uid://b66p12pvglnle" path="res://Asset/img/other/8bit.png" id="19_j8cf1"]
+[ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="20_ydmpi"]
+
+[sub_resource type="FontVariation" id="FontVariation_urnrk"]
+base_font = ExtResource("9_ccu05")
+
+[sub_resource type="Animation" id="Animation_03m3e"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_phn54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b1dnd"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_wq5p4"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.566667, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h64mg"]
+_data = {
+"RESET": SubResource("Animation_phn54"),
+"fade": SubResource("Animation_wq5p4"),
+"hide": SubResource("Animation_b1dnd"),
+"show": SubResource("Animation_03m3e")
+}
+
+[node name="JolllyJoker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ddqdm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uj7qc")
+
+[node name="1000017210" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+position = Vector2(541, 1045)
+scale = Vector2(2.15385, 2.15385)
+texture = ExtResource("3_nu4w0")
+
+[node name="main" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.386)
+position = Vector2(555, 1085)
+scale = Vector2(0.496, 0.496)
+texture = ExtResource("6_m32fk")
+script = ExtResource("17_cjmgv")
+res = ExtResource("18_4aq4w")
+
+[node name="spawn" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 38.0
+offset_top = 950.0
+offset_right = 248.0
+offset_bottom = 1248.0
+script = ExtResource("7_nn4pw")
+
+[node name="market_deck" type="Sprite2D" parent="."]
+position = Vector2(143, 1097)
+scale = Vector2(0.288, 0.288)
+texture = ExtResource("5_njtpv")
+script = ExtResource("6_o7ex7")
+res = ExtResource("7_fbnvi")
+
+[node name="market_btn" type="Button" parent="market_deck"]
+offset_left = -365.0
+offset_top = -493.0
+offset_right = 365.0
+offset_bottom = 507.0
+flat = true
+
+[node name="placeholder" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.228)
+position = Vector2(936, 1961)
+scale = Vector2(0.288, 0.288)
+texture = ExtResource("6_m32fk")
+
+[node name="player_deck" type="Sprite2D" parent="."]
+position = Vector2(143, 1961)
+scale = Vector2(0.288, 0.288)
+texture = ExtResource("4_64rml")
+script = ExtResource("5_fck6s")
+res = ExtResource("6_elmos")
+
+[node name="player_btn" type="Button" parent="player_deck"]
+offset_left = -365.0
+offset_top = -493.0
+offset_right = 365.0
+offset_bottom = 507.0
+flat = true
+
+[node name="LittleScroll" type="Sprite2D" parent="."]
+position = Vector2(193.909, 102)
+scale = Vector2(5.72727, 5.72727)
+texture = ExtResource("7_e6t4u")
+
+[node name="PixelMünze-removebg-preview" type="Sprite2D" parent="LittleScroll"]
+position = Vector2(-13.8572, -1.04762)
+scale = Vector2(0.0219062, 0.0219062)
+texture = ExtResource("8_c68pv")
+
+[node name="coin" type="Label" parent="LittleScroll"]
+offset_left = -8.88096
+offset_top = -4.71428
+offset_right = 9.11904
+offset_bottom = 7.28572
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_urnrk")
+theme_override_font_sizes/font_size = 12
+text = "100"
+
+[node name="main_stack_holder" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 356.0
+offset_top = 828.0
+offset_right = 730.0
+offset_bottom = 1348.0
+
+[node name="opp_deck_ai" type="Sprite2D" parent="."]
+position = Vector2(936, 325)
+scale = Vector2(0.288, 0.288)
+texture = ExtResource("4_64rml")
+script = ExtResource("12_8qq1b")
+res = ExtResource("13_7x8er")
+
+[node name="notification" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = 306.0
+offset_right = 357.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(357, 142)
+texture = ExtResource("19_j8cf1")
+
+[node name="Label" type="Label" parent="notification"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -92.0
+offset_right = 298.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_ydmpi")
+theme_override_font_sizes/font_size = 51
+text = "PICK TWO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="notification"]
+libraries = {
+"": SubResource("AnimationLibrary_h64mg")
+}
+
+[connection signal="pressed" from="player_deck/player_btn" to="." method="_on_player_btn_pressed"]

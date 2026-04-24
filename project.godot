@@ -45,6 +45,7 @@ folder_colors={
 "res://Scene/enemies/": "teal",
 "res://Scene/game_manual/": "orange",
 "res://Scene/inventory/": "yellow",
+"res://Scene/jolly_joker/": "teal",
 "res://Scene/journal/": "blue",
 "res://Scene/shop/": "purple"
 }

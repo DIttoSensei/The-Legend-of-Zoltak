@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardRes" load_steps=3 format=3 uid="uid://2pt5f2vfdo6t"]
+
+[ext_resource type="Script" path="res://Scene/jolly_joker/res/card_res.gd" id="1_74xod"]
+[ext_resource type="Texture2D" uid="uid://bf4coakan2qcx" path="res://Scene/jolly_joker/assets/7.png" id="1_up6n2"]
+
+[resource]
+script = ExtResource("1_74xod")
+img = ExtResource("1_up6n2")
+type = "heart"
+number = 5

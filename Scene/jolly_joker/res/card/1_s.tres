@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardRes" load_steps=3 format=3 uid="uid://8ul3cil83djo"]
+
+[ext_resource type="Script" path="res://Scene/jolly_joker/res/card_res.gd" id="1_8a4qg"]
+[ext_resource type="Texture2D" uid="uid://bq0dp3thgjp57" path="res://Scene/jolly_joker/assets/35.png" id="1_862wc"]
+
+[resource]
+script = ExtResource("1_8a4qg")
+img = ExtResource("1_862wc")
+type = "spade"
+number = 1

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardRes" load_steps=3 format=3 uid="uid://dffrhex3ea432"]
+
+[ext_resource type="Script" path="res://Scene/jolly_joker/res/card_res.gd" id="1_3bmjt"]
+[ext_resource type="Texture2D" uid="uid://drfamudapr40e" path="res://Scene/jolly_joker/assets/30.png" id="1_j4jvl"]
+
+[resource]
+script = ExtResource("1_3bmjt")
+img = ExtResource("1_j4jvl")
+type = "clubs"
+number = 6

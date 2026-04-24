@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardStackRes" load_steps=3 format=3 uid="uid://pkckabnfb7p"]
+
+[ext_resource type="Script" path="res://Scene/jolly_joker/res/card_stack_res.gd" id="1_y6224"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/res/card_res.gd" id="2_xgtpi"]
+
+[resource]
+script = ExtResource("1_y6224")
+stack = Array[ExtResource("2_xgtpi")]([])

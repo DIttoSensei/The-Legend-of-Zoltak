@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardRes" load_steps=3 format=3 uid="uid://cwunjb83y201d"]
+
+[ext_resource type="Texture2D" uid="uid://px6loxq0exs" path="res://Scene/jolly_joker/assets/15.png" id="1_0axpg"]
+[ext_resource type="Script" path="res://Scene/jolly_joker/res/card_res.gd" id="1_2pcam"]
+
+[resource]
+script = ExtResource("1_2pcam")
+img = ExtResource("1_0axpg")
+type = "diamond"
+number = 3

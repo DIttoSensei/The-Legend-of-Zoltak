@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://57wivtnexibc"]
+
+[ext_resource type="Script" path="res://Scene/jolly_joker/scripts/player_card.gd" id="1_y4qhl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pp5ka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7s1re"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40ai8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tewfv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pps8i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_21t1c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rds5x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sy5y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ty300"]
+
+[node name="player_card" type="Sprite2D"]
+position = Vector2(519, 1049)
+scale = Vector2(0.288, 0.288)
+script = ExtResource("1_y4qhl")
+
+[node name="card_btn" type="Button" parent="."]
+offset_left = -365.0
+offset_top = -493.0
+offset_right = 365.0
+offset_bottom = 507.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pp5ka")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7s1re")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_40ai8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tewfv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pps8i")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_21t1c")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rds5x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5sy5y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ty300")
+flat = true
+
+[connection signal="pressed" from="card_btn" to="." method="_on_card_btn_pressed"]

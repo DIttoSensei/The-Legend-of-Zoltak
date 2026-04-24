@@ -39,3 +39,7 @@ signal battle_inv_copy
 
 # for manual
 signal show_manual_content
+
+
+# for Card
+signal play_player_card
