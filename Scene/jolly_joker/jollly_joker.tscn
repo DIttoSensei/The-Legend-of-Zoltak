@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dm53weqwkua2t"]
+[gd_scene load_steps=32 format=3 uid="uid://dm53weqwkua2t"]
 
 [ext_resource type="Script" path="res://Scene/jolly_joker/scripts/jolly_joker.gd" id="1_ddqdm"]
 [ext_resource type="Texture2D" uid="uid://dicu7keex7qwl" path="res://Asset/img/other/file_000000008dfc71f49519e61d321920ae.png" id="2_uj7qc"]
@@ -14,43 +14,79 @@
 [ext_resource type="Script" path="res://Scene/jolly_joker/scripts/market_spawn.gd" id="7_nn4pw"]
 [ext_resource type="Texture2D" uid="uid://db4wks5sx6k5a" path="res://Asset/img/other/Pixel_Münze-removebg-preview.png" id="8_c68pv"]
 [ext_resource type="FontFile" uid="uid://c0eijwby10n76" path="res://Asset/Fonts/alagard.ttf" id="9_ccu05"]
+[ext_resource type="Texture2D" uid="uid://rf1pcx1aqaut" path="res://Scene/jolly_joker/assets/glow.png" id="11_4egft"]
 [ext_resource type="Script" path="res://Scene/jolly_joker/scripts/ai_dec.gd" id="12_8qq1b"]
 [ext_resource type="Resource" uid="uid://pkckabnfb7p" path="res://Scene/jolly_joker/res/ai_stack.tres" id="13_7x8er"]
+[ext_resource type="Texture2D" uid="uid://dn132a5on4c1" path="res://Asset/img/other/UI_TravelBook_Slot01b.png" id="15_y6qmh"]
 [ext_resource type="Script" path="res://Scene/jolly_joker/scripts/main_stack.gd" id="17_cjmgv"]
 [ext_resource type="Resource" uid="uid://bciofgphtgmij" path="res://Scene/jolly_joker/res/main.tres" id="18_4aq4w"]
 [ext_resource type="Texture2D" uid="uid://b66p12pvglnle" path="res://Asset/img/other/8bit.png" id="19_j8cf1"]
 [ext_resource type="Theme" uid="uid://1rjbfgnnnwya" path="res://Text_theme.tres" id="20_ydmpi"]
 
-[sub_resource type="FontVariation" id="FontVariation_urnrk"]
-base_font = ExtResource("9_ccu05")
-
-[sub_resource type="Animation" id="Animation_03m3e"]
-resource_name = "show"
-length = 0.1
+[sub_resource type="Animation" id="Animation_m0ok4"]
+resource_name = "glow"
+length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05)]
+}
+
+[sub_resource type="Animation" id="Animation_vcmmj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("TextureRect:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+"values": [Vector2(1, 1)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aocaq"]
+_data = {
+"RESET": SubResource("Animation_vcmmj"),
+"glow": SubResource("Animation_m0ok4")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_urnrk"]
+base_font = ExtResource("9_ccu05")
 
 [sub_resource type="Animation" id="Animation_phn54"]
 length = 0.001
@@ -91,34 +127,6 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_b1dnd"]
-resource_name = "hide"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
-}
-
 [sub_resource type="Animation" id="Animation_wq5p4"]
 resource_name = "fade"
 length = 2.0
@@ -157,6 +165,62 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b1dnd"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_03m3e"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h64mg"]
@@ -215,6 +279,20 @@ texture = ExtResource("5_njtpv")
 script = ExtResource("6_o7ex7")
 res = ExtResource("7_fbnvi")
 
+[node name="TextureRect" type="TextureRect" parent="market_deck"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -389.362
+offset_top = -541.444
+offset_right = 389.638
+offset_bottom = 548.556
+pivot_offset = Vector2(389.5, 545)
+texture = ExtResource("11_4egft")
+
+[node name="glow" type="AnimationPlayer" parent="market_deck"]
+libraries = {
+"": SubResource("AnimationLibrary_aocaq")
+}
+
 [node name="market_btn" type="Button" parent="market_deck"]
 offset_left = -365.0
 offset_top = -493.0
@@ -234,6 +312,34 @@ scale = Vector2(0.288, 0.288)
 texture = ExtResource("4_64rml")
 script = ExtResource("5_fck6s")
 res = ExtResource("6_elmos")
+
+[node name="counter" type="TextureRect" parent="player_deck"]
+offset_left = -164.722
+offset_top = -880.0
+offset_right = 135.278
+offset_bottom = -580.0
+texture = ExtResource("15_y6qmh")
+
+[node name="Label" type="Label" parent="player_deck/counter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -93.0
+offset_right = 129.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_ydmpi")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 186
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="player_btn" type="Button" parent="player_deck"]
 offset_left = -365.0
@@ -275,6 +381,33 @@ scale = Vector2(0.288, 0.288)
 texture = ExtResource("4_64rml")
 script = ExtResource("12_8qq1b")
 res = ExtResource("13_7x8er")
+
+[node name="counter" type="TextureRect" parent="opp_deck_ai"]
+offset_left = -164.722
+offset_top = 564.445
+offset_right = 135.278
+offset_bottom = 864.445
+texture = ExtResource("15_y6qmh")
+
+[node name="Label" type="Label" parent="opp_deck_ai/counter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -93.0
+offset_right = 129.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_ydmpi")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 186
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="notification" type="TextureRect" parent="."]
 visible = false
@@ -320,4 +453,5 @@ libraries = {
 "": SubResource("AnimationLibrary_h64mg")
 }
 
+[connection signal="pressed" from="market_deck/market_btn" to="." method="_on_market_btn_pressed"]
 [connection signal="pressed" from="player_deck/player_btn" to="." method="_on_player_btn_pressed"]
