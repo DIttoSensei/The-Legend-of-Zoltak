@@ -11,6 +11,10 @@ class_name JollyJoker extends Control
 @onready var placeholder: Sprite2D = $placeholder
 @onready var noti: Label = $notification/Label
 @onready var noti_ani: AnimationPlayer = $notification/AnimationPlayer
+@onready var result_text: Label = $CanvasLayer/result_text
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+
+@export var ost : String
 
 
 var count : int = 0
@@ -22,6 +26,10 @@ var card_blocking := false
 
 ## for player
 var can_only_play_num_two : bool = false
+var can_only_play_num_five : bool = false
+var last_no_two_card_played_by = ""
+var last_no_five_card_played_by = ""
+var went_to_market : bool = false # for if player went to market but has either 2 or 5 on hand
 
 const PLAYER_CARD = preload("res://Scene/jolly_joker/player_card.tscn")
 
@@ -29,6 +37,13 @@ const PLAYER_CARD = preload("res://Scene/jolly_joker/player_card.tscn")
 func _ready() -> void:
 	SceneTransition.fade_in()
 	SignalManager.play_player_card.connect(play_player_card)
+	if ost == "":
+		pass
+	else:
+		print('play audio')
+		GlobalGameSystem.global_audio.stream = load(ost)
+		#GlobalGameSystem.delay(2)
+		GlobalGameSystem.play_bg_audio()
 	block_btn_press()
 	move_starter_cards()
 	await get_tree().create_timer(2).timeout
@@ -44,6 +59,10 @@ func move_starter_cards () -> void:
 		
 func starter_animation () -> void:
 	for i in 4:
+		var p = AudioStreamPlayer.new()
+		p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+		add_child(p)
+		
 		var sprite = Sprite2D.new()
 		var texture_1 = "res://Scene/jolly_joker/assets/back_b.png"
 		var texture_2 = "res://Scene/jolly_joker/assets/back_w.png"
@@ -54,7 +73,9 @@ func starter_animation () -> void:
 		sprite.texture = load (choice)
 	
 		var tween = create_tween()
+		tween.tween_callback(p.play) # play sound
 		tween.tween_property(sprite, "position", Vector2(105,1011), 0.15)
+		p.finished.connect(p.queue_free)
 		await tween.finished
 		## counter
 		var current_num = int($player_deck/counter/Label.text)
@@ -62,6 +83,10 @@ func starter_animation () -> void:
 		$player_deck/counter/Label.text = str(current_num)
 		
 	for i in 4:
+		var p = AudioStreamPlayer.new()
+		p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+		add_child(p)
+		
 		var sprite = Sprite2D.new()
 		var texture_1 = "res://Scene/jolly_joker/assets/back_b.png"
 		var texture_2 = "res://Scene/jolly_joker/assets/back_w.png"
@@ -73,12 +98,19 @@ func starter_animation () -> void:
 	
 		var tween = create_tween()
 		tween.tween_property(sprite, "position", Vector2(105,-625), 0.15)
+		tween.parallel().tween_callback(p.play) # play sound
 		tween.tween_property(sprite, "position", Vector2(898,-625), 0.15)
+		#tween.parallel().tween_callback(p.play) # play sound
+		p.finished.connect(p.queue_free)
 		await tween.finished
 		## counter
 		var current_num = int($opp_deck_ai/counter/Label.text)
 		current_num += 1
 		$opp_deck_ai/counter/Label.text = str(current_num)
+		
+	var p = AudioStreamPlayer.new()
+	p.stream = load ("res://Asset/ost/sound_effects/card_drop.mp3")
+	add_child(p)
 		
 	var sprite = Sprite2D.new()
 	var first_play_card : CardRes = market_deck.res.stack.pop_at(randi() % market_deck.res.stack.size())
@@ -86,12 +118,15 @@ func starter_animation () -> void:
 	spawn.add_child(sprite)
 	sprite.position = Vector2(105,147)
 	sprite.texture = first_play_card.img
+	first_play_card.first_card = true
 	main.res.stack.append(first_play_card)
 	
 	sprite.reparent(main_stack_holder)
 	var tween = create_tween()
 	tween.tween_property(sprite, "position", Vector2(181,253.1), 0.15)
+	tween.parallel().tween_callback(p.play) # play sound
 	tween.parallel().tween_property(sprite, "scale", Vector2(0.499,0.499), 0.15)
+	p.finished.connect(p.queue_free)
 	
 	spawn.clear_children()
 	allow_btn_press()
@@ -117,6 +152,8 @@ func update_ai_counter () -> void:
 	$opp_deck_ai/counter/Label.text = str(count)
 
 func _on_player_btn_pressed() -> void:
+	
+	
 	if player_deck.res.stack.size() == null:
 		count = 0
 		return
@@ -126,13 +163,23 @@ func _on_player_btn_pressed() -> void:
 		var children = placeholder.get_children() # reverse the children so the animation looks natural
 		children.reverse()
 		for i in children:
+			var p = AudioStreamPlayer.new()
+			p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+			add_child(p)
+	
 			var tween = create_tween()
 			tween.tween_property(i, "position", Vector2(-2753.472, 0), 0.1)
+			tween.parallel().tween_callback(p.play)
+			p.finished.connect(p.queue_free)
 			await tween.finished
 			i.queue_free()
 		await get_tree().create_timer(0.2).timeout
 		player_btn.disabled = false
 	else:
+		var p = AudioStreamPlayer.new()
+		p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+		add_child(p)
+	
 		var new_card : Sprite2D = PLAYER_CARD.instantiate()
 		new_card.scale = Vector2(1,1)
 		placeholder.add_child(new_card)
@@ -143,19 +190,26 @@ func _on_player_btn_pressed() -> void:
 	
 		var tween = create_tween()
 		tween.tween_property(new_card, "position", Vector2(-3.472, 0), 0.15 )
+		tween.parallel().tween_callback(p.play)
 		tween.tween_property(new_card, "scale", Vector2(1.051,1.051), 0.05)
 		tween.tween_property(new_card, "scale", Vector2(1,1), 0.1)
+		p.finished.connect(p.queue_free)
 		current_play_card = count
 		count += 1
 		#count %= player_deck.res.stack.size()
 	
 
 func play_player_card (card : Sprite2D) -> void:
+	var p = AudioStreamPlayer.new()
+	p.stream = load ("res://Asset/ost/sound_effects/card_drop.mp3")
+	add_child(p)
+	
 	current_player = "player"
 	if count < 0:
 		count = 0
 	count -= 1
 	
+	###################################
 	if can_only_play_num_two == true:
 		var play = player_deck.res.stack[current_play_card]
 		if play.number != 2:
@@ -166,13 +220,29 @@ func play_player_card (card : Sprite2D) -> void:
 		var anin = $market_deck/glow
 		var ani_res = anin.get_animation("glow")
 		ani_res.loop_mode = Animation.LOOP_NONE
+		can_only_play_num_two = false
+		
+	if can_only_play_num_five == true:
+		var play = player_deck.res.stack[current_play_card]
+		if play.number != 5:
+			count += 1
+			return
+		card_blocking = true
+		## stop market glow animation
+		var anin = $market_deck/glow
+		var ani_res = anin.get_animation("glow")
+		ani_res.loop_mode = Animation.LOOP_NONE
+		can_only_play_num_five = false
+		###############################################
 		
 	card.reparent(main_stack_holder)
 	var tween = create_tween()
 	tween.tween_property(card, "position", Vector2(181,253.1), 0.15)
 	tween.parallel().tween_property(card, "scale", Vector2(0.499,0.499), 0.15)
+	tween.parallel().tween_callback(p.play)
 	tween.tween_property(card, "scale", Vector2(0.55,0.55), 0.05)
 	tween.tween_property(card, "scale", Vector2(0.499,0.499), 0.1)
+	p.finished.connect(p.queue_free)
 	var play_card : CardRes = player_deck.res.stack.pop_at(current_play_card)
 	current_play_card -= 1
 	if play_card.number == 2:
@@ -193,8 +263,14 @@ func play_player_card (card : Sprite2D) -> void:
 
 
 func take_from_market_player (itration : int = 1) -> void:
+	if market_deck.res.stack.size() == 0:
+		await refill_market()
 	player_turn_taken = true
 	for i in itration:
+		var p = AudioStreamPlayer.new()
+		p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+		add_child(p)
+		
 		var sprite = Sprite2D.new()
 		var texture_1 = "res://Scene/jolly_joker/assets/back_b.png"
 		var texture_2 = "res://Scene/jolly_joker/assets/back_w.png"
@@ -206,20 +282,29 @@ func take_from_market_player (itration : int = 1) -> void:
 	
 		var tween = create_tween()
 		tween.tween_property(sprite, "position", Vector2(105,1011), 0.15)
+		tween.parallel().tween_callback(p.play) # Play sound
+		
 		var random_item : CardRes = market_deck.res.stack.pop_at(randi() % market_deck.res.stack.size())
 		print ("Player takes from market: ", random_item.type, " ", random_item.number)
 		player_deck.res.stack.append(random_item)
 		update_player_counter()
+		
+		p.finished.connect(p.queue_free)
 		await tween.finished
 	spawn.clear_children()
 	
 	#print ("player_new_decl: " ,player_deck.res.stack.size())
 	stop_player_turn()
 	
+	if ai_wins():
+		return
 	await get_tree().create_timer(1).timeout
 	ai_play_turn()
 
 func stop_player_turn () -> void:
+	var my_color = Color(0.494,0.494,0.494,1)
+	var tween = create_tween()
+	tween.tween_property(player_deck, "modulate", my_color, 0.2)
 	market_btn.disabled = true
 	player_btn.disabled = true
 	
@@ -228,7 +313,10 @@ func stop_player_turn () -> void:
 		btn.disabled = true
 	
 func resume_player_turn () -> void:
-	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(1).timeout
+	var my_color = Color(1,1,1,1)
+	var tween = create_tween()
+	tween.tween_property(player_deck, "modulate", my_color, 0.2)
 	market_btn.disabled = false
 	player_btn.disabled = false
 	
@@ -241,6 +329,7 @@ func ai_play_turn () -> void:
 	if main.res.stack.size() == 0: # if there is no card on the table play a random one
 		var random_card = randi() % opp_deck_ai.res.stack.size()
 		#print ("Ai picks random: ",opp_deck_ai.res.stack[random_card].number)
+		opp_deck_ai.res.stack[random_card].first_card = true
 		ai_play_card(opp_deck_ai.res.stack[random_card].img,random_card)
 		
 	else:
@@ -265,10 +354,33 @@ func ai_play_turn () -> void:
 		if go_to_market == true:
 			#print ("go to markey")
 			ai_go_to_market()
-			
-			
+	
+func refill_market () -> void:
+	noti.text = "Restock"
+	play_notification("second")
+	var value = main.res.stack.size() - 1
+	for i in value:
+		market_deck.res.stack.append(main.res.stack[i])
+	var children =  main_stack_holder.get_children()
+	for i in range(children.size() - 1):
+		var p = AudioStreamPlayer.new()
+		p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+		add_child(p)
+	
+		children[i].reparent(spawn)
+		var tween = create_tween()
+		tween.tween_property(children[i], "position", Vector2(105,147.1), 0.1)
+		tween.parallel().tween_callback(p.play)
+		tween.parallel().tween_property(children[i], "scale", Vector2(0.288,0.288), 0.1)
+		p.finished.connect(p.queue_free)
+		await tween.finished
+	spawn.clear_children()
 
 func ai_play_card (card_texture : Texture2D, index : int) -> void:
+	var p = AudioStreamPlayer.new()
+	p.stream = load ("res://Asset/ost/sound_effects/card_drop.mp3")
+	add_child(p)
+	
 	current_player = "ai"
 	var sprite = Sprite2D.new()
 	main_stack_holder.add_child(sprite)
@@ -279,8 +391,10 @@ func ai_play_card (card_texture : Texture2D, index : int) -> void:
 	var tween = create_tween()
 	tween.tween_property(sprite, "position", Vector2(181,253.1), 0.15)
 	tween.parallel().tween_property(sprite, "scale", Vector2(0.499,0.499), 0.15)
+	tween.parallel().tween_callback(p.play) # play sound
 	tween.tween_property(sprite, "scale", Vector2(0.55,0.55), 0.05)
 	tween.tween_property(sprite, "scale", Vector2(0.499,0.499), 0.1)
+	p.finished.connect(p.queue_free)
 	
 	var play_card : CardRes = opp_deck_ai.res.stack.pop_at(index)
 	print ("AI played: ", play_card.type, " ", play_card.number)
@@ -295,7 +409,13 @@ func ai_play_card (card_texture : Texture2D, index : int) -> void:
 
 
 func ai_go_to_market (itration : int = 1) -> void:
+	if market_deck.res.stack.size() == 0:
+		await refill_market()
 	for i in itration:
+		var p = AudioStreamPlayer.new()
+		p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+		add_child(p)
+		
 		var sprite = Sprite2D.new()
 		var texture_1 = "res://Scene/jolly_joker/assets/back_b.png"
 		var texture_2 = "res://Scene/jolly_joker/assets/back_w.png"
@@ -307,7 +427,9 @@ func ai_go_to_market (itration : int = 1) -> void:
 	
 		var tween = create_tween()
 		tween.tween_property(sprite, "position", Vector2(105,-625), 0.15)
+		tween.parallel().tween_callback(p.play) # play sound
 		tween.tween_property(sprite, "position", Vector2(898,-625), 0.15)
+		p.finished.connect(p.queue_free)
 		await tween.finished
 		var random_item : CardRes = market_deck.res.stack.pop_at(randi() % market_deck.res.stack.size())
 		print ("AI takes from market: ", random_item.type, " ", random_item.number)
@@ -315,8 +437,11 @@ func ai_go_to_market (itration : int = 1) -> void:
 		update_ai_counter()
 		#print ("AI CARD: ", opp_deck_ai.res.stack.size())
 	
+	if player_wins():
+		return
 	spawn.clear_children()
-	
+	player_turn_taken = false
+	card_blocking = false
 	resume_player_turn()
 
 
@@ -328,22 +453,31 @@ func table_rule_check () -> void:
 	var top_played_card : CardRes = main.res.stack[-1]
 	var below_played_card : CardRes = main.res.stack[-2]
 	
-	# Junkie
+	## Junkie
 	if current_player == 'player':
 		await Junkie(top_played_card,below_played_card,player_deck)
-		if card_blocking != true:
-			await snag_two(top_played_card,below_played_card)
-		else:
-			card_blocking = false
+		await snag_two(top_played_card,below_played_card)
+		await snag_three(top_played_card,below_played_card)
+		await halt(top_played_card,below_played_card)
+		await cut(top_played_card,below_played_card)
+		await fetch(top_played_card,below_played_card)
+		if ai_wins():
+			return
 		await get_tree().create_timer(1).timeout
 		
 		#
 	
 	elif current_player == 'ai':
-		if card_blocking != true: # if ai playing same card to block player card effects
-			await snag_two(top_played_card,below_played_card)
-		else:
-			card_blocking = false
+		
+		print (card_blocking)
+		await snag_two(top_played_card,below_played_card)
+		await snag_three(top_played_card,below_played_card)
+		await halt(top_played_card,below_played_card)
+		await cut(top_played_card,below_played_card)
+		await fetch(top_played_card,below_played_card)
+		if player_wins():
+			return
+		
 		if player_turn_taken == true:
 			resume_player_turn()
 			player_turn_taken = false
@@ -356,14 +490,25 @@ func table_rule_check () -> void:
 
 ## Table rules
 func Junkie (top_card : CardRes, below_card : CardRes, target_deck) -> void:
+	if top_card.type == 'joker':
+		noti.text = "Wild Card"
+		play_notification("first")
+		return
+	if below_card.type == 'joker':
+		return
 	if top_card.number != below_card.number and top_card.type != below_card.type:
 		# first have the children of the nodes in reverse
 		var children = main_stack_holder.get_children()
 		children.reverse()
 		for child in children: # go thorugh all children in reverse and perform animation
+			var p = AudioStreamPlayer.new()
+			p.stream = load ("res://Asset/ost/sound_effects/card_click.mp3")
+			add_child(p)
+			
 			child.reparent(spawn)
 			var tween = create_tween()
 			tween.tween_property(child, "position", Vector2(105,1011.1), 0.1)
+			tween.parallel().tween_callback(p.play)
 			tween.parallel().tween_property(child, "scale", Vector2(0.288,0.288), 0.1)
 			
 			if current_player == 'player':
@@ -373,10 +518,12 @@ func Junkie (top_card : CardRes, below_card : CardRes, target_deck) -> void:
 				$player_deck/counter/Label.text = str(current_num)
 			elif current_player == 'ai':
 				update_ai_counter()
+			
+			p.finished.connect(p.queue_free)
 			await tween.finished
 		# show notification
 		noti.text = "Junkie"
-		noti_ani.play('fade')
+		play_notification("first")
 		
 		spawn.clear_children() # delete children node
 		main.res.stack.reverse() # Doing this cause so the current card on top of the main deck becomes the last card in target deck
@@ -384,45 +531,146 @@ func Junkie (top_card : CardRes, below_card : CardRes, target_deck) -> void:
 		main.res.stack.clear()
 		
 
-func snag_two (top_card : CardRes, below_card : CardRes) -> void:
-	var set_type = (top_card.number == below_card.number) if card_blocking else (top_card.number != below_card.number)
-	# pick 2
-	if top_card.type == below_card.type and top_card.number == 2 and set_type:
-		# AI to pick two or block
-		if current_player == "player":
-			var not_found : bool = false
-			for i in opp_deck_ai.res.stack:
-				var index : int = 0
-				if i.number == 2: #found card to block
-					#print ("i have 2:", i.number)
-					ai_play_card(i.img,index)
-					card_blocking = true
-					index = 0
-					not_found = false
-					break
-				else:
-					index += 1
-					not_found = true
-			# AI dosen't have two? pick from market
-			if not_found == true:
-				ai_go_to_market(2)
+func snag_two(top_card: CardRes, below_card: CardRes) -> void:
+	if top_card.number != 2:
+		return # Not a pick 2 card, do nothing
+
+	# If the previous player was forced to go to market, 
+	# and the current player plays another 2, the effect restarts.
+	if current_player == "player":
+		# AI's turn to respond
+		var found_block = false
+		for i in range(opp_deck_ai.res.stack.size()):
+			if opp_deck_ai.res.stack[i].number == 2:
+				# AI blocks by playing its own 2
+				noti.text = "Block!"
+				play_notification("second")
+				ai_play_card(opp_deck_ai.res.stack[i].img, i)
+				found_block = true
+				break
 		
-		# Player to pick two or block
-		if current_player == 'ai':
-			# block all card that are not two to prvent play
-			can_only_play_num_two = true
+		if not found_block:
+			noti.text = "Snag Two"
+			play_notification("second")
+			ai_go_to_market(2)
+			# Reset this so if AI plays a 2 later it's fresh
+			went_to_market = false 
+
+	elif current_player == "ai":
+		# Player's turn to respond
+		noti.text = "Snag Two"
+		play_notification("second")
+		can_only_play_num_two = true
+		# Toggle glow to show player must act
+		var anin = $market_deck/glow
+		anin.get_animation("glow").loop_mode = Animation.LOOP_LINEAR
+		anin.play("glow")
+
+func snag_three(top_card: CardRes, below_card: CardRes) -> void:
+	if top_card.number != 5:
+		return # Not a pick 3 card
+
+	if current_player == "player":
+		var found_block = false
+		for i in range(opp_deck_ai.res.stack.size()):
+			if opp_deck_ai.res.stack[i].number == 5:
+				noti.text = "Block!"
+				play_notification("second")
+				ai_play_card(opp_deck_ai.res.stack[i].img, i)
+				found_block = true
+				break
+		
+		if not found_block:
+			noti.text = "Snag Three"
+			play_notification("second")
+			ai_go_to_market(3)
+			went_to_market = false
+
+	elif current_player == "ai":
+		noti.text = "Snag Three"
+		play_notification("second")
+		can_only_play_num_five = true
+		var anin = $market_deck/glow
+		anin.get_animation("glow").loop_mode = Animation.LOOP_LINEAR
+		anin.play("glow")
 			
-			## Play market glow animation
-			var anin = $market_deck/glow
-			var ani_res = anin.get_animation("glow")
-			ani_res.loop_mode = Animation.LOOP_LINEAR
-			anin.play("glow")
+
+func halt (top_card : CardRes, below_card : CardRes) -> void:
+	var first_rule = (top_card.number != below_card.number)
+	var first_rule_2 = (top_card.type == below_card.type)
+	var second_rule = (top_card.number == below_card.number)
+	var second_rule_2 = (top_card.type != below_card.type)
+	if first_rule and first_rule_2 and top_card.number == 8 or second_rule and second_rule_2 and top_card.number == 8:
+		if current_player == 'player':
+			noti.text = "Halt"
+			play_notification("second")
+			player_turn_taken = false
+			resume_player_turn()
+		
+		elif current_player == 'ai':
+			noti.text = "Halt"
+			play_notification("second")
+			player_turn_taken = false
+			stop_player_turn()
+			await ai_play_turn()
+			resume_player_turn()
+
+
+func cut (top_card : CardRes, below_card : CardRes) -> void:
+	var first_rule = (top_card.number != below_card.number)
+	var first_rule_2 = (top_card.type == below_card.type)
+	var second_rule = (top_card.number == below_card.number)
+	var second_rule_2 = (top_card.type != below_card.type)
+	if first_rule and first_rule_2 and top_card.number == 1 or second_rule and second_rule_2 and top_card.number == 1:
+		if current_player == 'player':
+			noti.text = "Cut"
+			play_notification("second")
+			player_turn_taken = false
+			resume_player_turn()
+		
+		elif current_player == 'ai':
+			noti.text = "Cut"
+			play_notification("second")
+			player_turn_taken = false
+			stop_player_turn()
+			await ai_play_turn()
+			resume_player_turn()
+
+
+func fetch (top_card : CardRes, below_card : CardRes) -> void:
+	var first_rule = (top_card.number != below_card.number)
+	var first_rule_2 = (top_card.type == below_card.type)
+	var second_rule = (top_card.number == below_card.number)
+	var second_rule_2 = (top_card.type != below_card.type)
+	if first_rule and first_rule_2 and top_card.number == 10 or second_rule and second_rule_2 and top_card.number == 10:
+		if current_player == "player":
+			noti.text = "Fetch"
+			play_notification("second")
+			ai_go_to_market()
+		elif current_player == "ai":
+			noti.text = "Fetch"
+			play_notification("second")
+			await take_from_market_player()
+			resume_player_turn()
 
 
 func _on_market_btn_pressed() -> void:
-	if can_only_play_num_two == true:
-		take_from_market_player(2)
-		can_only_play_num_two = false
+	if can_only_play_num_two == true or can_only_play_num_five == true:
+		if market_deck.res.stack.size() < 3:
+			await refill_market()
+		if can_only_play_num_five == true:
+			take_from_market_player(3)
+			can_only_play_num_five = false
+			last_no_five_card_played_by = 'ai'
+			#card_blocking = false
+			went_to_market = true
+		else:
+			take_from_market_player(2)
+			last_no_two_card_played_by = 'ai'
+			#card_blocking = false
+			can_only_play_num_two = false
+			went_to_market = true
+		
 		## stop market glow animation
 		var anin = $market_deck/glow
 		var ani_res = anin.get_animation("glow")
@@ -431,3 +679,25 @@ func _on_market_btn_pressed() -> void:
 	else:
 		take_from_market_player()
 		stop_player_turn()
+
+
+func play_notification (value : String) -> void:
+	# first, second
+	if value == 'first':
+		$notification/AnimationPlayer.play("fade")
+	else :
+		$notification/AnimationPlayer.play("show")
+		
+func player_wins () -> bool:
+	if player_deck.res.stack.size() == 0 and can_only_play_num_two == false and can_only_play_num_five == false:
+		result_text.text = "VICTORY"
+		canvas_layer.visible = true
+		return true
+	return false
+	
+func ai_wins () -> bool:
+	if opp_deck_ai.res.stack.size() == 0 and can_only_play_num_two == false and can_only_play_num_five == false:
+		result_text.text = "DEFEAT"
+		canvas_layer.visible = true
+		return true
+	return false
